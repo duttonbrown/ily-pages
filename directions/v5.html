@@ -13,12 +13,74 @@
 </head>
 <body class="on-light">
 
-<!-- ===== announcement bar ===== -->
-<div class="announce">
-  spring drop · the routine set · <a href="v5-products.html">save 15% →</a>
-</div>
+<!-- ===== header ===== -->
+<header class="nav nav--on-dark" id="ily-nav">
+  <div class="container">
+    <div class="nav__row">
+      <div class="nav__group nav__group--left">
+        <button class="nav__menu-btn" id="menuOpen" aria-label="open menu">
+          <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="1.4">
+            <line x1="0" y1="2" x2="22" y2="2"/>
+            <line x1="0" y1="12" x2="22" y2="12"/>
+          </svg>
+        </button>
+        <nav class="nav__links--inline" aria-label="primary">
+          <a href="v5.html" aria-current="page">home</a>
+          <a href="v5-products.html">shop</a>
+          <a href="#the-poem">the formula</a>
+        </nav>
+      </div>
 
-<!-- header removed for v5 homepage — distraction over the hero. nav still lives on shop / pdp / about. -->
+      <a href="v5.html" class="nav__brand nav__brand--center" aria-label="iloveyouth — home">
+        <img class="nav__wordmark" src="assets/ily-wordmark-white-blue.svg" alt="iloveyouth.">
+      </a>
+
+      <div class="nav__group nav__group--right">
+        <button class="nav__icon-btn nav__icon-btn--hide-sm" aria-label="search">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="9" cy="9" r="6"/><line x1="13.5" y1="13.5" x2="18" y2="18"/>
+          </svg>
+        </button>
+        <button class="nav__icon-btn nav__icon-btn--hide-sm" aria-label="account">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="10" cy="7" r="3.5"/><path d="M3.5 17c1.4-3 4-4.5 6.5-4.5s5.1 1.5 6.5 4.5"/>
+          </svg>
+        </button>
+        <button class="nav__icon-btn" aria-label="cart, 0 items">
+          <svg width="20" height="22" viewBox="0 0 20 22" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M3 6.5h14l-1.4 12.5a1.5 1.5 0 0 1-1.5 1.4H5.9a1.5 1.5 0 0 1-1.5-1.4L3 6.5z"/>
+            <path d="M7 6.5V5a3 3 0 0 1 6 0v1.5"/>
+          </svg>
+          <span class="nav__cart-count" aria-hidden="true">0</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== mobile menu drawer ===== -->
+<aside class="mmenu" id="mmenu" aria-hidden="true">
+  <div class="mmenu__top">
+    <img src="assets/ily-wordmark-white-blue.svg" alt="iloveyouth.">
+    <button class="mmenu__close" id="menuClose" aria-label="close menu">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.4">
+        <line x1="3" y1="3" x2="19" y2="19"/><line x1="19" y1="3" x2="3" y2="19"/>
+      </svg>
+    </button>
+  </div>
+  <nav class="mmenu__nav" aria-label="mobile">
+    <a href="v5.html"><span>home</span><span class="num">01.</span></a>
+    <a href="v5-products.html"><span>shop</span><span class="num">02.</span></a>
+    <a href="v5-product.html"><span>the serum</span><span class="num">03.</span></a>
+    <a href="#the-poem"><span>the formula</span><span class="num">04.</span></a>
+    <a href="v5-about.html"><span>about</span><span class="num">05.</span></a>
+  </nav>
+  <div class="mmenu__foot">
+    <a href="#">account</a>
+    <a href="#">contact</a>
+    <span>youth starts with you<span class="dot">.</span></span>
+  </div>
+</aside>
 
 <!-- ===== hero (v1 dark mesh + constellation dots overlay) ===== -->
 <section class="hero-dark on-dark" style="min-height: 100svh;">
@@ -436,6 +498,33 @@
 
 <script>
   (function(){
+    /* sticky nav blur */
+    var nav = document.getElementById('ily-nav');
+    function onScroll(){
+      if (window.scrollY > 40) nav.classList.add('nav--scrolled');
+      else nav.classList.remove('nav--scrolled');
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* mobile menu drawer */
+    var mmenu = document.getElementById('mmenu');
+    var mOpen = document.getElementById('menuOpen');
+    var mClose = document.getElementById('menuClose');
+    function setMenu(state){
+      mmenu.classList.toggle('is-open', state);
+      mmenu.setAttribute('aria-hidden', state ? 'false' : 'true');
+      document.body.classList.toggle('menu-open', state);
+    }
+    mOpen && mOpen.addEventListener('click', function(){ setMenu(true); });
+    mClose && mClose.addEventListener('click', function(){ setMenu(false); });
+    mmenu && mmenu.addEventListener('click', function(e){
+      if (e.target.tagName === 'A') setMenu(false);
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') setMenu(false);
+    });
+
     /* constellation cursor parallax — dots subtly follow the mouse */
     var constEl = document.querySelector('.const');
     if (constEl && window.matchMedia('(pointer: fine)').matches) {
