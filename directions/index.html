@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iloveyouth · directions</title>
+  <meta name="description" content="four brand-direction prototypes for iloveyouth. v1 → v4. open each to compare.">
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --shadow:  #2a2220;
+      --frosted: #ade8f9;
+      --ghost:   #f0f3fa;
+      --silk:    #ffd5c6;
+      --grey-300: #c8bdb5;
+      --grey-400: #a89b92;
+      --grey-600: #6b5c54;
+      --gutter: clamp(1.25rem, 4vw, 4rem);
+      --max-w: 1280px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-weight: 400;
+      font-size: 1.0625rem;
+      line-height: 1.5;
+      color: var(--shadow);
+      background: var(--ghost);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      font-feature-settings: "ss01";
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; height: auto; }
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--gutter); }
+
+    .top {
+      padding: 1.25rem 0 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .top img { height: 32px; }
+    .top__meta {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: lowercase;
+      color: var(--grey-600);
+      font-weight: 500;
+    }
+    .top__meta .dot { color: var(--frosted); }
+
+    .hero {
+      padding: clamp(3rem, 9vw, 7rem) 0 clamp(2rem, 5vw, 4rem);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      color: var(--grey-600);
+      text-transform: lowercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.55;
+    }
+    .h-mega {
+      font-weight: 300;
+      font-size: clamp(3rem, 11vw, 9rem);
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      margin: 1rem 0;
+      max-width: 14ch;
+    }
+    .h-mega .dot { color: var(--frosted); }
+    .lead {
+      font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+      line-height: 1.7;
+      color: var(--grey-600);
+      max-width: 60ch;
+      margin: 1.5rem 0 0;
+    }
+
+    .grid {
+      padding: clamp(2rem, 5vw, 4rem) 0 clamp(4rem, 9vw, 7rem);
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(1rem, 2vw, 2rem);
+    }
+    @media (max-width: 720px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      border-radius: 28px;
+      border: 1px solid rgba(42,34,32,0.10);
+      background: white;
+      transition: transform 360ms cubic-bezier(.2,.7,.2,1), box-shadow 360ms cubic-bezier(.2,.7,.2,1), border-color 360ms;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 60px rgba(42,34,32,0.10);
+      border-color: rgba(42,34,32,0.18);
+    }
+
+    .card__visual {
+      aspect-ratio: 16 / 10;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      background: var(--ghost);
+    }
+    .card--v1 .card__visual {
+      background:
+        radial-gradient(60% 50% at 60% 40%, rgba(42,34,32,0.14), transparent 60%),
+        linear-gradient(180deg, var(--shadow) 0%, #1a1414 100%);
+    }
+    .card--v2 .card__visual {
+      background:
+        radial-gradient(60% 50% at 30% 30%, white, transparent 60%),
+        linear-gradient(180deg, var(--ghost) 0%, #e4e8f1 100%);
+    }
+    .card--v3 .card__visual {
+      background:
+        radial-gradient(60% 50% at 30% 30%, color-mix(in oklab, var(--frosted) 35%, white), transparent 60%),
+        linear-gradient(180deg, color-mix(in oklab, var(--frosted) 60%, white) 0%, var(--frosted) 100%);
+    }
+    .card--v4 .card__visual {
+      background: var(--shadow);
+      position: relative;
+    }
+    /* v4 constellation in the preview */
+    .card--v4 .card__visual::before,
+    .card--v4 .card__visual::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: var(--frosted);
+    }
+    .card--v4 .card__visual::before { top: 25%; left: 20%; width: 14px; height: 14px; box-shadow: 0 4px 16px rgba(173,232,249,0.4); }
+    .card--v4 .card__visual::after  { top: 60%; left: 70%; width: 18px; height: 18px; box-shadow: 0 4px 16px rgba(173,232,249,0.4); }
+    .card--v4 .card__visual span {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--frosted);
+    }
+
+    .card__visual-headline {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-weight: 300;
+      font-size: clamp(1.5rem, 3.5vw, 2.75rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      text-align: center;
+      padding: 1rem;
+    }
+    .card--v1 .card__visual-headline { color: var(--ghost); }
+    .card--v3 .card__visual-headline { color: var(--shadow); }
+    .card--v4 .card__visual-headline { color: var(--ghost); position: relative; z-index: 2; }
+    .card__visual-headline .dot { color: var(--frosted); }
+    .card--v3 .card__visual-headline .dot { color: var(--shadow); }
+
+    .card__head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .card__num {
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      font-weight: 500;
+      text-transform: lowercase;
+      color: var(--grey-400);
+      font-feature-settings: "tnum";
+    }
+    .card__chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      color: var(--shadow);
+      background: var(--frosted);
+      padding: 4px 10px;
+      border-radius: 999px;
+      text-transform: lowercase;
+    }
+    .card__chip--silk { background: var(--silk); }
+
+    .card__title {
+      font-weight: 300;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1;
+      letter-spacing: -0.025em;
+      margin: 0;
+    }
+    .card__title .dot { color: var(--frosted); }
+    .card__strap {
+      font-size: 0.875rem;
+      color: var(--grey-600);
+      letter-spacing: 0.08em;
+      text-transform: lowercase;
+      margin: 0;
+    }
+    .card__copy {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--grey-600);
+      max-width: 50ch;
+    }
+
+    .card__moves {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .card__moves li {
+      font-size: 0.875rem;
+      color: var(--grey-600);
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+    .card__moves li::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--frosted);
+      flex: 0 0 5px;
+      transform: translateY(-2px);
+    }
+
+    .card__cta {
+      margin-top: auto;
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      height: 48px;
+      padding: 0 1.5rem;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: lowercase;
+      border-radius: 999px;
+      background: var(--shadow);
+      color: var(--ghost);
+      transition: transform 200ms;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn--ghost {
+      background: transparent;
+      color: var(--shadow);
+      box-shadow: inset 0 0 0 1px var(--shadow);
+    }
+
+    .legend {
+      padding: clamp(3rem, 6vw, 5rem) 0;
+      border-top: 1px solid rgba(42,34,32,0.12);
+    }
+    .legend__title {
+      font-weight: 300;
+      font-size: clamp(1.25rem, 2vw, 1.5rem);
+      letter-spacing: -0.02em;
+      margin: 0 0 1.5rem;
+    }
+    .legend__list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      max-width: 60rem;
+    }
+    .legend__list dt {
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: lowercase;
+      color: var(--grey-400);
+      font-weight: 500;
+    }
+    .legend__list dd {
+      margin: 0.25rem 0 0;
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--grey-600);
+    }
+    @media (max-width: 600px) { .legend__list { grid-template-columns: 1fr; } }
+
+    .foot {
+      padding: clamp(2rem, 5vw, 3rem) 0;
+      border-top: 1px solid rgba(42,34,32,0.12);
+      font-size: 0.8125rem;
+      letter-spacing: 0.08em;
+      color: var(--grey-400);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .foot a { color: var(--grey-600); border-bottom: 1px solid currentColor; padding-bottom: 1px; }
+  </style>
+</head>
+<body>
+
+  <header class="wrap top">
+    <a href="../" aria-label="iloveyouth — public previews">
+      <img src="assets/ily-wordmark-dark.svg" alt="iloveyouth.">
+    </a>
+    <span class="top__meta">directions · v1 → v4 <span class="dot">.</span></span>
+  </header>
+
+  <section class="wrap hero">
+    <span class="eyebrow">brand-direction prototypes</span>
+    <h1 class="h-mega">four<br>directions<span class="dot">.</span></h1>
+    <p class="lead">four working prototypes for the iloveyouth website. each is its own complete world — homepage, collection, product detail — with the same locked brand: satoshi, four colors, the period system, every claim sourced. open each, click around, decide which one feels like us. they evolve from "first restraint" to "2030 thought experiment."</p>
+  </section>
+
+  <section class="wrap grid">
+
+    <a class="card card--v1" href="v1.html">
+      <div class="card__visual">
+        <span class="card__visual-headline">hydration<span class="dot">.</span><br>period<span class="dot">.</span></span>
+      </div>
+      <div class="card__head">
+        <span class="card__num">v1 · early</span>
+        <span class="card__chip">prototype</span>
+      </div>
+      <h2 class="card__title">first cut<span class="dot">.</span></h2>
+      <p class="card__strap">dark hero · period system · the loud one</p>
+      <p class="card__copy">the first attempt. dark animated hero, periods on every clause, mesh gradient blobs throughout. in here for the journey — kept so we can see how the system tightened.</p>
+      <ul class="card__moves">
+        <li>full-viewport dark mesh hero</li>
+        <li>period system applied liberally</li>
+        <li>dramatic but visually busy</li>
+      </ul>
+      <div class="card__cta">
+        <span class="btn">open v1 →</span>
+        <span class="btn btn--ghost">home · about · plp · pdp</span>
+      </div>
+    </a>
+
+    <a class="card card--v2" href="v2.html">
+      <div class="card__visual">
+        <span class="card__visual-headline">youth starts<br>with you<span class="dot">.</span></span>
+      </div>
+      <div class="card__head">
+        <span class="card__num">v2 · floor</span>
+        <span class="card__chip">restraint</span>
+      </div>
+      <h2 class="card__title">the floor<span class="dot">.</span></h2>
+      <p class="card__strap">light editorial · once-per-surface accent · airy</p>
+      <p class="card__copy">restored restraint. 17px body floor, real hamburger menu, single hero accent per surface, almond silk used exactly once. the conservative-but-correct version of the brand on the web.</p>
+      <ul class="card__moves">
+        <li>airy editorial hero, dropplet visual</li>
+        <li>strict 1:10 frosted blue / silk ratio</li>
+        <li>4 dark editorial bands for rhythm</li>
+      </ul>
+      <div class="card__cta">
+        <span class="btn">open v2 →</span>
+        <span class="btn btn--ghost">home · collection · pdp</span>
+      </div>
+    </a>
+
+    <a class="card card--v3" href="v3.html">
+      <div class="card__visual">
+        <span class="card__visual-headline">named<span class="dot">.</span><br>not blended<span class="dot">.</span></span>
+      </div>
+      <div class="card__head">
+        <span class="card__num">v3 · campaign</span>
+        <span class="card__chip">editorial</span>
+      </div>
+      <h2 class="card__title">the campaign<span class="dot">.</span></h2>
+      <p class="card__strap">period-as-architecture · type-led · magazine</p>
+      <p class="card__copy">the editorial campaign as a website. type at architectural scale, the hydration-fill wordmark on load, ingredient names taking entire viewports. one signature visual move per surface.</p>
+      <ul class="card__moves">
+        <li>hydration-fill wordmark animation</li>
+        <li>"named." structure across 3 ingredients</li>
+        <li>horizontal-scroll "what we refuse to put in"</li>
+      </ul>
+      <div class="card__cta">
+        <span class="btn">open v3 →</span>
+        <span class="btn btn--ghost">home · collection · pdp</span>
+      </div>
+    </a>
+
+    <a class="card card--v4" href="v4.html">
+      <div class="card__visual">
+        <span style="top: 18%; left: 30%; width: 8px; height: 8px;"></span>
+        <span style="top: 40%; left: 50%; width: 10px; height: 10px;"></span>
+        <span style="top: 30%; left: 80%; width: 12px; height: 12px;"></span>
+        <span style="top: 70%; left: 25%; width: 14px; height: 14px; background: #ffd5c6 !important;"></span>
+        <span style="top: 75%; left: 60%; width: 8px; height: 8px;"></span>
+        <span class="card__visual-headline">youth<br>starts<span class="dot">.</span></span>
+      </div>
+      <div class="card__head">
+        <span class="card__num">v4 · 2030</span>
+        <span class="card__chip card__chip--silk">thought experiment</span>
+      </div>
+      <h2 class="card__title">the future<span class="dot">.</span></h2>
+      <p class="card__strap">citation as architecture · spatial · receipts-as-ui</p>
+      <p class="card__copy">the 2030 thought experiment. constellation hero where each dot is a verified claim, inline citations on prose, a three-question recommender, native page transitions, "see it in your space" spatial cta.</p>
+      <ul class="card__moves">
+        <li>constellation hero — every dot is a receipt</li>
+        <li>three-question formula recommender</li>
+        <li>view transitions + speculation rules</li>
+      </ul>
+      <div class="card__cta">
+        <span class="btn">open v4 →</span>
+        <span class="btn btn--ghost">home · collection · pdp</span>
+      </div>
+    </a>
+
+  </section>
+
+  <section class="wrap legend">
+    <h2 class="legend__title">held constant across all four<span class="dot" style="color: var(--frosted);">.</span></h2>
+    <dl class="legend__list">
+      <dt>brand name</dt>
+      <dd>iloveyouth — lowercase, one word, every surface, every direction.</dd>
+      <dt>tagline</dt>
+      <dd>youth starts with you. (exact casing, period included)</dd>
+      <dt>typeface</dt>
+      <dd>satoshi 300 / 400 / 500 — no heavier weights anywhere.</dd>
+      <dt>palette</dt>
+      <dd>shadow grey, frosted blue, ghost white, almond silk. four colors, locked.</dd>
+      <dt>accent rule</dt>
+      <dd>frosted blue is the hero. almond silk is supporting. ratio ≈ 10 : 1 per surface.</dd>
+      <dt>voice</dt>
+      <dd>ingredient-forward. plain language. every marketing number sourced.</dd>
+      <dt>periods</dt>
+      <dd>the period as a brand signature, scaled across each direction.</dd>
+      <dt>positioning</dt>
+      <dd>premium skincare. dtc-only. target retail: sephora.</dd>
+    </dl>
+  </section>
+
+  <footer class="wrap foot">
+    <span>© 2026 iloveyouth · directions prototype index</span>
+    <span><a href="https://github.com/duttonbrown/ily-pages">view source on github →</a></span>
+  </footer>
+
+</body>
+</html>

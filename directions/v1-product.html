@@ -1,0 +1,840 @@
+<!doctype html>
+<html lang="en" data-direction="v1">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>hydration serum · iloveyouth.</title>
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" />
+  <link rel="stylesheet" href="v1.css" />
+  <style>
+    /* PDP-specific */
+    .pdp-hero {
+      position: relative;
+      padding: clamp(8rem, 14vh, 11rem) 0 clamp(4rem, 8vh, 6rem);
+      background: var(--ily-shadow-grey);
+      color: var(--ily-ghost-white);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .pdp-hero .mesh-bg { opacity: 0.55; }
+    .pdp-hero__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    @media (max-width: 880px) { .pdp-hero__grid { grid-template-columns: 1fr; } }
+
+    .pdp-stage {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: var(--ily-radius-stage);
+      overflow: hidden;
+      background:
+        radial-gradient(120% 90% at 70% 20%, var(--ily-frosted-blue) 0%, transparent 55%),
+        radial-gradient(90% 100% at 25% 90%, var(--ily-almond-silk) 0%, transparent 60%),
+        linear-gradient(180deg, #d9eaf3 0%, #f3e7df 100%);
+      box-shadow: 0 40px 100px -36px rgba(42,34,32,0.5);
+    }
+    .pdp-stage::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+      opacity: 0.08;
+    }
+    .pdp-stage__ghost-name {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: var(--ily-font-light);
+      font-size: clamp(3rem, 9vw, 6rem);
+      letter-spacing: var(--ily-tracking-tight);
+      color: rgba(42,34,32,0.06);
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 1;
+    }
+    .pdp-stage__bottle {
+      position: absolute;
+      bottom: 6%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 46%;
+      max-width: 280px;
+      aspect-ratio: 1 / 1.7;
+      background: linear-gradient(180deg, rgba(42,34,32,0.96) 0%, rgba(42,34,32,0.85) 100%);
+      border-radius: 22px 22px 30px 30px;
+      box-shadow: 0 36px 90px -28px rgba(42,34,32,0.6), inset 0 1px 0 rgba(255,255,255,0.1), inset 0 -16px 30px rgba(0,0,0,0.18);
+      z-index: 2;
+    }
+    .pdp-stage__bottle::before {
+      content: '';
+      position: absolute;
+      top: -7%; left: 32%;
+      width: 36%; height: 14%;
+      background: var(--ily-shadow-grey);
+      border-radius: 7px 7px 4px 4px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .pdp-stage__bottle::after {
+      content: 'ily.';
+      position: absolute;
+      top: 38%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--ily-font);
+      font-weight: var(--ily-font-medium);
+      font-size: 1.6rem;
+      letter-spacing: var(--ily-tracking-tight);
+      color: var(--ily-ghost-white);
+    }
+    .pdp-stage__bottle-label {
+      position: absolute;
+      bottom: 20%; left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--ily-font);
+      font-weight: var(--ily-font-light);
+      font-size: 0.8rem;
+      letter-spacing: var(--ily-tracking-wider);
+      color: rgba(240,243,250,0.78);
+      text-transform: lowercase;
+      text-align: center;
+    }
+    .pdp-stage__bottle-label::after { content: '.'; color: var(--ily-frosted-blue); }
+    .pdp-stage__bottle-vol {
+      position: absolute;
+      bottom: 10%; left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--ily-font);
+      font-weight: var(--ily-font-light);
+      font-size: 0.7rem;
+      letter-spacing: var(--ily-tracking-wider);
+      color: rgba(240,243,250,0.5);
+    }
+
+    .pdp-info { padding: var(--ily-space-4) 0; }
+    .pdp-info__crumb {
+      display: flex;
+      gap: 0.6em;
+      font-size: 0.86rem;
+      letter-spacing: var(--ily-tracking-wide);
+      color: var(--ily-grey-300);
+      margin-bottom: var(--ily-space-6);
+    }
+    .pdp-info__crumb a { opacity: 0.7; transition: opacity 200ms; }
+    .pdp-info__crumb a:hover { opacity: 1; }
+    .pdp-info__name {
+      font-weight: var(--ily-font-light);
+      font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+      line-height: 1;
+      letter-spacing: var(--ily-tracking-tight);
+      margin: var(--ily-space-3) 0 var(--ily-space-4);
+      color: var(--ily-ghost-white);
+    }
+    .pdp-info__sub {
+      font-weight: var(--ily-font-light);
+      font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+      line-height: 1.4;
+      color: var(--ily-grey-300);
+      margin: 0 0 var(--ily-space-6);
+      max-width: 38ch;
+    }
+    .pdp-info__rating {
+      display: flex; align-items: center; gap: var(--ily-space-3);
+      margin-bottom: var(--ily-space-8);
+      font-size: 0.9rem;
+      color: var(--ily-grey-300);
+      letter-spacing: var(--ily-tracking-wide);
+    }
+    .pdp-info__rating .stars { color: var(--ily-frosted-blue); letter-spacing: 0.15em; }
+    .pdp-info__claims {
+      display: flex; flex-wrap: wrap; gap: var(--ily-space-2);
+      margin: 0 0 var(--ily-space-8);
+    }
+    .pdp-info__claims li {
+      list-style: none;
+      padding: 0.4em 0.9em;
+      border: 1px solid rgba(240,243,250,0.18);
+      border-radius: var(--ily-radius-pill);
+      font-size: 0.78rem;
+      font-weight: var(--ily-font-medium);
+      letter-spacing: var(--ily-tracking-wide);
+      color: var(--ily-grey-200);
+    }
+    .pdp-info__claims li::after { content: '.'; color: var(--ily-frosted-blue); margin-left: 0.1em; }
+    .pdp-buy {
+      display: grid;
+      gap: var(--ily-space-4);
+      margin-bottom: var(--ily-space-8);
+      padding: var(--ily-space-6);
+      border-radius: var(--ily-radius-stage);
+      background: rgba(240,243,250,0.04);
+      border: 1px solid rgba(240,243,250,0.1);
+    }
+    .pdp-buy__price-row {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: var(--ily-space-4);
+    }
+    .pdp-buy__price {
+      font-weight: var(--ily-font-light);
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      letter-spacing: var(--ily-tracking-tight);
+      color: var(--ily-ghost-white);
+    }
+    .pdp-buy__price .dot { color: var(--ily-frosted-blue); }
+    .pdp-buy__sub-toggle {
+      display: flex; align-items: center; gap: 0.7em;
+      padding: 0.5em 1em;
+      background: rgba(173,232,249,0.12);
+      border: 1px solid rgba(173,232,249,0.3);
+      border-radius: var(--ily-radius-pill);
+      font-size: 0.85rem;
+      color: var(--ily-frosted-blue);
+      letter-spacing: var(--ily-tracking-wide);
+    }
+    .pdp-buy__option {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: var(--ily-space-5);
+      padding: var(--ily-space-4) var(--ily-space-5);
+      border-radius: var(--ily-radius-button);
+      background: rgba(240,243,250,0.04);
+      cursor: pointer;
+      transition: background 200ms;
+      border: 1px solid transparent;
+    }
+    .pdp-buy__option:hover { background: rgba(240,243,250,0.08); }
+    .pdp-buy__option.is-active { background: var(--ily-shadow-grey); border-color: var(--ily-frosted-blue); }
+    .pdp-buy__option-info { display: flex; flex-direction: column; gap: 0.25em; min-width: 0; flex: 1; }
+    .pdp-buy__option-name { font-weight: var(--ily-font-medium); font-size: 0.95rem; line-height: 1.3; }
+    .pdp-buy__option-meta { font-size: 0.78rem; color: var(--ily-grey-400); line-height: 1.4; }
+    .pdp-buy__option-price { font-weight: var(--ily-font-light); font-size: 1.15rem; flex: 0 0 auto; padding-left: var(--ily-space-3); }
+    .pdp-buy .cta-pill { width: 100%; justify-content: center; padding: 1.2em 1.5em; font-size: 1rem; margin-top: var(--ily-space-2); }
+    @media (max-width: 600px) {
+      .pdp-buy { padding: var(--ily-space-5); }
+      .pdp-buy__option-name { font-size: 0.9rem; }
+      .pdp-buy__option-meta { font-size: 0.75rem; }
+      .pdp-buy__option-price { font-size: 1.05rem; }
+    }
+    .pdp-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--ily-space-4);
+      padding-top: var(--ily-space-6);
+      border-top: 1px solid rgba(240,243,250,0.1);
+      font-size: 0.85rem;
+    }
+    .pdp-meta__item { display: flex; flex-direction: column; gap: 0.2em; }
+    .pdp-meta__label { color: var(--ily-grey-400); letter-spacing: var(--ily-tracking-wide); font-size: 0.78rem; }
+    .pdp-meta__label::after { content: '.'; color: var(--ily-frosted-blue); }
+    .pdp-meta__value { color: var(--ily-ghost-white); font-weight: var(--ily-font-medium); }
+
+    /* feel section */
+    .feel-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: stretch;
+    }
+    @media (max-width: 760px) { .feel-grid { grid-template-columns: 1fr; } }
+    .feel-visual {
+      aspect-ratio: 4 / 5;
+      border-radius: var(--ily-radius-stage);
+      background:
+        radial-gradient(circle at 30% 30%, var(--ily-frosted-blue) 0%, transparent 55%),
+        radial-gradient(circle at 70% 70%, var(--ily-almond-silk) 0%, transparent 60%),
+        linear-gradient(180deg, #d4e8f3 0%, #efe2d6 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .feel-visual::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay; opacity: 0.08;
+    }
+    .feel-visual__label {
+      position: absolute;
+      top: var(--ily-space-6); left: var(--ily-space-6);
+      font-weight: var(--ily-font-medium);
+      font-size: 0.82rem;
+      letter-spacing: var(--ily-tracking-wider);
+      color: var(--ily-shadow-grey);
+      opacity: 0.6;
+    }
+    .feel-visual__label::after { content: '.'; color: var(--ily-frosted-blue-deep); }
+    .feel-visual__drop {
+      position: absolute;
+      width: 60%;
+      height: 60%;
+      top: 20%; left: 20%;
+      border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
+      background: rgba(255,255,255,0.5);
+      box-shadow: inset 0 0 40px rgba(255,255,255,0.5), 0 12px 30px rgba(42,34,32,0.12);
+      filter: blur(2px);
+      animation: drop-float 8s ease-in-out infinite alternate;
+    }
+    @keyframes drop-float {
+      0% { transform: translate(0,0) rotate(0deg); }
+      100% { transform: translate(8%, 5%) rotate(8deg); }
+    }
+    .feel-words { display: flex; flex-direction: column; justify-content: center; }
+    .feel-headline {
+      font-weight: var(--ily-font-light);
+      font-size: clamp(2rem, 4.4vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: var(--ily-tracking-tight);
+      margin: var(--ily-space-3) 0 var(--ily-space-6);
+    }
+    .feel-pairs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--ily-space-3) var(--ily-space-6);
+      margin-top: var(--ily-space-8);
+      padding-top: var(--ily-space-6);
+      border-top: 1px solid var(--ily-grey-200);
+    }
+    .feel-pairs dt {
+      font-weight: var(--ily-font-medium);
+      font-size: 0.82rem;
+      letter-spacing: var(--ily-tracking-wider);
+      color: var(--ily-grey-500);
+    }
+    .feel-pairs dt::after { content: '.'; color: var(--ily-frosted-blue-deep); }
+    .feel-pairs dd { margin: 0; font-size: 1rem; color: var(--ily-shadow-grey); font-weight: var(--ily-font-medium); }
+    .feel-pairs dd::after { content: '.'; color: var(--ily-frosted-blue-deep); }
+  </style>
+</head>
+<body class="on-light">
+
+<header class="nav nav--on-dark" id="ily-nav">
+  <div class="container nav__inner">
+    <a href="v1.html" class="nav__brand" aria-label="iloveyouth home">
+      <img class="nav__wordmark" src="assets/ily-wordmark-white-blue.svg" alt="iloveyouth.">
+    </a>
+    <nav class="nav__links" aria-label="primary">
+      <a href="v1.html#the-poem">the formula</a>
+      <a href="v1-products.html">products</a>
+      <a href="v1-about.html">about</a>
+      <a href="v1-product.html">the serum</a>
+      <a href="#" class="nav__cart">cart (0)</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== pdp hero ===== -->
+<section class="pdp-hero on-dark" id="hero">
+  <div class="mesh-bg" aria-hidden="true"></div>
+  <div class="mesh-bg__blob-3" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="pdp-hero__grid">
+      <div class="pdp-stage" role="img" aria-label="hydration serum on a soft frosted-blue and almond-silk gradient">
+        <span class="pdp-stage__ghost-name">niacinamide<span class="dot" style="color:rgba(42,34,32,0.1);">.</span></span>
+        <div class="pdp-stage__bottle" aria-hidden="true">
+          <span class="pdp-stage__bottle-label">hydration serum</span>
+          <span class="pdp-stage__bottle-vol">30 ml · 1.0 fl oz</span>
+        </div>
+      </div>
+
+      <div class="pdp-info">
+        <p class="pdp-info__crumb">
+          <a href="v1-products.html">all six</a>
+          <span aria-hidden="true">/</span>
+          <span>01 · the serum</span>
+        </p>
+        <span class="statement statement--inverse">the hero</span>
+        <h1 class="pdp-info__name">hydration serum<span class="dot">.</span></h1>
+        <p class="pdp-info__sub">5% niacinamide<span class="dot">.</span> ceramides<span class="dot">.</span> hyaluronic acid<span class="dot">.</span> brightens, hydrates, strengthens the barrier — without the residue<span class="dot">.</span></p>
+        <div class="pdp-info__rating">
+          <span class="stars">★★★★★</span>
+          <span><b style="color: var(--ily-ghost-white); font-weight: var(--ily-font-medium);">4.9</b> · 1,284 reviews</span>
+          <span aria-hidden="true">·</span>
+          <a href="#reviews" style="border-bottom: 1px solid currentColor; padding-bottom: 1px;">read them</a>
+        </div>
+        <ul class="pdp-info__claims">
+          <li>non-comedogenic</li>
+          <li>fragrance-free</li>
+          <li>vegan</li>
+          <li>cruelty-free</li>
+          <li>all skin types</li>
+        </ul>
+
+        <div class="pdp-buy">
+          <div class="pdp-buy__option is-active" role="button" tabindex="0">
+            <div class="pdp-buy__option-info">
+              <span class="pdp-buy__option-name">one-time<span class="dot">.</span></span>
+              <span class="pdp-buy__option-meta">30 ml · 60-day supply</span>
+            </div>
+            <span class="pdp-buy__option-price">$48</span>
+          </div>
+          <div class="pdp-buy__option" role="button" tabindex="0">
+            <div class="pdp-buy__option-info">
+              <span class="pdp-buy__option-name">subscribe & save 15%<span class="dot">.</span></span>
+              <span class="pdp-buy__option-meta">every 60 days · skip or cancel anytime</span>
+            </div>
+            <span class="pdp-buy__option-price">$40.80</span>
+          </div>
+
+          <a href="#" class="cta-pill">add to cart
+            <svg class="cta-pill__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+
+          <div class="pdp-meta">
+            <div class="pdp-meta__item">
+              <span class="pdp-meta__label">free shipping</span>
+              <span class="pdp-meta__value">$50+ orders<span class="dot">.</span></span>
+            </div>
+            <div class="pdp-meta__item">
+              <span class="pdp-meta__label">satisfaction</span>
+              <span class="pdp-meta__value">60-day return window<span class="dot">.</span></span>
+            </div>
+          </div>
+        </div>
+
+        <a href="#formula" class="ghost-link ghost-link--inverse">read the full formula</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== metric ===== -->
+<section class="metric on-dark">
+  <div class="container">
+    <div class="metric__inner">
+      <span class="statement statement--inverse">in 4 weeks</span>
+      <p class="metric__number">96<span class="dot" style="font-size:0.7em;">%</span><span class="dot">.</span></p>
+      <p class="metric__caption">reported softer, more hydrated skin after one bottle<span class="dot">.</span> measured on dryness, not on adjectives<span class="dot">.</span></p>
+      <span class="metric__source">independent panel · n=120 · january 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== full formula (poem) ===== -->
+<section class="section-light section-light--blue" id="formula">
+  <div class="container">
+    <header style="display:flex; justify-content:space-between; align-items:end; gap: var(--ily-space-12); margin-bottom: var(--ily-space-12); flex-wrap:wrap;">
+      <div>
+        <span class="statement">the formula</span>
+        <h2 style="font-weight: var(--ily-font-light); font-size: clamp(2.4rem, 5.5vw, 4.5rem); line-height: 1.02; letter-spacing: var(--ily-tracking-tight); margin: var(--ily-space-3) 0 0; max-width: 22ch;">five ingredients<span class="dot">.</span> nothing else<span class="dot">.</span></h2>
+      </div>
+      <a href="#full-ingredients" class="ghost-link">view full inci list</a>
+    </header>
+
+    <ol class="poem">
+      <li class="poem__item">
+        <span class="poem__index">01</span>
+        <div class="poem__body">
+          <h3 class="poem__name">niacinamide<span class="dot">.</span></h3>
+          <p class="poem__why">5% — a multi-tasking form of vitamin b3<span class="dot">.</span> brightens uneven tone, strengthens the skin barrier, and minimizes the look of pores without irritation<span class="dot">.</span></p>
+          <span class="poem__role">hero accent · 5%</span>
+        </div>
+      </li>
+      <li class="poem__item">
+        <span class="poem__index">02</span>
+        <div class="poem__body">
+          <h3 class="poem__name">ceramides<span class="dot">.</span></h3>
+          <p class="poem__why">the same lipid molecules your skin already makes<span class="dot">.</span> they repair the barrier and lock moisture in where it belongs<span class="dot">.</span></p>
+          <span class="poem__role">hero accent · 1.2%</span>
+        </div>
+      </li>
+      <li class="poem__item">
+        <span class="poem__index">03</span>
+        <div class="poem__body">
+          <h3 class="poem__name">hyaluronic acid<span class="dot">.</span></h3>
+          <p class="poem__why">draws water deep into the skin<span class="dot">.</span> holds up to 1,000× its weight<span class="dot">.</span> not a gimmick — just chemistry<span class="dot">.</span></p>
+          <span class="poem__role">hero accent · multi-weight</span>
+        </div>
+      </li>
+      <li class="poem__item">
+        <span class="poem__index">04</span>
+        <div class="poem__body">
+          <h3 class="poem__name">panthenol<span class="dot dot--silk">.</span></h3>
+          <p class="poem__why">pro-vitamin b5<span class="dot dot--silk">.</span> calms reactive skin and supports the barrier with quiet daily hydration<span class="dot dot--silk">.</span></p>
+          <span class="poem__role poem__role--silk">support accent</span>
+        </div>
+      </li>
+      <li class="poem__item">
+        <span class="poem__index">05</span>
+        <div class="poem__body">
+          <h3 class="poem__name">squalane<span class="dot dot--silk">.</span></h3>
+          <p class="poem__why">a plant-derived oil your skin recognizes as its own<span class="dot dot--silk">.</span> seals in moisture without weight or shine<span class="dot dot--silk">.</span></p>
+          <span class="poem__role poem__role--silk">support accent</span>
+        </div>
+      </li>
+    </ol>
+
+    <details id="full-ingredients" style="margin-top: var(--ily-space-10); padding: var(--ily-space-6); border: 1px solid var(--ily-grey-200); border-radius: var(--ily-radius-frame);">
+      <summary style="font-weight: var(--ily-font-medium); cursor: pointer; font-size: 0.92rem; letter-spacing: var(--ily-tracking-wide);">full inci ingredient list<span class="dot">.</span></summary>
+      <p style="margin: var(--ily-space-4) 0 0; font-size: 0.88rem; line-height: 1.65; color: var(--ily-grey-700);">aqua, niacinamide, glycerin, sodium hyaluronate, ceramide np, ceramide ap, ceramide eop, panthenol, squalane, allantoin, sodium pca, betaine, tocopherol, xanthan gum, sodium phytate, ethylhexylglycerin, phenoxyethanol<span class="dot">.</span></p>
+    </details>
+  </div>
+</section>
+
+<!-- ===== how it feels ===== -->
+<section class="section-light section-light--silk" id="feel">
+  <div class="container">
+    <div class="feel-grid">
+      <div class="feel-visual" role="img" aria-label="serum droplet on a soft gradient">
+        <span class="feel-visual__label">the feel</span>
+        <div class="feel-visual__drop" aria-hidden="true"></div>
+      </div>
+      <div class="feel-words">
+        <span class="statement">the feel</span>
+        <h2 class="feel-headline">feels like water going on<span class="dot">.</span> by the time you've put the lid back on, it's already absorbed<span class="dot">.</span></h2>
+        <p style="font-size: 1.05rem; line-height: 1.6; color: var(--ily-grey-700); max-width: 50ch;">a watery, milk-thin texture that sinks in within seconds<span class="dot">.</span> zero residue<span class="dot">.</span> zero grease<span class="dot">.</span> the kind of formula that disappears so fully you'd swear you forgot to apply it — except your skin doesn't pull or tighten an hour later<span class="dot">.</span></p>
+        <dl class="feel-pairs">
+          <dt>texture</dt>
+          <dd>watery serum</dd>
+          <dt>finish</dt>
+          <dd>weightless</dd>
+          <dt>scent</dt>
+          <dd>none</dd>
+          <dt>ph</dt>
+          <dd>5.5–6.0</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== how to use ===== -->
+<section class="section-light section-light--top-rule" id="ritual">
+  <div class="container">
+    <header style="margin-bottom: var(--ily-space-12);">
+      <span class="statement">the ritual</span>
+      <h2 style="font-weight: var(--ily-font-light); font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.04; letter-spacing: var(--ily-tracking-tight); margin: var(--ily-space-3) 0 0; max-width: 20ch;">three drops<span class="dot">.</span> twice a day<span class="dot">.</span> that's it<span class="dot">.</span></h2>
+    </header>
+    <div class="routine" style="grid-template-columns: 1fr;">
+      <div class="routine__col routine__col--am">
+        <ol class="routine__steps">
+          <li><b>cleanse<span class="dot">.</span></b><span>start with the gentle cleanser<span class="dot">.</span> pat dry — don't rub<span class="dot">.</span></span></li>
+          <li><b>tone<span class="dot">.</span></b><span>apply two pumps of the hydrating toner to damp skin<span class="dot">.</span> let it sink in<span class="dot">.</span></span></li>
+          <li><b>serum<span class="dot">.</span></b><span>three drops in your palm<span class="dot">.</span> press into face and neck<span class="dot">.</span> never rub<span class="dot">.</span></span></li>
+          <li><b>lock<span class="dot">.</span></b><span>seal with the daily moisturizer<span class="dot">.</span> spf in the morning<span class="dot">.</span></span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== pairs with ===== -->
+<section class="section-light section-light--mixed" id="pairs">
+  <div class="container">
+    <header style="display:flex; justify-content:space-between; align-items:end; gap: var(--ily-space-12); margin-bottom: var(--ily-space-12); flex-wrap:wrap;">
+      <div>
+        <span class="statement">pairs with</span>
+        <h2 style="font-weight: var(--ily-font-light); font-size: clamp(2.2rem, 4.6vw, 3.4rem); line-height: 1.05; letter-spacing: var(--ily-tracking-tight); margin: var(--ily-space-3) 0 0; max-width: 22ch;">three steps that make the serum work harder<span class="dot">.</span></h2>
+      </div>
+      <a href="v1-products.html" class="ghost-link">see all six</a>
+    </header>
+
+    <div class="product-grid">
+      <a href="v1-products.html" class="product-card">
+        <div class="product-card__media product-visual">
+          <span class="product-visual__label">02 · the cleanser</span>
+          <div class="product-visual__tube" aria-hidden="true"></div>
+        </div>
+        <span class="product-card__index">02</span>
+        <h3 class="product-card__name">gentle cleanser<span class="dot">.</span></h3>
+        <p class="product-card__hero">non-stripping<span class="dot">.</span> ceramide-rich<span class="dot">.</span> for every skin type<span class="dot">.</span></p>
+        <div class="product-card__row"><span class="product-card__price">$32</span><span class="product-card__rating">4.8 · 612</span></div>
+      </a>
+      <a href="v1-products.html" class="product-card">
+        <div class="product-card__media product-visual product-visual--blue">
+          <span class="product-visual__label">03 · the toner</span>
+          <div class="product-visual__jar" aria-hidden="true"></div>
+        </div>
+        <span class="product-card__index">03</span>
+        <h3 class="product-card__name">hydrating toner<span class="dot">.</span></h3>
+        <p class="product-card__hero">hyaluronic acid<span class="dot">.</span> no drying alcohols<span class="dot">.</span></p>
+        <div class="product-card__row"><span class="product-card__price">$34</span><span class="product-card__rating">4.8 · 489</span></div>
+      </a>
+      <a href="v1-products.html" class="product-card">
+        <div class="product-card__media product-visual product-visual--silk">
+          <span class="product-visual__label">04 · the moisturizer</span>
+          <div class="product-visual__tube" aria-hidden="true"></div>
+        </div>
+        <span class="product-card__index">04</span>
+        <h3 class="product-card__name">daily moisturizer<span class="dot dot--silk">.</span></h3>
+        <p class="product-card__hero">ceramides<span class="dot dot--silk">.</span> panthenol<span class="dot dot--silk">.</span> squalane<span class="dot dot--silk">.</span></p>
+        <div class="product-card__row"><span class="product-card__price">$42</span><span class="product-card__rating">4.9 · 728</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== reviews ===== -->
+<section class="section-light section-light--top-rule" id="reviews">
+  <div class="container">
+    <header style="margin-bottom: var(--ily-space-12);">
+      <span class="statement">the reviews</span>
+      <h2 style="font-weight: var(--ily-font-light); font-size: clamp(2.4rem, 5.5vw, 4rem); line-height: 1.02; letter-spacing: var(--ily-tracking-tight); margin: var(--ily-space-3) 0 0; max-width: 22ch;">1,284 voices<span class="dot">.</span> the formula speaks<span class="dot">.</span></h2>
+    </header>
+
+    <div class="reviews">
+      <div class="reviews__summary">
+        <span class="statement">average</span>
+        <p class="reviews__rating">4.9<span class="dot">.</span></p>
+        <span class="reviews__rating-stars">★★★★★</span>
+        <p class="reviews__count" style="margin-top: var(--ily-space-3);">1,284 verified reviews<span class="dot">.</span> all skin types<span class="dot">.</span></p>
+
+        <div style="margin-top: var(--ily-space-8); display: flex; flex-direction: column; gap: var(--ily-space-3);">
+          <div style="display:flex; align-items:center; gap: var(--ily-space-3); font-size: 0.85rem;">
+            <span style="width: 4ch; color: var(--ily-grey-600);">5★</span>
+            <div style="flex:1; height: 4px; background: var(--ily-grey-200); border-radius: 4px; overflow:hidden;"><div style="width: 88%; height: 100%; background: var(--ily-frosted-blue-deep);"></div></div>
+            <span style="color: var(--ily-grey-600); font-size: 0.78rem;">88%</span>
+          </div>
+          <div style="display:flex; align-items:center; gap: var(--ily-space-3); font-size: 0.85rem;">
+            <span style="width: 4ch; color: var(--ily-grey-600);">4★</span>
+            <div style="flex:1; height: 4px; background: var(--ily-grey-200); border-radius: 4px; overflow:hidden;"><div style="width: 9%; height: 100%; background: var(--ily-frosted-blue-deep);"></div></div>
+            <span style="color: var(--ily-grey-600); font-size: 0.78rem;">9%</span>
+          </div>
+          <div style="display:flex; align-items:center; gap: var(--ily-space-3); font-size: 0.85rem;">
+            <span style="width: 4ch; color: var(--ily-grey-600);">3★</span>
+            <div style="flex:1; height: 4px; background: var(--ily-grey-200); border-radius: 4px; overflow:hidden;"><div style="width: 2%; height: 100%; background: var(--ily-grey-400);"></div></div>
+            <span style="color: var(--ily-grey-600); font-size: 0.78rem;">2%</span>
+          </div>
+          <div style="display:flex; align-items:center; gap: var(--ily-space-3); font-size: 0.85rem;">
+            <span style="width: 4ch; color: var(--ily-grey-600);">≤2★</span>
+            <div style="flex:1; height: 4px; background: var(--ily-grey-200); border-radius: 4px; overflow:hidden;"><div style="width: 1%; height: 100%; background: var(--ily-grey-400);"></div></div>
+            <span style="color: var(--ily-grey-600); font-size: 0.78rem;">1%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reviews__list">
+        <article class="review">
+          <p class="review__quote">"i've tried every "hydrating" serum on the market<span class="dot">.</span> this is the first one where my skin actually felt different<span class="dot">.</span> by week two i stopped wearing under-eye concealer<span class="dot">.</span>"</p>
+          <div class="review__attr">
+            <span class="review__stars">★★★★★</span>
+            <b>maya k.</b>
+            <span>· combo skin · verified buyer</span>
+          </div>
+        </article>
+        <article class="review">
+          <p class="review__quote">"smells like nothing, feels like nothing, does everything<span class="dot">.</span> i'm an esthetician and i recommend this to clients<span class="dot">.</span> period<span class="dot">.</span>"</p>
+          <div class="review__attr">
+            <span class="review__stars">★★★★★</span>
+            <b>jordan a.</b>
+            <span>· sensitive skin · verified buyer</span>
+          </div>
+        </article>
+        <article class="review">
+          <p class="review__quote">"i bought this expecting another fine-but-forgettable serum and now i'm on my third bottle<span class="dot">.</span> the texture is what got me<span class="dot">.</span> watery, gone in seconds, no tacky finish<span class="dot">.</span>"</p>
+          <div class="review__attr">
+            <span class="review__stars">★★★★★</span>
+            <b>sam l.</b>
+            <span>· oily skin · verified buyer</span>
+          </div>
+        </article>
+        <article class="review">
+          <p class="review__quote">"the only "fragrance-free" serum that's actually fragrance-free<span class="dot">.</span> my reactive skin says thank you<span class="dot">.</span>"</p>
+          <div class="review__attr">
+            <span class="review__stars">★★★★★</span>
+            <b>priya v.</b>
+            <span>· reactive skin · verified buyer</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== faq ===== -->
+<section class="section-light section-light--top-rule" id="faq">
+  <div class="container container--narrow">
+    <span class="statement">the questions</span>
+    <h2 style="font-weight: var(--ily-font-light); font-size: clamp(2.2rem, 4.6vw, 3.4rem); line-height: 1.05; letter-spacing: var(--ily-tracking-tight); margin: var(--ily-space-3) 0 var(--ily-space-12); max-width: 22ch;">good ones<span class="dot">.</span> answered honestly<span class="dot">.</span></h2>
+
+    <div class="faq">
+      <details class="faq__item" open>
+        <summary>can i use this with retinol?<span class="dot">.</span></summary>
+        <p class="faq__answer">yes<span class="dot">.</span> apply the serum to clean, dry skin first; let it absorb (60 seconds); then layer your retinol<span class="dot">.</span> hyaluronic acid + retinol is a well-studied pairing — the moisture buffers the retinoid's drying effect<span class="dot">.</span></p>
+      </details>
+      <details class="faq__item">
+        <summary>does this work for oily, acne-prone skin?<span class="dot">.</span></summary>
+        <p class="faq__answer">yes<span class="dot">.</span> the formula is non-comedogenic and contains no acne-causing ingredients<span class="dot">.</span> niacinamide is one of the few actives proven to help acne-prone skin specifically — it calms inflammation and helps regulate sebum<span class="dot">.</span></p>
+      </details>
+      <details class="faq__item">
+        <summary>how long until i see results?<span class="dot">.</span></summary>
+        <p class="faq__answer">most people feel the hydration boost the first time they use it<span class="dot">.</span> visible improvement in tone and texture takes 2–4 weeks of consistent use<span class="dot">.</span> our independent panel measured 96% reporting softer, more hydrated skin after one bottle<span class="dot">.</span></p>
+      </details>
+      <details class="faq__item">
+        <summary>is the bottle recyclable?<span class="dot">.</span></summary>
+        <p class="faq__answer">yes<span class="dot">.</span> the bottle is pcr glass (recycled in your curbside bin)<span class="dot">.</span> the dropper is plastic — pull it out before recycling and drop it at a #5 recycle point<span class="dot">.</span> we ship in 100% recycled paper, no plastic mailers<span class="dot">.</span></p>
+      </details>
+      <details class="faq__item">
+        <summary>what happens if it doesn't work?<span class="dot">.</span></summary>
+        <p class="faq__answer">we'll refund the bottle, even if it's empty<span class="dot">.</span> 60-day satisfaction guarantee, no questions, no return shipping<span class="dot">.</span> we'd rather lose a sale than have you keep something that didn't work<span class="dot">.</span></p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== closing ===== -->
+<section class="metric on-dark">
+  <div class="container">
+    <div class="metric__inner">
+      <span class="statement statement--inverse">the routine</span>
+      <p class="metric__number" style="font-size: clamp(3.5rem, 12vw, 8rem);">$148<span class="dot">.</span></p>
+      <p class="metric__caption">the four-step routine<span class="dot">.</span> cleanser, toner, serum, moisturizer — $20 less than buying separately<span class="dot">.</span></p>
+      <div style="margin-top: var(--ily-space-10); display:flex; gap: var(--ily-space-4); justify-content: center; flex-wrap: wrap;">
+        <a href="v1-products.html" class="cta-pill">add the routine
+          <svg class="cta-pill__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="v1-products.html" class="ghost-link ghost-link--inverse">see all six</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== footer ===== -->
+<footer class="footer on-dark">
+  <div class="container">
+    <div class="footer__lockup">
+      <img class="footer__wordmark-large" src="assets/ily-wordmark-white-blue.svg" alt="iloveyouth.">
+      <div class="footer__rule" aria-hidden="true"></div>
+      <p class="footer__tagline">Youth starts with you<span class="dot">.</span></p>
+    </div>
+
+    <div class="footer__cols">
+      <div class="footer__col">
+        <h4>get the brief</h4>
+        <p style="color: var(--ily-grey-300); font-size: 0.92rem; margin: 0 0 var(--ily-space-4); max-width: 36ch;">one email a month<span class="dot">.</span> ingredient stories, formula updates, and no spam<span class="dot">.</span></p>
+        <form class="footer__email" onsubmit="event.preventDefault();">
+          <input type="email" placeholder="your email" aria-label="email" />
+          <button type="submit">subscribe</button>
+        </form>
+      </div>
+      <div class="footer__col">
+        <h4>shop</h4>
+        <ul>
+          <li><a href="#hero">hydration serum</a></li>
+          <li><a href="v1-products.html">all six</a></li>
+          <li><a href="v1-products.html#routine">the routine</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>brand</h4>
+        <ul>
+          <li><a href="v1-about.html">about iloveyouth</a></li>
+          <li><a href="v1.html#the-poem">the formula</a></li>
+          <li><a href="v1-about.html#voice">the voice</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>support</h4>
+        <ul>
+          <li><a href="#faq">faq</a></li>
+          <li><a href="#">shipping</a></li>
+          <li><a href="#">returns</a></li>
+          <li><a href="#">@iloveyouth</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__legal">
+      <span>© 2026 iloveyouth inc.</span>
+      <span>cruelty-free<span class="dot">.</span> no drying alcohols<span class="dot">.</span> ever<span class="dot">.</span></span>
+    </div>
+  </div>
+</footer>
+
+<!-- sticky add-to-cart -->
+<div class="sticky-buy" id="sticky-buy" aria-hidden="true">
+  <div class="sticky-buy__name">hydration serum<span class="dot">.</span></div>
+  <span class="sticky-buy__price">$48</span>
+  <a href="#" class="cta-pill">add to cart</a>
+</div>
+
+<div class="proto-banner" aria-hidden="true">prototype · direction v1 · serum</div>
+
+<script>
+  (function(){
+    var nav = document.getElementById('ily-nav');
+    var stickyBuy = document.getElementById('sticky-buy');
+    var hero = document.getElementById('hero');
+    if (!nav) return;
+    function onScroll(){
+      if (window.scrollY > 40) nav.classList.add('nav--scrolled'); else nav.classList.remove('nav--scrolled');
+      if (stickyBuy && hero) {
+        var heroBottom = hero.getBoundingClientRect().bottom;
+        if (heroBottom < 0) stickyBuy.classList.add('is-visible'); else stickyBuy.classList.remove('is-visible');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // pdp option toggle
+    document.querySelectorAll('.pdp-buy__option').forEach(function(el){
+      el.addEventListener('click', function(){
+        document.querySelectorAll('.pdp-buy__option').forEach(function(x){ x.classList.remove('is-active'); });
+        el.classList.add('is-active');
+      });
+    });
+  })();
+</script>
+
+<style id="vsw-style">
+  .vsw {
+    position: fixed;
+    top: 12px;
+    right: 14px;
+    z-index: 200;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    background: rgba(42, 34, 32, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 9999px;
+    box-shadow: 0 8px 26px rgba(42, 34, 32, 0.18);
+    font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+  }
+  .vsw a {
+    color: #f0f3fa;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 9999px;
+    text-transform: lowercase;
+    transition: background 180ms;
+  }
+  .vsw a:hover { background: rgba(240, 243, 250, 0.10); }
+  .vsw a[aria-current="page"] {
+    background: #ade8f9;
+    color: #2a2220;
+  }
+  .vsw__label {
+    color: #c8bdb5;
+    padding-left: 8px;
+    padding-right: 4px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: lowercase;
+  }
+  @media (max-width: 600px) {
+    .vsw { font-size: 11px; }
+    .vsw a { padding: 5px 8px; }
+    .vsw__label { display: none; }
+  }
+</style>
+<nav class="vsw" aria-label="brand direction switcher">
+  <span class="vsw__label">direction</span>
+  <a href="index.html" style="color: #c8bdb5;">↑</a>
+  <a href="v1.html" aria-current="page">v1</a>
+  <a href="v2.html" >v2</a>
+  <a href="v3.html" >v3</a>
+  <a href="v4.html" >v4</a>
+</nav>
+
+</body>
+</html>

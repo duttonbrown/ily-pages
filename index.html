@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iloveyouth — public previews</title>
+
+  <!-- Favicons — SVG auto-swaps with OS theme; PNG fallbacks have Ghost White baked in -->
+  <link rel="icon" type="image/svg+xml" href="brand/logos/favicons/favicon.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="brand/logos/favicons/favicon-white.svg" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" sizes="32x32" href="brand/logos/favicons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="brand/logos/favicons/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="brand/logos/favicons/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="brand/tokens.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--ily-font-primary);
+      font-weight: var(--ily-font-light);
+      color: var(--ily-text);
+      background: var(--ily-surface);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: var(--ily-leading-relaxed);
+    }
+
+    .page {
+      max-width: var(--ily-max-width);
+      margin: 0 auto;
+      padding: var(--ily-space-16) var(--ily-space-8);
+    }
+
+    header {
+      margin-bottom: var(--ily-space-16);
+      padding-bottom: var(--ily-space-8);
+      border-bottom: 1px solid var(--ily-border);
+    }
+
+    header .wordmark {
+      display: block;
+      width: auto;
+      height: clamp(2.25rem, 4vw, 3rem);
+      margin-bottom: var(--ily-space-8);
+    }
+
+    header h1 {
+      font-size: var(--ily-text-4xl);
+      font-weight: var(--ily-font-light);
+      letter-spacing: var(--ily-tracking-tight);
+      line-height: var(--ily-leading-tight);
+      margin: 0 0 var(--ily-space-4);
+    }
+
+    header p {
+      font-size: var(--ily-text-base);
+      font-weight: var(--ily-font-light);
+      color: var(--ily-text-muted);
+      max-width: 60ch;
+      margin: 0;
+    }
+
+    section + section { margin-top: var(--ily-space-16); }
+
+    .section-label {
+      font-size: var(--ily-text-xs);
+      font-weight: var(--ily-font-medium);
+      letter-spacing: var(--ily-tracking-wider);
+      color: var(--ily-text-muted);
+      margin: 0 0 var(--ily-space-6);
+      padding-bottom: var(--ily-space-3);
+      border-bottom: 1px solid var(--ily-border);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--ily-space-5);
+    }
+
+    a.card {
+      display: block;
+      padding: var(--ily-space-8);
+      background: var(--ily-ghost-white);
+      border: 1px solid var(--ily-border);
+      border-radius: 2px;
+      text-decoration: none;
+      color: var(--ily-text);
+      transition: border-color var(--ily-transition-fast);
+    }
+
+    a.card:hover {
+      border-color: var(--ily-shadow-grey);
+    }
+
+    a.card h3 {
+      font-size: var(--ily-text-lg);
+      font-weight: var(--ily-font-light);
+      letter-spacing: var(--ily-tracking-tight);
+      line-height: var(--ily-leading-snug);
+      margin: 0 0 var(--ily-space-2);
+      color: var(--ily-shadow-grey);
+    }
+
+    a.card p {
+      font-size: var(--ily-text-sm);
+      font-weight: var(--ily-font-light);
+      line-height: var(--ily-leading-relaxed);
+      color: var(--ily-text-muted);
+      margin: 0;
+    }
+
+    footer {
+      margin-top: var(--ily-space-16);
+      padding-top: var(--ily-space-8);
+      border-top: 1px solid var(--ily-border);
+      font-size: var(--ily-text-xs);
+      font-weight: var(--ily-font-light);
+      color: var(--ily-text-muted);
+    }
+
+    @media (max-width: 720px) {
+      .page { padding: var(--ily-space-10) var(--ily-space-5); }
+      header h1 { font-size: var(--ily-text-2xl); }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <header>
+      <picture>
+        <source media="(prefers-color-scheme: dark)"
+                srcset="brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-white-rect-400.svg">
+        <img class="wordmark"
+             src="brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-dark-rect-400.svg"
+             alt="iloveyouth.">
+      </picture>
+      <h1>public previews.</h1>
+      <p>brand assets, design directions, and site concepts for iloveyouth — shareable links for collaborators and partners.</p>
+    </header>
+
+    <section>
+      <p class="section-label">brand</p>
+      <div class="grid">
+        <a class="card" href="brand/index.html">
+          <h3>logo preview.</h3>
+          <p>the canonical wordmark and brandmark across surfaces, with size ladder, parked colored-period direction, and brand-in-use mockups.</p>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <p class="section-label">design directions</p>
+      <div class="grid">
+        <a class="card" href="directions/index.html">
+          <h3>v1–v4 prototypes.</h3>
+          <p>four standalone homepage / product / collection direction prototypes — each its own visual lane, built to inform the production theme.</p>
+        </a>
+        <a class="card" href="directions/v1.html"><h3>v1.</h3><p>direction one.</p></a>
+        <a class="card" href="directions/v2.html"><h3>v2.</h3><p>direction two.</p></a>
+        <a class="card" href="directions/v3.html"><h3>v3.</h3><p>direction three.</p></a>
+        <a class="card" href="directions/v4.html"><h3>v4.</h3><p>direction four.</p></a>
+      </div>
+    </section>
+
+    <section>
+      <p class="section-label">site concepts</p>
+      <div class="grid">
+        <a class="card" href="concept/index.html">
+          <h3>homepage concept.</h3>
+          <p>a single-file homepage concept styled to the locked ily-brand tokens — announcement, header, hero, product grid, editorial, marquee, ingredient stories, footer.</p>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      iloveyouth · public previews · brand source of truth lives in the private <code>ily-brand</code> repo.
+    </footer>
+
+  </div>
+</body>
+</html>

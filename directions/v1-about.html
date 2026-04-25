@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en" data-direction="v1">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>the brand · iloveyouth.</title>
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" />
+  <link rel="stylesheet" href="v1.css" />
+  <style>
+    /* about-page-specific */
+    .about-pillars {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--ily-space-2) var(--ily-space-12);
+      border-top: 1px solid var(--ily-grey-200);
+    }
+    @media (max-width: 760px) { .about-pillars { grid-template-columns: 1fr; } }
+    .pillar {
+      padding: var(--ily-space-12) var(--ily-space-8) var(--ily-space-12) 0;
+      border-bottom: 1px solid var(--ily-grey-200);
+    }
+    .pillar:nth-child(odd) { border-right: 1px solid var(--ily-grey-200); }
+    @media (max-width: 760px) {
+      .pillar { padding-right: 0; }
+      .pillar:nth-child(odd) { border-right: none; }
+    }
+    .pillar__index {
+      font-weight: var(--ily-font-medium);
+      font-size: 0.78rem;
+      letter-spacing: var(--ily-tracking-wider);
+      color: var(--ily-grey-400);
+    }
+    .pillar__index::after { content: '.'; color: var(--ily-frosted-blue-deep); }
+    .pillar__name {
+      font-weight: var(--ily-font-light);
+      font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+      line-height: 1.05;
+      letter-spacing: var(--ily-tracking-tight);
+      margin: var(--ily-space-3) 0 var(--ily-space-4);
+    }
+    .pillar__body {
+      font-size: 1rem;
+      line-height: 1.55;
+      color: var(--ily-grey-700);
+      max-width: 50ch;
+    }
+    .audiences {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--ily-space-2);
+      border-top: 1px solid var(--ily-grey-200);
+    }
+    @media (max-width: 880px) { .audiences { grid-template-columns: 1fr; } }
+    .audience {
+      padding: var(--ily-space-12) var(--ily-space-6) var(--ily-space-12) 0;
+      border-right: 1px solid var(--ily-grey-200);
+    }
+    .audience:last-child { border-right: none; }
+    @media (max-width: 880px) {
+      .audience { border-right: none; padding-right: 0; border-bottom: 1px solid var(--ily-grey-200); }
+      .audience:last-child { border-bottom: none; }
+    }
+    .audience__handle {
+      font-weight: var(--ily-font-medium);
+      font-size: 0.78rem;
+      letter-spacing: var(--ily-tracking-wider);
+      color: var(--ily-grey-500);
+    }
+    .audience__handle::after { content: '.'; color: var(--ily-frosted-blue-deep); }
+    .audience__name {
+      font-weight: var(--ily-font-light);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      line-height: 1;
+      letter-spacing: var(--ily-tracking-tight);
+      margin: var(--ily-space-3) 0 var(--ily-space-4);
+    }
+    .audience__copy {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: var(--ily-grey-700);
+      max-width: 30ch;
+    }
+    .horizon {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: start;
+    }
+    @media (max-width: 760px) { .horizon { grid-template-columns: 1fr; } }
+    .horizon__years {
+      list-style: none;
+      padding: 0;
+      margin: var(--ily-space-8) 0 0;
+      border-top: 1px solid var(--ily-grey-200);
+    }
+    .horizon__years li {
+      display: grid;
+      grid-template-columns: 6ch 1fr;
+      gap: var(--ily-space-6);
+      padding: var(--ily-space-5) 0;
+      border-bottom: 1px solid var(--ily-grey-200);
+      align-items: baseline;
+    }
+    .horizon__year {
+      font-weight: var(--ily-font-medium);
+      font-size: 0.85rem;
+      letter-spacing: var(--ily-tracking-wide);
+      color: var(--ily-shadow-grey);
+    }
+    .horizon__year::after { content: '.'; color: var(--ily-frosted-blue-deep); }
+    .horizon__text { font-size: 1rem; color: var(--ily-grey-700); }
+    .horizon__text b { font-weight: var(--ily-font-medium); color: var(--ily-shadow-grey); }
+  </style>
+</head>
+<body class="on-light">
+
+<header class="nav nav--on-dark" id="ily-nav">
+  <div class="container nav__inner">
+    <a href="v1.html" class="nav__brand" aria-label="iloveyouth home">
+      <img class="nav__wordmark" src="assets/ily-wordmark-white-blue.svg" alt="iloveyouth.">
+    </a>
+    <nav class="nav__links" aria-label="primary">
+      <a href="v1.html#the-poem">the formula</a>
+      <a href="v1-products.html">products</a>
+      <a href="v1-about.html">about</a>
+      <a href="v1-product.html">the serum</a>
+      <a href="#" class="nav__cart">cart (0)</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== hero ===== -->
+<section class="hero-dark on-dark" style="min-height: 88svh;">
+  <div class="mesh-bg" aria-hidden="true"></div>
+  <div class="mesh-bg__blob-3" aria-hidden="true"></div>
+  <div class="mesh-bg__blob-4" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="hero-dark__content" style="padding-top: clamp(8rem, 16vh, 11rem); padding-bottom: clamp(4rem, 10vh, 7rem);">
+    <span class="statement statement--inverse reveal reveal--d1">the brand</span>
+    <h1 class="hero-title reveal reveal--d2" style="max-width: 18ch;">
+      <span class="hero-title__line">the friend</span>
+      <span class="hero-title__line">who tells you</span>
+      <span class="hero-title__line">what works<span class="dot-pop">.</span></span>
+    </h1>
+    <p class="hero-sub reveal reveal--d5">no hype<span class="dot">.</span> no fillers<span class="dot">.</span> statement skincare for skin that wants results — without the residue<span class="dot">.</span></p>
+    <div class="reveal reveal--d6" style="display:flex; gap: var(--ily-space-6); align-items: center; flex-wrap: wrap;">
+      <a href="#voice" class="cta-pill">read the voice
+        <svg class="cta-pill__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="v1-products.html" class="ghost-link ghost-link--inverse">shop the formula</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== the why ===== -->
+<section class="section-light section-light--blue" id="why">
+  <div class="container container--narrow">
+    <span class="statement">the why</span>
+    <p class="editorial-line">we started iloveyouth because <em class="em">most "hydrating" skincare isn't<span class="dot">.</span></em> drying alcohols, witch hazel, fragrance — the things that strip the skin barrier — show up in moisturizers, toners, and serums marketed as the opposite of what they do<span class="dot">.</span></p>
+    <p class="editorial-line" style="margin-top: var(--ily-space-8);">we built six products around three ingredients with decades of research behind them<span class="dot">.</span> niacinamide<span class="dot">.</span> ceramides<span class="dot">.</span> hyaluronic acid<span class="dot">.</span> nothing in our formulas undoes the good stuff<span class="dot">.</span> that's the entire brand<span class="dot">.</span></p>
+  </div>
+</section>
+
+<!-- ===== five pillars ===== -->
+<section class="section-light section-light--top-rule" id="voice">
+  <div class="container">
+    <header style="display:flex; justify-content:space-between; align-items:end; gap: var(--ily-space-12); margin-bottom: var(--ily-space-12); flex-wrap:wrap;">
+      <div>
+        <span class="statement">the voice</span>
+        <h2 style="font-weight: var(--ily-font-light); font-size: clamp(2.4rem, 5.5vw, 4.5rem); line-height: 1.02; letter-spacing: var(--ily-tracking-tight); margin: var(--ily-space-3) 0 0; max-width: 18ch;">five pillars<span class="dot">.</span> one voice<span class="dot">.</span></h2>
+      </div>
+      <span style="font-size: 0.85rem; color: var(--ily-grey-500); max-width: 32ch;">how we say what we say<span class="dot">.</span> reviewed for every campaign, every label, every line<span class="dot">.</span></span>
+    </header>
+
+    <div class="about-pillars">
+      <article class="pillar">
+        <span class="pillar__index">01</span>
+        <h3 class="pillar__name">honest, not preachy<span class="dot">.</span></h3>
+        <p class="pillar__body">we say what the product does<span class="dot">.</span> no jargon, no empty promises<span class="dot">.</span> if it hydrates, we say it hydrates<span class="dot">.</span> we don't dress it up in clinical language or marketing superlatives<span class="dot">.</span></p>
+      </article>
+      <article class="pillar">
+        <span class="pillar__index">02</span>
+        <h3 class="pillar__name">warmly confident<span class="dot">.</span></h3>
+        <p class="pillar__body">we know our products work<span class="dot">.</span> we don't oversell or hedge<span class="dot">.</span> we're matter-of-fact about efficacy — the formula speaks<span class="dot">.</span></p>
+      </article>
+      <article class="pillar">
+        <span class="pillar__index">03</span>
+        <h3 class="pillar__name">casually human<span class="dot">.</span></h3>
+        <p class="pillar__body">conversational, never clinical<span class="dot">.</span> like a knowledgeable friend, not a dermatologist, not a sales rep<span class="dot">.</span> room for personality, warmth, and the occasional dry observation<span class="dot">.</span></p>
+      </article>
+      <article class="pillar">
+        <span class="pillar__index">04</span>
+        <h3 class="pillar__name">pro-youth, anti-hype<span class="dot dot--silk">.</span></h3>
+        <p class="pillar__body">we celebrate healthy, hydrated skin at any age<span class="dot dot--silk">.</span> never fear-based "anti-aging" language<span class="dot dot--silk">.</span> we're not about fighting your face — we're about taking care of it<span class="dot dot--silk">.</span></p>
+      </article>
+      <article class="pillar">
+        <span class="pillar__index">05</span>
+        <h3 class="pillar__name">ingredient-forward<span class="dot">.</span></h3>
+        <p class="pillar__body">ingredients are our credibility<span class="dot">.</span> we name them, say what they do in plain terms, and move on<span class="dot">.</span> no jargon walls<span class="dot">.</span> no proprietary-blend mystery<span class="dot">.</span></p>
+      </article>
+      <article class="pillar">
+        <span class="pillar__index">∞</span>
+        <h3 class="pillar__name">the through-line<span class="dot">.</span></h3>
+        <p class="pillar__body">if you wouldn't say it to a friend's face, we don't write it<span class="dot">.</span> the gut check that survives every campaign<span class="dot">.</span></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== no-list (reuse, anchor to it from formula link) ===== -->
+<section class="no-list on-dark" id="formula">
+  <div class="container no-list__inner">
+    <span class="statement statement--inverse">the formula</span>
+    <h2 class="no-list__title">what's <em class="em">in</em> matters<span class="dot">.</span> what isn't matters more<span class="dot">.</span></h2>
+    <ul class="no-list__items">
+      <li>drying alcohols<span class="dot">.</span></li>
+      <li>witch hazel<span class="dot">.</span></li>
+      <li>fragrance<span class="dot">.</span></li>
+      <li>sulfates<span class="dot">.</span></li>
+      <li>acne-causing oils<span class="dot">.</span></li>
+      <li>fluff<span class="dot">.</span></li>
+      <li class="yes">five ingredients with decades of research<span class="dot dot--silk">.</span></li>
+      <li class="yes">honest, plain-language explainers<span class="dot dot--silk">.</span></li>
+      <li class="yes">cruelty-free, every formula<span class="dot dot--silk">.</span></li>
+      <li class="yes">made for every skin type, including reactive<span class="dot dot--silk">.</span></li>
+    </ul>
+    <p class="no-list__footer">we don't hide ingredient lists behind "proprietary blend" language<span class="dot">.</span> every full ingredient list lives on the product page<span class="dot">.</span> if a customer would have to google a word we used, we rewrote it<span class="dot">.</span></p>
+  </div>
+</section>
+
+<!-- ===== three audiences ===== -->
+<section class="section-light section-light--silk">
+  <div class="container">
+    <span class="statement">made for</span>
+    <h2 style="font-weight: var(--ily-font-light); font-size: clamp(2.4rem, 5.5vw, 4.5rem); line-height: 1.02; letter-spacing: var(--ily-tracking-tight); margin: var(--ily-space-3) 0 var(--ily-space-12); max-width: 22ch;">three people<span class="dot">.</span> one philosophy<span class="dot">.</span></h2>
+
+    <div class="audiences">
+      <article class="audience">
+        <span class="audience__handle">28–40</span>
+        <h3 class="audience__name">the self-investor<span class="dot">.</span></h3>
+        <p class="audience__copy">she's done her research<span class="dot">.</span> wants proof it works, clear ingredients, premium feel, no bs<span class="dot">.</span></p>
+      </article>
+      <article class="audience">
+        <span class="audience__handle">22–28</span>
+        <h3 class="audience__name">the explorer<span class="dot">.</span></h3>
+        <p class="audience__copy">he wants ingredient honesty, values alignment, no greenwashing<span class="dot">.</span> just be real and he'll respect it<span class="dot">.</span></p>
+      </article>
+      <article class="audience">
+        <span class="audience__handle">35–44</span>
+        <h3 class="audience__name">the results-seeker<span class="dot">.</span></h3>
+        <p class="audience__copy">efficient<span class="dot">.</span> wants the headline fast<span class="dot">.</span> what it does, what it replaces, how it fits a minimal routine<span class="dot">.</span></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== where we're going ===== -->
+<section class="section-light section-light--top-rule" id="horizon">
+  <div class="container">
+    <div class="horizon">
+      <div>
+        <span class="statement">the horizon</span>
+        <h2 style="font-weight: var(--ily-font-light); font-size: clamp(2.4rem, 5.2vw, 4rem); line-height: 1.05; letter-spacing: var(--ily-tracking-tight); margin: var(--ily-space-3) 0 var(--ily-space-6); max-width: 18ch;">we're patient<span class="dot">.</span> the formula isn't<span class="dot">.</span></h2>
+        <p style="font-size: 1rem; line-height: 1.6; color: var(--ily-grey-700); max-width: 48ch;">iloveyouth is direct-to-consumer<span class="dot">.</span> always will be, in some channel mix<span class="dot">.</span> we're building toward retail with sephora as the target — not because the brand needs that validation, but because the customer who hasn't found us yet should be able to<span class="dot">.</span></p>
+      </div>
+      <ol class="horizon__years">
+        <li>
+          <span class="horizon__year">2026</span>
+          <span class="horizon__text"><b>launch the six<span class="dot">.</span></b> dtc only<span class="dot">.</span> serum, cleanser, toner, moisturizer, spot patches, eye patches<span class="dot">.</span></span>
+        </li>
+        <li>
+          <span class="horizon__year">2027</span>
+          <span class="horizon__text"><b>community</b> first<span class="dot">.</span> ingredient stories, formula deep-dives, the journal<span class="dot">.</span></span>
+        </li>
+        <li>
+          <span class="horizon__year">2028</span>
+          <span class="horizon__text"><b>scale the formula<span class="dot dot--silk">.</span></b> sample-size patches, refill bottles, packaging that survives a flight<span class="dot dot--silk">.</span></span>
+        </li>
+        <li>
+          <span class="horizon__year">2029</span>
+          <span class="horizon__text"><b>retail<span class="dot dot--silk">.</span></b> the right partner<span class="dot dot--silk">.</span> the right shelf<span class="dot dot--silk">.</span> never a race<span class="dot dot--silk">.</span></span>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ===== closing tagline lockup ===== -->
+<section class="hero-dark on-dark" style="padding: clamp(6rem, 14vh, 10rem) 0; display:block; min-height: 0;">
+  <div class="mesh-bg" aria-hidden="true" style="opacity: 0.6;"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="hero-dark__content" style="text-align: center;">
+    <img src="assets/ily-wordmark-white-blue.svg" alt="iloveyouth." style="height: clamp(72px, 12vw, 144px); margin: 0 auto var(--ily-space-8);">
+    <div style="width: 240px; height: 1px; background: rgba(240,243,250,0.18); margin: 0 auto var(--ily-space-8);"></div>
+    <p style="font-weight: var(--ily-font-light); font-size: clamp(1.8rem, 4vw, 3.25rem); letter-spacing: var(--ily-tracking-tight); margin: 0;">Youth starts with you<span class="dot">.</span></p>
+  </div>
+</section>
+
+<!-- ===== footer ===== -->
+<footer class="footer on-dark" id="footer">
+  <div class="container">
+    <div class="footer__cols" style="border-top: none; padding-top: 0;">
+      <div class="footer__col">
+        <h4>get the brief</h4>
+        <p style="color: var(--ily-grey-300); font-size: 0.92rem; margin: 0 0 var(--ily-space-4); max-width: 36ch;">one email a month<span class="dot">.</span> ingredient stories, formula updates, and no spam<span class="dot">.</span></p>
+        <form class="footer__email" onsubmit="event.preventDefault();">
+          <input type="email" placeholder="your email" aria-label="email" />
+          <button type="submit">subscribe</button>
+        </form>
+      </div>
+      <div class="footer__col">
+        <h4>shop</h4>
+        <ul>
+          <li><a href="v1-product.html">hydration serum</a></li>
+          <li><a href="v1-products.html">all six</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>brand</h4>
+        <ul>
+          <li><a href="#why">the why</a></li>
+          <li><a href="#voice">the voice</a></li>
+          <li><a href="#horizon">the horizon</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>support</h4>
+        <ul>
+          <li><a href="#">shipping</a></li>
+          <li><a href="#">returns</a></li>
+          <li><a href="#">faq</a></li>
+          <li><a href="#">@iloveyouth</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__legal">
+      <span>© 2026 iloveyouth inc.</span>
+      <span>cruelty-free<span class="dot">.</span> no drying alcohols<span class="dot">.</span> ever<span class="dot">.</span></span>
+    </div>
+  </div>
+</footer>
+
+<div class="proto-banner" aria-hidden="true">prototype · direction v1 · about</div>
+
+<script>
+  (function(){
+    var nav = document.getElementById('ily-nav');
+    if (!nav) return;
+    function onScroll(){ if (window.scrollY > 40) nav.classList.add('nav--scrolled'); else nav.classList.remove('nav--scrolled'); }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+<style id="vsw-style">
+  .vsw {
+    position: fixed;
+    top: 12px;
+    right: 14px;
+    z-index: 200;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    background: rgba(42, 34, 32, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 9999px;
+    box-shadow: 0 8px 26px rgba(42, 34, 32, 0.18);
+    font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+  }
+  .vsw a {
+    color: #f0f3fa;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 9999px;
+    text-transform: lowercase;
+    transition: background 180ms;
+  }
+  .vsw a:hover { background: rgba(240, 243, 250, 0.10); }
+  .vsw a[aria-current="page"] {
+    background: #ade8f9;
+    color: #2a2220;
+  }
+  .vsw__label {
+    color: #c8bdb5;
+    padding-left: 8px;
+    padding-right: 4px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: lowercase;
+  }
+  @media (max-width: 600px) {
+    .vsw { font-size: 11px; }
+    .vsw a { padding: 5px 8px; }
+    .vsw__label { display: none; }
+  }
+</style>
+<nav class="vsw" aria-label="brand direction switcher">
+  <span class="vsw__label">direction</span>
+  <a href="index.html" style="color: #c8bdb5;">↑</a>
+  <a href="v1.html" aria-current="page">v1</a>
+  <a href="v2.html" >v2</a>
+  <a href="v3.html" >v3</a>
+  <a href="v4.html" >v4</a>
+</nav>
+
+</body>
+</html>

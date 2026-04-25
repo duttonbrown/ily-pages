@@ -1,0 +1,1618 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iloveyouth — youth starts with you.</title>
+  <meta name="description" content="clean, effective hydration. niacinamide, ceramides, hyaluronic acid. nothing else.">
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       site-concept.html
+       a single-file homepage concept for iloveyouth, styled to the locked
+       ily-brand tokens. structured to mirror what a dawn-based impact theme
+       build would output: announcement, header, hero, product grid, editorial,
+       marquee, ingredient stories, feature split, cta band, footer.
+
+       brand rules enforced inline so this file is portable:
+         - satoshi 300/400/500 only — no 700/900
+         - lowercase everywhere except legal + product compliance
+         - wide tracking, not capitalisation, signals hierarchy
+         - ghost white #f0f3fa is the canvas — never pure white
+         - frosted blue #ade8f9 is the single hero accent
+         - almond silk #ffd5c6 is supporting only (~1:10 vs frosted blue)
+         - shadow grey #2a2220 is text — never pure black
+         - the wordmark is always the largest interaction-level element
+         - long-form display headlines end with a period (period system)
+         - dots in the wordmark are never explained in copy
+       ========================================================================== */
+
+    :root {
+      /* brand palette — locked, mirrored from ily-brand/tokens.css */
+      --ily-shadow-grey:  #2a2220;
+      --ily-frosted-blue: #ade8f9;
+      --ily-ghost-white:  #f0f3fa;
+      --ily-almond-silk:  #ffd5c6;
+
+      /* semantic */
+      --ily-primary:       var(--ily-shadow-grey);
+      --ily-accent:        var(--ily-frosted-blue);
+      --ily-accent-hover:  #7dd3f0;
+      --ily-accent-soft:   #d9f2fc;
+      --ily-support:       var(--ily-almond-silk);
+      --ily-support-soft:  #ffe8dd;
+      --ily-surface:       var(--ily-ghost-white);
+      --ily-surface-mid:   #e4e8f1;
+      --ily-text:          var(--ily-shadow-grey);
+      --ily-text-muted:    #6b5c54;
+      --ily-text-light:    #a89b92;
+      --ily-text-inverse:  var(--ily-ghost-white);
+      --ily-border:        #e5e7ee;
+      --ily-border-strong: #c8ccd6;
+
+      /* type — satoshi, light dominant */
+      --ily-font-primary: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --ily-font-light:   300;
+      --ily-font-regular: 400;
+      --ily-font-medium:  500;
+
+      --ily-leading-tight:  1.05;
+      --ily-leading-snug:   1.2;
+      --ily-leading-normal: 1.5;
+      --ily-leading-relaxed: 1.65;
+
+      --ily-tracking-tight:  -0.02em;
+      --ily-tracking-normal: 0;
+      --ily-tracking-wide:   0.08em;
+      --ily-tracking-wider:  0.16em;
+
+      /* spacing — 4px base */
+      --ily-space-1:  0.25rem;
+      --ily-space-2:  0.5rem;
+      --ily-space-3:  0.75rem;
+      --ily-space-4:  1rem;
+      --ily-space-5:  1.25rem;
+      --ily-space-6:  1.5rem;
+      --ily-space-8:  2rem;
+      --ily-space-10: 2.5rem;
+      --ily-space-12: 3rem;
+      --ily-space-16: 4rem;
+      --ily-space-20: 5rem;
+      --ily-space-24: 6rem;
+      --ily-space-32: 8rem;
+
+      /* layout */
+      --ily-max-width: 1280px;
+      --ily-gutter: clamp(1.25rem, 4vw, 3rem);
+
+      /* radii — restrained, never pillowy */
+      --ily-radius-sm: 4px;
+      --ily-radius-md: 8px;
+      --ily-radius-lg: 14px;
+      --ily-radius-full: 9999px;
+
+      --ily-shadow-sm: 0 1px 2px rgba(42,34,32,0.06);
+      --ily-shadow-md: 0 6px 22px rgba(42,34,32,0.07);
+      --ily-shadow-lg: 0 18px 48px rgba(42,34,32,0.10);
+
+      --ily-transition-fast: 150ms ease;
+      --ily-transition: 280ms cubic-bezier(.2,.7,.2,1);
+      --ily-transition-slow: 600ms cubic-bezier(.2,.7,.2,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      font-family: var(--ily-font-primary);
+      font-weight: var(--ily-font-regular);
+      font-size: 1rem;
+      line-height: var(--ily-leading-normal);
+      color: var(--ily-text);
+      background: var(--ily-surface);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img, svg { display: block; max-width: 100%; height: auto; }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--ily-transition-fast), opacity var(--ily-transition-fast);
+    }
+    a:hover { opacity: 0.7; }
+
+    button {
+      font: inherit;
+      color: inherit;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .container {
+      max-width: var(--ily-max-width);
+      margin: 0 auto;
+      padding-left: var(--ily-gutter);
+      padding-right: var(--ily-gutter);
+    }
+
+    /* utility — eyebrows / labels (lowercase, wide-tracked, never caps) */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--ily-space-2);
+      font-size: 0.6875rem;       /* 11px */
+      font-weight: var(--ily-font-medium);
+      letter-spacing: var(--ily-tracking-wider);
+      color: var(--ily-text-muted);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 18px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.6;
+    }
+    .eyebrow.no-rule::before { display: none; }
+    .eyebrow.on-dark { color: rgba(240,243,250,0.7); }
+
+    /* buttons — never larger than the wordmark on the same surface */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--ily-space-2);
+      height: 46px;
+      padding: 0 var(--ily-space-6);
+      font-size: 0.875rem;
+      font-weight: var(--ily-font-medium);
+      letter-spacing: var(--ily-tracking-wide);
+      border-radius: var(--ily-radius-full);
+      transition: var(--ily-transition);
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .btn--primary {
+      background: var(--ily-frosted-blue);
+      color: var(--ily-shadow-grey);
+    }
+    .btn--primary:hover {
+      background: var(--ily-accent-hover);
+      transform: translateY(-1px);
+      opacity: 1;
+    }
+    .btn--ghost {
+      background: transparent;
+      color: var(--ily-shadow-grey);
+      box-shadow: inset 0 0 0 1px var(--ily-shadow-grey);
+    }
+    .btn--ghost:hover {
+      background: var(--ily-shadow-grey);
+      color: var(--ily-text-inverse);
+      opacity: 1;
+    }
+    .btn--ghost.on-dark {
+      color: var(--ily-text-inverse);
+      box-shadow: inset 0 0 0 1px var(--ily-text-inverse);
+    }
+    .btn--ghost.on-dark:hover {
+      background: var(--ily-text-inverse);
+      color: var(--ily-shadow-grey);
+    }
+
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--ily-space-2);
+      font-size: 0.875rem;
+      font-weight: var(--ily-font-medium);
+      letter-spacing: var(--ily-tracking-wide);
+      color: var(--ily-shadow-grey);
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 2px;
+    }
+    .text-link .arrow { transition: transform var(--ily-transition); }
+    .text-link:hover .arrow { transform: translateX(4px); }
+
+    /* ---------- announcement bar ---------- */
+    .announcement {
+      background: var(--ily-shadow-grey);
+      color: var(--ily-text-inverse);
+      font-size: 0.75rem;
+      letter-spacing: var(--ily-tracking-wide);
+      padding: var(--ily-space-3) var(--ily-gutter);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--ily-space-3);
+      position: relative;
+    }
+    .announcement__track {
+      display: flex;
+      align-items: center;
+      gap: var(--ily-space-3);
+      min-height: 1.1em;
+    }
+    .announcement__msg {
+      display: none;
+      align-items: center;
+      gap: var(--ily-space-3);
+    }
+    .announcement__msg.is-active {
+      display: inline-flex;
+      animation: fade-up 600ms ease;
+    }
+    .announcement__msg a {
+      border-bottom: 1px solid rgba(240,243,250,0.4);
+      padding-bottom: 1px;
+    }
+    .announcement__close {
+      position: absolute;
+      right: var(--ily-gutter);
+      top: 50%;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      color: var(--ily-text-inverse);
+      opacity: 0.7;
+    }
+    .announcement__close:hover { opacity: 1; }
+
+    /* ---------- header / nav ---------- */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--ily-surface);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--ily-transition), box-shadow var(--ily-transition);
+    }
+    .header.is-scrolled {
+      border-bottom-color: var(--ily-border);
+      box-shadow: var(--ily-shadow-sm);
+    }
+    .header__inner {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: var(--ily-space-6);
+      padding-top: var(--ily-space-5);
+      padding-bottom: var(--ily-space-5);
+    }
+    .header__nav {
+      display: flex;
+      gap: var(--ily-space-8);
+      align-items: center;
+    }
+    .header__nav a {
+      font-size: 0.875rem;        /* 14px — must stay below the wordmark */
+      font-weight: var(--ily-font-medium);
+      letter-spacing: var(--ily-tracking-wide);
+      color: var(--ily-text);
+      position: relative;
+      padding: var(--ily-space-2) 0;
+    }
+    .header__nav a::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 1px;
+      background: var(--ily-shadow-grey);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--ily-transition);
+    }
+    .header__nav a:hover { opacity: 1; }
+    .header__nav a:hover::after { transform: scaleX(1); }
+
+    .header__brand {
+      display: flex;
+      justify-content: center;
+    }
+    /* wordmark height is the load-bearing rule from brand-identity.md:
+       must stay visually larger than every nav link, icon, and cta on this row */
+    .header__brand img { height: 34px; width: auto; }
+
+    .header__actions {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: var(--ily-space-5);
+    }
+    .header__actions button {
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      color: var(--ily-shadow-grey);
+    }
+    .header__actions button:hover { opacity: 0.6; }
+    .header__cart {
+      position: relative;
+    }
+    .header__cart-count {
+      position: absolute;
+      top: -6px;
+      right: -8px;
+      min-width: 16px;
+      height: 16px;
+      padding: 0 4px;
+      border-radius: var(--ily-radius-full);
+      background: var(--ily-frosted-blue);
+      color: var(--ily-shadow-grey);
+      font-size: 9px;
+      font-weight: var(--ily-font-medium);
+      display: grid;
+      place-items: center;
+      line-height: 1;
+    }
+
+    .header__menu-btn { display: none; }
+
+    @media (max-width: 880px) {
+      .header__inner { grid-template-columns: auto 1fr auto; }
+      .header__nav { display: none; }
+      .header__menu-btn {
+        display: grid;
+        place-items: center;
+        width: 22px;
+        height: 22px;
+        color: var(--ily-shadow-grey);
+      }
+    }
+
+    /* ---------- hero ---------- */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(4rem, 9vw, 8rem) 0 clamp(5rem, 10vw, 9rem);
+      background: var(--ily-surface);
+    }
+    .hero__inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: end;
+    }
+    .hero__copy {
+      max-width: 38ch;
+    }
+    .hero h1 {
+      margin: var(--ily-space-6) 0 var(--ily-space-6);
+      font-weight: var(--ily-font-light);   /* 300 — airy display */
+      font-size: clamp(2.75rem, 7vw, 5.75rem);
+      line-height: var(--ily-leading-tight);
+      letter-spacing: var(--ily-tracking-tight);
+      color: var(--ily-shadow-grey);
+    }
+    .hero h1 em {
+      font-style: normal;
+      font-weight: var(--ily-font-light);
+      display: inline-block;
+      position: relative;
+    }
+    .hero h1 em::after {
+      content: "";
+      display: block;
+      height: 0.18em;
+      background: var(--ily-frosted-blue);
+      margin-top: -0.22em;
+      border-radius: var(--ily-radius-full);
+    }
+    .hero p.lead {
+      font-size: clamp(1rem, 1.4vw, 1.125rem);
+      line-height: var(--ily-leading-relaxed);
+      color: var(--ily-text-muted);
+      max-width: 38ch;
+      margin: 0 0 var(--ily-space-8);
+    }
+    .hero__ctas {
+      display: flex;
+      gap: var(--ily-space-3);
+      flex-wrap: wrap;
+    }
+
+    /* hero visual — restrained, no stock photo placeholder. uses an svg
+       droplet column that maps to the hydration cue without ever saying it. */
+    .hero__visual {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: var(--ily-radius-lg);
+      background: linear-gradient(160deg, var(--ily-surface-mid) 0%, var(--ily-accent-soft) 100%);
+      overflow: hidden;
+      box-shadow: var(--ily-shadow-md);
+    }
+    .hero__visual svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .hero__visual-tag {
+      position: absolute;
+      bottom: var(--ily-space-6);
+      left: var(--ily-space-6);
+      right: var(--ily-space-6);
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      font-size: 0.75rem;
+      letter-spacing: var(--ily-tracking-wider);
+      color: var(--ily-shadow-grey);
+    }
+    .hero__visual-tag .num {
+      font-size: 2.25rem;
+      font-weight: var(--ily-font-light);
+      line-height: 1;
+      letter-spacing: var(--ily-tracking-tight);
+    }
+
+    @media (max-width: 880px) {
+      .hero__inner { grid-template-columns: 1fr; }
+      .hero__visual { aspect-ratio: 4 / 4; max-width: 480px; }
+    }
+
+    /* ---------- section header pattern ---------- */
+    .section {
+      padding: clamp(4rem, 8vw, 8rem) 0;
+    }
+    .section--tight { padding: clamp(3rem, 6vw, 6rem) 0; }
+
+    .section__head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: var(--ily-space-6);
+      margin-bottom: var(--ily-space-12);
+    }
+    .section__title {
+      margin: var(--ily-space-4) 0 0;
+      font-weight: var(--ily-font-light);
+      font-size: clamp(1.75rem, 3.6vw, 2.75rem);
+      line-height: var(--ily-leading-snug);
+      letter-spacing: var(--ily-tracking-tight);
+      color: var(--ily-shadow-grey);
+      max-width: 22ch;
+    }
+
+    /* ---------- product grid ---------- */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--ily-space-6);
+    }
+    @media (max-width: 1080px) { .products { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px)  { .products { grid-template-columns: 1fr; } }
+
+    .product {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: var(--ily-space-5);
+      transition: var(--ily-transition);
+    }
+    .product:hover .product__media {
+      transform: translateY(-4px);
+      box-shadow: var(--ily-shadow-lg);
+    }
+    .product__media {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: var(--ily-radius-lg);
+      overflow: hidden;
+      background: var(--ily-surface-mid);
+      transition: var(--ily-transition);
+      box-shadow: var(--ily-shadow-sm);
+    }
+    .product__media svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .product--cleanser .product__media { background: linear-gradient(180deg, #e4e8f1 0%, #f0f3fa 100%); }
+    .product--toner    .product__media { background: linear-gradient(180deg, #d9f2fc 0%, var(--ily-frosted-blue) 100%); }
+    .product--serum    .product__media { background: linear-gradient(180deg, var(--ily-frosted-blue) 0%, #7dd3f0 100%); }
+    .product--cream    .product__media { background: linear-gradient(180deg, var(--ily-support-soft) 0%, var(--ily-almond-silk) 100%); }
+
+    .product__badge {
+      position: absolute;
+      top: var(--ily-space-4);
+      left: var(--ily-space-4);
+      font-size: 0.625rem;
+      font-weight: var(--ily-font-medium);
+      letter-spacing: var(--ily-tracking-wider);
+      padding: 5px 10px;
+      border-radius: var(--ily-radius-full);
+      background: var(--ily-shadow-grey);
+      color: var(--ily-text-inverse);
+    }
+    .product__wishlist {
+      position: absolute;
+      top: var(--ily-space-4);
+      right: var(--ily-space-4);
+      width: 30px;
+      height: 30px;
+      border-radius: var(--ily-radius-full);
+      background: rgba(240,243,250,0.85);
+      backdrop-filter: blur(4px);
+      display: grid;
+      place-items: center;
+      color: var(--ily-shadow-grey);
+      transition: var(--ily-transition-fast);
+    }
+    .product__wishlist:hover { background: var(--ily-ghost-white); }
+
+    .product__quickadd {
+      position: absolute;
+      left: var(--ily-space-4);
+      right: var(--ily-space-4);
+      bottom: var(--ily-space-4);
+      height: 40px;
+      border-radius: var(--ily-radius-full);
+      background: var(--ily-shadow-grey);
+      color: var(--ily-text-inverse);
+      font-size: 0.75rem;
+      font-weight: var(--ily-font-medium);
+      letter-spacing: var(--ily-tracking-wide);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: var(--ily-transition);
+    }
+    .product:hover .product__quickadd { opacity: 1; transform: translateY(0); }
+
+    .product__info {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--ily-space-2) var(--ily-space-4);
+      align-items: baseline;
+    }
+    .product__name {
+      grid-column: 1;
+      font-size: 1rem;
+      font-weight: var(--ily-font-medium);
+      letter-spacing: var(--ily-tracking-normal);
+      color: var(--ily-shadow-grey);
+    }
+    .product__price {
+      grid-column: 2;
+      font-size: 0.9375rem;
+      font-weight: var(--ily-font-regular);
+      color: var(--ily-shadow-grey);
+    }
+    .product__tagline {
+      grid-column: 1 / -1;
+      font-size: 0.8125rem;
+      color: var(--ily-text-muted);
+      line-height: var(--ily-leading-snug);
+    }
+    .product__ingredients {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--ily-space-3);
+      font-size: 0.6875rem;
+      letter-spacing: var(--ily-tracking-wider);
+      color: var(--ily-text-light);
+      margin-top: var(--ily-space-1);
+    }
+    .product__ingredients li {
+      list-style: none;
+    }
+    .product__ingredients li + li::before {
+      content: "·";
+      margin-right: var(--ily-space-3);
+      opacity: 0.5;
+    }
+    .product__ingredients ul { display: contents; padding: 0; margin: 0; }
+
+    /* ---------- editorial promise (dark band) ---------- */
+    .promise {
+      background: var(--ily-shadow-grey);
+      color: var(--ily-text-inverse);
+      padding: clamp(5rem, 10vw, 10rem) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .promise::before {
+      /* a single droplet of frosted blue, off to one side. never explained. */
+      content: "";
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      right: -200px;
+      top: -150px;
+      background: radial-gradient(circle at center, rgba(173,232,249,0.18) 0%, rgba(173,232,249,0) 60%);
+      pointer-events: none;
+    }
+    .promise__inner {
+      position: relative;
+      max-width: 720px;
+      text-align: center;
+      margin: 0 auto;
+    }
+    .promise h2 {
+      margin: var(--ily-space-6) 0 var(--ily-space-6);
+      font-weight: var(--ily-font-light);
+      font-size: clamp(2rem, 5vw, 3.75rem);
+      line-height: var(--ily-leading-tight);
+      letter-spacing: var(--ily-tracking-tight);
+    }
+    .promise p {
+      font-size: clamp(1rem, 1.4vw, 1.125rem);
+      line-height: var(--ily-leading-relaxed);
+      color: rgba(240,243,250,0.78);
+      margin: 0 0 var(--ily-space-10);
+    }
+
+    /* ---------- marquee (almond silk, used sparingly per brand rule) ---------- */
+    .marquee {
+      background: var(--ily-almond-silk);
+      color: var(--ily-shadow-grey);
+      padding: var(--ily-space-8) 0;
+      overflow: hidden;
+      border-top: 1px solid rgba(42,34,32,0.06);
+      border-bottom: 1px solid rgba(42,34,32,0.06);
+    }
+    .marquee__track {
+      display: flex;
+      gap: var(--ily-space-12);
+      width: max-content;
+      animation: marquee 42s linear infinite;
+    }
+    .marquee__item {
+      font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+      font-weight: var(--ily-font-light);
+      letter-spacing: var(--ily-tracking-tight);
+      display: flex;
+      align-items: center;
+      gap: var(--ily-space-12);
+      white-space: nowrap;
+    }
+    .marquee__item::after {
+      content: "·";
+      color: var(--ily-shadow-grey);
+      opacity: 0.5;
+      font-weight: var(--ily-font-light);
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ---------- ingredient stories (the "named." system) ---------- */
+    .ingredients-section {
+      background: var(--ily-surface);
+    }
+    .ingredients {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--ily-space-6);
+    }
+    @media (max-width: 880px) { .ingredients { grid-template-columns: 1fr; } }
+
+    .ingredient-card {
+      background: var(--ily-ghost-white);
+      border: 1px solid var(--ily-border);
+      border-radius: var(--ily-radius-lg);
+      padding: var(--ily-space-10);
+      display: flex;
+      flex-direction: column;
+      min-height: 360px;
+      transition: var(--ily-transition);
+    }
+    .ingredient-card:hover {
+      border-color: var(--ily-border-strong);
+      transform: translateY(-3px);
+      box-shadow: var(--ily-shadow-md);
+    }
+    .ingredient-card .eyebrow { margin-bottom: auto; }
+    .ingredient-card__name {
+      font-size: clamp(2rem, 3.4vw, 2.75rem);
+      font-weight: var(--ily-font-light);
+      letter-spacing: var(--ily-tracking-tight);
+      line-height: var(--ily-leading-tight);
+      margin: var(--ily-space-12) 0 var(--ily-space-4);
+      color: var(--ily-shadow-grey);
+    }
+    .ingredient-card__sentence {
+      font-size: 0.9375rem;
+      line-height: var(--ily-leading-relaxed);
+      color: var(--ily-text-muted);
+      margin: 0 0 var(--ily-space-6);
+    }
+    .ingredient-card__meta {
+      font-size: 0.6875rem;
+      letter-spacing: var(--ily-tracking-wider);
+      color: var(--ily-text-light);
+    }
+
+    /* ---------- feature split — three ingredients, one promise ---------- */
+    .feature-split {
+      background: var(--ily-surface);
+    }
+    .feature-split__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: center;
+    }
+    @media (max-width: 880px) { .feature-split__inner { grid-template-columns: 1fr; } }
+
+    .feature-split__visual {
+      aspect-ratio: 1 / 1;
+      border-radius: var(--ily-radius-lg);
+      background: linear-gradient(160deg, var(--ily-accent-soft) 0%, var(--ily-frosted-blue) 70%, var(--ily-shadow-grey) 220%);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--ily-shadow-md);
+    }
+    .feature-split__visual svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+    .feature-split h2 {
+      font-weight: var(--ily-font-light);
+      font-size: clamp(2rem, 4.4vw, 3.25rem);
+      line-height: var(--ily-leading-tight);
+      letter-spacing: var(--ily-tracking-tight);
+      color: var(--ily-shadow-grey);
+      margin: var(--ily-space-6) 0 var(--ily-space-6);
+    }
+    .feature-split h2 em {
+      font-style: italic;
+      font-weight: var(--ily-font-light);
+    }
+    .feature-split p {
+      font-size: 1rem;
+      line-height: var(--ily-leading-relaxed);
+      color: var(--ily-text-muted);
+      margin: 0 0 var(--ily-space-8);
+      max-width: 46ch;
+    }
+    .feature-split__list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 var(--ily-space-10);
+      display: grid;
+      gap: var(--ily-space-2);
+      max-width: 46ch;
+    }
+    .feature-split__list li {
+      font-size: 1.125rem;
+      font-weight: var(--ily-font-light);
+      letter-spacing: var(--ily-tracking-tight);
+      color: var(--ily-shadow-grey);
+      padding-left: var(--ily-space-6);
+      position: relative;
+    }
+    .feature-split__list li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: var(--ily-shadow-grey);
+    }
+
+    /* ---------- routine builder (carry-over from previous concept, refit) ---------- */
+    .routine {
+      background: var(--ily-surface-mid);
+      padding: clamp(5rem, 9vw, 9rem) 0;
+    }
+    .routine__steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--ily-space-6);
+      counter-reset: step;
+    }
+    @media (max-width: 880px) { .routine__steps { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .routine__steps { grid-template-columns: 1fr; } }
+
+    .routine__step {
+      background: var(--ily-ghost-white);
+      border-radius: var(--ily-radius-lg);
+      padding: var(--ily-space-8);
+      counter-increment: step;
+      position: relative;
+    }
+    .routine__step::before {
+      content: "0" counter(step) ".";
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: var(--ily-tracking-wider);
+      color: var(--ily-text-light);
+      margin-bottom: var(--ily-space-8);
+    }
+    .routine__step h3 {
+      font-size: 1.375rem;
+      font-weight: var(--ily-font-light);
+      letter-spacing: var(--ily-tracking-tight);
+      margin: 0 0 var(--ily-space-3);
+      color: var(--ily-shadow-grey);
+    }
+    .routine__step p {
+      font-size: 0.875rem;
+      line-height: var(--ily-leading-relaxed);
+      color: var(--ily-text-muted);
+      margin: 0;
+    }
+
+    /* ---------- review band ---------- */
+    .reviews {
+      background: var(--ily-surface);
+    }
+    .reviews__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--ily-space-6);
+    }
+    @media (max-width: 880px) { .reviews__grid { grid-template-columns: 1fr; } }
+
+    .review {
+      background: var(--ily-ghost-white);
+      border: 1px solid var(--ily-border);
+      border-radius: var(--ily-radius-lg);
+      padding: var(--ily-space-10);
+    }
+    .review__quote {
+      font-size: 1.0625rem;
+      line-height: var(--ily-leading-relaxed);
+      font-weight: var(--ily-font-light);
+      color: var(--ily-shadow-grey);
+      margin: var(--ily-space-6) 0 var(--ily-space-8);
+    }
+    .review__attribution {
+      font-size: 0.75rem;
+      letter-spacing: var(--ily-tracking-wider);
+      color: var(--ily-text-light);
+    }
+    .review__attribution strong {
+      display: block;
+      font-weight: var(--ily-font-medium);
+      color: var(--ily-text);
+      margin-bottom: 2px;
+    }
+    .stars {
+      display: inline-flex;
+      gap: 2px;
+      color: var(--ily-shadow-grey);
+    }
+
+    /* ---------- tagline cta band (almond silk — the second permitted use) ---------- */
+    .tagline-band {
+      background: var(--ily-shadow-grey);
+      color: var(--ily-text-inverse);
+      padding: clamp(6rem, 12vw, 12rem) 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .tagline-band::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 18% 80%, rgba(173,232,249,0.10) 0%, transparent 45%),
+        radial-gradient(circle at 82% 20%, rgba(255,213,198,0.07) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .tagline-band__inner { position: relative; z-index: 2; }
+    .tagline-band h2 {
+      font-weight: var(--ily-font-light);
+      font-size: clamp(2.5rem, 8vw, 6.5rem);
+      line-height: var(--ily-leading-tight);
+      letter-spacing: var(--ily-tracking-tight);
+      margin: var(--ily-space-6) 0 var(--ily-space-10);
+      color: var(--ily-text-inverse);
+    }
+    .tagline-band p {
+      max-width: 46ch;
+      margin: 0 auto var(--ily-space-12);
+      font-size: 1rem;
+      color: rgba(240,243,250,0.7);
+      line-height: var(--ily-leading-relaxed);
+    }
+
+    /* ---------- footer ---------- */
+    .footer {
+      background: var(--ily-shadow-grey);
+      color: var(--ily-text-inverse);
+      padding: clamp(4rem, 7vw, 7rem) 0 var(--ily-space-8);
+      border-top: 1px solid rgba(240,243,250,0.06);
+    }
+    .footer__top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: var(--ily-space-12);
+      padding-bottom: var(--ily-space-16);
+      border-bottom: 1px solid rgba(240,243,250,0.08);
+    }
+    @media (max-width: 880px) {
+      .footer__top { grid-template-columns: 1fr 1fr; gap: var(--ily-space-10); }
+    }
+    @media (max-width: 520px) {
+      .footer__top { grid-template-columns: 1fr; }
+    }
+
+    .footer__brand img {
+      height: 40px;            /* still well above any link or icon on the surface */
+      width: auto;
+      margin-bottom: var(--ily-space-6);
+    }
+    .footer__tagline {
+      font-size: 0.875rem;
+      color: rgba(240,243,250,0.7);
+      max-width: 28ch;
+      line-height: var(--ily-leading-relaxed);
+      margin: 0 0 var(--ily-space-8);
+    }
+    .footer__newsletter {
+      display: flex;
+      gap: var(--ily-space-2);
+      max-width: 360px;
+    }
+    .footer__newsletter input {
+      flex: 1;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid rgba(240,243,250,0.3);
+      color: var(--ily-text-inverse);
+      font: inherit;
+      font-size: 0.875rem;
+      padding: var(--ily-space-3) 0;
+      outline: none;
+    }
+    .footer__newsletter input::placeholder { color: rgba(240,243,250,0.4); }
+    .footer__newsletter input:focus { border-bottom-color: var(--ily-frosted-blue); }
+    .footer__newsletter button {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--ily-radius-full);
+      background: var(--ily-frosted-blue);
+      color: var(--ily-shadow-grey);
+      display: grid;
+      place-items: center;
+      align-self: end;
+      transition: var(--ily-transition);
+    }
+    .footer__newsletter button:hover { background: var(--ily-accent-hover); }
+
+    .footer__col h4 {
+      font-size: 0.6875rem;
+      font-weight: var(--ily-font-medium);
+      letter-spacing: var(--ily-tracking-wider);
+      color: rgba(240,243,250,0.55);
+      margin: 0 0 var(--ily-space-6);
+    }
+    .footer__col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: var(--ily-space-3);
+    }
+    .footer__col a {
+      font-size: 0.875rem;
+      color: rgba(240,243,250,0.85);
+    }
+
+    .footer__bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--ily-space-4);
+      padding-top: var(--ily-space-8);
+      font-size: 0.75rem;
+      color: rgba(240,243,250,0.5);
+      letter-spacing: var(--ily-tracking-wide);
+    }
+    .footer__legal {
+      display: flex;
+      gap: var(--ily-space-6);
+      flex-wrap: wrap;
+    }
+    .footer__socials {
+      display: flex;
+      gap: var(--ily-space-4);
+    }
+    .footer__socials a {
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      color: rgba(240,243,250,0.7);
+    }
+    .footer__socials a:hover { color: var(--ily-frosted-blue); opacity: 1; }
+
+    /* ---------- animations ---------- */
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 700ms ease, transform 700ms cubic-bezier(.2,.7,.2,1);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .marquee__track { animation: none; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      *, *::before, *::after { animation-duration: 0ms !important; transition-duration: 0ms !important; }
+    }
+
+    /* impact-theme reference scaffold note (visible only on dev, hidden in prod) */
+    .scaffold-note {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================================================================== -->
+  <!-- announcement bar                                                   -->
+  <!-- corresponds to: sections/announcement-bar.liquid                   -->
+  <!-- ================================================================== -->
+  <div class="announcement" id="announcement" role="region" aria-label="store announcements">
+    <div class="announcement__track">
+      <span class="announcement__msg is-active">complimentary shipping on orders over $40. <a href="#">shop now</a></span>
+      <span class="announcement__msg">restocked. the hydra serum is back. <a href="#">grab one</a></span>
+      <span class="announcement__msg">three ingredients. one promise. <a href="#">read the formula</a></span>
+    </div>
+    <button class="announcement__close" aria-label="dismiss announcement" onclick="document.getElementById('announcement').remove()">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M2 2 L10 10 M10 2 L2 10"/></svg>
+    </button>
+  </div>
+
+  <!-- ================================================================== -->
+  <!-- header / nav                                                        -->
+  <!-- corresponds to: sections/header.liquid (impact-theme replacement)   -->
+  <!-- wordmark sourced from ily-brand/logos — never re-typed              -->
+  <!-- ================================================================== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <nav class="header__nav" aria-label="primary">
+        <a href="#shop">shop</a>
+        <a href="#ingredients">ingredients</a>
+        <a href="#routine">routine</a>
+        <a href="#story">our story</a>
+      </nav>
+
+      <button class="header__menu-btn" aria-label="open menu">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 6 H17 M3 10 H17 M3 14 H17"/></svg>
+      </button>
+
+      <a href="#" class="header__brand" aria-label="iloveyouth — home">
+        <!-- locked wordmark from ily-brand/logos. height ≥ 28px enforces the
+             non-negotiable hierarchy rule from brand-identity.md -->
+        <img src="../brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-dark-rect-400.svg" alt="iloveyouth">
+      </a>
+
+      <div class="header__actions">
+        <button aria-label="search">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="9" cy="9" r="6"/><path d="m17 17-3.5-3.5"/></svg>
+        </button>
+        <button aria-label="account">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="10" cy="7" r="3.5"/><path d="M3.5 17c1.2-3.2 3.7-5 6.5-5s5.3 1.8 6.5 5"/></svg>
+        </button>
+        <button class="header__cart" aria-label="cart, 1 item">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M4 6h12l-1 11H5L4 6Z"/><path d="M7.5 6V4.5a2.5 2.5 0 0 1 5 0V6"/></svg>
+          <span class="header__cart-count">1</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================================================================== -->
+  <!-- hero                                                                -->
+  <!-- corresponds to: sections/hero.liquid                                -->
+  <!-- ================================================================== -->
+  <section class="hero" aria-label="hero">
+    <div class="container hero__inner">
+      <div class="hero__copy reveal">
+        <span class="eyebrow">new — barrier hydration</span>
+        <h1>youth starts <em>with you</em>.</h1>
+        <p class="lead">three ingredients. one promise. niacinamide, ceramides, hyaluronic acid — formulated for the skin barrier, nothing else.</p>
+        <div class="hero__ctas">
+          <a href="#shop" class="btn btn--primary">shop the line</a>
+          <a href="#ingredients" class="btn btn--ghost">read the formula</a>
+        </div>
+      </div>
+
+      <div class="hero__visual reveal" aria-hidden="true">
+        <!-- a single, abstract droplet column. never captioned. -->
+        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <radialGradient id="drop" cx="50%" cy="40%" r="60%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"/>
+              <stop offset="60%" stop-color="#ade8f9" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#ade8f9" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <ellipse cx="200" cy="220" rx="170" ry="220" fill="url(#drop)"/>
+          <ellipse cx="200" cy="220" rx="120" ry="150" fill="none" stroke="#2a2220" stroke-width="0.6" stroke-opacity="0.18"/>
+          <ellipse cx="200" cy="220" rx="80" ry="110" fill="none" stroke="#2a2220" stroke-width="0.6" stroke-opacity="0.12"/>
+        </svg>
+        <div class="hero__visual-tag">
+          <span>made for the barrier.</span>
+          <span class="num">03.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- product grid — "the edit"                                          -->
+  <!-- corresponds to: sections/featured-collection.liquid                -->
+  <!-- ================================================================== -->
+  <section class="section" id="shop">
+    <div class="container">
+      <div class="section__head reveal">
+        <div>
+          <span class="eyebrow">the edit</span>
+          <h2 class="section__title">four products. nothing extra.</h2>
+        </div>
+        <a href="#" class="text-link">view all <span class="arrow">→</span></a>
+      </div>
+
+      <div class="products">
+
+        <article class="product product--cleanser reveal">
+          <div class="product__media">
+            <span class="product__badge">core</span>
+            <button class="product__wishlist" aria-label="add to wishlist">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17s-6-3.7-6-9a3.5 3.5 0 0 1 6-2.4A3.5 3.5 0 0 1 16 8c0 5.3-6 9-6 9Z"/></svg>
+            </button>
+            <svg viewBox="0 0 200 250" preserveAspectRatio="xMidYMax meet">
+              <rect x="70" y="80" width="60" height="150" rx="6" fill="#f0f3fa" stroke="#2a2220" stroke-width="0.6" stroke-opacity="0.2"/>
+              <rect x="80" y="60" width="40" height="22" rx="3" fill="#2a2220"/>
+              <text x="100" y="170" text-anchor="middle" font-family="Satoshi" font-weight="300" font-size="14" fill="#2a2220">iloveyouth.</text>
+              <text x="100" y="188" text-anchor="middle" font-family="Satoshi" font-weight="400" font-size="7" fill="#6b5c54" letter-spacing="1">cleanser</text>
+            </svg>
+            <button class="product__quickadd">add to bag</button>
+          </div>
+          <div class="product__info">
+            <h3 class="product__name">the cleanser.</h3>
+            <span class="product__price">$28</span>
+            <p class="product__tagline">gentle. thorough. never stripping.</p>
+            <ul class="product__ingredients">
+              <li>niacinamide.</li><li>ceramides.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="product product--toner reveal">
+          <div class="product__media">
+            <button class="product__wishlist" aria-label="add to wishlist">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17s-6-3.7-6-9a3.5 3.5 0 0 1 6-2.4A3.5 3.5 0 0 1 16 8c0 5.3-6 9-6 9Z"/></svg>
+            </button>
+            <svg viewBox="0 0 200 250" preserveAspectRatio="xMidYMax meet">
+              <rect x="75" y="70" width="50" height="160" rx="4" fill="#ffffff" fill-opacity="0.9" stroke="#2a2220" stroke-width="0.6" stroke-opacity="0.25"/>
+              <rect x="85" y="50" width="30" height="22" rx="2" fill="#2a2220"/>
+              <text x="100" y="160" text-anchor="middle" font-family="Satoshi" font-weight="300" font-size="12" fill="#2a2220">iloveyouth.</text>
+              <text x="100" y="176" text-anchor="middle" font-family="Satoshi" font-weight="400" font-size="6" fill="#6b5c54" letter-spacing="1">toner</text>
+            </svg>
+            <button class="product__quickadd">add to bag</button>
+          </div>
+          <div class="product__info">
+            <h3 class="product__name">the toner.</h3>
+            <span class="product__price">$24</span>
+            <p class="product__tagline">balances without stripping. preps for everything after.</p>
+            <ul class="product__ingredients">
+              <li>niacinamide.</li><li>hyaluronic acid.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="product product--serum reveal">
+          <div class="product__media">
+            <span class="product__badge">best seller</span>
+            <button class="product__wishlist" aria-label="add to wishlist">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17s-6-3.7-6-9a3.5 3.5 0 0 1 6-2.4A3.5 3.5 0 0 1 16 8c0 5.3-6 9-6 9Z"/></svg>
+            </button>
+            <svg viewBox="0 0 200 250" preserveAspectRatio="xMidYMax meet">
+              <rect x="78" y="70" width="44" height="160" rx="3" fill="#ffffff" fill-opacity="0.95" stroke="#2a2220" stroke-width="0.6" stroke-opacity="0.3"/>
+              <circle cx="100" cy="58" r="10" fill="#2a2220"/>
+              <rect x="96" y="40" width="8" height="22" fill="#2a2220"/>
+              <text x="100" y="160" text-anchor="middle" font-family="Satoshi" font-weight="300" font-size="11" fill="#2a2220">iloveyouth.</text>
+              <text x="100" y="174" text-anchor="middle" font-family="Satoshi" font-weight="400" font-size="6" fill="#6b5c54" letter-spacing="1">serum</text>
+            </svg>
+            <button class="product__quickadd">add to bag</button>
+          </div>
+          <div class="product__info">
+            <h3 class="product__name">the serum.</h3>
+            <span class="product__price">$38</span>
+            <p class="product__tagline">forty-eight hours of barrier hydration in a single drop.</p>
+            <ul class="product__ingredients">
+              <li>hyaluronic acid.</li><li>niacinamide.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="product product--cream reveal">
+          <div class="product__media">
+            <span class="product__badge">new</span>
+            <button class="product__wishlist" aria-label="add to wishlist">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17s-6-3.7-6-9a3.5 3.5 0 0 1 6-2.4A3.5 3.5 0 0 1 16 8c0 5.3-6 9-6 9Z"/></svg>
+            </button>
+            <svg viewBox="0 0 200 250" preserveAspectRatio="xMidYMax meet">
+              <ellipse cx="100" cy="180" rx="55" ry="55" fill="#f0f3fa" stroke="#2a2220" stroke-width="0.6" stroke-opacity="0.3"/>
+              <ellipse cx="100" cy="125" rx="55" ry="12" fill="#2a2220"/>
+              <text x="100" y="178" text-anchor="middle" font-family="Satoshi" font-weight="300" font-size="13" fill="#2a2220">iloveyouth.</text>
+              <text x="100" y="194" text-anchor="middle" font-family="Satoshi" font-weight="400" font-size="6" fill="#6b5c54" letter-spacing="1">cream</text>
+            </svg>
+            <button class="product__quickadd">add to bag</button>
+          </div>
+          <div class="product__info">
+            <h3 class="product__name">the cream.</h3>
+            <span class="product__price">$32</span>
+            <p class="product__tagline">seal. protect. nourish. the final layer of the routine.</p>
+            <ul class="product__ingredients">
+              <li>ceramides.</li><li>hyaluronic acid.</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- editorial promise band — dark surface                              -->
+  <!-- corresponds to: sections/image-with-text-banner.liquid             -->
+  <!-- ================================================================== -->
+  <section class="promise">
+    <div class="container">
+      <div class="promise__inner reveal">
+        <span class="eyebrow on-dark">the iloveyouth promise</span>
+        <h2>hydration without compromise.</h2>
+        <p>no drying alcohols. no greasy residue. no twenty-ingredient mystery blends. just three ingredients with a job, formulated for the barrier you already have.</p>
+        <a href="#story" class="btn btn--ghost on-dark">our story</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- marquee — almond silk band, used sparingly per brand rule          -->
+  <!-- corresponds to: sections/marquee.liquid                            -->
+  <!-- ================================================================== -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <div class="marquee__item">niacinamide.</div>
+      <div class="marquee__item">ceramides.</div>
+      <div class="marquee__item">hyaluronic acid.</div>
+      <div class="marquee__item">no drying alcohols.</div>
+      <div class="marquee__item">cruelty-free.</div>
+      <div class="marquee__item">made for the barrier.</div>
+      <!-- duplicated for seamless loop -->
+      <div class="marquee__item">niacinamide.</div>
+      <div class="marquee__item">ceramides.</div>
+      <div class="marquee__item">hyaluronic acid.</div>
+      <div class="marquee__item">no drying alcohols.</div>
+      <div class="marquee__item">cruelty-free.</div>
+      <div class="marquee__item">made for the barrier.</div>
+    </div>
+  </div>
+
+  <!-- ================================================================== -->
+  <!-- ingredient stories — the "named." system                           -->
+  <!-- corresponds to: sections/ingredient-grid.liquid                    -->
+  <!-- ================================================================== -->
+  <section class="section ingredients-section" id="ingredients">
+    <div class="container">
+      <div class="section__head reveal">
+        <div>
+          <span class="eyebrow">named.</span>
+          <h2 class="section__title">three ingredients. each does one thing.</h2>
+        </div>
+        <a href="#" class="text-link">read the formula <span class="arrow">→</span></a>
+      </div>
+
+      <div class="ingredients">
+        <article class="ingredient-card reveal">
+          <span class="eyebrow no-rule">hydration</span>
+          <h3 class="ingredient-card__name">niacinamide.</h3>
+          <p class="ingredient-card__sentence">strengthens the skin barrier and quietly evens tone over time. the workhorse, named in plain language.</p>
+          <span class="ingredient-card__meta">in: cleanser. toner. serum.</span>
+        </article>
+
+        <article class="ingredient-card reveal">
+          <span class="eyebrow no-rule">repair</span>
+          <h3 class="ingredient-card__name">ceramides.</h3>
+          <p class="ingredient-card__sentence">replace the lipids your skin already makes when the barrier wears down. nothing exotic — just rebuilt.</p>
+          <span class="ingredient-card__meta">in: cleanser. cream.</span>
+        </article>
+
+        <article class="ingredient-card reveal">
+          <span class="eyebrow no-rule">water</span>
+          <h3 class="ingredient-card__name">hyaluronic acid.</h3>
+          <p class="ingredient-card__sentence">pulls water into the upper layers of the skin and holds it there through the day. not new — used right.</p>
+          <span class="ingredient-card__meta">in: toner. serum. cream.</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- feature split — "three ingredients. one promise."                  -->
+  <!-- corresponds to: sections/image-with-text.liquid                    -->
+  <!-- ================================================================== -->
+  <section class="section feature-split" id="story">
+    <div class="container feature-split__inner">
+      <div class="feature-split__visual reveal" aria-hidden="true">
+        <svg viewBox="0 0 500 500" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <radialGradient id="orb" cx="40%" cy="35%" r="70%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+              <stop offset="50%" stop-color="#ade8f9" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#2a2220" stop-opacity="0.15"/>
+            </radialGradient>
+          </defs>
+          <circle cx="250" cy="250" r="180" fill="url(#orb)"/>
+          <circle cx="250" cy="250" r="180" fill="none" stroke="#2a2220" stroke-width="0.6" stroke-opacity="0.18"/>
+          <circle cx="250" cy="250" r="120" fill="none" stroke="#2a2220" stroke-width="0.6" stroke-opacity="0.12"/>
+          <circle cx="250" cy="250" r="60"  fill="none" stroke="#2a2220" stroke-width="0.6" stroke-opacity="0.08"/>
+        </svg>
+      </div>
+      <div class="feature-split__content reveal">
+        <span class="eyebrow">the iloveyouth difference</span>
+        <h2>three ingredients. one <em>promise</em>.</h2>
+        <p>most skincare lines hide their formulas behind proprietary blends. we list ours on the front of the bottle, in the language you actually use.</p>
+        <ul class="feature-split__list">
+          <li>no drying alcohols.</li>
+          <li>no fragrance.</li>
+          <li>no fillers.</li>
+          <li>no fluff.</li>
+        </ul>
+        <a href="#shop" class="btn btn--primary">shop the line</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- routine builder                                                    -->
+  <!-- corresponds to: sections/routine-steps.liquid                      -->
+  <!-- ================================================================== -->
+  <section class="routine" id="routine">
+    <div class="container">
+      <div class="section__head reveal">
+        <div>
+          <span class="eyebrow">your routine</span>
+          <h2 class="section__title">four steps. morning and night.</h2>
+        </div>
+        <a href="#shop" class="text-link">build yours <span class="arrow">→</span></a>
+      </div>
+
+      <div class="routine__steps">
+        <div class="routine__step reveal">
+          <h3>cleanse.</h3>
+          <p>remove the day. start the routine on a clean barrier — never a stripped one.</p>
+        </div>
+        <div class="routine__step reveal">
+          <h3>tone.</h3>
+          <p>balance and prep the skin so everything you put on next actually works.</p>
+        </div>
+        <div class="routine__step reveal">
+          <h3>treat.</h3>
+          <p>one drop of the serum. forty-eight hours of barrier hydration.</p>
+        </div>
+        <div class="routine__step reveal">
+          <h3>seal.</h3>
+          <p>finish with the cream. lock everything you just laid down into the skin.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- review band                                                        -->
+  <!-- corresponds to: sections/testimonials.liquid                       -->
+  <!-- ================================================================== -->
+  <section class="section reviews">
+    <div class="container">
+      <div class="section__head reveal">
+        <div>
+          <span class="eyebrow">in their own words</span>
+          <h2 class="section__title">the people who already use it.</h2>
+        </div>
+        <a href="#" class="text-link">all reviews <span class="arrow">→</span></a>
+      </div>
+
+      <div class="reviews__grid">
+        <article class="review reveal">
+          <span class="stars" aria-label="5 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5l1.9 4 4.4.6-3.2 3.1.8 4.3L8 11.5 4.1 13.5l.8-4.3L1.7 6.1l4.4-.6Z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5l1.9 4 4.4.6-3.2 3.1.8 4.3L8 11.5 4.1 13.5l.8-4.3L1.7 6.1l4.4-.6Z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5l1.9 4 4.4.6-3.2 3.1.8 4.3L8 11.5 4.1 13.5l.8-4.3L1.7 6.1l4.4-.6Z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5l1.9 4 4.4.6-3.2 3.1.8 4.3L8 11.5 4.1 13.5l.8-4.3L1.7 6.1l4.4-.6Z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5l1.9 4 4.4.6-3.2 3.1.8 4.3L8 11.5 4.1 13.5l.8-4.3L1.7 6.1l4.4-.6Z"/></svg>
+          </span>
+          <p class="review__quote">"i finally know what's on my face and what each one does. the serum alone is worth the routine."</p>
+          <div class="review__attribution">
+            <strong>maya k.</strong>
+            verified · the serum
+          </div>
+        </article>
+
+        <article class="review reveal">
+          <span class="stars" aria-label="5 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5l1.9 4 4.4.6-3.2 3.1.8 4.3L8 11.5 4.1 13.5l.8-4.3L1.7 6.1l4.4-.6Z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5l1.9 4 4.4.6-3.2 3.1.8 4.3L8 11.5 4.1 13.5l.8-4.3L1.7 6.1l4.4-.6Z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5l1.9 4 4.4.6-3.2 3.1.8 4.3L8 11.5 4.1 13.5l.8-4.3L1.7 6.1l4.4-.6Z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5l1.9 4 4.4.6-3.2 3.1.8 4.3L8 11.5 4.1 13.5l.8-4.3L1.7 6.1l4.4-.6Z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5l1.9 4 4.4.6-3.2 3.1.8 4.3L8 11.5 4.1 13.5l.8-4.3L1.7 6.1l4.4-.6Z"/></svg>
+          </span>
+          <p class="review__quote">"the cleanser doesn't strip. the cream doesn't sit. nothing is fighting my skin for a change."</p>
+          <div class="review__attribution">
+            <strong>jay r.</strong>
+            verified · the routine
+          </div>
+        </article>
+
+        <article class="review reveal">
+          <span class="stars" aria-label="5 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5l1.9 4 4.4.6-3.2 3.1.8 4.3L8 11.5 4.1 13.5l.8-4.3L1.7 6.1l4.4-.6Z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5l1.9 4 4.4.6-3.2 3.1.8 4.3L8 11.5 4.1 13.5l.8-4.3L1.7 6.1l4.4-.6Z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5l1.9 4 4.4.6-3.2 3.1.8 4.3L8 11.5 4.1 13.5l.8-4.3L1.7 6.1l4.4-.6Z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5l1.9 4 4.4.6-3.2 3.1.8 4.3L8 11.5 4.1 13.5l.8-4.3L1.7 6.1l4.4-.6Z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5l1.9 4 4.4.6-3.2 3.1.8 4.3L8 11.5 4.1 13.5l.8-4.3L1.7 6.1l4.4-.6Z"/></svg>
+          </span>
+          <p class="review__quote">"three ingredients. that's it. i wanted to feel skeptical but the barrier holds all day now."</p>
+          <div class="review__attribution">
+            <strong>sam t.</strong>
+            verified · the cream
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- tagline cta band                                                   -->
+  <!-- corresponds to: sections/cta-banner.liquid                         -->
+  <!-- ================================================================== -->
+  <section class="tagline-band">
+    <div class="container tagline-band__inner reveal">
+      <span class="eyebrow on-dark">the line, in your routine</span>
+      <h2>youth starts with you.</h2>
+      <p>start the routine. bring the barrier back. the rest takes care of itself.</p>
+      <a href="#shop" class="btn btn--primary">shop the full routine</a>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- footer                                                              -->
+  <!-- corresponds to: sections/footer.liquid                              -->
+  <!-- inverse wordmark from ily-brand/logos                               -->
+  <!-- ================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <img src="../brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-white-rect-400.svg" alt="iloveyouth">
+          <p class="footer__tagline">three ingredients. one promise. clean, effective hydration — formulated for the barrier you already have.</p>
+          <form class="footer__newsletter" aria-label="newsletter signup">
+            <input type="email" placeholder="email — for the next drop." aria-label="email">
+            <button type="submit" aria-label="subscribe">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+            </button>
+          </form>
+        </div>
+
+        <div class="footer__col">
+          <h4>shop</h4>
+          <ul>
+            <li><a href="#">the cleanser</a></li>
+            <li><a href="#">the toner</a></li>
+            <li><a href="#">the serum</a></li>
+            <li><a href="#">the cream</a></li>
+            <li><a href="#">the full routine</a></li>
+            <li><a href="#">gift card</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>learn</h4>
+          <ul>
+            <li><a href="#">our story</a></li>
+            <li><a href="#">the formula</a></li>
+            <li><a href="#">ingredients</a></li>
+            <li><a href="#">routine guide</a></li>
+            <li><a href="#">journal</a></li>
+            <li><a href="#">brand guidelines</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>help</h4>
+          <ul>
+            <li><a href="#">contact</a></li>
+            <li><a href="#">shipping</a></li>
+            <li><a href="#">returns</a></li>
+            <li><a href="#">faq</a></li>
+            <li><a href="#">subscriptions</a></li>
+            <li><a href="#">accessibility</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>© 2026 ILOVEYOUTH INC. all rights reserved.</span>
+        <div class="footer__socials" aria-label="social">
+          <a href="#" aria-label="instagram">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="14" height="14" rx="4"/><circle cx="10" cy="10" r="3.4"/><circle cx="14.5" cy="5.5" r="0.6" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="tiktok">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v9.5a3 3 0 1 1-3-3"/><path d="M12 3c.4 2 1.9 3.4 4 3.6"/></svg>
+          </a>
+          <a href="#" aria-label="pinterest">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="10" cy="10" r="7.5"/><path d="M9 7c2-1 4 0 4 2.5 0 2-1.5 3.5-3 3.5-1 0-1.5-.5-1.5-1.5L9 7Z"/><path d="M8 17l1.2-5"/></svg>
+          </a>
+        </div>
+        <div class="footer__legal">
+          <a href="#">privacy</a>
+          <a href="#">terms</a>
+          <a href="#">cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // sticky-header scroll state
+    (function () {
+      const header = document.getElementById('header');
+      const onScroll = () => {
+        if (window.scrollY > 8) header.classList.add('is-scrolled');
+        else header.classList.remove('is-scrolled');
+      };
+      document.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+    // rotating announcement messages
+    (function () {
+      const msgs = document.querySelectorAll('.announcement__msg');
+      if (!msgs.length) return;
+      let i = 0;
+      setInterval(() => {
+        msgs[i].classList.remove('is-active');
+        i = (i + 1) % msgs.length;
+        msgs[i].classList.add('is-active');
+      }, 5000);
+    })();
+
+    // intersection-observer reveals
+    (function () {
+      const items = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        items.forEach(el => el.classList.add('is-visible'));
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      items.forEach(el => io.observe(el));
+    })();
+  </script>
+
+</body>
+</html>

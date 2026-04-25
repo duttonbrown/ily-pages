@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iloveyouth — youth starts with you.</title>
+  <meta name="description" content="clean, effective hydration. niacinamide, ceramides, hyaluronic acid. nothing else.">
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="v2.css">
+</head>
+<body>
+
+  <!-- announcement -->
+  <div class="announcement">
+    free shipping on orders over $50 · <a href="#">join the list →</a>
+  </div>
+
+  <!-- header -->
+  <header class="header" id="header">
+    <div class="container">
+      <div class="header__inner">
+        <button class="header__menu-btn" aria-label="open menu" id="menuOpen">
+          <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="1.4">
+            <line x1="0" y1="1" x2="22" y2="1"/>
+            <line x1="0" y1="7" x2="22" y2="7"/>
+            <line x1="0" y1="13" x2="22" y2="13"/>
+          </svg>
+        </button>
+        <nav class="header__nav" aria-label="primary">
+          <a href="v2.html" aria-current="page">home</a>
+          <a href="v2-collection.html">shop</a>
+          <a href="#">ingredients</a>
+          <a href="#">journal</a>
+        </nav>
+        <a href="v2.html" class="header__brand" aria-label="iloveyouth — home"><img src="assets/ily-wordmark-dark.svg" alt="iloveyouth.">
+        </a>
+        <div class="header__actions">
+          <button class="header__icon-btn" data-action="search" aria-label="search">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4">
+              <circle cx="9" cy="9" r="6"/>
+              <line x1="13.5" y1="13.5" x2="18" y2="18"/>
+            </svg>
+          </button>
+          <button class="header__icon-btn" aria-label="account">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4">
+              <circle cx="10" cy="7" r="3.5"/>
+              <path d="M3.5 17c1.4-3 4-4.5 6.5-4.5s5.1 1.5 6.5 4.5"/>
+            </svg>
+          </button>
+          <a href="#" class="header__cart" aria-label="cart, 2 items">
+            <svg width="20" height="22" viewBox="0 0 20 22" fill="none" stroke="currentColor" stroke-width="1.4">
+              <path d="M3 6.5h14l-1.4 12.5a1.5 1.5 0 0 1-1.5 1.4H5.9a1.5 1.5 0 0 1-1.5-1.4L3 6.5z"/>
+              <path d="M7 6.5V5a3 3 0 0 1 6 0v1.5"/>
+            </svg>
+            <span class="header__cart-count">2</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- mobile menu drawer -->
+  <aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu__top">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="assets/ily-wordmark-white.svg">
+        <img src="assets/ily-wordmark-white.svg" alt="iloveyouth.">
+      </picture>
+      <button class="mobile-menu__close" aria-label="close menu" id="menuClose">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.4">
+          <line x1="3" y1="3" x2="19" y2="19"/>
+          <line x1="19" y1="3" x2="3" y2="19"/>
+        </svg>
+      </button>
+    </div>
+    <nav class="mobile-menu__nav">
+      <a href="v2.html">home <span aria-hidden="true">→</span></a>
+      <a href="v2-collection.html">shop <span aria-hidden="true">→</span></a>
+      <a href="v2-product.html">hydration serum <span aria-hidden="true">→</span></a>
+      <a href="#">ingredients <span aria-hidden="true">→</span></a>
+      <a href="#">journal <span aria-hidden="true">→</span></a>
+      <a href="#">about <span aria-hidden="true">→</span></a>
+    </nav>
+    <div class="mobile-menu__foot">
+      <a href="#">account</a>
+      <a href="#">contact</a>
+      <span>youth starts with you.</span>
+    </div>
+  </aside>
+
+  <!-- hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <span class="eyebrow">clean, effective hydration</span>
+          <h1>youth starts <span class="accent-bar">with you</span>.</h1>
+          <p class="lead">three ingredients. no drying alcohols. no witch hazel. nothing in here that undoes the good stuff.</p>
+          <div class="hero__ctas">
+            <a class="btn btn--primary" href="v2-collection.html">shop the line</a>
+            <a class="btn btn--ghost" href="#ingredients">read the formula</a>
+          </div>
+        </div>
+        <div class="hero__visual" aria-hidden="true">
+          <span class="hero__droplet"></span>
+          <div class="hero__visual-tag">
+            <div>
+              <span class="num">96.</span>
+              <div style="margin-top: var(--s-2);">said skin felt hydrated all day*</div>
+            </div>
+            <div style="text-align: right;">
+              <div>* 28-day user panel</div>
+              <div>n=120</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- promise / honest admission -->
+  <section class="section section--dark">
+    <div class="container container--narrow">
+      <div class="quote">
+        <span class="eyebrow on-dark no-rule" style="justify-content: center; display: flex;">a lot of brands won't say this</span>
+        <p style="margin: var(--s-8) 0 0;">most "hydrating" serums contain drying alcohols<span class="period">.</span> ours doesn't<span class="period">.</span></p>
+        <span class="quote__cite">— that's the whole pitch.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- product line -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-head__left">
+          <span class="eyebrow">the line</span>
+          <h2 class="section-head__title">three steps. one routine. all skin types.</h2>
+        </div>
+        <div class="section-head__right">
+          <a class="text-link" href="v2-collection.html">shop everything <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="products">
+        <a class="product" href="v2-product.html">
+          <div class="product__media product__media--mist">
+            <span class="product__badge">step 01</span>
+            <div class="product__bottle">
+              <svg viewBox="0 0 100 200" preserveAspectRatio="xMidYMid meet">
+                <rect x="20" y="32" width="60" height="148" rx="8" fill="#2a2220"/>
+                <rect x="32" y="14" width="36" height="22" rx="3" fill="#2a2220"/>
+                <rect x="25" y="86" width="50" height="64" rx="2" fill="#f0f3fa"/>
+                <image href="assets/ily-wordmark-dark.svg" x="33" y="96" width="34" height="13" preserveAspectRatio="xMidYMid meet"/>
+                <text x="50" y="126" text-anchor="middle" fill="#2a2220" font-family="Satoshi, sans-serif" font-size="4.5" letter-spacing="0.6" font-weight="400">cleanser</text>
+                <text x="50" y="140" text-anchor="middle" fill="#6b5c54" font-family="Satoshi, sans-serif" font-size="2.8" letter-spacing="0.6" font-weight="500">step 01 · 150ml</text>
+              </svg>
+            </div>
+          </div>
+          <div class="product__info">
+            <span class="product__name">gentle cleanser</span>
+            <span class="product__price">$28</span>
+            <p class="product__tagline">non-stripping. removes everything. respects the barrier.</p>
+          </div>
+        </a>
+
+        <a class="product" href="v2-product.html">
+          <div class="product__media product__media--soft-blue">
+            <span class="product__badge">step 02</span>
+            <div class="product__bottle">
+              <svg viewBox="0 0 100 200" preserveAspectRatio="xMidYMid meet">
+                <rect x="20" y="32" width="60" height="148" rx="8" fill="#2a2220"/>
+                <rect x="32" y="14" width="36" height="22" rx="3" fill="#2a2220"/>
+                <rect x="25" y="86" width="50" height="64" rx="2" fill="#f0f3fa"/>
+                <image href="assets/ily-wordmark-dark.svg" x="33" y="96" width="34" height="13" preserveAspectRatio="xMidYMid meet"/>
+                <text x="50" y="126" text-anchor="middle" fill="#2a2220" font-family="Satoshi, sans-serif" font-size="4.5" letter-spacing="0.6" font-weight="400">toner</text>
+                <text x="50" y="140" text-anchor="middle" fill="#6b5c54" font-family="Satoshi, sans-serif" font-size="2.8" letter-spacing="0.6" font-weight="500">step 02 · 200ml</text>
+              </svg>
+            </div>
+          </div>
+          <div class="product__info">
+            <span class="product__name">hydrating toner</span>
+            <span class="product__price">$32</span>
+            <p class="product__tagline">not all toners strip. this one hydrates.</p>
+          </div>
+        </a>
+
+        <a class="product" href="v2-product.html">
+          <div class="product__media product__media--blue">
+            <span class="product__badge product__badge--accent">bestseller</span>
+            <div class="product__bottle">
+              <svg viewBox="0 0 100 200" preserveAspectRatio="xMidYMid meet">
+                <rect x="22" y="32" width="56" height="146" rx="6" fill="#2a2220"/>
+                <rect x="32" y="14" width="36" height="22" rx="3" fill="#2a2220"/>
+                <line x1="50" y1="36" x2="50" y2="68" stroke="#2a2220" stroke-width="3"/>
+                <rect x="32" y="80" width="36" height="60" fill="#f0f3fa" opacity="0.95"/>
+                <text x="50" y="108" text-anchor="middle" fill="#2a2220" font-family="Satoshi" font-size="9" font-weight="500">iloveyouth.</text>
+                <text x="50" y="122" text-anchor="middle" fill="#2a2220" font-family="Satoshi" font-size="6" letter-spacing="1.4">serum</text>
+              </svg>
+            </div>
+          </div>
+          <div class="product__info">
+            <span class="product__name">hydration serum</span>
+            <span class="product__price">$48</span>
+            <p class="product__tagline">5% niacinamide. ceramides. hyaluronic acid. that's it.</p>
+          </div>
+        </a>
+
+        <a class="product" href="v2-product.html">
+          <div class="product__media product__media--silk">
+            <span class="product__badge">step 04</span>
+            <div class="product__bottle">
+              <svg viewBox="0 0 100 200" preserveAspectRatio="xMidYMid meet">
+                <ellipse cx="50" cy="42" rx="34" ry="14" fill="#2a2220"/>
+                <rect x="16" y="42" width="68" height="124" rx="34" fill="#2a2220"/>
+                <rect x="22" y="86" width="56" height="60" rx="2" fill="#f0f3fa"/>
+                <image href="assets/ily-wordmark-dark.svg" x="32" y="96" width="36" height="13" preserveAspectRatio="xMidYMid meet"/>
+                <text x="50" y="124" text-anchor="middle" fill="#2a2220" font-family="Satoshi, sans-serif" font-size="4.2" letter-spacing="0.5" font-weight="400">ceramides</text>
+                <text x="50" y="138" text-anchor="middle" fill="#6b5c54" font-family="Satoshi, sans-serif" font-size="2.8" letter-spacing="0.6" font-weight="500">np · ap · eop</text>
+              </svg>
+            </div>
+          </div>
+          <div class="product__info">
+            <span class="product__name">daily moisturizer</span>
+            <span class="product__price">$42</span>
+            <p class="product__tagline">ceramide-rebuilt barrier. lightweight. zero residue.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- almond silk marquee — single grace note -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>no drying alcohols<i class="dot"></i></span>
+      <span>no witch hazel<i class="dot"></i></span>
+      <span>no fragrance<i class="dot"></i></span>
+      <span>no fillers<i class="dot"></i></span>
+      <span>just ingredients<i class="dot"></i></span>
+      <!-- duplicated for seamless loop -->
+      <span>no drying alcohols<i class="dot"></i></span>
+      <span>no witch hazel<i class="dot"></i></span>
+      <span>no fragrance<i class="dot"></i></span>
+      <span>no fillers<i class="dot"></i></span>
+      <span>just ingredients<i class="dot"></i></span>
+    </div>
+  </div>
+
+  <!-- ingredient stories -->
+  <section class="section" id="ingredients">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-head__left">
+          <span class="eyebrow">three ingredients</span>
+          <h2 class="section-head__title">named<span class="period">.</span> not blended. not proprietary.</h2>
+        </div>
+      </div>
+
+      <div class="story-grid">
+        <article class="story">
+          <span class="eyebrow no-rule">vitamin b3</span>
+          <h3 class="story__name">niacinamide<span class="period">.</span></h3>
+          <p class="story__copy">brightens tone. minimises pore appearance. strengthens the barrier without irritation. five percent, every bottle.</p>
+        </article>
+        <article class="story">
+          <span class="eyebrow no-rule">lipid complex</span>
+          <h3 class="story__name">ceramides<span class="period">.</span></h3>
+          <p class="story__copy">the same lipid molecules your skin already makes. they rebuild the barrier and lock moisture in where it belongs.</p>
+        </article>
+        <article class="story">
+          <span class="eyebrow no-rule">humectant</span>
+          <h3 class="story__name">hyaluronic acid<span class="period">.</span></h3>
+          <p class="story__copy">draws water deep into the skin. holds up to a thousand times its weight. it's not a gimmick — it's just science.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- feature split — the serum -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="feature">
+        <div class="feature__media">
+          <div class="product__bottle" style="padding: 14% 32%;">
+            <svg viewBox="0 0 100 200" preserveAspectRatio="xMidYMid meet">
+              <rect x="22" y="32" width="56" height="146" rx="6" fill="#2a2220"/>
+              <rect x="32" y="14" width="36" height="22" rx="3" fill="#2a2220"/>
+              <line x1="50" y1="36" x2="50" y2="68" stroke="#2a2220" stroke-width="3"/>
+              <rect x="32" y="80" width="36" height="60" fill="#f0f3fa" opacity="0.95"/>
+              <text x="50" y="108" text-anchor="middle" fill="#2a2220" font-family="Satoshi" font-size="9" font-weight="500">iloveyouth.</text>
+              <text x="50" y="122" text-anchor="middle" fill="#2a2220" font-family="Satoshi" font-size="6" letter-spacing="1.4">serum</text>
+            </svg>
+          </div>
+          <span class="feature__media-tag">hero · 30ml</span>
+        </div>
+        <div class="feature__copy">
+          <span class="eyebrow">the hero</span>
+          <h2>the serum that does the work<span class="period">.</span></h2>
+          <p>built around 5% niacinamide. ceramides lock moisture in. hyaluronic acid draws water deep. lightweight, fast-absorbing, leaves no residue — sinks in before you've put the cap back on.</p>
+          <div style="display: flex; gap: var(--s-3); flex-wrap: wrap;">
+            <a class="btn btn--primary" href="v2-product.html">shop the serum — $48</a>
+            <a class="text-link" href="v2-product.html">full ingredient list <span class="arrow">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- big tagline band — dark, white-on-dark, generous -->
+  <section class="tagline-band">
+    <div class="container container--narrow">
+      <span class="eyebrow on-dark no-rule">the brand promise</span>
+      <h2>youth starts with you<span class="period">.</span></h2>
+      <p class="lead on-dark" style="margin: var(--s-8) auto 0; max-width: 44ch;">taking care of your skin isn't vanity. it's self-respect. two minutes that are just for you.</p>
+    </div>
+  </section>
+
+  <!-- reviews -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-head__left">
+          <span class="eyebrow">review highlights</span>
+          <h2 class="section-head__title">what customers actually say.</h2>
+        </div>
+        <div class="section-head__right">
+          <a class="text-link" href="#">read all 1,284 reviews <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="reviews">
+        <article class="review">
+          <span class="review__stars" aria-label="5 of 5 stars">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><polygon points="8,1 10,6 15,6.5 11,10 12,15 8,12.5 4,15 5,10 1,6.5 6,6"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><polygon points="8,1 10,6 15,6.5 11,10 12,15 8,12.5 4,15 5,10 1,6.5 6,6"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><polygon points="8,1 10,6 15,6.5 11,10 12,15 8,12.5 4,15 5,10 1,6.5 6,6"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><polygon points="8,1 10,6 15,6.5 11,10 12,15 8,12.5 4,15 5,10 1,6.5 6,6"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><polygon points="8,1 10,6 15,6.5 11,10 12,15 8,12.5 4,15 5,10 1,6.5 6,6"/></svg>
+          </span>
+          <p class="review__quote">"absorbs in seconds. my skin felt different the first morning. finally a serum that actually does what it says."</p>
+          <span class="review__cite">maya t. · verified buyer · combination skin</span>
+        </article>
+        <article class="review">
+          <span class="review__stars" aria-label="5 of 5 stars">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><polygon points="8,1 10,6 15,6.5 11,10 12,15 8,12.5 4,15 5,10 1,6.5 6,6"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><polygon points="8,1 10,6 15,6.5 11,10 12,15 8,12.5 4,15 5,10 1,6.5 6,6"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><polygon points="8,1 10,6 15,6.5 11,10 12,15 8,12.5 4,15 5,10 1,6.5 6,6"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><polygon points="8,1 10,6 15,6.5 11,10 12,15 8,12.5 4,15 5,10 1,6.5 6,6"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><polygon points="8,1 10,6 15,6.5 11,10 12,15 8,12.5 4,15 5,10 1,6.5 6,6"/></svg>
+          </span>
+          <p class="review__quote">"i have super sensitive, acne-prone skin and have been burned by 'gentle' products before. zero reaction. just hydrated."</p>
+          <span class="review__cite">jay r. · verified buyer · sensitive / acne-prone</span>
+        </article>
+        <article class="review">
+          <span class="review__stars" aria-label="5 of 5 stars">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><polygon points="8,1 10,6 15,6.5 11,10 12,15 8,12.5 4,15 5,10 1,6.5 6,6"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><polygon points="8,1 10,6 15,6.5 11,10 12,15 8,12.5 4,15 5,10 1,6.5 6,6"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><polygon points="8,1 10,6 15,6.5 11,10 12,15 8,12.5 4,15 5,10 1,6.5 6,6"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><polygon points="8,1 10,6 15,6.5 11,10 12,15 8,12.5 4,15 5,10 1,6.5 6,6"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><polygon points="8,1 10,6 15,6.5 11,10 12,15 8,12.5 4,15 5,10 1,6.5 6,6"/></svg>
+          </span>
+          <p class="review__quote">"replaces three products that weren't working. simple routine, real results. exactly what i wanted."</p>
+          <span class="review__cite">sam k. · verified buyer · combination / mature</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <picture>
+            <source media="(prefers-color-scheme: dark)" srcset="assets/ily-wordmark-white.svg">
+            <img src="assets/ily-wordmark-white.svg" alt="iloveyouth.">
+          </picture>
+          <p>clean, effective hydration. niacinamide, ceramides, hyaluronic acid. nothing else.</p>
+          <form class="footer__sub" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="your email" aria-label="email">
+            <button type="submit">join</button>
+          </form>
+        </div>
+        <div class="footer__col">
+          <h4>shop</h4>
+          <ul>
+            <li><a href="v2-collection.html">all products</a></li>
+            <li><a href="#">cleanser</a></li>
+            <li><a href="#">toner</a></li>
+            <li><a href="v2-product.html">hydration serum</a></li>
+            <li><a href="#">moisturizer</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>brand</h4>
+          <ul>
+            <li><a href="#">about</a></li>
+            <li><a href="#">ingredients</a></li>
+            <li><a href="#">journal</a></li>
+            <li><a href="#">press</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>support</h4>
+          <ul>
+            <li><a href="#">contact</a></li>
+            <li><a href="#">shipping &amp; returns</a></li>
+            <li><a href="#">faq</a></li>
+            <li><a href="#">accessibility</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="legal">© 2026 ILOVEYOUTH INC.</span>
+        <span>youth starts with you.</span>
+        <span>made in california · ships worldwide</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- prototype nav (remove on production) -->
+  <nav class="proto-bar" aria-label="prototype pages">
+    <a href="v2.html" aria-current="page">home</a>
+    <a href="v2-collection.html">collection</a>
+    <a href="v2-product.html">product</a>
+  </nav>
+
+  <script>
+    // sticky header shadow on scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('is-scrolled', window.scrollY > 8);
+    });
+
+    // mobile menu drawer
+    const menu = document.getElementById('mobileMenu');
+    const open = document.getElementById('menuOpen');
+    const close = document.getElementById('menuClose');
+    function setMenu(state) {
+      menu.classList.toggle('is-open', state);
+      menu.setAttribute('aria-hidden', state ? 'false' : 'true');
+      document.body.classList.toggle('menu-open', state);
+    }
+    open?.addEventListener('click', () => setMenu(true));
+    close?.addEventListener('click', () => setMenu(false));
+    menu?.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') setMenu(false);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setMenu(false);
+    });
+  </script>
+
+<style id="vsw-style">
+  .vsw {
+    position: fixed;
+    top: 12px;
+    right: 14px;
+    z-index: 200;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    background: rgba(42, 34, 32, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 9999px;
+    box-shadow: 0 8px 26px rgba(42, 34, 32, 0.18);
+    font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+  }
+  .vsw a {
+    color: #f0f3fa;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 9999px;
+    text-transform: lowercase;
+    transition: background 180ms;
+  }
+  .vsw a:hover { background: rgba(240, 243, 250, 0.10); }
+  .vsw a[aria-current="page"] {
+    background: #ade8f9;
+    color: #2a2220;
+  }
+  .vsw__label {
+    color: #c8bdb5;
+    padding-left: 8px;
+    padding-right: 4px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: lowercase;
+  }
+  @media (max-width: 600px) {
+    .vsw { font-size: 11px; }
+    .vsw a { padding: 5px 8px; }
+    .vsw__label { display: none; }
+  }
+</style>
+<nav class="vsw" aria-label="brand direction switcher">
+  <span class="vsw__label">direction</span>
+  <a href="index.html" style="color: #c8bdb5;">↑</a>
+  <a href="v1.html" >v1</a>
+  <a href="v2.html" aria-current="page">v2</a>
+  <a href="v3.html" >v3</a>
+  <a href="v4.html" >v4</a>
+</nav>
+
+</body>
+</html>

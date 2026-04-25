@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en" data-direction="v1">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>the lineup · iloveyouth.</title>
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" />
+  <link rel="stylesheet" href="v1.css" />
+</head>
+<body class="on-light">
+
+<header class="nav nav--on-dark" id="ily-nav">
+  <div class="container nav__inner">
+    <a href="v1.html" class="nav__brand" aria-label="iloveyouth home">
+      <img class="nav__wordmark" src="assets/ily-wordmark-white-blue.svg" alt="iloveyouth.">
+    </a>
+    <nav class="nav__links" aria-label="primary">
+      <a href="v1.html#the-poem">the formula</a>
+      <a href="v1-products.html">products</a>
+      <a href="v1-about.html">about</a>
+      <a href="v1-product.html">the serum</a>
+      <a href="#" class="nav__cart">cart (0)</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== hero ===== -->
+<section class="hero-dark on-dark" style="min-height: 72svh; display:grid; align-items:end; padding-bottom: clamp(4rem, 10vh, 7rem);">
+  <div class="mesh-bg" aria-hidden="true"></div>
+  <div class="mesh-bg__blob-3" aria-hidden="true"></div>
+  <div class="mesh-bg__blob-4" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="hero-dark__content" style="padding-top: clamp(8rem, 16vh, 11rem);">
+    <span class="statement statement--inverse reveal reveal--d1">the lineup</span>
+    <h1 class="hero-title reveal reveal--d2" style="font-size: clamp(3.5rem, 11vw, 9rem); max-width: 14ch; margin-bottom: var(--ily-space-8);">six products<span class="dot-pop">.</span> one philosophy<span class="dot-pop dot-pop--d2">.</span></h1>
+    <p class="hero-sub reveal reveal--d5" style="max-width: 56ch;">the formula in every product is the same: ingredient-honest, hype-free, no fillers<span class="dot">.</span> what changes is the format and the place it sits in your routine<span class="dot">.</span></p>
+  </div>
+</section>
+
+<!-- ===== filter bar ===== -->
+<section class="section-light" style="padding: var(--ily-space-8) 0;" id="lineup">
+  <div class="container">
+    <div class="filter-bar">
+      <span class="filter-bar__label">filter</span>
+      <div class="filter-bar__group">
+        <button class="filter-pill filter-pill--active">all</button>
+        <button class="filter-pill">cleanse</button>
+        <button class="filter-pill">treat</button>
+        <button class="filter-pill">moisturize</button>
+        <button class="filter-pill">target</button>
+      </div>
+      <span class="filter-bar__label" style="margin-left: auto;">skin type</span>
+      <div class="filter-bar__group">
+        <button class="filter-pill">all</button>
+        <button class="filter-pill">sensitive</button>
+        <button class="filter-pill">oily</button>
+        <button class="filter-pill">dry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== product grid (6 SKUs) ===== -->
+<section class="section-light" style="padding-top: var(--ily-space-12);">
+  <div class="container">
+    <div class="product-grid">
+
+      <!-- 01 — hydration serum -->
+      <a href="v1-product.html" class="product-card">
+        <div class="product-card__media product-visual product-visual--blue">
+          <span class="product-visual__label">01 · the serum</span>
+          <span class="badge badge--solid product-card__badge">the hero</span>
+          <div class="product-visual__bottle" aria-hidden="true"></div>
+          <div class="product-card__quick"><span class="cta-pill cta-pill--ghost" style="background:rgba(240,243,250,0.92); border-color: rgba(42,34,32,0.12);">quick add</span></div>
+        </div>
+        <span class="product-card__index">01</span>
+        <h3 class="product-card__name">hydration serum<span class="dot">.</span></h3>
+        <p class="product-card__hero">5% niacinamide<span class="dot">.</span> ceramides<span class="dot">.</span> hyaluronic acid<span class="dot">.</span></p>
+        <div class="product-card__row">
+          <span class="product-card__price">$48</span>
+          <span class="product-card__rating">4.9 · 1,284 reviews</span>
+        </div>
+      </a>
+
+      <!-- 02 — gentle cleanser -->
+      <a href="v1-product.html" class="product-card">
+        <div class="product-card__media product-visual">
+          <span class="product-visual__label">02 · the cleanser</span>
+          <div class="product-visual__tube" aria-hidden="true"></div>
+        </div>
+        <span class="product-card__index">02</span>
+        <h3 class="product-card__name">gentle cleanser<span class="dot">.</span></h3>
+        <p class="product-card__hero">non-stripping<span class="dot">.</span> ceramide-rich<span class="dot">.</span> won't disrupt the barrier you just rebuilt<span class="dot">.</span></p>
+        <div class="product-card__row">
+          <span class="product-card__price">$32</span>
+          <span class="product-card__rating">4.8 · 612 reviews</span>
+        </div>
+      </a>
+
+      <!-- 03 — hydrating toner -->
+      <a href="v1-product.html" class="product-card">
+        <div class="product-card__media product-visual product-visual--blue">
+          <span class="product-visual__label">03 · the toner</span>
+          <div class="product-visual__jar" aria-hidden="true"></div>
+        </div>
+        <span class="product-card__index">03</span>
+        <h3 class="product-card__name">hydrating toner<span class="dot">.</span></h3>
+        <p class="product-card__hero">hyaluronic acid<span class="dot">.</span> no drying alcohols<span class="dot">.</span> the toner that doesn't feel like one<span class="dot">.</span></p>
+        <div class="product-card__row">
+          <span class="product-card__price">$34</span>
+          <span class="product-card__rating">4.8 · 489 reviews</span>
+        </div>
+      </a>
+
+      <!-- 04 — daily moisturizer -->
+      <a href="v1-product.html" class="product-card">
+        <div class="product-card__media product-visual product-visual--silk">
+          <span class="product-visual__label">04 · the moisturizer</span>
+          <div class="product-visual__tube" aria-hidden="true"></div>
+        </div>
+        <span class="product-card__index">04</span>
+        <h3 class="product-card__name">daily moisturizer<span class="dot dot--silk">.</span></h3>
+        <p class="product-card__hero">ceramides<span class="dot dot--silk">.</span> panthenol<span class="dot dot--silk">.</span> squalane<span class="dot dot--silk">.</span> soft, never heavy<span class="dot dot--silk">.</span></p>
+        <div class="product-card__row">
+          <span class="product-card__price">$42</span>
+          <span class="product-card__rating">4.9 · 728 reviews</span>
+        </div>
+      </a>
+
+      <!-- 05 — spot patches -->
+      <a href="v1-product.html" class="product-card">
+        <div class="product-card__media product-visual product-visual--blue">
+          <span class="product-visual__label">05 · spot patches</span>
+          <span class="badge badge--solid product-card__badge">new</span>
+          <div class="product-visual__patches" aria-hidden="true">
+            <div class="product-visual__patch"></div>
+            <div class="product-visual__patch"></div>
+            <div class="product-visual__patch"></div>
+            <div class="product-visual__patch"></div>
+            <div class="product-visual__patch"></div>
+            <div class="product-visual__patch"></div>
+            <div class="product-visual__patch"></div>
+            <div class="product-visual__patch"></div>
+          </div>
+        </div>
+        <span class="product-card__index">05</span>
+        <h3 class="product-card__name">spot patches<span class="dot">.</span></h3>
+        <p class="product-card__hero">hydrocolloid<span class="dot">.</span> tea tree<span class="dot">.</span> 24 patches<span class="dot">.</span> the quietest fix you'll ever wear<span class="dot">.</span></p>
+        <div class="product-card__row">
+          <span class="product-card__price">$18</span>
+          <span class="product-card__rating">4.9 · 421 reviews</span>
+        </div>
+      </a>
+
+      <!-- 06 — eye patches -->
+      <a href="v1-product.html" class="product-card">
+        <div class="product-card__media product-visual product-visual--silk">
+          <span class="product-visual__label">06 · eye patches</span>
+          <span class="badge badge--silk product-card__badge">new</span>
+          <div class="product-visual__patches product-visual__patches--eyes" aria-hidden="true">
+            <div class="product-visual__patch"></div>
+            <div class="product-visual__patch"></div>
+          </div>
+        </div>
+        <span class="product-card__index">06</span>
+        <h3 class="product-card__name">eye patches<span class="dot dot--silk">.</span></h3>
+        <p class="product-card__hero">caffeine + hyaluronic acid<span class="dot dot--silk">.</span> 30 pairs<span class="dot dot--silk">.</span> for the mornings that didn't include sleep<span class="dot dot--silk">.</span></p>
+        <div class="product-card__row">
+          <span class="product-card__price">$24</span>
+          <span class="product-card__rating">4.9 · 318 reviews</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== bundle moment ===== -->
+<section class="metric on-dark">
+  <div class="container">
+    <div class="metric__inner">
+      <span class="statement statement--inverse">the routine</span>
+      <p class="metric__number">$148<span class="dot">.</span></p>
+      <p class="metric__caption">the four-step routine<span class="dot">.</span> cleanser, toner, serum, moisturizer<span class="dot">.</span> $20 less than buying separately, never less effective<span class="dot">.</span></p>
+      <div style="margin-top: var(--ily-space-10); display:flex; gap: var(--ily-space-4); justify-content: center; flex-wrap: wrap;">
+        <a href="v1-product.html" class="cta-pill">add the routine
+          <svg class="cta-pill__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#routine" class="ghost-link ghost-link--inverse">how it works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== routine builder ===== -->
+<section class="section-light section-light--mixed" id="routine">
+  <div class="container">
+    <header style="margin-bottom: var(--ily-space-12);">
+      <span class="statement">build the routine</span>
+      <h2 style="font-weight: var(--ily-font-light); font-size: clamp(2.4rem, 5.5vw, 4.5rem); line-height: 1.02; letter-spacing: var(--ily-tracking-tight); margin: var(--ily-space-3) 0 0; max-width: 22ch;">two minutes, morning<span class="dot">.</span> two minutes, night<span class="dot dot--silk">.</span></h2>
+    </header>
+
+    <div class="routine">
+      <div class="routine__col routine__col--am">
+        <span class="statement">am</span>
+        <h3 class="routine__title">the morning<span class="dot">.</span></h3>
+        <ol class="routine__steps">
+          <li><b>gentle cleanser<span class="dot">.</span></b><span>lukewarm water<span class="dot">.</span> 30 seconds<span class="dot">.</span> pat dry<span class="dot">.</span></span></li>
+          <li><b>hydrating toner<span class="dot">.</span></b><span>two pumps to damp skin<span class="dot">.</span> let it sink in<span class="dot">.</span></span></li>
+          <li><b>hydration serum<span class="dot">.</span></b><span>three drops<span class="dot">.</span> press in, don't rub<span class="dot">.</span></span></li>
+          <li><b>daily moisturizer<span class="dot">.</span></b><span>pearl-size<span class="dot">.</span> seal everything in<span class="dot">.</span></span></li>
+          <li><b>eye patches<span class="dot dot--silk">.</span></b><span>optional<span class="dot dot--silk">.</span> 10 minutes while the coffee brews<span class="dot dot--silk">.</span></span></li>
+        </ol>
+      </div>
+      <div class="routine__col routine__col--pm">
+        <span class="statement">pm</span>
+        <h3 class="routine__title">the night<span class="dot dot--silk">.</span></h3>
+        <ol class="routine__steps">
+          <li><b>gentle cleanser<span class="dot">.</span></b><span>double cleanse if you wore spf<span class="dot">.</span></span></li>
+          <li><b>hydrating toner<span class="dot">.</span></b><span>more generously than morning<span class="dot">.</span></span></li>
+          <li><b>hydration serum<span class="dot">.</span></b><span>three drops<span class="dot">.</span> let it work overnight<span class="dot">.</span></span></li>
+          <li><b>daily moisturizer<span class="dot">.</span></b><span>a slightly heavier pearl<span class="dot">.</span></span></li>
+          <li><b>spot patches<span class="dot">.</span></b><span>only if needed<span class="dot">.</span> they work while you sleep<span class="dot">.</span></span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== no list ===== -->
+<section class="no-list on-dark">
+  <div class="container no-list__inner">
+    <span class="statement statement--inverse">the formula</span>
+    <h2 class="no-list__title">what's <em class="em">in</em> matters<span class="dot">.</span> what isn't matters more<span class="dot">.</span></h2>
+    <ul class="no-list__items">
+      <li>drying alcohols<span class="dot">.</span></li>
+      <li>witch hazel<span class="dot">.</span></li>
+      <li>fragrance<span class="dot">.</span></li>
+      <li>sulfates<span class="dot">.</span></li>
+      <li>acne-causing oils<span class="dot">.</span></li>
+      <li>fluff<span class="dot">.</span></li>
+      <li class="yes">five hero ingredients with research<span class="dot dot--silk">.</span></li>
+      <li class="yes">honest plain-language explainers<span class="dot dot--silk">.</span></li>
+    </ul>
+    <p class="no-list__footer">we don't dress the formula up<span class="dot">.</span> niacinamide brightens<span class="dot">.</span> ceramides repair<span class="dot">.</span> hyaluronic acid hydrates<span class="dot">.</span> that's the product<span class="dot">.</span></p>
+  </div>
+</section>
+
+<!-- ===== footer ===== -->
+<footer class="footer on-dark">
+  <div class="container">
+    <div class="footer__lockup">
+      <img class="footer__wordmark-large" src="assets/ily-wordmark-white-blue.svg" alt="iloveyouth.">
+      <div class="footer__rule" aria-hidden="true"></div>
+      <p class="footer__tagline">Youth starts with you<span class="dot">.</span></p>
+    </div>
+
+    <div class="footer__cols">
+      <div class="footer__col">
+        <h4>get the brief</h4>
+        <p style="color: var(--ily-grey-300); font-size: 0.92rem; margin: 0 0 var(--ily-space-4); max-width: 36ch;">one email a month<span class="dot">.</span> ingredient stories, formula updates, and no spam<span class="dot">.</span></p>
+        <form class="footer__email" onsubmit="event.preventDefault();">
+          <input type="email" placeholder="your email" aria-label="email" />
+          <button type="submit">subscribe</button>
+        </form>
+      </div>
+      <div class="footer__col">
+        <h4>shop</h4>
+        <ul>
+          <li><a href="v1-product.html">hydration serum</a></li>
+          <li><a href="v1-products.html#lineup">all six</a></li>
+          <li><a href="v1-products.html#routine">the routine</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>brand</h4>
+        <ul>
+          <li><a href="v1-about.html">about iloveyouth</a></li>
+          <li><a href="v1.html#the-poem">the formula</a></li>
+          <li><a href="v1-about.html#voice">the voice</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>support</h4>
+        <ul>
+          <li><a href="#">shipping</a></li>
+          <li><a href="#">returns</a></li>
+          <li><a href="#">faq</a></li>
+          <li><a href="#">@iloveyouth</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__legal">
+      <span>© 2026 iloveyouth inc.</span>
+      <span>cruelty-free<span class="dot">.</span> no drying alcohols<span class="dot">.</span> ever<span class="dot">.</span></span>
+    </div>
+  </div>
+</footer>
+
+<div class="proto-banner" aria-hidden="true">prototype · direction v1 · lineup</div>
+
+<script>
+  (function(){
+    var nav = document.getElementById('ily-nav');
+    if (!nav) return;
+    function onScroll(){ if (window.scrollY > 40) nav.classList.add('nav--scrolled'); else nav.classList.remove('nav--scrolled'); }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // filter pills toggle (UI only)
+    document.querySelectorAll('.filter-bar__group').forEach(function(group){
+      group.addEventListener('click', function(e){
+        var btn = e.target.closest('.filter-pill');
+        if (!btn) return;
+        group.querySelectorAll('.filter-pill').forEach(function(b){ b.classList.remove('filter-pill--active'); });
+        btn.classList.add('filter-pill--active');
+      });
+    });
+  })();
+</script>
+
+<style id="vsw-style">
+  .vsw {
+    position: fixed;
+    top: 12px;
+    right: 14px;
+    z-index: 200;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    background: rgba(42, 34, 32, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 9999px;
+    box-shadow: 0 8px 26px rgba(42, 34, 32, 0.18);
+    font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+  }
+  .vsw a {
+    color: #f0f3fa;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 9999px;
+    text-transform: lowercase;
+    transition: background 180ms;
+  }
+  .vsw a:hover { background: rgba(240, 243, 250, 0.10); }
+  .vsw a[aria-current="page"] {
+    background: #ade8f9;
+    color: #2a2220;
+  }
+  .vsw__label {
+    color: #c8bdb5;
+    padding-left: 8px;
+    padding-right: 4px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: lowercase;
+  }
+  @media (max-width: 600px) {
+    .vsw { font-size: 11px; }
+    .vsw a { padding: 5px 8px; }
+    .vsw__label { display: none; }
+  }
+</style>
+<nav class="vsw" aria-label="brand direction switcher">
+  <span class="vsw__label">direction</span>
+  <a href="index.html" style="color: #c8bdb5;">↑</a>
+  <a href="v1.html" aria-current="page">v1</a>
+  <a href="v2.html" >v2</a>
+  <a href="v3.html" >v3</a>
+  <a href="v4.html" >v4</a>
+</nav>
+
+</body>
+</html>
