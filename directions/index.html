@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>iloveyouth · directions</title>
-  <meta name="description" content="four brand-direction prototypes for iloveyouth. v1 → v4. open each to compare.">
+  <meta name="description" content="five brand-direction prototypes for iloveyouth. v1 → v4 explored the lanes. v5 is the working synthesis — open each to compare.">
 
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
@@ -93,8 +93,222 @@
       margin: 1.5rem 0 0;
     }
 
+    /* ============================================================
+       FEATURED — v5, the working synthesis
+       ============================================================ */
+    .featured {
+      padding: clamp(1.5rem, 3vw, 2rem) 0 clamp(2rem, 4vw, 3rem);
+    }
+    .featured__rail {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .featured__rail-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: lowercase;
+      color: var(--grey-600);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .featured__rail-eyebrow::before {
+      content: "";
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--frosted);
+      box-shadow: 0 0 0 4px rgba(173, 232, 249, 0.18);
+    }
+
+    .card-feat {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: clamp(1.5rem, 3vw, 3rem);
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      border-radius: 28px;
+      border: 1px solid rgba(42,34,32,0.10);
+      background: white;
+      transition: transform 360ms cubic-bezier(.2,.7,.2,1), box-shadow 360ms cubic-bezier(.2,.7,.2,1), border-color 360ms;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-feat:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 60px rgba(42,34,32,0.10);
+      border-color: rgba(42,34,32,0.18);
+    }
+    @media (max-width: 880px) {
+      .card-feat { grid-template-columns: 1fr; }
+    }
+
+    .card-feat__visual {
+      aspect-ratio: 16 / 11;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      background:
+        radial-gradient(60% 50% at 70% 25%, color-mix(in oklab, var(--frosted) 35%, transparent), transparent 60%),
+        radial-gradient(50% 60% at 25% 80%, color-mix(in oklab, var(--silk) 25%, transparent), transparent 60%),
+        linear-gradient(180deg, var(--shadow) 0%, #1a1414 100%);
+    }
+    /* mini constellation in the v5 preview — references v4 inheritance + cursor */
+    .card-feat__visual span {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--frosted);
+      box-shadow: 0 4px 16px rgba(173,232,249,0.32);
+    }
+    .card-feat__visual-headline {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-weight: 300;
+      font-size: clamp(1.5rem, 3.6vw, 3rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      text-align: center;
+      padding: 1rem;
+      color: var(--ghost);
+      z-index: 2;
+      max-width: 14ch;
+      margin: 0 auto;
+    }
+    .card-feat__visual-headline .dot { color: var(--frosted); }
+
+    .card-feat__copy {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .card-feat__head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-feat__num {
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      font-weight: 500;
+      text-transform: lowercase;
+      color: var(--grey-400);
+      font-feature-settings: "tnum";
+    }
+    .card-feat__chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      color: var(--shadow);
+      background: var(--frosted);
+      padding: 4px 10px;
+      border-radius: 999px;
+      text-transform: lowercase;
+    }
+    .card-feat__title {
+      font-weight: 300;
+      font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+      line-height: 1;
+      letter-spacing: -0.025em;
+      margin: 0;
+    }
+    .card-feat__title .dot { color: var(--frosted); }
+    .card-feat__strap {
+      font-size: 0.875rem;
+      color: var(--grey-600);
+      letter-spacing: 0.08em;
+      text-transform: lowercase;
+      margin: 0;
+    }
+    .card-feat__copy-body {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--grey-600);
+      max-width: 56ch;
+    }
+    .card-feat__moves {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 1.25rem;
+    }
+    @media (max-width: 600px) { .card-feat__moves { grid-template-columns: 1fr; } }
+    .card-feat__moves li {
+      font-size: 0.875rem;
+      color: var(--grey-600);
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+    .card-feat__moves li::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--frosted);
+      flex: 0 0 5px;
+      transform: translateY(-2px);
+    }
+
+    .card-feat__cta {
+      margin-top: auto;
+      padding-top: 0.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .card-feat__pages {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: lowercase;
+      color: var(--grey-400);
+    }
+
+    /* ============================================================
+       EXPLORATION grid header
+       ============================================================ */
+    .arc {
+      padding: clamp(2.5rem, 4vw, 3.5rem) 0 0;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .arc__title {
+      font-weight: 300;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+      margin: 0;
+    }
+    .arc__title .dot { color: var(--frosted); }
+    .arc__sub {
+      font-size: 0.9375rem;
+      color: var(--grey-600);
+      max-width: 44ch;
+      margin: 0;
+    }
+
+    /* ============================================================
+       v1–v4 grid (unchanged shape, light cleanup)
+       ============================================================ */
     .grid {
-      padding: clamp(2rem, 5vw, 4rem) 0 clamp(4rem, 9vw, 7rem);
+      padding: clamp(1.5rem, 3vw, 2.5rem) 0 clamp(4rem, 9vw, 7rem);
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: clamp(1rem, 2vw, 2rem);
@@ -106,7 +320,7 @@
     .card {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1.25rem;
       padding: clamp(1.5rem, 3vw, 2.5rem);
       border-radius: 28px;
       border: 1px solid rgba(42,34,32,0.10);
@@ -147,7 +361,6 @@
       background: var(--shadow);
       position: relative;
     }
-    /* v4 constellation in the preview */
     .card--v4 .card__visual::before,
     .card--v4 .card__visual::after {
       content: "";
@@ -209,6 +422,7 @@
       text-transform: lowercase;
     }
     .card__chip--silk { background: var(--silk); }
+    .card__chip--ghost { background: transparent; box-shadow: inset 0 0 0 1px rgba(42,34,32,0.18); color: var(--grey-600); }
 
     .card__title {
       font-weight: 300;
@@ -261,11 +475,19 @@
 
     .card__cta {
       margin-top: auto;
+      padding-top: 0.5rem;
       display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
+      gap: 1rem;
       align-items: center;
+      flex-wrap: wrap;
     }
+    .card__pages {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: lowercase;
+      color: var(--grey-400);
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -282,11 +504,6 @@
       transition: transform 200ms;
     }
     .btn:hover { transform: translateY(-1px); }
-    .btn--ghost {
-      background: transparent;
-      color: var(--shadow);
-      box-shadow: inset 0 0 0 1px var(--shadow);
-    }
 
     .legend {
       padding: clamp(3rem, 6vw, 5rem) 0;
@@ -298,6 +515,7 @@
       letter-spacing: -0.02em;
       margin: 0 0 1.5rem;
     }
+    .legend__title .dot { color: var(--frosted); }
     .legend__list {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -339,13 +557,68 @@
     <a href="../" aria-label="iloveyouth — public previews">
       <img src="assets/ily-wordmark-dark.svg" alt="iloveyouth.">
     </a>
-    <span class="top__meta">directions · v1 → v4 <span class="dot">.</span></span>
+    <span class="top__meta">directions · v1 → v5 <span class="dot">.</span></span>
   </header>
 
   <section class="wrap hero">
     <span class="eyebrow">brand-direction prototypes</span>
-    <h1 class="h-mega">four<br>directions<span class="dot">.</span></h1>
-    <p class="lead">four working prototypes for the iloveyouth website. each is its own complete world — homepage, collection, product detail — with the same locked brand: satoshi, four colors, the period system, every claim sourced. open each, click around, decide which one feels like us. they evolve from "first restraint" to "2030 thought experiment."</p>
+    <h1 class="h-mega">five<br>directions<span class="dot">.</span></h1>
+    <p class="lead">five working prototypes for the iloveyouth website. v1 → v4 each explored a distinct lane — loud, restrained, editorial, future. v5 is the working synthesis: the strongest moves from the four, stitched together into the version we're building toward. open each, click around, see how it lands.</p>
+  </section>
+
+  <!-- ============================================================
+       FEATURED — v5 (the working synthesis)
+       ============================================================ -->
+  <section class="wrap featured">
+    <div class="featured__rail">
+      <span class="featured__rail-eyebrow">where we're building toward</span>
+      <span class="top__meta">v5 · the collab cut <span class="dot">.</span></span>
+    </div>
+
+    <a class="card-feat" href="v5.html">
+      <div class="card-feat__visual">
+        <!-- mini constellation hint (v4 inheritance) -->
+        <span style="top: 18%; left: 14%; width: 8px; height: 8px;"></span>
+        <span style="top: 28%; left: 32%; width: 12px; height: 12px;"></span>
+        <span style="top: 16%; left: 56%; width: 10px; height: 10px;"></span>
+        <span style="top: 32%; left: 78%; width: 14px; height: 14px;"></span>
+        <span style="top: 70%; left: 22%; width: 10px; height: 10px; background: var(--silk); box-shadow: 0 4px 16px rgba(255,213,198,0.32);"></span>
+        <span style="top: 76%; left: 64%; width: 12px; height: 12px;"></span>
+        <span class="card-feat__visual-headline">youth starts<br>with you<span class="dot">.</span></span>
+      </div>
+
+      <div class="card-feat__copy">
+        <div class="card-feat__head">
+          <span class="card-feat__num">v5 · synthesis</span>
+          <span class="card-feat__chip">the working version</span>
+        </div>
+        <h2 class="card-feat__title">the collab cut<span class="dot">.</span></h2>
+        <p class="card-feat__strap">v1's hero · v2's quote · v3's restraint · v4's interactivity</p>
+        <p class="card-feat__copy-body">an elevated v1 with the strongest moves from the other three pulled in. v1's dark-mesh hero anchors the page; v2's honest-admission quote follows; v4's constellation dots and live cursor add depth without noise; the period system stays the brand's defining signature; the closing brand thesis lives at architectural scale via an interactive 3D liquid sculpture.</p>
+        <ul class="card-feat__moves">
+          <li>v1 dark-mesh hero · "hydration. period."</li>
+          <li>v2 dark quote band · "ours doesn't."</li>
+          <li>v4 constellation dots over the hero</li>
+          <li>live period-dot cursor on every surface</li>
+          <li>"what we refuse to put in" as horizontal scroll</li>
+          <li>3d liquid sculpture — closing brand moment</li>
+          <li>tightened single-row reviews</li>
+          <li>full-bleed footer wordmark with live period</li>
+        </ul>
+        <div class="card-feat__cta">
+          <span class="btn">open v5 →</span>
+          <span class="card-feat__pages">home · shop · pdp · about</span>
+        </div>
+      </div>
+    </a>
+  </section>
+
+  <!-- ============================================================
+       EXPLORATION — v1–v4 (the lanes that fed v5)
+       ============================================================ -->
+  <section class="wrap arc">
+    <h2 class="arc__title">the exploration<span class="dot">.</span></h2>
+    <p class="arc__sub">the four lane-finding prototypes. each is its own complete world — homepage plus 1–3 supporting templates. kept as the journey artifact so you can see what survived into v5 and what didn't.</p>
   </section>
 
   <section class="wrap grid">
@@ -356,11 +629,11 @@
       </div>
       <div class="card__head">
         <span class="card__num">v1 · early</span>
-        <span class="card__chip">prototype</span>
+        <span class="card__chip card__chip--ghost">prototype</span>
       </div>
       <h2 class="card__title">first cut<span class="dot">.</span></h2>
       <p class="card__strap">dark hero · period system · the loud one</p>
-      <p class="card__copy">the first attempt. dark animated hero, periods on every clause, mesh gradient blobs throughout. in here for the journey — kept so we can see how the system tightened.</p>
+      <p class="card__copy">the first attempt. dark animated hero, periods on every clause, mesh gradient blobs throughout. in here for the journey — kept so we can see how the system tightened. v5 inherits the hero and the no-list rhythm.</p>
       <ul class="card__moves">
         <li>full-viewport dark mesh hero</li>
         <li>period system applied liberally</li>
@@ -368,7 +641,7 @@
       </ul>
       <div class="card__cta">
         <span class="btn">open v1 →</span>
-        <span class="btn btn--ghost">home · about · plp · pdp</span>
+        <span class="card__pages">home · about · plp · pdp</span>
       </div>
     </a>
 
@@ -378,19 +651,19 @@
       </div>
       <div class="card__head">
         <span class="card__num">v2 · floor</span>
-        <span class="card__chip">restraint</span>
+        <span class="card__chip card__chip--ghost">restraint</span>
       </div>
       <h2 class="card__title">the floor<span class="dot">.</span></h2>
       <p class="card__strap">light editorial · once-per-surface accent · airy</p>
-      <p class="card__copy">restored restraint. 17px body floor, real hamburger menu, single hero accent per surface, almond silk used exactly once. the conservative-but-correct version of the brand on the web.</p>
+      <p class="card__copy">restored restraint. 17px body floor, real hamburger menu, single hero accent per surface, almond silk used exactly once. the conservative-but-correct version. v5 borrows its honest-admission quote band.</p>
       <ul class="card__moves">
-        <li>airy editorial hero, dropplet visual</li>
+        <li>airy editorial hero, droplet visual</li>
         <li>strict 1:10 frosted blue / silk ratio</li>
         <li>4 dark editorial bands for rhythm</li>
       </ul>
       <div class="card__cta">
         <span class="btn">open v2 →</span>
-        <span class="btn btn--ghost">home · collection · pdp</span>
+        <span class="card__pages">home · collection · pdp</span>
       </div>
     </a>
 
@@ -400,11 +673,11 @@
       </div>
       <div class="card__head">
         <span class="card__num">v3 · campaign</span>
-        <span class="card__chip">editorial</span>
+        <span class="card__chip card__chip--ghost">editorial</span>
       </div>
       <h2 class="card__title">the campaign<span class="dot">.</span></h2>
       <p class="card__strap">period-as-architecture · type-led · magazine</p>
-      <p class="card__copy">the editorial campaign as a website. type at architectural scale, the hydration-fill wordmark on load, ingredient names taking entire viewports. one signature visual move per surface.</p>
+      <p class="card__copy">the editorial campaign as a website. type at architectural scale, the hydration-fill wordmark on load, ingredient names taking entire viewports. one signature visual move per surface. v5 inherits the horizontal-scroll refuse cards.</p>
       <ul class="card__moves">
         <li>hydration-fill wordmark animation</li>
         <li>"named." structure across 3 ingredients</li>
@@ -412,7 +685,7 @@
       </ul>
       <div class="card__cta">
         <span class="btn">open v3 →</span>
-        <span class="btn btn--ghost">home · collection · pdp</span>
+        <span class="card__pages">home · collection · pdp</span>
       </div>
     </a>
 
@@ -431,7 +704,7 @@
       </div>
       <h2 class="card__title">the future<span class="dot">.</span></h2>
       <p class="card__strap">citation as architecture · spatial · receipts-as-ui</p>
-      <p class="card__copy">the 2030 thought experiment. constellation hero where each dot is a verified claim, inline citations on prose, a three-question recommender, native page transitions, "see it in your space" spatial cta.</p>
+      <p class="card__copy">the 2030 thought experiment. constellation hero where each dot is a verified claim, inline citations on prose, native page transitions. v5 inherits the constellation dots and the period-dot cursor.</p>
       <ul class="card__moves">
         <li>constellation hero — every dot is a receipt</li>
         <li>three-question formula recommender</li>
@@ -439,14 +712,14 @@
       </ul>
       <div class="card__cta">
         <span class="btn">open v4 →</span>
-        <span class="btn btn--ghost">home · collection · pdp</span>
+        <span class="card__pages">home · collection · pdp</span>
       </div>
     </a>
 
   </section>
 
   <section class="wrap legend">
-    <h2 class="legend__title">held constant across all four<span class="dot" style="color: var(--frosted);">.</span></h2>
+    <h2 class="legend__title">held constant across all five<span class="dot">.</span></h2>
     <dl class="legend__list">
       <dt>brand name</dt>
       <dd>iloveyouth — lowercase, one word, every surface, every direction.</dd>

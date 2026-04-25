@@ -1,0 +1,190 @@
+/* ==========================================================================
+   Hydration · period.
+   Interactive 3D liquid sculpture, sized to live as an in-page formula moment.
+
+   Contrast model — IMPORTANT:
+   The 3D blob (Frosted Blue, light pastel) IS the visual surface under all
+   copy, not the section's CSS bg. So every foreground here is chosen to read
+   on Frosted Blue: Shadow Grey for text, Shadow Grey for dots (NOT Frosted
+   Blue — those would vanish on the blob), and a Shadow Grey solid pill for
+   the CTA. Section bg is Ghost White so the corners (where the blob doesn't
+   reach) keep a high-contrast neutral surface for the same Shadow Grey text.
+
+   Body text uses explicit rgba alpha rather than `opacity` so child color
+   overrides survive — parent `opacity` creates a stacking context that
+   flattens children, suppressing the .dot color.
+   ========================================================================== */
+
+.hydration-hero {
+  position: relative;
+  width: 100%;
+  min-height: var(--hh-min-height, 90vh);
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F0F3FA;
+  color: #2A2220;
+}
+
+/* media layer — fallback img + canvas, both inset */
+.hydration-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hydration-hero__fallback,
+.hydration-hero__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hydration-hero__fallback {
+  object-fit: cover;
+  object-position: center;
+  transition: opacity 1200ms ease-out;
+  z-index: 1;
+}
+
+.hydration-hero__canvas {
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1200ms ease-out;
+}
+
+.hydration-hero[data-hh-ready] .hydration-hero__canvas { opacity: 1; }
+.hydration-hero[data-hh-ready] .hydration-hero__fallback { opacity: 0; }
+
+/* ==========================================================================
+   copy block
+   All foreground colors are Shadow Grey — they sit on the Frosted Blue blob.
+   ========================================================================== */
+
+.hydration-hero__copy {
+  position: relative;
+  z-index: 2;
+  padding: clamp(2rem, 6vw, 4rem);
+  max-width: 48rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
+  /* light halo on every text element so the brightest blob highlights
+     don't wash type out — works whether the bg patch is Frosted Blue or
+     Ghost White, since both are light. */
+  text-shadow: 0 1px 24px rgba(240, 243, 250, 0.85);
+}
+
+.hydration-hero__eyebrow {
+  font-weight: 500;
+  font-size: 0.8125rem;
+  letter-spacing: 0.18em;
+  text-transform: lowercase;
+  margin: 0 0 1.5rem;
+  /* Shadow Grey at 70% on Frosted Blue ≈ 5.5:1 (AA). On Ghost White ≈ 5:1 (AA). */
+  color: rgba(42, 34, 32, 0.7);
+}
+
+.hydration-hero__headline {
+  font-weight: 300;
+  font-size: clamp(3rem, 10vw, 8rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  margin: 0;
+  text-wrap: balance;
+  color: #2A2220; /* AAA on Frosted Blue (~11:1) and Ghost White (~14:1) */
+}
+
+.hydration-hero__subtext {
+  font-weight: 300;
+  font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+  line-height: 1.7;
+  margin: 1.5rem auto 0;
+  max-width: 42ch;
+  text-wrap: pretty;
+  color: rgba(42, 34, 32, 0.85);
+}
+
+.hydration-hero__close {
+  display: block;
+  margin-top: 2rem;
+  font-weight: 300;
+  font-size: clamp(0.9375rem, 1.2vw, 1.0625rem);
+  letter-spacing: 0;
+  color: rgba(42, 34, 32, 0.7);
+}
+
+/* the period dots — mono Shadow Grey on this section because the blob
+   is Frosted Blue and Frosted-Blue-on-Frosted-Blue is invisible.
+   Matches brand parked-direction-1 "asymmetric variant" rule. */
+.hydration-hero__headline .dot,
+.hydration-hero__close .dot {
+  color: #2A2220;
+}
+
+/* ==========================================================================
+   CTA — Shadow Grey solid pill, Ghost White text
+   The default Frosted Blue brand button blends into the Frosted Blue blob,
+   so this section uses the inverse pill (Convention 2 in brand-identity.md).
+   Hover wipes Frosted Blue upward, text flips to Shadow Grey — both states
+   pass AAA contrast.
+   ========================================================================== */
+
+.hydration-hero__btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  padding: 0 2rem;
+  margin-top: 2.5rem;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  text-decoration: none;
+  color: #F0F3FA;       /* Ghost White on Shadow Grey ≈ 14:1 (AAA) */
+  background: #2A2220;
+  border-radius: 9999px;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 420ms cubic-bezier(.2,.7,.2,1), color 420ms cubic-bezier(.2,.7,.2,1);
+}
+
+.hydration-hero__btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #ADE8F9;
+  border-radius: inherit;
+  transform: translateY(102%);
+  transition: transform 420ms cubic-bezier(.2,.7,.2,1);
+  z-index: -1;
+}
+
+.hydration-hero__btn:hover {
+  color: #2A2220;       /* Shadow Grey on Frosted Blue ≈ 11:1 (AAA) */
+  transform: translateY(-2px);
+}
+.hydration-hero__btn:hover::before { transform: translateY(0); }
+
+.hydration-hero__btn:focus-visible {
+  outline: 2px solid #2A2220;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hydration-hero__canvas { display: none; }
+  .hydration-hero[data-hh-ready] .hydration-hero__fallback,
+  .hydration-hero__fallback { opacity: 1; }
+  .hydration-hero__btn,
+  .hydration-hero__btn::before { transition: none; }
+}
