@@ -1,4 +1,4 @@
-# iloveyouth-pages
+# ily-pages
 
 Public previews for the iloveyouth brand — shareable links for collaborators and partners. Hosted via GitHub Pages.
 
@@ -22,9 +22,9 @@ The whole site is published at GitHub Pages — share the root URL or any subfol
 
 - Direct file edits, commit, push. GitHub Pages rebuilds automatically.
 - The brand/ folder is a downstream mirror of `ily-brand/`. When `ily-brand` updates the canonical preview, sync the changes here:
-  - copy `ily-brand/logo-preview.html` → `iloveyouth-pages/brand/index.html`
-  - copy any updated `ily-brand/logos/` subfolders → `iloveyouth-pages/brand/logos/`
-  - copy `ily-brand/tokens.css` → `iloveyouth-pages/brand/tokens.css`
+  - copy `ily-brand/logo-preview.html` → `ily-pages/brand/index.html`
+  - copy any updated `ily-brand/logos/` subfolders → `ily-pages/brand/logos/`
+  - copy `ily-brand/tokens.css` → `ily-pages/brand/tokens.css`
   - swap the canonical-spec footer link for the private-repo note
 - The directions/ and concept/ folders are self-contained — edit in place.
 

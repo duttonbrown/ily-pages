@@ -8,12 +8,12 @@ Each direction is a complete world — homepage, collection, and product detail 
 
 | | direction | feel | live |
 |---|---|---|---|
-| **v1** | first cut | dark hero, period system applied liberally, animated mesh blobs | [open →](https://duttonbrown.github.io/iloveyouth-directions/v1.html) |
-| **v2** | the floor | restored restraint, light editorial, real hamburger menu, single hero accent | [open →](https://duttonbrown.github.io/iloveyouth-directions/v2.html) |
-| **v3** | the campaign | period-as-architecture, hydration-fill wordmark, ingredient names at hero scale | [open →](https://duttonbrown.github.io/iloveyouth-directions/v3.html) |
-| **v4** | the future | a 2030 thought experiment — citation-as-architecture, constellation hero, recommender, view transitions | [open →](https://duttonbrown.github.io/iloveyouth-directions/v4.html) |
+| **v1** | first cut | dark hero, period system applied liberally, animated mesh blobs | [open →](https://duttonbrown.github.io/ily-pages/directions/v1.html) |
+| **v2** | the floor | restored restraint, light editorial, real hamburger menu, single hero accent | [open →](https://duttonbrown.github.io/ily-pages/directions/v2.html) |
+| **v3** | the campaign | period-as-architecture, hydration-fill wordmark, ingredient names at hero scale | [open →](https://duttonbrown.github.io/ily-pages/directions/v3.html) |
+| **v4** | the future | a 2030 thought experiment — citation-as-architecture, constellation hero, recommender, view transitions | [open →](https://duttonbrown.github.io/ily-pages/directions/v4.html) |
 
-Index page: [duttonbrown.github.io/iloveyouth-directions](https://duttonbrown.github.io/iloveyouth-directions/)
+Index page: [duttonbrown.github.io/ily-pages/directions](https://duttonbrown.github.io/ily-pages/directions/)
 
 ## locked brand rules (held constant across all directions)
 
