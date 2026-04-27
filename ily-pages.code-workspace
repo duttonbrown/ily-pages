@@ -1,0 +1,35 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"workbench.colorCustomizations": {
+			"titleBar.activeBackground": "#A8E0D8",
+			"titleBar.activeForeground": "#0A3A33",
+			"titleBar.inactiveBackground": "#7FB8AE",
+			"titleBar.inactiveForeground": "#0A3A33",
+			"commandCenter.background": "#BCEBE0",
+			"commandCenter.foreground": "#0A3A33",
+			"commandCenter.border": "#3A8B7E",
+			"commandCenter.activeBackground": "#D0F2EA",
+			"commandCenter.activeForeground": "#0A3A33",
+			"commandCenter.activeBorder": "#0A3A33",
+			"commandCenter.inactiveForeground": "#1A4A43",
+			"commandCenter.inactiveBorder": "#3A8B7E",
+			"tab.activeBackground": "#A8E0D8",
+			"tab.activeForeground": "#0A3A33",
+			"tab.inactiveBackground": "#7FB8AE",
+			"tab.inactiveForeground": "#1A4A43",
+			"tab.activeBorderTop": "#C8F0E8",
+			"editorGroupHeader.tabsBackground": "#7FB8AE",
+			"activityBar.background": "#A8E0D8",
+			"activityBar.foreground": "#0A3A33",
+			"activityBar.inactiveForeground": "#1A4A43",
+			"activityBar.activeBorder": "#0A3A33",
+			"statusBar.background": "#A8E0D8",
+			"statusBar.foreground": "#0A3A33"
+		}
+	}
+}
