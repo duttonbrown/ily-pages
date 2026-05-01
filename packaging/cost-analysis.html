@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iloveyouth — packaging cost & finish assessment.</title>
+
+  <link rel="icon" type="image/svg+xml" href="../brand/logos/favicons/favicon.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="../brand/logos/favicons/favicon-white.svg" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" sizes="32x32" href="../brand/logos/favicons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../brand/logos/favicons/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../brand/logos/favicons/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../brand/tokens.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--ily-font-primary);
+      font-weight: var(--ily-font-light);
+      color: var(--ily-text);
+      background: var(--ily-surface);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: var(--ily-leading-relaxed);
+    }
+
+    .page {
+      max-width: var(--ily-max-width);
+      margin: 0 auto;
+      padding: var(--ily-space-16) var(--ily-space-8);
+    }
+
+    header {
+      margin-bottom: var(--ily-space-16);
+      padding-bottom: var(--ily-space-8);
+      border-bottom: 1px solid var(--ily-border);
+    }
+
+    header .wordmark {
+      display: block;
+      width: auto;
+      height: clamp(2.25rem, 4vw, 3rem);
+      margin-bottom: var(--ily-space-8);
+    }
+
+    header h1 {
+      font-size: var(--ily-text-4xl);
+      font-weight: var(--ily-font-light);
+      letter-spacing: var(--ily-tracking-tight);
+      line-height: var(--ily-leading-tight);
+      margin: 0 0 var(--ily-space-4);
+    }
+
+    header p.lede {
+      font-size: var(--ily-text-base);
+      font-weight: var(--ily-font-light);
+      color: var(--ily-text-muted);
+      max-width: 70ch;
+      margin: 0;
+    }
+
+    header .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--ily-space-4) var(--ily-space-8);
+      margin-top: var(--ily-space-6);
+      font-size: var(--ily-text-xs);
+      letter-spacing: var(--ily-tracking-wider);
+      text-transform: uppercase;
+      color: var(--ily-text-muted);
+    }
+    header .meta span strong {
+      font-weight: var(--ily-font-medium);
+      color: var(--ily-text);
+    }
+
+    section + section { margin-top: var(--ily-space-16); }
+
+    .section-label {
+      font-size: var(--ily-text-xs);
+      font-weight: var(--ily-font-medium);
+      letter-spacing: var(--ily-tracking-wider);
+      text-transform: uppercase;
+      color: var(--ily-text-muted);
+      margin: 0 0 var(--ily-space-6);
+      padding-bottom: var(--ily-space-3);
+      border-bottom: 1px solid var(--ily-border);
+    }
+
+    h2 {
+      font-size: var(--ily-text-2xl);
+      font-weight: var(--ily-font-light);
+      letter-spacing: var(--ily-tracking-tight);
+      line-height: var(--ily-leading-tight);
+      margin: 0 0 var(--ily-space-6);
+    }
+
+    h3 {
+      font-size: var(--ily-text-lg);
+      font-weight: var(--ily-font-medium);
+      margin: var(--ily-space-10) 0 var(--ily-space-3);
+    }
+
+    p { max-width: 80ch; margin: 0 0 var(--ily-space-4); }
+
+    ul, ol { padding-left: 1.25em; margin: 0 0 var(--ily-space-4); }
+    li { margin-bottom: var(--ily-space-2); max-width: 80ch; }
+
+    strong { font-weight: var(--ily-font-medium); color: var(--ily-text); }
+    em { font-style: italic; color: var(--ily-text-muted); }
+
+    .callout {
+      background: var(--ily-accent-soft);
+      border-left: 3px solid var(--ily-accent);
+      padding: var(--ily-space-5) var(--ily-space-6);
+      margin: var(--ily-space-6) 0;
+      font-size: var(--ily-text-sm);
+      border-radius: 2px;
+    }
+    .callout strong { color: var(--ily-text); }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--ily-space-4);
+      margin: var(--ily-space-6) 0;
+    }
+    .summary-card {
+      background: var(--ily-bg-elevated);
+      border: 1px solid var(--ily-border);
+      padding: var(--ily-space-5);
+      border-radius: 4px;
+    }
+    .summary-card .role {
+      font-size: var(--ily-text-xs);
+      letter-spacing: var(--ily-tracking-wider);
+      text-transform: uppercase;
+      color: var(--ily-text-muted);
+      margin: 0 0 var(--ily-space-2);
+    }
+    .summary-card .sku {
+      font-size: var(--ily-text-sm);
+      font-weight: var(--ily-font-medium);
+      margin: 0 0 var(--ily-space-3);
+    }
+    .summary-card .price {
+      font-size: var(--ily-text-2xl);
+      font-weight: var(--ily-font-light);
+      letter-spacing: var(--ily-tracking-tight);
+      margin: 0 0 var(--ily-space-1);
+      color: var(--ily-text);
+    }
+    .summary-card .price-label {
+      font-size: var(--ily-text-xs);
+      color: var(--ily-text-muted);
+      text-transform: uppercase;
+      letter-spacing: var(--ily-tracking-wider);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: var(--ily-space-6) 0 var(--ily-space-8);
+      font-size: var(--ily-text-sm);
+    }
+    th, td {
+      text-align: left;
+      padding: var(--ily-space-3) var(--ily-space-4);
+      border-bottom: 1px solid var(--ily-border);
+      vertical-align: top;
+    }
+    th {
+      font-weight: var(--ily-font-medium);
+      color: var(--ily-text);
+      text-transform: uppercase;
+      letter-spacing: var(--ily-tracking-wider);
+      font-size: var(--ily-text-xs);
+      border-bottom: 1px solid var(--ily-text-muted);
+    }
+    td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+    tr.total td {
+      font-weight: var(--ily-font-medium);
+      border-top: 1px solid var(--ily-text);
+      border-bottom: none;
+    }
+
+    .pill {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: var(--ily-tracking-wider);
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--ily-accent-soft);
+      color: var(--ily-text);
+      margin-left: var(--ily-space-2);
+      vertical-align: middle;
+    }
+    .pill.warn { background: var(--ily-support-soft); }
+
+    .recs {
+      display: grid;
+      gap: var(--ily-space-4);
+      margin: var(--ily-space-6) 0;
+    }
+    .rec {
+      background: var(--ily-bg-elevated);
+      border: 1px solid var(--ily-border);
+      padding: var(--ily-space-5) var(--ily-space-6);
+      border-radius: 4px;
+    }
+    .rec .tag {
+      font-size: var(--ily-text-xs);
+      letter-spacing: var(--ily-tracking-wider);
+      text-transform: uppercase;
+      color: var(--ily-text-muted);
+      margin: 0 0 var(--ily-space-2);
+    }
+    .rec.keep { border-left: 3px solid var(--ily-accent); }
+    .rec.add { border-left: 3px solid var(--ily-support); }
+    .rec.cut { border-left: 3px solid #c44; }
+    .rec h4 {
+      font-size: var(--ily-text-base);
+      font-weight: var(--ily-font-medium);
+      margin: 0 0 var(--ily-space-2);
+    }
+    .rec p { margin: 0; font-size: var(--ily-text-sm); }
+
+    footer {
+      margin-top: var(--ily-space-16);
+      padding-top: var(--ily-space-8);
+      border-top: 1px solid var(--ily-border);
+      font-size: var(--ily-text-xs);
+      font-weight: var(--ily-font-light);
+      color: var(--ily-text-muted);
+    }
+    footer a { color: var(--ily-text); text-decoration: none; border-bottom: 1px dotted var(--ily-text-muted); }
+    footer a:hover { border-bottom-color: var(--ily-text); }
+
+    @media (max-width: 720px) {
+      .page { padding: var(--ily-space-10) var(--ily-space-5); }
+      header h1 { font-size: var(--ily-text-2xl); }
+      table { font-size: var(--ily-text-xs); }
+      th, td { padding: var(--ily-space-2) var(--ily-space-3); }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <header>
+      <picture>
+        <source media="(prefers-color-scheme: dark)"
+                srcset="../brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-white-rect-400.svg">
+        <img class="wordmark"
+             src="../brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-dark-rect-400.svg"
+             alt="iloveyouth.">
+      </picture>
+      <h1>packaging cost &amp; finish assessment.</h1>
+      <p class="lede">a finish-and-cost analysis for the four lead skus iloveyouth plans to take into production — cleanser, toner, serum, moisturizer. priced at 10k units per sku from ua packaging quote 260422, with finish recommendations following the ily packaging system rules.</p>
+      <div class="meta">
+        <span><strong>volume tier</strong> 10k per sku</span>
+        <span><strong>quote</strong> ua packaging 260422</span>
+        <span><strong>currency</strong> usd</span>
+        <span><strong>date</strong> 2026-05-01</span>
+      </div>
+    </header>
+
+    <section>
+      <p class="section-label">at a glance</p>
+      <div class="summary-grid">
+        <div class="summary-card">
+          <p class="role">cleanser</p>
+          <p class="sku">round-dia80 (tu004)</p>
+          <p class="price">$0.71</p>
+          <p class="price-label">landed / unit</p>
+        </div>
+        <div class="summary-card">
+          <p class="role">toner</p>
+          <p class="sku">pl042-71350-150ml</p>
+          <p class="price">$1.46</p>
+          <p class="price-label">landed / unit</p>
+        </div>
+        <div class="summary-card">
+          <p class="role">serum</p>
+          <p class="sku">pl184-kh30-77</p>
+          <p class="price">$1.27</p>
+          <p class="price-label">landed / unit</p>
+        </div>
+        <div class="summary-card">
+          <p class="role">moisturizer</p>
+          <p class="sku">pl001-3493-50ml</p>
+          <p class="price">$1.86</p>
+          <p class="price-label">landed / unit</p>
+        </div>
+      </div>
+      <div class="callout">
+        <strong>full regimen:</strong> $5.30 in packaging cogs to deliver a $94–$137 retail line. that's <strong>4–6% packaging cogs</strong> — same shelf as laneige and drunk elephant, well below tatcha, materially above mass-tier.
+      </div>
+    </section>
+
+    <section>
+      <p class="section-label">what each sku is</p>
+      <table>
+        <thead>
+          <tr>
+            <th>role</th>
+            <th>sku</th>
+            <th>vessel</th>
+            <th class="num">capacity</th>
+            <th>material</th>
+            <th class="num">vessel cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>cleanser</td>
+            <td>round-dia80 (tu004)</td>
+            <td>tube</td>
+            <td class="num">130 ml</td>
+            <td>pe + pp cap</td>
+            <td class="num">$0.40</td>
+          </tr>
+          <tr>
+            <td>toner</td>
+            <td>pl042-71350-150ml</td>
+            <td>bottle (pump)</td>
+            <td class="num">150 ml</td>
+            <td>petg + pp</td>
+            <td class="num">$0.90</td>
+          </tr>
+          <tr>
+            <td>serum</td>
+            <td>pl184-kh30-77</td>
+            <td>bottle</td>
+            <td class="num">30 ml</td>
+            <td>glass + abs</td>
+            <td class="num">$0.96</td>
+          </tr>
+          <tr>
+            <td>moisturizer</td>
+            <td>pl001-3493-50ml</td>
+            <td>airless</td>
+            <td class="num">50 ml</td>
+            <td>pp + as</td>
+            <td class="num">$1.28</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <p class="section-label">per-sku finish recommendation</p>
+      <p>following the ily packaging system rules: frosted/matte only, never glossy. one-color silkscreen front + one-color silkscreen back. cap emboss across the line. no varnish, metallic, or hologram. function-color body coating (frosted blue / shadow grey / ghost white).</p>
+
+      <h3>1. cleanser <span class="pill">ghost white (matte)</span></h3>
+      <p>round-dia80 (tu004), 130ml pe+pp tube. matte tube finish is the single highest-leverage line item in the catalog — volume-independent and mandatory. a glossy pe tube reads instantly mass-tier; matte reads premium even before silkscreen.</p>
+      <table>
+        <thead>
+          <tr><th>line item</th><th>cost @ 10k</th><th>note</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>vessel</td><td class="num">$0.400</td><td>quote 260422</td></tr>
+          <tr><td>matt tube finish</td><td class="num">$0.050</td><td>flat rate, volume-independent</td></tr>
+          <tr><td>matt cap coat</td><td class="num">$0.135</td><td>matched to body</td></tr>
+          <tr><td>silkscreen front (1 color)</td><td class="num">$0.064</td><td>tube tier @ 10k</td></tr>
+          <tr><td>silkscreen back (1 color)</td><td class="num">$0.064</td><td></td></tr>
+          <tr><td>cap emboss <code>ily.</code></td><td class="num">tooling</td><td>one-time, ~$2,500 per cap diameter</td></tr>
+          <tr class="total"><td>landed unit</td><td class="num">$0.713</td><td></td></tr>
+        </tbody>
+      </table>
+
+      <h3>2. toner <span class="pill">frosted blue</span></h3>
+      <p>pl042-71350-150ml, 150ml petg+pp pump. spray coating in frosted blue is the line item that turns clear plastic into "looks like laneige." pump dust cover stays shadow grey across the line as a catalog-level cohesion lever.</p>
+      <table>
+        <thead>
+          <tr><th>line item</th><th>cost @ 10k</th><th>note</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>vessel</td><td class="num">$0.900</td><td>quote 260422</td></tr>
+          <tr><td>bottle coat (frosted blue spray)</td><td class="num">$0.175</td><td>quote 260422 §3.2</td></tr>
+          <tr><td>cap coat (matched matte)</td><td class="num">$0.135</td><td></td></tr>
+          <tr><td>pump dust cover coat (shadow grey)</td><td class="num">$0.104</td><td>system cross-line constant</td></tr>
+          <tr><td>silkscreen front (1 color)</td><td class="num">$0.072</td><td></td></tr>
+          <tr><td>silkscreen back (1 color)</td><td class="num">$0.072</td><td></td></tr>
+          <tr><td>cap emboss <code>ily.</code></td><td class="num">tooling</td><td></td></tr>
+          <tr class="total"><td>landed unit</td><td class="num">$1.458</td><td></td></tr>
+        </tbody>
+      </table>
+
+      <h3>3. serum <span class="pill">frosted blue</span></h3>
+      <p>pl184-kh30-77, 30ml glass+abs bottle. frosted-glass body in frosted blue. no collar (it's a bottle, not a dropper) — saves the $0.10 shadow grey collar applied to dropper skus.</p>
+      <table>
+        <thead>
+          <tr><th>line item</th><th>cost @ 10k</th><th>note</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>vessel</td><td class="num">$0.960</td><td>quote 260422</td></tr>
+          <tr><td>bottle coat (frosted blue spray, frosted glass)</td><td class="num">$0.167</td><td>quote 260422</td></tr>
+          <tr><td>silkscreen front (1 color)</td><td class="num">$0.072</td><td></td></tr>
+          <tr><td>silkscreen back (1 color)</td><td class="num">$0.072</td><td></td></tr>
+          <tr><td>cap emboss <code>ily.</code></td><td class="num">tooling</td><td></td></tr>
+          <tr class="total"><td>landed unit</td><td class="num">$1.271</td><td></td></tr>
+        </tbody>
+      </table>
+
+      <h3>4. moisturizer <span class="pill">shadow grey + frosted blue</span></h3>
+      <p>pl001-3493-50ml, 50ml pp+as airless bottle. the airless tier per system rules: outer shadow grey, inner frosted blue, cap shadow grey. this is the brand's most premium expression and where to consider an additional soft-touch finish (see recommendations below).</p>
+      <table>
+        <thead>
+          <tr><th>line item</th><th>cost @ 10k</th><th>note</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>vessel</td><td class="num">$1.280</td><td>quote 260422</td></tr>
+          <tr><td>outer bottle coat (shadow grey)</td><td class="num">$0.207</td><td>quote 260422 §3.2 outer</td></tr>
+          <tr><td>inner bottle coat (frosted blue)</td><td class="num">$0.112</td><td>quote 260422 §3.2 inner</td></tr>
+          <tr><td>cap coat (shadow grey)</td><td class="num">$0.112</td><td></td></tr>
+          <tr><td>silkscreen front (1 color)</td><td class="num">$0.072</td><td></td></tr>
+          <tr><td>silkscreen back (1 color)</td><td class="num">$0.072</td><td></td></tr>
+          <tr><td>cap emboss <code>ily.</code></td><td class="num">tooling</td><td></td></tr>
+          <tr class="total"><td>landed unit</td><td class="num">$1.855</td><td></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <p class="section-label">landed cost summary</p>
+      <table>
+        <thead>
+          <tr>
+            <th>product</th>
+            <th class="num">landed unit</th>
+            <th class="num">order subtotal (10k)</th>
+            <th>retail target</th>
+            <th class="num">cogs % of retail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>cleanser (tube)</td><td class="num">$0.713</td><td class="num">$7,130</td><td>$18–$28</td><td class="num">2.5%–4.0%</td></tr>
+          <tr><td>toner (150ml pump)</td><td class="num">$1.458</td><td class="num">$14,580</td><td>$19–$32</td><td class="num">4.6%–7.7%</td></tr>
+          <tr><td>serum (30ml glass)</td><td class="num">$1.271</td><td class="num">$12,710</td><td>$28–$38</td><td class="num">3.3%–4.5%</td></tr>
+          <tr><td>moisturizer (50ml airless)</td><td class="num">$1.855</td><td class="num">$18,550</td><td>$29–$39</td><td class="num">4.8%–6.4%</td></tr>
+          <tr class="total"><td>4-sku regimen</td><td class="num">$5.297</td><td class="num">$52,970</td><td>$94–$137</td><td class="num">3.9%–5.6%</td></tr>
+        </tbody>
+      </table>
+      <p><em>plus one-time: $500 decoration setup if any sku runs &lt;10k (waived at 10k). cap emboss tooling per cap diameter ~$2,500 each. likely 3 distinct diameters across the 4 skus = ~$7,500 one-time.</em></p>
+    </section>
+
+    <section>
+      <p class="section-label">competitive benchmark</p>
+      <p>directional industry estimates from public sources and on-shelf inspection — treat as ranges, not disclosed numbers.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>brand</th>
+            <th>hero sku · srp</th>
+            <th class="num">est. packaging cogs</th>
+            <th class="num">cogs %</th>
+            <th>finish profile</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>drunk elephant</td><td>b-hydra serum · $48 / 50ml</td><td class="num">$1.50–$2.50</td><td class="num">3–5%</td><td>bright matte plastic, airless, silkscreen</td></tr>
+          <tr><td>ole henriksen</td><td>truth serum · $58 / 50ml</td><td class="num">$1.20–$1.80</td><td class="num">2–3%</td><td>glass + plastic dropper, glossy lacquer, foil hot-stamp</td></tr>
+          <tr><td>laneige</td><td>water sleeping mask · $39 / 70g</td><td class="num">$1.40–$2.20</td><td class="num">3.5–5.5%</td><td>frosted blue petg jar, soft-touch, deboss cap <span class="pill">closest peer</span></td></tr>
+          <tr><td>tatcha</td><td>dewy skin cream · $72 / 50ml</td><td class="num">$2.50–$4.50</td><td class="num">3.5–6%</td><td>heavy wall glass, matte coat, foil deboss</td></tr>
+          <tr><td>sunday riley</td><td>good genes · $122 / 50ml</td><td class="num">$1.80–$2.80</td><td class="num">1.5–2.3%</td><td>glass dropper, frosted, silkscreen</td></tr>
+          <tr><td>olay</td><td>regenerist · $32 / 48g</td><td class="num">$0.50–$0.90</td><td class="num">1.5–2.8%</td><td>glossy polished plastic, mass tier</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <strong>where ily lands:</strong> closest aesthetic peer is <strong>laneige</strong> — frosted blue + matte coat + cap emboss on petg/glass. cogs % at 4–6% is on-target for premium-skincare norms while staying clean of the foil-stamp / multi-color silkscreen flourishes that push tatcha and drunk elephant higher.
+      </div>
+    </section>
+
+    <section>
+      <p class="section-label">recommendations</p>
+      <h3>keep as specified</h3>
+      <div class="recs">
+        <div class="rec keep">
+          <p class="tag">keep · cheap leverage</p>
+          <h4>matt tube finish at $0.05 / unit</h4>
+          <p>flat rate at any volume. the single cheapest perception lever in the catalog. a glossy pe tube reads instantly mass-tier.</p>
+        </div>
+        <div class="rec keep">
+          <p class="tag">keep · the look</p>
+          <h4>spray coating on every vessel</h4>
+          <p>$0.16–$0.21 per unit is the right place to spend. this is the line that turns clear petg into "looks like laneige."</p>
+        </div>
+        <div class="rec keep">
+          <p class="tag">keep · brand cohesion</p>
+          <h4>cap emboss across all four skus</h4>
+          <p>one-time tooling, free per unit forever. the single best brand-cohesion lever on the catalog.</p>
+        </div>
+        <div class="rec keep">
+          <p class="tag">keep · system constant</p>
+          <h4>shadow grey pump dust cover on the toner</h4>
+          <p>$0.10 to make every pump in the future look like the same family across catalog photography.</p>
+        </div>
+      </div>
+
+      <h3>worth adding (quote these)</h3>
+      <div class="recs">
+        <div class="rec add">
+          <p class="tag">add · de-risk pricing</p>
+          <h4>confirm cap emboss tooling per diameter</h4>
+          <p>get ua to quote exact tooling per cap diameter. assumed ~$2,500 each but it's quote-by-design. if 3 of the 4 skus share a diameter, the one-time spend could drop ~$5k.</p>
+        </div>
+        <div class="rec add">
+          <p class="tag">add · sensory upgrade</p>
+          <h4>soft-touch finish on the airless moisturizer</h4>
+          <p>capabilities doc lists "frosted soft touch — enhances sensory experience." +$0.05–0.08 / unit. moves the airless from "looks premium" to "feels premium when held" — what tatcha and drunk elephant lala retro do.</p>
+        </div>
+        <div class="rec add">
+          <p class="tag">add · sustainability story</p>
+          <h4>pcr or chemical pcr on plastic bodies (toner, moisturizer)</h4>
+          <p>10–25% premium per capabilities doc. ~$0.15–0.45 added per unit. real (not badge-y) sustainability story without changing the look. let the material speak.</p>
+        </div>
+        <div class="rec add">
+          <p class="tag">add · use experience</p>
+          <h4>reducer on the toner</h4>
+          <p>capabilities §8 calls this out specifically for toners. ~$0.03–0.05 / unit. prevents over-pour failure mode that kills toner repurchase rates.</p>
+        </div>
+      </div>
+
+      <h3>refuse / remove</h3>
+      <div class="recs">
+        <div class="rec cut">
+          <p class="tag">cut · false savings</p>
+          <h4>don't add 2nd or 3rd silkscreen colors</h4>
+          <p>doubles silkscreen cost ($0.072 → $0.144 per face). the ingredient-led typographic hierarchy should do the work — additional colors don't earn back.</p>
+        </div>
+        <div class="rec cut">
+          <p class="tag">cut · off-brand</p>
+          <h4>no varnish, metallic, or hologram</h4>
+          <p>varnish at $0.20/unit <em>adds cost while subtracting brand value</em>. brand position is "frosted/matte never glossy." don't quote.</p>
+        </div>
+        <div class="rec cut">
+          <p class="tag">cut · won't pay back</p>
+          <h4>no custom shape molds</h4>
+          <p>at 5–10k volumes the $2,500+ blow mold or pricier injection mold doesn't earn back. stock shapes are fine for launch; revisit at 100k+ when ua waives the mold fee.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class="section-label">open decisions before placing the order</p>
+      <ol>
+        <li><strong>variant pricing parity.</strong> the notion notes flag that the actual variants we want — pl001-2382 (not 3493), pl042-60249 heavy-wall (not 71350), pl184-kh30-24 (not 77) — are not in the quote. send ua the four product urls and confirm whether quoted pricing applies before locking.</li>
+        <li><strong>cleanser sizing.</strong> formulation page targets 150–180ml; round-dia80 is 130ml ≈ 4.4oz. <strong>the selected tube is too small for the stated cleanser target.</strong> either accept 4oz/130ml as final, or re-spec to a 150ml tube (tu017-d45, tu039-d50, or pl008-7138-5 all available at $0.43–$0.52 per unit). resolve this first.</li>
+        <li><strong>cap emboss tooling.</strong> confirm with ua whether tooling fee scales per diameter or per design, and whether shared cap diameters across skus share a tool.</li>
+        <li><strong>setup fee math.</strong> at 10k per sku the $500 setup is waived. if any sku pilots at 5k, model the +$500 + ~$0.04–0.06 silkscreen tier delta + ~$0.06–0.10 coating tier delta before locking volumes.</li>
+      </ol>
+    </section>
+
+    <section>
+      <p class="section-label">bottom line</p>
+      <p>the 4-sku regimen lands at <strong>~$5.30 in packaging cogs</strong> to deliver a $94–$137 retail line — <strong>4–6% packaging cogs</strong>, sitting cleanly inside the premium-skincare norm and right next to laneige and drunk elephant.</p>
+      <p>the aesthetic spec — matte/frosted, function-color body, 1-color silkscreen, cap emboss, shadow grey accent on pumps — is a legitimately premium look built almost entirely on ua's standard catalog with no custom tooling, except the cap emboss, which is the one tooling spend worth committing to.</p>
+      <p>the single biggest risk is <strong>the cleanser tube being too small for the stated target size</strong>. resolve that before anything else.</p>
+    </section>
+
+    <footer>
+      <p>source: <a href="https://github.com/duttonbrown/ily-design/blob/main/packaging/quote-UApkg-ily-260422.pdf">ua packaging quote 260422</a> · <a href="https://github.com/duttonbrown/ily-design/blob/main/packaging/uapkg-capabilities.md">capabilities doc</a> · <a href="https://github.com/duttonbrown/ily-design/blob/main/packaging/system.md">packaging system</a> · live data in the notion <em>packaging</em> database.</p>
+      <p>generated 2026-05-01 — share this link as a working draft, not a final spec.</p>
+    </footer>
+
+  </div>
+</body>
+</html>
