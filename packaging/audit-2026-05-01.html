@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ily — packaging standards audit · 2026-05-01</title>
+
+  <link rel="icon" type="image/svg+xml" href="../brand/logos/favicons/favicon.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="../brand/logos/favicons/favicon-white.svg" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" sizes="32x32" href="../brand/logos/favicons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../brand/logos/favicons/favicon-16.png">
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../brand/tokens.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Satoshi', system-ui, sans-serif;
+      font-weight: 300;
+      color: var(--ily-text, #2A2220);
+      background: var(--ily-surface, #F0F3FA);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.65;
+    }
+
+    .page {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 5rem) clamp(1.25rem, 4vw, 2.5rem);
+    }
+
+    header.doc {
+      margin-bottom: 4rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid #E5E7EE;
+    }
+
+    header.doc .wordmark {
+      display: block;
+      width: auto;
+      height: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .eyebrow {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: lowercase;
+      color: #6B5C54;
+      margin: 0 0 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      margin: 0 0 1.5rem;
+    }
+
+    .lede {
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: #4A3F3A;
+      max-width: 60ch;
+      margin: 0 0 2rem;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 0.4rem 1.5rem;
+      font-size: 0.85rem;
+      color: #6B5C54;
+    }
+
+    .meta dt { font-weight: 500; letter-spacing: 0.05em; }
+    .meta dd { margin: 0; }
+
+    nav.toc {
+      margin: 3rem 0;
+      padding: 1.75rem 2rem;
+      background: #FFFFFF;
+      border: 1px solid #E5E7EE;
+      border-radius: 2px;
+    }
+
+    nav.toc h2 {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: lowercase;
+      color: #6B5C54;
+      margin: 0 0 1rem;
+    }
+
+    nav.toc ol {
+      margin: 0;
+      padding-left: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    nav.toc li { margin: 0.4rem 0; }
+    nav.toc a { color: #2A2220; text-decoration: none; border-bottom: 1px solid transparent; }
+    nav.toc a:hover { border-bottom-color: #2A2220; }
+
+    section {
+      margin-top: 5rem;
+      scroll-margin-top: 2rem;
+    }
+
+    h2.section {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: lowercase;
+      color: #6B5C54;
+      margin: 0 0 0.75rem;
+    }
+
+    h2.section + h3 {
+      font-size: clamp(1.5rem, 3.2vw, 2.25rem);
+      font-weight: 300;
+      letter-spacing: -0.015em;
+      line-height: 1.15;
+      margin: 0 0 2rem;
+    }
+
+    h4 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: -0.005em;
+      line-height: 1.3;
+      margin: 2.5rem 0 0.75rem;
+    }
+
+    h5 {
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      line-height: 1.4;
+      margin: 1.75rem 0 0.5rem;
+    }
+
+    p { margin: 0 0 1rem; }
+    p + p { margin-top: 1rem; }
+
+    a { color: #2A2220; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+
+    ul, ol {
+      margin: 0 0 1rem;
+      padding-left: 1.5rem;
+    }
+
+    li { margin: 0.35rem 0; }
+
+    strong { font-weight: 500; }
+
+    code {
+      font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+      font-size: 0.85em;
+      background: #FFFFFF;
+      border: 1px solid #E5E7EE;
+      padding: 0.05em 0.35em;
+      border-radius: 2px;
+    }
+
+    blockquote {
+      margin: 1.5rem 0;
+      padding: 1.25rem 1.5rem;
+      background: #FFFFFF;
+      border-left: 2px solid #2A2220;
+      font-style: normal;
+    }
+
+    .pull {
+      margin: 2.5rem 0;
+      padding: 2rem 2.25rem;
+      background: var(--ily-frosted-blue, #ADE8F9);
+      border-radius: 2px;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: #2A2220;
+    }
+
+    .pull strong { font-weight: 500; }
+
+    /* Tables */
+    .table-wrap {
+      margin: 1.5rem 0;
+      overflow-x: auto;
+      border: 1px solid #E5E7EE;
+      border-radius: 2px;
+      background: #FFFFFF;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid #E5E7EE;
+    }
+
+    th {
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      font-size: 0.8rem;
+      color: #6B5C54;
+      background: #F0F3FA;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    /* Figure / diagram styling */
+    figure {
+      margin: 2.5rem 0;
+    }
+
+    figure svg { display: block; width: 100%; height: auto; }
+
+    figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid #E5E7EE;
+      border-radius: 2px;
+    }
+
+    figcaption {
+      margin-top: 0.85rem;
+      font-size: 0.85rem;
+      color: #6B5C54;
+      font-weight: 300;
+      letter-spacing: 0.01em;
+    }
+
+    .figure-frame {
+      background: #FFFFFF;
+      border: 1px solid #E5E7EE;
+      border-radius: 2px;
+      padding: 1.5rem;
+    }
+
+    /* Color swatches */
+    .swatch-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+
+    .swatch {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1rem;
+      background: #FFFFFF;
+      border: 1px solid #E5E7EE;
+      border-radius: 2px;
+      font-size: 0.8rem;
+    }
+
+    .swatch .chip {
+      width: 100%;
+      height: 60px;
+      border-radius: 2px;
+      border: 1px solid rgba(42,34,32,0.08);
+    }
+
+    .swatch .name { font-weight: 500; color: #2A2220; }
+    .swatch .hex { color: #6B5C54; font-family: ui-monospace, monospace; font-size: 0.75rem; }
+    .swatch .role { color: #6B5C54; font-size: 0.75rem; }
+
+    /* Verdict pills */
+    .pill {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .pill.green { background: #D6EFD8; color: #1F5E2C; }
+    .pill.amber { background: #F7E5C2; color: #6E4D14; }
+    .pill.red   { background: #F5C9C5; color: #7A1F18; }
+
+    /* Mockup grid */
+    .mockup-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .mockup-grid figure { margin: 0; }
+
+    /* Footer */
+    footer.doc {
+      margin-top: 6rem;
+      padding-top: 2rem;
+      border-top: 1px solid #E5E7EE;
+      font-size: 0.85rem;
+      color: #6B5C54;
+    }
+
+    @media (max-width: 600px) {
+      .table-wrap { font-size: 0.85rem; }
+      th, td { padding: 0.55rem 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="doc">
+    <picture>
+      <source media="(prefers-color-scheme: dark)"
+              srcset="../brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-white-rect-400.svg">
+      <img class="wordmark"
+           src="../brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-dark-rect-400.svg"
+           alt="iloveyouth.">
+    </picture>
+    <p class="eyebrow">packaging audit · 2026-05-01</p>
+    <h1>standards audit, prestige tier.</h1>
+    <p class="lede">a senior-designer-eye review of the iloveyouth packaging system against prestige-skincare convention. the principles ily doesn't yet know it doesn't know — plus resolved positions on the five live thomas-vs-zach disagreements.</p>
+    <dl class="meta">
+      <dt>auditor brief</dt><dd>senior packaging designer, prestige beauty (tatcha · drunk elephant · augustinus bader tier)</dd>
+      <dt>shelf target</dt><dd>sephora premium, $45–$80 retail, neighborhood: bader · sturm · tatcha</dd>
+      <dt>inputs</dt><dd>system.md · uapkg-capabilities.md · ily-brand/brand-identity.md</dd>
+      <dt>resolution rule</dt><dd>every disagreement decided on principle, not preference</dd>
+    </dl>
+  </header>
+
+  <nav class="toc">
+    <h2>contents.</h2>
+    <ol>
+      <li><a href="#section-1">the field guide — what's missing from a non-designer's mental model</a></li>
+      <li><a href="#section-2">the category map — where ily sits, and what's adjacent</a></li>
+      <li><a href="#section-3">resolving thomas vs. zach — five live decisions</a></li>
+      <li><a href="#section-4">the amateur-tells checklist — 22 specific failure modes</a></li>
+      <li><a href="#section-5">apply back to system.md</a></li>
+      <li><a href="#actions">prioritized action list</a></li>
+    </ol>
+  </nav>
+
+  <!-- ============ SECTION 1 ============ -->
+  <section id="section-1">
+    <h2 class="section">section 01.</h2>
+    <h3>the field guide — principles a non-designer founder is most likely missing.</h3>
+
+    <h4>information hierarchy on a beauty SKU</h4>
+
+    <p>prestige skincare uses a <strong>5-tier hierarchy</strong> on the front face. mass uses 3, sometimes 4 — the tells are missing tiers and wrong sizing within them.</p>
+
+    <figure>
+      <div class="figure-frame">
+        <svg viewBox="0 0 800 360" role="img" aria-label="five-tier hierarchy diagram">
+          <!-- SKU mockup left -->
+          <rect x="40" y="20" width="200" height="320" rx="6" fill="#ADE8F9" stroke="#2A2220" stroke-width="1.2"/>
+          <!-- collar -->
+          <rect x="40" y="20" width="200" height="34" fill="#2A2220"/>
+          <text x="140" y="42" text-anchor="middle" font-family="Satoshi" font-size="9" fill="#F0F3FA" letter-spacing="2">HYDRATION</text>
+          <!-- hero -->
+          <text x="140" y="160" text-anchor="middle" font-family="Satoshi" font-weight="300" font-size="22" fill="#2A2220">niacinamide.</text>
+          <!-- product type -->
+          <text x="140" y="186" text-anchor="middle" font-family="Satoshi" font-weight="500" font-size="9" fill="#2A2220" letter-spacing="2">hydrating serum</text>
+          <!-- claim (subtle) -->
+          <text x="140" y="220" text-anchor="middle" font-family="Satoshi" font-weight="300" font-size="8" fill="#4A3F3A">visible glow in 14 days.</text>
+          <!-- volume + brandmark anchors -->
+          <text x="60" y="320" font-family="Satoshi" font-size="8" fill="#2A2220" letter-spacing="1">30ml</text>
+          <text x="220" y="320" text-anchor="end" font-family="Satoshi" font-weight="500" font-size="9" fill="#2A2220">ily.</text>
+          <!-- period anchor -->
+          <circle cx="220" cy="334" r="2" fill="#2A2220"/>
+
+          <!-- annotations right -->
+          <g font-family="Satoshi" font-size="13" fill="#2A2220">
+            <line x1="240" y1="38" x2="320" y2="38" stroke="#6B5C54" stroke-width="0.8"/>
+            <text x="330" y="42" font-weight="500">1. eyebrow</text>
+            <text x="330" y="58" font-size="11" fill="#6B5C54">~6–8pt · wide-tracked · category context</text>
+
+            <line x1="240" y1="155" x2="320" y2="155" stroke="#6B5C54" stroke-width="0.8"/>
+            <text x="330" y="159" font-weight="500">2. hero</text>
+            <text x="330" y="175" font-size="11" fill="#6B5C54">~14–22pt · the one big thing · ingredient-led</text>
+
+            <line x1="240" y1="184" x2="320" y2="184" stroke="#6B5C54" stroke-width="0.8"/>
+            <text x="330" y="188" font-weight="500">3. product type</text>
+            <text x="330" y="204" font-size="11" fill="#6B5C54">25–35% of hero · what it actually is</text>
+
+            <line x1="240" y1="219" x2="320" y2="219" stroke="#6B5C54" stroke-width="0.8"/>
+            <text x="330" y="223" font-weight="500">4. claim</text>
+            <text x="330" y="239" font-size="11" fill="#6B5C54">often skipped on prestige fronts entirely</text>
+
+            <line x1="240" y1="320" x2="320" y2="320" stroke="#6B5C54" stroke-width="0.8"/>
+            <text x="330" y="324" font-weight="500">5. brand &amp; volume</text>
+            <text x="330" y="340" font-size="11" fill="#6B5C54">~6pt · anchored corners · never mixed in</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>fig 1 — the five-tier hierarchy applied to ily's hero serum. the mass tell is two heroes (brand at top + product name center, both large). prestige picks one.</figcaption>
+    </figure>
+
+    <p>the mass tell is <strong>two heroes</strong> — brand at 32pt at the top <em>and</em> product name at 28pt in the middle. prestige picks one hero per face. drunk elephant breaks this on purpose (it's part of their loud-prestige stunt) but they get away with it because every other element is dialed. don't copy the exception without copying the discipline.</p>
+
+    <h4>type sizing and the shelf-distance test</h4>
+
+    <p>a real prestige designer sets type to three test distances:</p>
+
+    <figure>
+      <div class="figure-frame" style="background:#F0F3FA">
+        <svg viewBox="0 0 800 220" role="img" aria-label="shelf distance test diagram">
+          <!-- 3 viewing distances -->
+          <g font-family="Satoshi">
+            <!-- 6ft (silhouette) -->
+            <text x="100" y="30" text-anchor="middle" font-size="11" font-weight="500" fill="#6B5C54" letter-spacing="2">6 FT</text>
+            <text x="100" y="48" text-anchor="middle" font-size="10" fill="#6B5C54">silhouette + body color</text>
+            <rect x="80" y="60" width="40" height="120" rx="4" fill="#ADE8F9" stroke="#2A2220" stroke-width="0.8"/>
+            <rect x="80" y="60" width="40" height="14" fill="#2A2220"/>
+            <text x="100" y="200" text-anchor="middle" font-size="9" fill="#6B5C54">"i can find the line"</text>
+
+            <!-- 3ft (hero) -->
+            <text x="350" y="30" text-anchor="middle" font-size="11" font-weight="500" fill="#6B5C54" letter-spacing="2">3 FT</text>
+            <text x="350" y="48" text-anchor="middle" font-size="10" fill="#6B5C54">+ ingredient hero</text>
+            <rect x="310" y="60" width="80" height="120" rx="4" fill="#ADE8F9" stroke="#2A2220" stroke-width="0.8"/>
+            <rect x="310" y="60" width="80" height="20" fill="#2A2220"/>
+            <text x="350" y="73" text-anchor="middle" font-size="6" fill="#F0F3FA" letter-spacing="1.5">HYDRATION</text>
+            <text x="350" y="125" text-anchor="middle" font-family="Satoshi" font-weight="300" font-size="13" fill="#2A2220">niacinamide.</text>
+            <text x="350" y="138" text-anchor="middle" font-size="5.5" fill="#2A2220" letter-spacing="1">hydrating serum</text>
+            <text x="350" y="200" text-anchor="middle" font-size="9" fill="#6B5C54">"i know what kind of product"</text>
+
+            <!-- in-hand (everything) -->
+            <text x="640" y="30" text-anchor="middle" font-size="11" font-weight="500" fill="#6B5C54" letter-spacing="2">IN HAND</text>
+            <text x="640" y="48" text-anchor="middle" font-size="10" fill="#6B5C54">+ inci · claims · legal</text>
+            <rect x="540" y="60" width="200" height="120" rx="4" fill="#ADE8F9" stroke="#2A2220" stroke-width="0.8"/>
+            <rect x="540" y="60" width="200" height="22" fill="#2A2220"/>
+            <text x="640" y="74" text-anchor="middle" font-size="7" fill="#F0F3FA" letter-spacing="2">HYDRATION</text>
+            <text x="640" y="115" text-anchor="middle" font-family="Satoshi" font-weight="300" font-size="22" fill="#2A2220">niacinamide.</text>
+            <text x="640" y="130" text-anchor="middle" font-size="8" fill="#2A2220" letter-spacing="2">hydrating serum</text>
+            <text x="640" y="148" text-anchor="middle" font-size="6.5" fill="#4A3F3A">visible glow in 14 days.</text>
+            <text x="555" y="172" font-size="5" fill="#2A2220">aqua · niacinamide · glycerin · panthenol · sodium hyaluronate · betaine · ...</text>
+            <text x="640" y="200" text-anchor="middle" font-size="9" fill="#6B5C54">"the full read"</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>fig 2 — the same SKU at three distances. the trap is sizing the hero to read at 6ft. that's mass thinking. <strong>prestige sizes the hero to read at 3ft and trusts the customer to step closer.</strong></figcaption>
+    </figure>
+
+    <p>the rule of thumb: on a 30ml dropper face (roughly 25mm wide × 70mm tall), the hero type caps at <strong>~16pt</strong> in a humanist sans like satoshi. above 22pt, the SKU starts looking like a topicals or a bubble — fine for accessible-premium, wrong for sephora premium.</p>
+
+    <h4>color in prestige vs. accessible-premium</h4>
+
+    <p>the single biggest visual difference between glow recipe and tatcha is <strong>chromatic count per SKU.</strong> glow recipe runs 4–6 colors visible on a single front face. tatcha runs 1–2.</p>
+
+    <p>prestige plays one of three color strategies:</p>
+
+    <ol>
+      <li><strong>chromatic monogamy</strong> — one tone, used everywhere on the SKU, sometimes with one ink-dark accent (tatcha cream/gold, aesop amber/black, la mer navy/silver). the SKU reads as one volume, not a composition.</li>
+      <li><strong>achromatic + one signal color</strong> — neutral body plus one chromatic moment that codes function or hero status (augustinus bader's blue cap, le labo's hand-stamped black on cream label). the signal color is intentionally rare — it's how the eye finds the line on the shelf.</li>
+      <li><strong>function code</strong> (rare in prestige, common in accessible-premium) — multiple body colors mapped to product function. the risk: it tilts toward glow recipe / bubble / byoma unless the colors are deliberately <em>muted</em> and the type system stays disciplined.</li>
+    </ol>
+
+    <div class="pull"><strong>ily is currently running strategy 3 with four function colors. that's defensible but it's the hardest of the three to execute without slipping.</strong> the discipline that keeps it prestige rather than accessible-premium: the colors must be tints (not saturated hues), the type must stay restrained, and the system constants (shadow grey collar, shadow grey cap on pumps) must do the cohesion work. lose any one of those and ily drifts toward bubble.</div>
+
+    <h4>finish semiotics</h4>
+
+    <p>finishes are read pre-cognitively. consumer perception research is consistent on what each signals:</p>
+
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>finish</th><th>signal</th><th>tier read</th><th>risk</th></tr></thead>
+      <tbody>
+        <tr><td>gloss / varnish</td><td>energy, accessibility, value</td><td>"fun" at accessible-premium · "cheap" at prestige</td><td>shifted away from in prestige since ~2018</td></tr>
+        <tr><td>matte</td><td>control, restraint, intention</td><td>dominant prestige finish 2018–2026</td><td>fingerprints, transit scuffs, dies under flat light</td></tr>
+        <tr><td>frosted (on glass)</td><td>clinical-but-soft, european-pharmacy</td><td>default for serums and droppers in premium</td><td>none significant</td></tr>
+        <tr><td>soft-touch</td><td>luxury tactility</td><td>highest perception per cost dollar</td><td>degrades with skin oils, yellows on white over time</td></tr>
+        <tr><td>spot gloss on matte</td><td>sophistication</td><td>works for small marks, fails for benefit claims</td><td>amateur if used to highlight a claim</td></tr>
+        <tr><td>foil</td><td>old-luxury</td><td>estée lauder, lancôme territory</td><td>slips heritage unless one small mark</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h4>negative space as a price signal</h4>
+
+    <p>the strongest correlation between perceived price tier and a single layout variable is <strong>percentage of unused face area.</strong> empirical norm in beauty packaging audits:</p>
+
+    <figure>
+      <div class="figure-frame">
+        <svg viewBox="0 0 800 200" role="img" aria-label="negative space across tiers">
+          <!-- mass -->
+          <g>
+            <rect x="40" y="30" width="160" height="140" rx="4" fill="#FFFFFF" stroke="#E5E7EE"/>
+            <!-- ink density: mass ~50% -->
+            <rect x="55" y="42" width="130" height="22" fill="#2A2220"/>
+            <rect x="55" y="74" width="100" height="14" fill="#2A2220" opacity="0.6"/>
+            <rect x="55" y="98" width="130" height="40" fill="#ADE8F9"/>
+            <rect x="55" y="148" width="80" height="14" fill="#2A2220" opacity="0.4"/>
+            <text x="120" y="190" text-anchor="middle" font-family="Satoshi" font-size="11" font-weight="500" fill="#2A2220">mass</text>
+            <text x="120" y="20" text-anchor="middle" font-family="Satoshi" font-size="10" fill="#6B5C54">30–50% empty</text>
+          </g>
+          <!-- accessible-premium -->
+          <g>
+            <rect x="240" y="30" width="160" height="140" rx="4" fill="#FFFFFF" stroke="#E5E7EE"/>
+            <rect x="265" y="60" width="110" height="20" fill="#2A2220"/>
+            <rect x="265" y="92" width="80" height="10" fill="#2A2220" opacity="0.6"/>
+            <rect x="265" y="138" width="50" height="8" fill="#2A2220" opacity="0.4"/>
+            <text x="320" y="190" text-anchor="middle" font-family="Satoshi" font-size="11" font-weight="500" fill="#2A2220">accessible-premium</text>
+            <text x="320" y="20" text-anchor="middle" font-family="Satoshi" font-size="10" fill="#6B5C54">50–65% empty</text>
+          </g>
+          <!-- prestige -->
+          <g>
+            <rect x="440" y="30" width="160" height="140" rx="4" fill="#FFFFFF" stroke="#E5E7EE"/>
+            <rect x="475" y="90" width="90" height="14" fill="#2A2220"/>
+            <rect x="475" y="110" width="50" height="6" fill="#2A2220" opacity="0.5"/>
+            <circle cx="585" cy="158" r="2" fill="#2A2220"/>
+            <text x="520" y="190" text-anchor="middle" font-family="Satoshi" font-size="11" font-weight="500" fill="#2A2220">prestige</text>
+            <text x="520" y="20" text-anchor="middle" font-family="Satoshi" font-size="10" fill="#6B5C54">65–80% empty</text>
+          </g>
+          <!-- ILY zone -->
+          <g>
+            <rect x="640" y="30" width="160" height="140" rx="4" fill="#ADE8F9" stroke="#2A2220" stroke-width="1.2"/>
+            <rect x="640" y="30" width="160" height="20" fill="#2A2220"/>
+            <text x="720" y="44" text-anchor="middle" font-family="Satoshi" font-size="6.5" fill="#F0F3FA" letter-spacing="2">HYDRATION</text>
+            <text x="720" y="110" text-anchor="middle" font-family="Satoshi" font-weight="300" font-size="14" fill="#2A2220">niacinamide.</text>
+            <text x="720" y="123" text-anchor="middle" font-family="Satoshi" font-size="6" fill="#2A2220" letter-spacing="2">hydrating serum</text>
+            <circle cx="788" cy="160" r="2" fill="#2A2220"/>
+            <text x="720" y="190" text-anchor="middle" font-family="Satoshi" font-size="11" font-weight="500" fill="#2A2220">ily target</text>
+            <text x="720" y="20" text-anchor="middle" font-family="Satoshi" font-size="10" fill="#6B5C54">~70% empty</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>fig 3 — perceived price tier correlates with unused face area. tatcha's "the dewy skin cream" front is ~75% empty; bader's "the cream" lid ~80%. <strong>rule of thumb: if you can't draw a rectangle covering 60% of the face that contains zero ink, the SKU is too busy for prestige.</strong></figcaption>
+    </figure>
+
+    <h4>the shelf-blocking principle</h4>
+
+    <p>a prestige line at 6ft reads as one family. individual SKUs are visually quiet, so the family identity has to come from somewhere — and prestige uses the <strong>silhouette + one constant</strong> technique:</p>
+
+    <ul>
+      <li><strong>aesop</strong> — amber glass is the constant. every SKU. type and label vary; the bottle color doesn't.</li>
+      <li><strong>le labo</strong> — white label with hand-stamped type. the white rectangle is the constant.</li>
+      <li><strong>laneige</strong> — slate-blue. the exact tone is the constant; everything else varies.</li>
+      <li><strong>augustinus bader</strong> — the blue cap. bodies and labels change; the cap doesn't.</li>
+    </ul>
+
+    <p>ily's locked constants are: <strong>shadow grey collar on every dropper, shadow grey dust cover on every pump, <code>ily.</code> cap emboss on every cap</strong>, and the frosted blue body on the hydration tier. of those, the shadow grey collar/dust cover is the single highest-leverage cohesion lever — it's cheap ($0.10/unit), unmistakable in catalog photography, and works across every dropper/pump SKU regardless of body color. lean into it.</p>
+
+    <p>the cap emboss is doing real work but it's <em>quiet</em> work — at shelf distance it disappears. it's a <em>touch</em> signature, not a <em>sight</em> signature. that's fine, but don't expect it to do the shelf-blocking job. the collar is doing that.</p>
+
+    <h4>photography survival</h4>
+
+    <p>things that read fine in CAD and die on the photographer's table:</p>
+
+    <ul>
+      <li><strong>subtle deboss without raking light.</strong> a 0.3mm deboss on a matte surface is invisible without specific lighting. ily's <code>ily.</code> cap emboss falls in this risk zone — fine in person, dependent on lighting in catalog. mitigation: brief the photographer to use a hard side light for cap detail shots, and accept that flat-lay catalog photography won't always show it.</li>
+      <li><strong>5%-tone screens / near-white-on-white.</strong> disappears in any white-balance correction.</li>
+      <li><strong>frosted blue at <code>#ADE8F9</code> is light enough to suffer this fate</strong> — see § 3.2.</li>
+      <li><strong>uninked deboss brand marks</strong> read in person and disappear on camera. le labo's hand-stamped label survives photography because the stamp is <em>inked</em>. ily's <code>ily.</code> emboss is uninked — it will rely on raking light.</li>
+      <li><strong>matte finishes flatten in flat-lay.</strong> they need angle, shadow, or texture in the scene. tatcha's catalog uses fabric and stone underlays partly for this reason.</li>
+    </ul>
+
+    <p>what survives: <strong>inked silkscreen, contrast against the body color, dimensional differences (height, depth, body shape).</strong> these are what catalog photography rewards.</p>
+
+    <h4>regulatory + INCI realities</h4>
+
+    <p>EU and US regulations require: INCI list legible to the consumer (~1.5mm cap height working floor) · net content on the front · period-after-opening symbol · batch / lot code · country of origin · responsible-person address (EU) · warning language for actives.</p>
+
+    <p>prestige hides these without breaking law via:</p>
+
+    <ul>
+      <li><strong>INCI on the back</strong> in a tight tracked-out lowercase block. no boxes. ily's plan (satoshi regular 400 lowercase on back) is correct.</li>
+      <li><strong>POA symbol embossed into the base</strong> of the jar/bottle, not printed. tatcha does this.</li>
+      <li><strong>batch code laser-etched into the base after fill</strong> — not printed. ily's quote doesn't include this; flag for the supplier ($0.02–0.04/unit, often free at 10K).</li>
+      <li><strong>warning language wrapped into the back-panel block, not boxed.</strong> the all-caps exception in ily's brand identity ("SHAKE WELL," "LOT XXXX") fits this convention exactly.</li>
+    </ul>
+
+    <h4>sustainability cues that don't read as greenwashing</h4>
+
+    <p><strong>what works:</strong> material honesty (glass that looks like glass) · weight (heavier feels more recyclable to consumers) · refillable mechanics (bader's refillable jar). <strong>what reads performative:</strong> leaf icons, "eco" badges, kraft-paper aesthetics, "made with X% recycled" front-face callouts. premium consumers (maya, sam) read these as glow recipe / bubble signals — wrong tier.</p>
+
+    <p>ily's brand voice ("never empty superlatives," "let the material itself speak rather than badging it") aligns with prestige convention. when PCR is adopted, mention it on the back panel only, no front badges, no leaf icons.</p>
+
+    <h4>cross-format cohesion</h4>
+
+    <p>a 30ml dropper and a 200ml tube must read as siblings despite an 8× difference in canvas. prestige uses three levers, in order of importance:</p>
+
+    <ol>
+      <li><strong>one typographic grid</strong> — same x-height ratio, baseline rhythm, scaled per face. ily's rule 6 names this. <strong>highest leverage, zero unit cost.</strong></li>
+      <li><strong>one universal constant element</strong> — aesop's amber, le labo's white label, ily's shadow grey collar/dust cover.</li>
+      <li><strong>finish family</strong> — matte/frosted across the line. cost: $0.05–0.25/unit depending on substrate.</li>
+    </ol>
+
+    <div class="pull">the cheapest highest-leverage choice is the typographic grid. <strong>get the grid right and a 30ml dropper and a 200ml tube can have entirely different proportions and still read as one family. get it wrong and no amount of color cohesion will save you.</strong> make grid discipline non-negotiable for every dieline review.</div>
+
+  </section>
+
+  <!-- ============ SECTION 2 ============ -->
+  <section id="section-2">
+    <h2 class="section">section 02.</h2>
+    <h3>the category map — where ily sits, and what's adjacent.</h3>
+
+    <figure>
+      <div class="figure-frame" style="background:#FFFFFF;">
+        <svg viewBox="0 0 800 600" role="img" aria-label="category positioning map">
+          <!-- axes -->
+          <line x1="400" y1="40" x2="400" y2="560" stroke="#2A2220" stroke-width="1"/>
+          <line x1="40" y1="300" x2="760" y2="300" stroke="#2A2220" stroke-width="1"/>
+
+          <!-- axis labels -->
+          <text x="400" y="25" text-anchor="middle" font-family="Satoshi" font-size="11" font-weight="500" fill="#6B5C54" letter-spacing="2">PREMIUM</text>
+          <text x="400" y="585" text-anchor="middle" font-family="Satoshi" font-size="11" font-weight="500" fill="#6B5C54" letter-spacing="2">ACCESSIBLE-PREMIUM</text>
+          <text x="50" y="304" font-family="Satoshi" font-size="11" font-weight="500" fill="#6B5C54" letter-spacing="2">RESTRAINED</text>
+          <text x="750" y="304" text-anchor="end" font-family="Satoshi" font-size="11" font-weight="500" fill="#6B5C54" letter-spacing="2">EXPRESSIVE</text>
+
+          <!-- ILY target zone -->
+          <ellipse cx="475" cy="225" rx="80" ry="42" fill="#ADE8F9" fill-opacity="0.55" stroke="#2A2220" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="475" y="222" text-anchor="middle" font-family="Satoshi" font-weight="500" font-size="12" fill="#2A2220">ily target zone</text>
+          <text x="475" y="238" text-anchor="middle" font-family="Satoshi" font-size="9" fill="#2A2220">restrained · premium · ingredient-coded</text>
+
+          <!-- brand dots & labels -->
+          <g font-family="Satoshi" font-size="10" fill="#2A2220">
+            <!-- premium -->
+            <circle cx="200" cy="100" r="4" fill="#2A2220"/><text x="208" y="103">la mer</text>
+            <circle cx="540" cy="105" r="4" fill="#2A2220"/><text x="548" y="108">augustinus bader</text>
+            <circle cx="220" cy="160" r="4" fill="#2A2220"/><text x="228" y="163">sulwhasoo</text>
+            <circle cx="520" cy="160" r="4" fill="#2A2220"/><text x="528" y="163">dr. sturm</text>
+            <circle cx="330" cy="220" r="4" fill="#2A2220"/><text x="338" y="223">tatcha</text>
+            <circle cx="600" cy="220" r="4" fill="#2A2220"/><text x="608" y="223">drunk elephant</text>
+            <circle cx="100" cy="260" r="4" fill="#2A2220"/><text x="108" y="263">vintner's daughter</text>
+            <circle cx="560" cy="270" r="4" fill="#2A2220"/><text x="568" y="273">tata harper</text>
+            <!-- mid-premium -->
+            <circle cx="280" cy="330" r="4" fill="#2A2220"/><text x="288" y="333">aesop</text>
+            <circle cx="270" cy="370" r="4" fill="#2A2220"/><text x="278" y="373">le labo</text>
+            <circle cx="450" cy="380" r="4" fill="#2A2220"/><text x="458" y="383">diptyque</text>
+            <circle cx="540" cy="410" r="4" fill="#2A2220"/><text x="548" y="413">laneige</text>
+            <!-- accessible-premium -->
+            <circle cx="600" cy="450" r="4" fill="#2A2220"/><text x="608" y="453">naturium</text>
+            <circle cx="630" cy="480" r="4" fill="#2A2220"/><text x="638" y="483">byoma</text>
+            <circle cx="600" cy="510" r="4" fill="#2A2220"/><text x="608" y="513">topicals</text>
+            <circle cx="320" cy="490" r="4" fill="#2A2220"/><text x="328" y="493">rhode</text>
+            <circle cx="650" cy="540" r="4" fill="#2A2220"/><text x="572" y="543" text-anchor="end">glow recipe</text>
+            <circle cx="380" cy="540" r="4" fill="#2A2220"/><text x="388" y="543">glossier</text>
+            <circle cx="680" cy="560" r="4" fill="#2A2220"/><text x="608" y="563" text-anchor="end">bubble</text>
+          </g>
+
+          <!-- callouts -->
+          <g font-family="Satoshi" font-size="9" fill="#6B5C54">
+            <text x="400" y="555" text-anchor="middle">↓ accessible-premium pricing &amp; instagram-native grammar (wrong tier for ily)</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>fig 4 — the category map. ily's target zone sits just below augustinus bader, just right of tatcha. <strong>closest single comparable: augustinus bader.</strong> the brand we should be willing to be confused with at a glance, but not on inspection.</figcaption>
+    </figure>
+
+    <h4>why this zone is the only defensible position</h4>
+
+    <p>the sephora premium shelf demands restraint (above 22pt-statement type drifts to drunk elephant/topicals territory). the ingredient-forward voice demands clarity (lowercase grammar, ingredient-as-hero — bader's territory). the founder aesthetic demands modern, not heritage (rules out la mer/sulwhasoo's gilt-and-crests positioning).</p>
+
+    <h4>directional risks if ily drifts</h4>
+
+    <ul>
+      <li><strong>up</strong> (la mer · sulwhasoo) — heritage cues that ily's voice rejects. would have to abandon lowercase grammar and ingredient-led typography.</li>
+      <li><strong>down</strong> (glossier · rhode) — accessible-premium pricing tier ($25–$45). ily's COGS and positioning rule it out.</li>
+      <li><strong>left</strong> (aesop · vintner's daughter) — abandon the function-color system entirely (one color, one type, one silhouette across the whole line). coherent move but a different brand.</li>
+      <li><strong>right</strong> (drunk elephant · naturium) — more chromatic density, more decoration. crosses the "trying too hard" line for the founder voice.</li>
+    </ul>
+
+    <p>closest neighbors in order: <strong>augustinus bader</strong> (sharpest comparable) → <strong>dr. sturm</strong> → <strong>tatcha</strong>.</p>
+  </section>
+
+  <!-- ============ SECTION 3 ============ -->
+  <section id="section-3">
+    <h2 class="section">section 03.</h2>
+    <h3>resolving thomas vs. zach — five live decisions, decided on principle.</h3>
+
+    <h4>3.1 — type size on the front face</h4>
+    <p><strong>thomas: restrained · zach: statement.</strong></p>
+    <p>premium-tier convention is <strong>hero type sized to read at 3ft, not 6ft.</strong> 14–22pt on a 30ml SKU, never above. above 22pt the line drifts into accessible-premium / drunk elephant territory. the sephora shelf-distance test demands legibility at ~3ft (typical browse distance from the wall) and silence at 6ft — that's glow recipe's job, not ily's.</p>
+    <p>ingredient-led typography <em>requires</em> restraint. the whole bet of the "named." campaign is that the ingredient earns hero status by being the one big thing on the face. setting it large is consistent with the bet; setting it <em>too</em> large flips it into a topicals-style benefit shout, which kills the prestige read.</p>
+    <blockquote><strong>decision:</strong> ingredient hero at 14–22pt indexed to face width (~16pt on a 30ml dropper, scaling proportionally); never above 22pt; product type at 25–35% of hero size; eyebrow (where used) at 6–8pt with wide tracking.</blockquote>
+
+    <h4>3.2 — color saturation in the function code</h4>
+    <p><strong>thomas: muted · zach: saturated.</strong></p>
+    <p>three premium-tier function-color substrategies: saturated · muted-tint · pastel. frosted blue at <code>#ADE8F9</code> is a <strong>pale tint</strong> — closer to pastel than to muted-saturated. side-by-side with augustinus bader's cap blue (much deeper) or dr. sturm's clinical signal-blue, ily's blue reads softer and risks tipping accessible-premium. it also has a real photography problem: at <code>#ADE8F9</code> it's only marginally darker than ghost white, so on a white catalog sweep with a subtle white balance shift, the body color can wash toward white.</p>
+
+    <div class="swatch-row">
+      <div class="swatch">
+        <div class="chip" style="background:#ADE8F9"></div>
+        <div class="name">ily frosted blue (current)</div>
+        <div class="hex">#ADE8F9</div>
+        <div class="role">pale tint · pastel-leaning · screen-locked</div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#7DC8E8"></div>
+        <div class="name">proposed packaging-only sibling</div>
+        <div class="hex">#7DC8E8</div>
+        <div class="role">muted-tint · physical-coating tier</div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#5FB0DC"></div>
+        <div class="name">deeper option</div>
+        <div class="hex">#5FB0DC</div>
+        <div class="role">muted-saturated · bader-territory</div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#1B4FBC"></div>
+        <div class="name">augustinus bader cap (ref.)</div>
+        <div class="hex">~#1B4FBC</div>
+        <div class="role">saturated · single-cap signal</div>
+      </div>
+    </div>
+
+    <p><strong>path A (zach-leaning):</strong> introduce a deeper packaging-only frosted blue. keeps the digital <code>#ADE8F9</code> for web/screen contexts but uses a saturated sibling on physical surfaces. <strong>path B (thomas-leaning):</strong> keep <code>#ADE8F9</code> and do the cohesion work elsewhere — heavier reliance on shadow grey constants.</p>
+
+    <p>path A is the safer, more category-aligned move. path B is internally consistent but pushes the line toward bubble's neighborhood under fluorescent retail light.</p>
+
+    <blockquote><strong>decision:</strong> introduce a packaging-only frosted blue in the <code>#5FB0DC</code>–<code>#7DC8E8</code> range (test physical samples at 5K pilot). keep <code>#ADE8F9</code> as the digital token. add <code>--ily-frosted-blue-physical</code> to <a href="../brand/tokens.css">tokens.css</a> once the sample lands. brand-identity.md screen value stays unchanged.</blockquote>
+
+    <h4>3.3 — decoration density</h4>
+    <p><strong>thomas: 1-color front + back · zach: add a 2nd color or accent.</strong></p>
+    <p>premium-tier baseline is <strong>1 ink, occasionally 2 when the second codes a specific tier.</strong> tatcha runs 1–2 inks per face. bader runs 1 (silver foil mark only). aesop runs 1. drunk elephant runs 3+ (the stunt). la mer runs 2 (silver + dark blue).</p>
+
+    <p>a second color earns its place when: it codes an additional functional layer (active eyebrow on actives only — sturm) · it's a single fixed brand element used identically across the line (bader's silver foil dot) · it's a campaign-mark that disappears on standard runs.</p>
+
+    <p>a second color reads as <strong>trying</strong> when: it highlights a benefit claim · it varies by SKU · it's added because the design feels "too quiet" (the genuine sin).</p>
+
+    <blockquote><strong>decision:</strong> hold the 1-color front + 1-color back spec. reject decoration additions until a second-color reservation has a specific functional role. the one defensible second-ink moment: a small frosted blue accent dot or hairline rule on actives-tier SKUs only (the airless line) — coding "active" within the system.</blockquote>
+
+    <h4>3.4 — the period anchor</h4>
+    <p><strong>keep, drop, or amplify?</strong></p>
+    <p>honest read: the period dot anchored on the bottom-right of every front face is doing real work, but only because the brand-identity period system is already established as a typographic signature. if ily were <em>just</em> adding a decorative dot to the corner of every label, it would read as a self-conscious flourish.</p>
+
+    <p>what makes it work: the wordmark ends in a period · the brandmark ends in a period · display headlines end in periods · ingredient lists end in periods. the period-as-signature is everywhere in the system. the packaging dot is a consistent extension, not an invented motif.</p>
+
+    <figure>
+      <div class="figure-frame">
+        <svg viewBox="0 0 800 220" role="img" aria-label="period anchor sizing rule">
+          <g font-family="Satoshi">
+            <!-- 30ml -->
+            <text x="100" y="25" text-anchor="middle" font-size="11" font-weight="500" fill="#6B5C54" letter-spacing="2">30ML</text>
+            <rect x="60" y="40" width="80" height="160" rx="4" fill="#ADE8F9" stroke="#2A2220" stroke-width="0.8"/>
+            <rect x="60" y="40" width="80" height="14" fill="#2A2220"/>
+            <text x="100" y="120" text-anchor="middle" font-weight="300" font-size="12" fill="#2A2220">niacinamide.</text>
+            <circle cx="132" cy="190" r="1.5" fill="#2A2220"/>
+            <text x="200" y="195" font-size="10" fill="#6B5C54">~1.5mm dot</text>
+
+            <!-- 100ml -->
+            <text x="350" y="25" text-anchor="middle" font-size="11" font-weight="500" fill="#6B5C54" letter-spacing="2">100ML</text>
+            <rect x="290" y="40" width="120" height="160" rx="4" fill="#F0F3FA" stroke="#2A2220" stroke-width="0.8"/>
+            <rect x="290" y="40" width="120" height="16" fill="#2A2220"/>
+            <text x="350" y="120" text-anchor="middle" font-weight="300" font-size="16" fill="#2A2220">ceramides.</text>
+            <circle cx="400" cy="190" r="2" fill="#2A2220"/>
+            <text x="460" y="195" font-size="10" fill="#6B5C54">~2mm dot</text>
+
+            <!-- 200ml -->
+            <text x="640" y="25" text-anchor="middle" font-size="11" font-weight="500" fill="#6B5C54" letter-spacing="2">200ML</text>
+            <rect x="560" y="40" width="160" height="160" rx="4" fill="#2A2220"/>
+            <rect x="560" y="40" width="160" height="18" fill="#FFD5C6"/>
+            <text x="640" y="120" text-anchor="middle" font-weight="300" font-size="22" fill="#F0F3FA">hyaluronic.</text>
+            <circle cx="710" cy="190" r="3" fill="#F0F3FA"/>
+            <text x="730" y="195" font-size="10" fill="#6B5C54">~3mm dot</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>fig 5 — period anchor sizing scales proportionally with face area. 1.5mm at 30ml, ~3mm at 200ml. <strong>front face only · bottom-right corner · never on backs · never on caps.</strong> if it grows past these proportions it loses its principle.</figcaption>
+    </figure>
+
+    <blockquote><strong>decision:</strong> keep. sized as a true period (~1.5mm at 30ml, scaling proportionally). front face only. bottom-right corner, fixed offset from edges. never on backs, never on caps (the cap emboss is doing that job). audit dieline reviews specifically for sizing drift.</blockquote>
+
+    <h4>3.5 — cap emboss universally vs. selectively</h4>
+    <p>the prestige move is <strong>universal cohesion when the constant carries real meaning.</strong> aesop puts amber on every SKU because it carries the entire identity. bader puts the blue cap on every SKU for the same reason. selectivity reads as inconsistency — "we couldn't decide" — unless the selection is itself a tiered code.</p>
+
+    <p>the principle that resolves: <strong>a system that distrusts its other elements adds emphasis everywhere; a system that trusts its other elements lets each element do one job.</strong> universal cap emboss is the prestige move <em>because</em> the rest of the system is doing its job. selective embossing would read as the brand hedging.</p>
+
+    <blockquote><strong>decision:</strong> universal <code>ily.</code> emboss on every cap diameter. tooling cost is one-time per diameter. brief the production photographer that cap shots require raking side light. accept that flat-lay catalog photography will not always show the emboss — and that's fine, it's the touch signature.</blockquote>
+  </section>
+
+  <!-- ============ SECTION 4 ============ -->
+  <section id="section-4">
+    <h2 class="section">section 04.</h2>
+    <h3>the amateur-tells checklist — 22 specific failure modes.</h3>
+
+    <p>use this against any ily SKU dieline — and against any contractor's work — before signing off.</p>
+
+    <h5>typography</h5>
+    <ol>
+      <li><strong>front-face hero type set above 22pt on a 30ml SKU.</strong> mass-tier sizing. caps the perceived price tier.</li>
+      <li><strong>two competing heroes on one face</strong> (brand at top + product name center, both large). the most common indie-skincare hierarchy mistake.</li>
+      <li><strong>body type set in a different typeface from headline type.</strong> mixing typefaces on a prestige SKU is a tell. ily uses satoshi everywhere — hold the line.</li>
+      <li><strong>type tracked tight on a small face.</strong> below 50ml, prestige type is tracked open (+25 to +75 letterspacing).</li>
+      <li><strong>capital-letter body copy outside the locked exceptions.</strong> ily's all-caps carve-out is system error states / packaging conventions / legal. anywhere else, lowercase.</li>
+      <li><strong>italics used for emphasis.</strong> almost never appears in prestige skincare. use weight (regular → medium) for emphasis.</li>
+    </ol>
+
+    <h5>color</h5>
+    <ol start="7">
+      <li><strong>default pantone color choice</strong> (e.g., 286 C, 485 C, 354 C). signals "designer reached for the swatch book." prestige uses custom-mixed or supplier-verified spot tones.</li>
+      <li><strong>more than 2 colors visible on the front face.</strong> body color + ink = 2. adding a third usually pushes accessible-premium.</li>
+      <li><strong>saturation gradient between body and accent.</strong> a pastel body with a saturated logotype reads cheap. match saturation levels.</li>
+      <li><strong>almond silk used at equal weight with frosted blue anywhere.</strong> ily's brand identity has a 10:1 rule. violating it is the most predictable accessible-premium drift.</li>
+    </ol>
+
+    <h5>hierarchy &amp; layout</h5>
+    <ol start="11">
+      <li><strong>front face below 60% empty.</strong> below the prestige-tier negative-space norm.</li>
+      <li><strong>volume (ml/oz) sized larger than 8pt on a 30ml SKU.</strong> volume is a regulatory necessity, not a hero. 5–8pt in a corner.</li>
+      <li><strong>eyebrow text above 10pt or set in regular weight.</strong> eyebrows are tracked-out small caps or tracked lowercase — never paragraph-weight type.</li>
+      <li><strong>the legal/INCI block boxed or ruled.</strong> prestige sets it as a tight unboxed block. borders around regulatory copy is a mass tell.</li>
+    </ol>
+
+    <h5>finish &amp; material</h5>
+    <ol start="15">
+      <li><strong>matte body + gloss cap (or vice versa).</strong> the classic finish-mismatch tell. match finishes across components, or contrast them deliberately as a system rule (ily does the latter via shadow grey collars — that's intentional).</li>
+      <li><strong>soft-touch on a substrate that will yellow.</strong> soft-touch over a white plastic that ages to ivory in 6 months.</li>
+      <li><strong>varnish or gloss on the body anywhere on this line.</strong> off-brand for ily. catch it at supplier-spec stage.</li>
+    </ol>
+
+    <h5>production craft</h5>
+    <ol start="18">
+      <li><strong>brand mark or hero type set right against the bleed edge.</strong> 2mm minimum margin from any edge is the prestige floor.</li>
+      <li><strong>print/photography-only fonts (live fonts not outlined in production AI files).</strong> quote 260422 explicitly requires outlined fonts. immediate amateur tell.</li>
+      <li><strong>subtle deboss with no specified raking-light brief for catalog photography.</strong> an emboss that only the in-person customer sees. either accept this (correct prestige move, document in style guide) or add a raking-light note to the photographer brief.</li>
+    </ol>
+
+    <h5>system cohesion</h5>
+    <ol start="21">
+      <li><strong>one SKU breaks the typographic grid.</strong> most common in launch SKUs designed before the grid is locked.</li>
+      <li><strong>a "decorating" addition</strong> (extra mark, ornamental rule, illustrative element) that exists because the SKU "felt empty" in design review. additive moves compound; subtractive moves rarely fail. when in doubt, remove.</li>
+    </ol>
+  </section>
+
+  <!-- ============ SECTION 5 ============ -->
+  <section id="section-5">
+    <h2 class="section">section 05.</h2>
+    <h3>apply back to system.md.</h3>
+
+    <h4>the six cohesion rules</h4>
+
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>#</th><th>rule</th><th>verdict</th><th>notes</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>1</td><td>vessel color = function code</td>
+          <td><span class="pill amber">defensible</span></td>
+          <td>function-color systems exist in prestige (sturm, bader, la roche-posay) but they're rarer than chromatic-monogamy or achromatic-plus-one. internally consistent. not a tell — but the hardest of three strategies to execute. <strong>risk:</strong> frosted blue at <code>#ADE8F9</code> specifically (see § 3.2). <strong>alternative:</strong> consider whether the 4-color system could be reduced to 2 (shadow grey + frosted blue body, almond silk reserved as a single annual gift drop). holding 4 is fine if committed to discipline.</td>
+        </tr>
+        <tr>
+          <td>2</td><td>one label spec across every vessel</td>
+          <td><span class="pill green">correct</span></td>
+          <td>restraint is the prestige norm. 1-color silkscreen front + 1-color silkscreen back is exactly what aesop, le labo, and bader do. hold this. "no stickered labels" is right discipline — stickered labels are an immediate tell at premium.</td>
+        </tr>
+        <tr>
+          <td>3</td><td>cap emboss = <code>ily.</code> brandmark</td>
+          <td><span class="pill green">correct</span></td>
+          <td>universal cohesion via a single constant element is the prestige convention. one-time tooling cost is the right place to spend. <strong>caveat:</strong> brief the photographer for raking side light on cap shots — the uninked emboss will not survive flat-lay photography. document in photo-direction brief.</td>
+        </tr>
+        <tr>
+          <td>4</td><td>front type = ingredient, not product name</td>
+          <td><span class="pill green">correct</span></td>
+          <td>ingredient-forward typography is the hero of the brand voice and consistent with the "named." campaign. <strong>caveat:</strong> type sizing must hold at 14–22pt indexed to face width. above that ceiling, the principle inverts and the SKU drifts into topicals-style benefit-shout territory.</td>
+        </tr>
+        <tr>
+          <td>5</td><td>the period as bottom-edge anchor</td>
+          <td><span class="pill amber">defensible</span></td>
+          <td>works <em>because</em> the period system is already established as a typographic signature throughout the brand identity. without that foundation it would be a flourish. <strong>risk:</strong> sizing drift. audit specifically for the period staying ~1.5mm on a 30ml face; allow proportional scale-up. <strong>risk:</strong> front-face only — never on backs (designer-precious).</td>
+        </tr>
+        <tr>
+          <td>6</td><td>one typographic grid</td>
+          <td><span class="pill green">correct</span></td>
+          <td>highest-leverage cohesion lever and zero unit cost. make grid discipline non-negotiable for every dieline review. <strong>caveat:</strong> the rule states the principle but doesn't yet define the grid. add a grid spec sheet (x-height ratio, baseline grid, vertical rhythm units, type-to-face-width tables) before the first dieline goes to production. without that document, the rule is a value, not a system.</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h4>per-format application — current ily mockups in context</h4>
+
+    <p>these are the existing ily mockups, audited against the per-format spec.</p>
+
+    <div class="mockup-grid">
+      <figure>
+        <img src="mockups/v1/ily-serum-frosted-blue-glass.png" alt="ily serum, frosted blue glass dropper">
+        <figcaption><strong>dropper, 30ml.</strong> 🟡 vertical-centered ingredient name on a tall narrow face is the hardest typesetting on the line. survival depends on ingredient-name length — "niacinamide." reads fine; "tetrahexyldecyl ascorbate" does not. spec a fallback hierarchy.</figcaption>
+      </figure>
+      <figure>
+        <img src="mockups/v1/ily-cleanser-frosted-blue.png" alt="ily cleanser, frosted blue tube">
+        <figcaption><strong>tube.</strong> ✅ correct. the $0.05 matt finish is the right spend. caveat: "wraps from front center" needs a defined wrap point in the dieline so type doesn't fall on the side seam.</figcaption>
+      </figure>
+      <figure>
+        <img src="mockups/v1/ily-toner-ghost-white.png" alt="ily toner, ghost white bottle">
+        <figcaption><strong>bottle (pump/spray).</strong> ✅ correct. shadow grey dust cover constant is doing real cohesion work — the cheapest highest-leverage cross-line element.</figcaption>
+      </figure>
+      <figure>
+        <img src="mockups/v1/ily-moisturizer-shadow-grey-tub.png" alt="ily moisturizer, shadow grey jar">
+        <figcaption><strong>jar (50g).</strong> ✅ correct. matched coat + cap emboss on the lid is canonical prestige. raking-light photography is the catch-up note here.</figcaption>
+      </figure>
+      <figure>
+        <img src="mockups/v1/ily-regimen-flatlay.png" alt="ily regimen flatlay">
+        <figcaption><strong>set / regimen flatlay.</strong> ✅ correct. almond silk used as a tier-restricted warmth moment is exactly the discipline that keeps it from flooding the line.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ ACTIONS ============ -->
+  <section id="actions">
+    <h2 class="section">prioritized action list.</h2>
+    <h3>top 5 changes before the first SKU goes to dieline.</h3>
+
+    <p>ordered by impact-per-effort.</p>
+
+    <ol>
+      <li><strong>define the typographic grid as a spec sheet</strong> (x-height ratios, baseline grid, type sizes per face area, hero/eyebrow/product-type proportional rules). rule 6 names the principle but no grid document exists. <strong>highest impact, zero cost</strong> — without this, every dieline review is subjective.</li>
+      <li><strong>test a deeper packaging-only frosted blue</strong> in the <code>#5FB0DC</code>–<code>#7DC8E8</code> range as a 5K pilot on the hero serum (<code>PL184-LI-30-94</code>). compare side-by-side with <code>#ADE8F9</code> under retail fluorescent light. decide whether to introduce a packaging-specific token. <strong>high impact, $500 setup + 5K production pilot cost.</strong></li>
+      <li><strong>spec the period anchor sizing rule</strong> (1.5mm at 30ml face, proportional scaling). add to system.md as part of rule 5. audit checkbox in dieline reviews. <strong>medium impact, zero cost.</strong></li>
+      <li><strong>spec a fallback hierarchy for long ingredient names on the dropper face</strong> (line-break rule, abbreviation rule, or two-line typesetting). the vertical-centered hero only works for ingredient names up to ~14 characters at 16pt. <strong>medium impact, zero cost.</strong></li>
+      <li><strong>brief the catalog photographer</strong> with a raking-light requirement for cap-detail shots. document this in the photo-direction file before the first SKU shoots. <strong>low cost, prevents an avoidable photography failure.</strong></li>
+    </ol>
+
+    <h4>follow-up notes for next iteration</h4>
+    <ul>
+      <li>once the deeper packaging frosted blue is locked, update <a href="../brand/tokens.css">tokens.css</a> with <code>--ily-frosted-blue-physical</code> and document the digital-vs-physical pair in brand-identity.md.</li>
+      <li>add a grid spec document at <code>packaging/grid.md</code> referenced from system.md rule 6.</li>
+      <li>after the first dropper SKU ships and is photographed, re-audit § 1 (photography survival) and § 4 (production craft) against the actual catalog images.</li>
+    </ul>
+  </section>
+
+  <footer class="doc">
+    <p>iloveyouth · packaging standards audit · 2026-05-01 · run from <code>packaging/prompts/packaging-standards-audit.md</code> against <code>system.md</code>, <code>uapkg-capabilities.md</code>, and <code>ily-brand/brand-identity.md</code>.</p>
+    <p>← <a href="../index.html">back to ily public previews</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
