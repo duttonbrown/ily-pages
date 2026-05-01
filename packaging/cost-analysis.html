@@ -136,6 +136,15 @@
       padding: var(--ily-space-5);
       border-radius: 4px;
     }
+    .summary-card .thumb {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: var(--ily-surface);
+      border-radius: 2px;
+      margin-bottom: var(--ily-space-4);
+    }
     .summary-card .role {
       font-size: var(--ily-text-xs);
       letter-spacing: var(--ily-tracking-wider);
@@ -203,6 +212,41 @@
     }
     .pill.warn { background: var(--ily-support-soft); }
 
+    .sku-hero {
+      display: flex;
+      align-items: center;
+      gap: var(--ily-space-6);
+      margin: var(--ily-space-8) 0 var(--ily-space-4);
+      padding: var(--ily-space-5);
+      background: var(--ily-bg-elevated);
+      border: 1px solid var(--ily-border);
+      border-radius: 4px;
+    }
+    .sku-hero img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      background: var(--ily-surface);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .sku-hero .meta {
+      flex: 1;
+      min-width: 0;
+    }
+    .sku-hero h3 {
+      margin: 0 0 var(--ily-space-2);
+    }
+    .sku-hero p {
+      margin: 0;
+      font-size: var(--ily-text-sm);
+      color: var(--ily-text-muted);
+    }
+    @media (max-width: 540px) {
+      .sku-hero { flex-direction: column; align-items: flex-start; }
+      .sku-hero img { width: 100%; height: auto; aspect-ratio: 1 / 1; }
+    }
+
     .recs {
       display: grid;
       gap: var(--ily-space-4);
@@ -241,6 +285,10 @@
     }
     footer a { color: var(--ily-text); text-decoration: none; border-bottom: 1px dotted var(--ily-text-muted); }
     footer a:hover { border-bottom-color: var(--ily-text); }
+    footer p { margin-bottom: var(--ily-space-3); line-height: 1.7; }
+    footer p strong { font-weight: var(--ily-font-medium); color: var(--ily-text); }
+    .rec a, .sku-hero a { color: var(--ily-text); text-decoration: none; border-bottom: 1px dotted var(--ily-text-muted); }
+    .rec a:hover, .sku-hero a:hover { border-bottom-color: var(--ily-text); }
 
     @media (max-width: 720px) {
       .page { padding: var(--ily-space-10) var(--ily-space-5); }
@@ -275,24 +323,28 @@
       <p class="section-label">at a glance</p>
       <div class="summary-grid">
         <div class="summary-card">
+          <img class="thumb" src="ua-quote-260422/Round-Dia80-TU004.jpg" alt="round-dia80 tu004 tube">
           <p class="role">cleanser</p>
           <p class="sku">round-dia80 (tu004)</p>
           <p class="price">$0.71</p>
           <p class="price-label">landed / unit</p>
         </div>
         <div class="summary-card">
+          <img class="thumb" src="ua-quote-260422/PL042-71350-150ml.jpg" alt="pl042 150ml pump bottle">
           <p class="role">toner</p>
           <p class="sku">pl042-71350-150ml</p>
           <p class="price">$1.46</p>
           <p class="price-label">landed / unit</p>
         </div>
         <div class="summary-card">
+          <img class="thumb" src="ua-quote-260422/PL184-KH30-77.jpg" alt="pl184-kh30-77 30ml glass bottle">
           <p class="role">serum</p>
           <p class="sku">pl184-kh30-77</p>
           <p class="price">$1.27</p>
           <p class="price-label">landed / unit</p>
         </div>
         <div class="summary-card">
+          <img class="thumb" src="ua-quote-260422/PL001-3493-50ML.jpg" alt="pl001-3493 50ml airless bottle">
           <p class="role">moisturizer</p>
           <p class="sku">pl001-3493-50ml</p>
           <p class="price">$1.86</p>
@@ -358,8 +410,14 @@
       <p class="section-label">per-sku finish recommendation</p>
       <p>following the ily packaging system rules: frosted/matte only, never glossy. one-color silkscreen front + one-color silkscreen back. cap emboss across the line. no varnish, metallic, or hologram. function-color body coating (frosted blue / shadow grey / ghost white).</p>
 
-      <h3>1. cleanser <span class="pill">ghost white (matte)</span></h3>
-      <p>round-dia80 (tu004), 130ml pe+pp tube. matte tube finish is the single highest-leverage line item in the catalog — volume-independent and mandatory. a glossy pe tube reads instantly mass-tier; matte reads premium even before silkscreen.</p>
+      <div class="sku-hero">
+        <img src="ua-quote-260422/Round-Dia80-TU004.jpg" alt="round-dia80 tu004 tube">
+        <div class="meta">
+          <h3 style="margin:0 0 var(--ily-space-2)">1. cleanser <span class="pill">ghost white (matte)</span></h3>
+          <p>round-dia80 (tu004), 130ml pe+pp tube. <a href="https://www.uapkg.com/products/cosmetic-tubes/" target="_blank" rel="noopener">browse ua tubes</a> · <a href="https://www.uapkg.com/customize-skincare-packaging-finish/" target="_blank" rel="noopener">finish options</a></p>
+        </div>
+      </div>
+      <p>matte tube finish is the single highest-leverage line item in the catalog — volume-independent and mandatory. a glossy pe tube reads instantly mass-tier; matte reads premium even before silkscreen.</p>
       <table>
         <thead>
           <tr><th>line item</th><th>cost @ 10k</th><th>note</th></tr>
@@ -375,8 +433,14 @@
         </tbody>
       </table>
 
-      <h3>2. toner <span class="pill">frosted blue</span></h3>
-      <p>pl042-71350-150ml, 150ml petg+pp pump. spray coating in frosted blue is the line item that turns clear plastic into "looks like laneige." pump dust cover stays shadow grey across the line as a catalog-level cohesion lever.</p>
+      <div class="sku-hero">
+        <img src="ua-quote-260422/PL042-71350-150ml.jpg" alt="pl042 150ml pump bottle">
+        <div class="meta">
+          <h3 style="margin:0 0 var(--ily-space-2)">2. toner <span class="pill">frosted blue</span></h3>
+          <p>pl042-71350-150ml, 150ml petg+pp pump. <a href="https://www.uapkg.com/products/skincare-bottles/" target="_blank" rel="noopener">browse ua skincare bottles</a> · <a href="https://www.uapkg.com/customize-skincare-packaging-use-experience/" target="_blank" rel="noopener">pump &amp; reducer options</a></p>
+        </div>
+      </div>
+      <p>spray coating in frosted blue is the line item that turns clear plastic into "looks like laneige." pump dust cover stays shadow grey across the line as a catalog-level cohesion lever.</p>
       <table>
         <thead>
           <tr><th>line item</th><th>cost @ 10k</th><th>note</th></tr>
@@ -393,8 +457,14 @@
         </tbody>
       </table>
 
-      <h3>3. serum <span class="pill">frosted blue</span></h3>
-      <p>pl184-kh30-77, 30ml glass+abs bottle. frosted-glass body in frosted blue. no collar (it's a bottle, not a dropper) — saves the $0.10 shadow grey collar applied to dropper skus.</p>
+      <div class="sku-hero">
+        <img src="ua-quote-260422/PL184-KH30-77.jpg" alt="pl184-kh30-77 30ml glass bottle">
+        <div class="meta">
+          <h3 style="margin:0 0 var(--ily-space-2)">3. serum <span class="pill">frosted blue</span></h3>
+          <p>pl184-kh30-77, 30ml glass+abs bottle. <a href="https://www.uapkg.com/products/pl184-kh30-77/" target="_blank" rel="noopener">view product</a> · <a href="https://www.uapkg.com/products/glass-cosmetic-package/" target="_blank" rel="noopener">browse glass</a></p>
+        </div>
+      </div>
+      <p>frosted-glass body in frosted blue. no collar (it's a bottle, not a dropper) — saves the $0.10 shadow grey collar applied to dropper skus.</p>
       <table>
         <thead>
           <tr><th>line item</th><th>cost @ 10k</th><th>note</th></tr>
@@ -409,8 +479,14 @@
         </tbody>
       </table>
 
-      <h3>4. moisturizer <span class="pill">shadow grey + frosted blue</span></h3>
-      <p>pl001-3493-50ml, 50ml pp+as airless bottle. the airless tier per system rules: outer shadow grey, inner frosted blue, cap shadow grey. this is the brand's most premium expression and where to consider an additional soft-touch finish (see recommendations below).</p>
+      <div class="sku-hero">
+        <img src="ua-quote-260422/PL001-3493-50ML.jpg" alt="pl001-3493 50ml airless bottle">
+        <div class="meta">
+          <h3 style="margin:0 0 var(--ily-space-2)">4. moisturizer <span class="pill">shadow grey + frosted blue</span></h3>
+          <p>pl001-3493-50ml, 50ml pp+as airless bottle. <a href="https://www.uapkg.com/products/airless-cosmetic-packaging/" target="_blank" rel="noopener">browse ua airless</a> · <a href="https://www.uapkg.com/first-to-market-airless-bottle-in-aluminum-comes-out.html" target="_blank" rel="noopener">aluminum airless option</a></p>
+        </div>
+      </div>
+      <p>the airless tier per system rules: outer shadow grey, inner frosted blue, cap shadow grey. this is the brand's most premium expression and where to consider an additional soft-touch finish (see recommendations below).</p>
       <table>
         <thead>
           <tr><th>line item</th><th>cost @ 10k</th><th>note</th></tr>
@@ -479,28 +555,84 @@
     </section>
 
     <section>
+      <p class="section-label">material options to consider</p>
+      <p>ua publishes eight sustainability paths. the table below covers the ones most relevant to this 4-sku regimen — what each is, the trade-off versus our default virgin-plastic / glass spec, and where to read more on ua's site.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>material path</th>
+            <th>what it is</th>
+            <th>trade-off vs default</th>
+            <th>read more</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>pcr (mechanical)</td>
+            <td>recycled plastic content, post-consumer source</td>
+            <td>slight color tint, modest cost premium (~10–20%); fine for matte/coated bodies where tint is hidden</td>
+            <td><a href="https://www.uapkg.com/pcr-cosmetics-bottles-ecofriendly-and-sustainable-packaging.html" target="_blank" rel="noopener">pcr article</a></td>
+          </tr>
+          <tr>
+            <td>chemical pcr</td>
+            <td>depolymerized + repolymerized recycled feedstock</td>
+            <td>looks/performs like virgin; no tint penalty; higher cost than mechanical pcr</td>
+            <td><a href="https://www.uapkg.com/sustainable-chemical-pcr-material-skincare-packaging/" target="_blank" rel="noopener">chemical pcr article</a></td>
+          </tr>
+          <tr>
+            <td>mono-material</td>
+            <td>single-polymer construction (e.g. all-pp tube + pp cap)</td>
+            <td>easier curbside recycle; pump/dispenser choices constrained — relevant for the cleanser tube</td>
+            <td><a href="https://www.uapkg.com/mono-material-lotion-pump-achieve-sustainability-with-easy-recycling.html" target="_blank" rel="noopener">mono-material pump</a></td>
+          </tr>
+          <tr>
+            <td>aluminum</td>
+            <td>metal vessel, infinitely recyclable</td>
+            <td>denting risk; different decoration palette; ua now offers an aluminum airless (relevant to the moisturizer)</td>
+            <td><a href="https://www.uapkg.com/embracing-sustainability-with-aluminum-cosmetic-containers.html" target="_blank" rel="noopener">aluminum overview</a> · <a href="https://www.uapkg.com/first-to-market-airless-bottle-in-aluminum-comes-out.html" target="_blank" rel="noopener">aluminum airless</a></td>
+          </tr>
+          <tr>
+            <td>refillable</td>
+            <td>replaceable inner cartridge, consumer keeps the outer</td>
+            <td>higher unit cost, lower lifetime cost; needs consumer education; strong fit for the airless tier</td>
+            <td><a href="https://www.uapkg.com/advantages-of-refillable-beauty-packaging.html" target="_blank" rel="noopener">refillable advantages</a></td>
+          </tr>
+          <tr>
+            <td>glass (frosted/coated)</td>
+            <td>weight + perceived premium; recyclable; the serum is already this</td>
+            <td>shipping weight + breakage risk; not a replacement for the cleanser tube but worth keeping for the serum tier</td>
+            <td><a href="https://www.uapkg.com/products/glass-cosmetic-package/" target="_blank" rel="noopener">glass catalog</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <strong>recommended path for ily:</strong> mechanical or chemical <strong>pcr on the toner and moisturizer plastic bodies</strong>; <strong>glass on the serum</strong> (already speced); <strong>mono-material on the cleanser tube</strong> for the recyclability story without the tint penalty. defer aluminum airless and refillable to v2 unless the team wants to lead with the sustainability story at launch.
+      </div>
+    </section>
+
+    <section>
       <p class="section-label">recommendations</p>
       <h3>keep as specified</h3>
       <div class="recs">
         <div class="rec keep">
           <p class="tag">keep · cheap leverage</p>
           <h4>matt tube finish at $0.05 / unit</h4>
-          <p>flat rate at any volume. the single cheapest perception lever in the catalog. a glossy pe tube reads instantly mass-tier.</p>
+          <p>flat rate at any volume. the single cheapest perception lever in the catalog. a glossy pe tube reads instantly mass-tier. → <a href="https://www.uapkg.com/customize-skincare-packaging-finish/" target="_blank" rel="noopener">ua finish options</a></p>
         </div>
         <div class="rec keep">
           <p class="tag">keep · the look</p>
           <h4>spray coating on every vessel</h4>
-          <p>$0.16–$0.21 per unit is the right place to spend. this is the line that turns clear petg into "looks like laneige."</p>
+          <p>$0.16–$0.21 per unit is the right place to spend. this is the line that turns clear petg into "looks like laneige." → <a href="https://www.uapkg.com/customize-skincare-packaging-color/" target="_blank" rel="noopener">color &amp; coating capabilities</a></p>
         </div>
         <div class="rec keep">
           <p class="tag">keep · brand cohesion</p>
           <h4>cap emboss across all four skus</h4>
-          <p>one-time tooling, free per unit forever. the single best brand-cohesion lever on the catalog.</p>
+          <p>one-time tooling, free per unit forever. the single best brand-cohesion lever on the catalog. → <a href="https://www.uapkg.com/customize-skincare-packaging-highlight/" target="_blank" rel="noopener">emboss &amp; highlight techniques</a></p>
         </div>
         <div class="rec keep">
           <p class="tag">keep · system constant</p>
           <h4>shadow grey pump dust cover on the toner</h4>
-          <p>$0.10 to make every pump in the future look like the same family across catalog photography.</p>
+          <p>$0.10 to make every pump in the future look like the same family across catalog photography. → <a href="https://www.uapkg.com/customize-skincare-packaging-use-experience/" target="_blank" rel="noopener">pump options</a></p>
         </div>
       </div>
 
@@ -514,17 +646,22 @@
         <div class="rec add">
           <p class="tag">add · sensory upgrade</p>
           <h4>soft-touch finish on the airless moisturizer</h4>
-          <p>capabilities doc lists "frosted soft touch — enhances sensory experience." +$0.05–0.08 / unit. moves the airless from "looks premium" to "feels premium when held" — what tatcha and drunk elephant lala retro do.</p>
+          <p>capabilities doc lists "frosted soft touch — enhances sensory experience." +$0.05–0.08 / unit. moves the airless from "looks premium" to "feels premium when held" — what tatcha and drunk elephant lala retro do. → <a href="https://www.uapkg.com/customize-skincare-packaging-finish/" target="_blank" rel="noopener">frosted soft touch on ua</a></p>
         </div>
         <div class="rec add">
           <p class="tag">add · sustainability story</p>
           <h4>pcr or chemical pcr on plastic bodies (toner, moisturizer)</h4>
-          <p>10–25% premium per capabilities doc. ~$0.15–0.45 added per unit. real (not badge-y) sustainability story without changing the look. let the material speak.</p>
+          <p>10–25% premium per capabilities doc. ~$0.15–0.45 added per unit. real (not badge-y) sustainability story without changing the look. let the material speak. → <a href="https://www.uapkg.com/pcr-cosmetics-bottles-ecofriendly-and-sustainable-packaging.html" target="_blank" rel="noopener">pcr</a> · <a href="https://www.uapkg.com/sustainable-chemical-pcr-material-skincare-packaging/" target="_blank" rel="noopener">chemical pcr</a> · <a href="https://www.uapkg.com/5-types-of-sustainable-makeup-packaging-materials.html" target="_blank" rel="noopener">5 sustainable material paths</a></p>
         </div>
         <div class="rec add">
           <p class="tag">add · use experience</p>
           <h4>reducer on the toner</h4>
-          <p>capabilities §8 calls this out specifically for toners. ~$0.03–0.05 / unit. prevents over-pour failure mode that kills toner repurchase rates.</p>
+          <p>capabilities §8 calls this out specifically for toners. ~$0.03–0.05 / unit. prevents over-pour failure mode that kills toner repurchase rates. → <a href="https://www.uapkg.com/customize-skincare-packaging-use-experience/" target="_blank" rel="noopener">reducers &amp; dispensers</a></p>
+        </div>
+        <div class="rec add">
+          <p class="tag">add · option to evaluate</p>
+          <h4>refillable inner cartridge for the moisturizer</h4>
+          <p>complexity premium and consumer-education load, but lowers lifetime cost and aligns with the airless tier's premium positioning. worth quoting alongside the standard airless to compare. → <a href="https://www.uapkg.com/advantages-of-refillable-beauty-packaging.html" target="_blank" rel="noopener">refillable advantages</a></p>
         </div>
       </div>
 
@@ -566,7 +703,10 @@
     </section>
 
     <footer>
-      <p>source: <a href="https://github.com/duttonbrown/ily-design/blob/main/packaging/quote-UApkg-ily-260422.pdf">ua packaging quote 260422</a> · <a href="https://github.com/duttonbrown/ily-design/blob/main/packaging/uapkg-capabilities.md">capabilities doc</a> · <a href="https://github.com/duttonbrown/ily-design/blob/main/packaging/system.md">packaging system</a> · live data in the notion <em>packaging</em> database.</p>
+      <p><strong>internal:</strong> <a href="https://github.com/duttonbrown/ily-design/blob/main/packaging/quote-UApkg-ily-260422.pdf">ua quote 260422</a> · <a href="https://github.com/duttonbrown/ily-design/blob/main/packaging/uapkg-capabilities.md">capabilities doc</a> · <a href="https://github.com/duttonbrown/ily-design/blob/main/packaging/system.md">packaging system</a> · live data in the notion <em>packaging</em> database.</p>
+      <p><strong>ua packaging — customization:</strong> <a href="https://www.uapkg.com/customize-skincare-packaging-finish/" target="_blank" rel="noopener">finish</a> · <a href="https://www.uapkg.com/customize-skincare-packaging-color/" target="_blank" rel="noopener">color</a> · <a href="https://www.uapkg.com/customize-skincare-packaging-print/" target="_blank" rel="noopener">print</a> · <a href="https://www.uapkg.com/customize-skincare-packaging-highlight/" target="_blank" rel="noopener">highlight (emboss / laser / digital print)</a> · <a href="https://www.uapkg.com/customize-skincare-packaging-use-experience/" target="_blank" rel="noopener">use experience (pumps / reducers / droppers)</a> · <a href="https://www.uapkg.com/customize-skincare-packaging-shape/" target="_blank" rel="noopener">shape</a></p>
+      <p><strong>ua packaging — catalog:</strong> <a href="https://www.uapkg.com/products/skincare-bottles/" target="_blank" rel="noopener">bottles</a> · <a href="https://www.uapkg.com/products/cosmetic-tubes/" target="_blank" rel="noopener">tubes</a> · <a href="https://www.uapkg.com/products/airless-cosmetic-packaging/" target="_blank" rel="noopener">airless</a> · <a href="https://www.uapkg.com/products/glass-cosmetic-package/" target="_blank" rel="noopener">glass</a> · <a href="https://www.uapkg.com/products/cosmetic-droppers/" target="_blank" rel="noopener">droppers</a></p>
+      <p><strong>ua packaging — sustainability reading:</strong> <a href="https://www.uapkg.com/5-types-of-sustainable-makeup-packaging-materials.html" target="_blank" rel="noopener">5 sustainable material paths</a> · <a href="https://www.uapkg.com/pcr-cosmetics-bottles-ecofriendly-and-sustainable-packaging.html" target="_blank" rel="noopener">pcr</a> · <a href="https://www.uapkg.com/sustainable-chemical-pcr-material-skincare-packaging/" target="_blank" rel="noopener">chemical pcr</a> · <a href="https://www.uapkg.com/mono-material-lotion-pump-achieve-sustainability-with-easy-recycling.html" target="_blank" rel="noopener">mono-material</a> · <a href="https://www.uapkg.com/embracing-sustainability-with-aluminum-cosmetic-containers.html" target="_blank" rel="noopener">aluminum</a> · <a href="https://www.uapkg.com/advantages-of-refillable-beauty-packaging.html" target="_blank" rel="noopener">refillable</a></p>
       <p>generated 2026-05-01 — share this link as a working draft, not a final spec.</p>
     </footer>
 
