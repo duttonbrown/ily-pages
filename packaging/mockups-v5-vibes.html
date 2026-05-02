@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ily — packaging vibes v5 · expressive directions</title>
+
+  <link rel="icon" type="image/svg+xml" href="../brand/logos/favicons/favicon.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="../brand/logos/favicons/favicon-white.svg" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" sizes="32x32" href="../brand/logos/favicons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../brand/logos/favicons/favicon-16.png">
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../brand/tokens.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Satoshi', system-ui, sans-serif;
+      font-weight: 300;
+      color: #2A2220;
+      background: #F0F3FA;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 5rem) clamp(1.25rem, 4vw, 2.5rem);
+    }
+
+    header.doc { margin-bottom: 4rem; padding-bottom: 2.5rem; border-bottom: 1px solid #E5E7EE; }
+    header.doc .wordmark { display: block; width: auto; height: 2.5rem; margin-bottom: 2rem; }
+
+    .eyebrow { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: lowercase; color: #6B5C54; margin: 0 0 1rem; }
+
+    h1 { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 300; letter-spacing: -0.02em; line-height: 1.05; margin: 0 0 1.5rem; }
+
+    .lede { font-size: 1.1rem; color: #4A3F3A; max-width: 65ch; margin: 0 0 1.5rem; }
+
+    .meta { display: grid; grid-template-columns: max-content 1fr; gap: 0.4rem 1.5rem; font-size: 0.85rem; color: #6B5C54; max-width: 70ch; }
+    .meta dt { font-weight: 500; letter-spacing: 0.05em; }
+    .meta dd { margin: 0; }
+
+    a { color: #2A2220; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+
+    nav.toc { margin: 3rem 0; padding: 1.75rem 2rem; background: #FFFFFF; border: 1px solid #E5E7EE; border-radius: 2px; }
+    nav.toc h2 { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: lowercase; color: #6B5C54; margin: 0 0 1rem; }
+    nav.toc ol { margin: 0; padding-left: 1.25rem; font-size: 0.95rem; }
+    nav.toc li { margin: 0.4rem 0; }
+
+    .pull { margin: 3rem 0; padding: 2rem 2.25rem; background: #FFD5C6; border-radius: 2px; font-size: 1.05rem; max-width: 70ch; }
+    .pull strong { font-weight: 500; }
+
+    section.vibe { margin-top: 5rem; padding-top: 3rem; border-top: 1px solid #E5E7EE; scroll-margin-top: 2rem; }
+    section.vibe:first-of-type { border-top: none; padding-top: 0; }
+
+    h2.section-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: lowercase; color: #6B5C54; margin: 0 0 0.5rem; }
+    h2.section-label + h3 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 300; letter-spacing: -0.015em; margin: 0 0 1rem; line-height: 1.15; }
+
+    .vibe-summary { max-width: 70ch; margin: 0 0 1.5rem; font-size: 0.98rem; }
+
+    .vibe-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 0 0 2rem; }
+    .vibe-tags .tag { display: inline-block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.2rem 0.7rem; border-radius: 999px; background: #FFFFFF; border: 1px solid #E5E7EE; color: #4A3F3A; }
+    .vibe-tags .tag.anchor { background: #ADE8F9; border-color: #ADE8F9; }
+    .vibe-tags .tag.warm { background: #FFD5C6; border-color: #FFD5C6; }
+
+    .principle-card { margin: 0 0 2rem; padding: 1.25rem 1.5rem; background: #FFFFFF; border: 1px solid #E5E7EE; border-radius: 2px; font-size: 0.88rem; }
+    .principle-card h5 { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: lowercase; color: #6B5C54; margin: 0 0 0.6rem; }
+    .principle-card ul { margin: 0; padding-left: 1.25rem; }
+    .principle-card li { margin: 0.25rem 0; }
+
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    @media (max-width: 900px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .grid-4 { grid-template-columns: 1fr; } }
+
+    .grid-4 figure { margin: 0; background: #FFFFFF; border: 1px solid #E5E7EE; border-radius: 2px; overflow: hidden; }
+    .grid-4 img { display: block; width: 100%; height: auto; }
+    .grid-4 figcaption { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; color: #6B5C54; padding: 0.6rem 0.8rem; border-top: 1px solid #E5E7EE; background: #F0F3FA; text-transform: lowercase; }
+
+    .compare-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
+    @media (max-width: 700px) { .compare-cards { grid-template-columns: 1fr; } }
+    .compare-card { padding: 1.5rem 1.75rem; background: #FFFFFF; border: 1px solid #E5E7EE; border-radius: 2px; font-size: 0.92rem; }
+    .compare-card h5 { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; color: #6B5C54; margin: 0 0 0.5rem; text-transform: lowercase; }
+    .compare-card h6 { font-size: 1.05rem; font-weight: 500; margin: 0 0 0.75rem; letter-spacing: -0.01em; }
+
+    .note { margin: 3rem 0; padding: 1.5rem 2rem; background: #FFFFFF; border: 1px dashed #6B5C54; border-radius: 2px; font-size: 0.9rem; color: #4A3F3A; }
+
+    footer.doc { margin-top: 6rem; padding-top: 2rem; border-top: 1px solid #E5E7EE; font-size: 0.85rem; color: #6B5C54; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="doc">
+    <picture>
+      <source media="(prefers-color-scheme: dark)"
+              srcset="../brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-white-rect-400.svg">
+      <img class="wordmark"
+           src="../brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-dark-rect-400.svg"
+           alt="iloveyouth.">
+    </picture>
+    <p class="eyebrow">packaging vibes · v5 · 2026-05-02</p>
+    <h1>five expressive directions.</h1>
+    <p class="lede">five lanes that lean into <em>visual interest, color play, and chromatic expression</em> while still respecting the audit's non-negotiables (ingredient-led type, period anchor, Shadow Grey constants, <code>ily.</code> cap deboss, prestige proportions). this round embraces the more-color, more-texture, more-presence half of the founder conversation — the lane Zach was advocating for. v4 was the restrained-prestige answer; v5 is the expressive-prestige answer.</p>
+    <dl class="meta">
+      <dt>preserved</dt><dd>ingredient-led front type · period anchor · ily. cap deboss · prestige proportions and ~70% negative space · wordmark anchored small</dd>
+      <dt>varied</dt><dd>body finish (clear/frosted/coated/ombré/two-tone) · color saturation strategy · graphic boldness · chromatic count per SKU</dd>
+      <dt>relationship to v4</dt><dd>v4 + v5 are <strong>both legitimate prestige plays</strong> on the same brand foundation. v4 is bader/tatcha/le labo restrained; v5 is drunk-elephant-clear / sulwhasoo-tonal / glossier-but-prestige expressive. neither is wrong — they're different bets on what the brand wants to feel like.</dd>
+    </dl>
+  </header>
+
+  <nav class="toc">
+    <h2>five expressive vibes.</h2>
+    <ol>
+      <li><a href="#vibe-01">01 · clear-frosted-formula-visible</a> — clear glass, formula visible inside, pigment-by-content</li>
+      <li><a href="#vibe-02">02 · vertical-ombré</a> — vertical gradient, "hydration filling the bottle"</li>
+      <li><a href="#vibe-03">03 · color-block-collar</a> — extended Shadow Grey band as graphic frame</li>
+      <li><a href="#vibe-04">04 · saturated-cap-pastel-body</a> — bader's actual strategy: pale body + saturated cap</li>
+      <li><a href="#vibe-05">05 · warm-cool-duo</a> — vertical half-and-half color split, the most chromatic direction</li>
+    </ol>
+  </nav>
+
+  <div class="pull">
+    <strong>important framing for both founders:</strong> the audit said <em>muted-saturated wins over pastel for body color</em> — it did NOT say flat-color-only wins over visual texture. UA Packaging supports gradient/ombré, two-tone coating, and clear-frosted-with-color-coating combinations. all five v5 vibes are within prestige category convention; they just lean into the expressive end of the spectrum where v4 leaned into the restrained end. <strong>v4 vs. v5 is the actual disagreement to resolve</strong> — not on "is this on-brand" but on "what visual register do we want to live in."
+  </div>
+
+  <!-- ============ VIBE 01 ============ -->
+  <section class="vibe" id="vibe-01">
+    <h2 class="section-label">vibe 01.</h2>
+    <h3>clear-frosted-formula-visible.</h3>
+    <p class="vibe-summary">no body coating. clear-etched frosted glass with the formula inside doing the chromatic work. the serum tints the bottle pale aqua; the toner tints it pale rose-gold; the actives cream sits visible through the frost. brand expression = product truth made visible. Shadow Grey constants and matte deeper-blue droppers/caps anchor the brand color. <strong>the hydration brand showing the hydration.</strong></p>
+    <div class="vibe-tags">
+      <span class="tag anchor">comparable: drunk elephant clear-frosted</span>
+      <span class="tag">expression: low-mid (formula does the work)</span>
+      <span class="tag">cost: lower (no body coating)</span>
+      <span class="tag">risk: filled-bottle photography only</span>
+    </div>
+    <div class="principle-card">
+      <h5>what it does</h5>
+      <ul>
+        <li><strong>body:</strong> clear etched/frosted glass — no spray coating</li>
+        <li><strong>chromatic moment:</strong> the formula visible inside the bottle</li>
+        <li><strong>cap/dropper/collar:</strong> matte deeper packaging-blue (#5FA9C8) — anchor color lives in the dispensing components, not the body</li>
+        <li><strong>cost note:</strong> skipping the body spray-coat saves $0.16–0.21/unit. could be the cheapest of the five vibes</li>
+        <li><strong>risk:</strong> photography <em>only works with the bottle filled</em>. empty inventory looks vacant. can't shoot a "product hero" without product inside. this is a real production discipline</li>
+      </ul>
+    </div>
+    <div class="grid-4">
+      <figure><img src="mockups/v5/01-clear-frosted-formula/serum.png" alt=""><figcaption>serum · 30ml dropper</figcaption></figure>
+      <figure><img src="mockups/v5/01-clear-frosted-formula/cleanser.png" alt=""><figcaption>cleanser · 150ml tube</figcaption></figure>
+      <figure><img src="mockups/v5/01-clear-frosted-formula/toner.png" alt=""><figcaption>toner · 150ml pump</figcaption></figure>
+      <figure><img src="mockups/v5/01-clear-frosted-formula/moisturizer.png" alt=""><figcaption>retinol · 50g jar</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ============ VIBE 02 ============ -->
+  <section class="vibe" id="vibe-02">
+    <h2 class="section-label">vibe 02.</h2>
+    <h3>vertical-ombré.</h3>
+    <p class="vibe-summary">vertical gradient coating from saturated at the cap fading to clear/pale at the base. the visual story is "hydration filling the bottle from above" — directly echoes the parked-direction-#2 animated wordmark concept (frosted blue rising through the wordmark like water filling a vessel). UA supports gradient spray-coating; this is a real production option. each SKU's gradient runs in the function-color family.</p>
+    <div class="vibe-tags">
+      <span class="tag anchor">comparable: la prairie / luxury gradient</span>
+      <span class="tag">expression: high (visual texture)</span>
+      <span class="tag">cost: +$0.05–0.10/unit gradient spray</span>
+      <span class="tag">brand-narrative: direct</span>
+    </div>
+    <div class="principle-card">
+      <h5>what it does</h5>
+      <ul>
+        <li><strong>body:</strong> smooth vertical gradient from saturated (top) to clear/pale (bottom)</li>
+        <li><strong>brand narrative:</strong> directly visualizes the locked brand promise (hydration). the bottle <em>is</em> the metaphor</li>
+        <li><strong>SKU coding:</strong> each tier's gradient runs in its function color (hydration → packaging-blue gradient; actives → Shadow Grey gradient)</li>
+        <li><strong>type placement:</strong> ingredient hero centered in the mid-tonal zone where Shadow Grey ink reads cleanly across the gradient</li>
+        <li><strong>risk:</strong> gradient quality requires precise spray application — UA can do it but specifying the exact transition point and falloff curve matters for cohesion. without it, each SKU's gradient could look slightly different</li>
+      </ul>
+    </div>
+    <div class="grid-4">
+      <figure><img src="mockups/v5/02-vertical-ombre/serum.png" alt=""><figcaption>serum · 30ml dropper</figcaption></figure>
+      <figure><img src="mockups/v5/02-vertical-ombre/cleanser.png" alt=""><figcaption>cleanser · 150ml tube</figcaption></figure>
+      <figure><img src="mockups/v5/02-vertical-ombre/toner.png" alt=""><figcaption>toner · 150ml pump</figcaption></figure>
+      <figure><img src="mockups/v5/02-vertical-ombre/moisturizer.png" alt=""><figcaption>retinol · 50g jar</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ============ VIBE 03 ============ -->
+  <section class="vibe" id="vibe-03">
+    <h2 class="section-label">vibe 03.</h2>
+    <h3>color-block-collar.</h3>
+    <p class="vibe-summary">the Shadow Grey collar is no longer a slim ring — it's an extended <strong>color-block band</strong> wrapping the upper third of every vessel. the band frames the front-face typography (ingredient hero in Ghost White inside the dark band, anchored cleanly against the body color below). graphic, deliberate, modern. closer to Skims and Apple's restrained-bold register than to Bader's quietude.</p>
+    <div class="vibe-tags">
+      <span class="tag anchor">comparable: skims / apple restraint</span>
+      <span class="tag">expression: mid (graphic-bold)</span>
+      <span class="tag">cost: same as standard 2-coat</span>
+      <span class="tag">cohesion: very high (band is the cross-line constant)</span>
+    </div>
+    <div class="principle-card">
+      <h5>what it does</h5>
+      <ul>
+        <li><strong>body:</strong> matte function-color body (deeper packaging-blue, Ghost White, Shadow Grey, Almond Silk depending on tier)</li>
+        <li><strong>color-block:</strong> Shadow Grey band extending ~30% down from the cap, framing the front face typography</li>
+        <li><strong>cohesion logic:</strong> the band IS the family signature — every SKU has the same band proportion at the same height. shelf-blocking lever.</li>
+        <li><strong>typography move:</strong> ingredient hero set <em>inside</em> the dark band in Ghost White ink, lifting the type contrast to maximum legibility while creating a deliberate graphic moment</li>
+        <li><strong>risk:</strong> if the band proportion drifts across SKUs, the cohesion collapses. requires strict dieline discipline</li>
+      </ul>
+    </div>
+    <div class="grid-4">
+      <figure><img src="mockups/v5/03-color-block-collar/serum.png" alt=""><figcaption>serum · 30ml dropper</figcaption></figure>
+      <figure><img src="mockups/v5/03-color-block-collar/cleanser.png" alt=""><figcaption>cleanser · 150ml tube</figcaption></figure>
+      <figure><img src="mockups/v5/03-color-block-collar/toner.png" alt=""><figcaption>toner · 150ml pump</figcaption></figure>
+      <figure><img src="mockups/v5/03-color-block-collar/moisturizer.png" alt=""><figcaption>retinol · 50g jar</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ============ VIBE 04 ============ -->
+  <section class="vibe" id="vibe-04">
+    <h2 class="section-label">vibe 04.</h2>
+    <h3>saturated-cap-pastel-body.</h3>
+    <p class="vibe-summary">this is <strong>augustinus bader's exact strategy.</strong> pale body, saturated cap. retains the original brand pastel <code>#ADE8F9</code> Frosted Blue on the body, but pairs it with a much deeper saturated cap/collar/dust-cover (PMS 305 territory, ~<code>#3F87B0</code>). the saturation contrast is the whole point — it resolves the "is this a pastel brand or a saturated brand" tension by being <em>both</em>: pastel body, saturated cap. answers the audit's "saturation gradient between body and accent" amateur tell by treating cap/body as deliberately different saturation tiers.</p>
+    <div class="vibe-tags">
+      <span class="tag anchor">comparable: augustinus bader 'the cream'</span>
+      <span class="tag">expression: mid</span>
+      <span class="tag">brand-color: ADE8F9 retained</span>
+      <span class="tag">prestige-proven: yes (bader)</span>
+    </div>
+    <div class="principle-card">
+      <h5>what it does</h5>
+      <ul>
+        <li><strong>body:</strong> retains the brand's locked Frosted Blue <code>#ADE8F9</code> as the body coating — no departure from brand color on the body</li>
+        <li><strong>cap/collar/dust-cover:</strong> deep saturated PMS 305 C (<code>~#3F87B0</code>) — the chromatic anchor</li>
+        <li><strong>resolves the tension:</strong> if Thomas wants the brand pastel preserved AND Zach wants more chromatic punch, this gives both — pastel for the body, saturated for the cap</li>
+        <li><strong>prestige-proven:</strong> bader's "the cream" has used this exact strategy for years and sits firmly in premium tier</li>
+        <li><strong>note:</strong> only viable if Thomas accepts the deeper cap as part of the brand system — would need to be added to brand-identity.md as the packaging cap-color spec</li>
+      </ul>
+    </div>
+    <div class="grid-4">
+      <figure><img src="mockups/v5/04-saturated-cap-pastel-body/serum.png" alt=""><figcaption>serum · 30ml dropper</figcaption></figure>
+      <figure><img src="mockups/v5/04-saturated-cap-pastel-body/cleanser.png" alt=""><figcaption>cleanser · 150ml tube</figcaption></figure>
+      <figure><img src="mockups/v5/04-saturated-cap-pastel-body/toner.png" alt=""><figcaption>toner · 150ml pump</figcaption></figure>
+      <figure><img src="mockups/v5/04-saturated-cap-pastel-body/moisturizer.png" alt=""><figcaption>retinol · 50g jar</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ============ VIBE 05 ============ -->
+  <section class="vibe" id="vibe-05">
+    <h2 class="section-label">vibe 05.</h2>
+    <h3>warm-cool-duo.</h3>
+    <p class="vibe-summary">the most chromatic direction in the entire packaging exploration. <strong>vertical half-and-half color split</strong> — left half packaging-blue (cool), right half Almond Silk (warm peach) — clean vertical division, no gradient. coded to formula function (could read AM/PM, hydration/comfort, cool/warm). most expressive lane. closest comparable: Glossier's bold pop and Skims' two-tone mastery, applied to prestige glass craft. <strong>this is the lane that leaves restraint behind in favor of bold visual personality.</strong></p>
+    <div class="vibe-tags">
+      <span class="tag anchor">comparable: glossier × skims</span>
+      <span class="tag warm">brand-color: both pastels in play</span>
+      <span class="tag">expression: max</span>
+      <span class="tag">risk: most likely to read accessible-premium</span>
+    </div>
+    <div class="principle-card">
+      <h5>what it does</h5>
+      <ul>
+        <li><strong>body:</strong> vertical half-and-half split — packaging-blue cool half + Almond Silk warm half. clean line, no gradient</li>
+        <li><strong>uses both brand pastels at once:</strong> intentionally breaks the 10:1 ratio rule for this tier — could be a special-edition / launch-only / signature-line treatment, NOT the everyday SKU</li>
+        <li><strong>function coding:</strong> the split itself can code AM/PM or dual-action ingredients. the formula tells the story</li>
+        <li><strong>risk:</strong> this is the lane that <em>does</em> push toward accessible-premium territory. Glossier and Bubble use bold two-tone, and the audit specifically flagged that as a different category. <em>could</em> still read prestige if the typography stays restrained and the colors stay matte — but it's the highest-risk lane for category drift</li>
+        <li><strong>best use case:</strong> as a special-edition or limited-drop pack (almond silk is already reserved for this tier per system.md). NOT as the everyday system</li>
+      </ul>
+    </div>
+    <div class="grid-4">
+      <figure><img src="mockups/v5/05-warm-cool-duo/serum.png" alt=""><figcaption>serum · 30ml dropper</figcaption></figure>
+      <figure><img src="mockups/v5/05-warm-cool-duo/cleanser.png" alt=""><figcaption>cleanser · 150ml tube</figcaption></figure>
+      <figure><img src="mockups/v5/05-warm-cool-duo/toner.png" alt=""><figcaption>toner · 150ml pump</figcaption></figure>
+      <figure><img src="mockups/v5/05-warm-cool-duo/moisturizer.png" alt=""><figcaption>retinol · 50g jar</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ============ V4 vs V5 COMPARISON ============ -->
+  <section id="v4-vs-v5" style="margin-top:5rem;padding-top:3rem;border-top:1px solid #E5E7EE;">
+    <h2 class="section-label">decision frame.</h2>
+    <h3>v4 vs. v5 — what each set bets on.</h3>
+    <p class="vibe-summary">both rounds preserve the audit's non-negotiables. they bet differently on which prestige lane the brand wants to live in. <strong>this is the actual decision to resolve</strong> — not on individual vibes within each round, but on the register of the whole system.</p>
+
+    <div class="compare-cards">
+      <div class="compare-card">
+        <h5>v4 register</h5>
+        <h6>restrained-prestige.</h6>
+        <p>visual quietude. flat color body. typographic discipline as the dominant signal. brand expression through restraint and craft (deboss, foil-anchor, anchored wordmark). closest comparables: augustinus bader, tatcha, le labo, sulwhasoo.</p>
+        <p><strong>signals:</strong> hush · craft · prestige convention · low-stunt · "trust the discipline."</p>
+        <p><strong>risk:</strong> can read indistinguishable from category. cohesion-by-restraint requires near-perfect typographic execution.</p>
+      </div>
+      <div class="compare-card">
+        <h5>v5 register</h5>
+        <h6>expressive-prestige.</h6>
+        <p>visual texture. transparency, gradients, color-blocking, two-tone splits. brand expression through chromatic and graphic moves. closest comparables: drunk elephant clear-frosted, la prairie gradient, glossier × skims color discipline.</p>
+        <p><strong>signals:</strong> presence · personality · modern-bold · "trust the visual."</p>
+        <p><strong>risk:</strong> drift toward accessible-premium if any single move overreaches. requires confident execution to stay prestige-tier.</p>
+      </div>
+    </div>
+
+    <h4 style="margin-top:3rem;">my read — the honest version</h4>
+    <p style="max-width:70ch;">if forced to pick one: <strong>v4 vibe 03 (deboss-forward) for the everyday line + v5 vibe 04 (saturated-cap-pastel-body) for premium tier marker</strong>. that hybrid resolves the disagreement directly:</p>
+    <ul style="max-width:70ch;">
+      <li>thomas keeps the brand pastel <code>#ADE8F9</code> on the body (v5 vibe 04 retains it)</li>
+      <li>zach gets the saturated chromatic moment (deeper cap, anchored wordmark, debossed body craft)</li>
+      <li>the audit's photography-survival concern is resolved (saturated cap is the visual anchor under retail lighting)</li>
+      <li>system stays prestige-tier across the line (no drift toward accessible-premium)</li>
+      <li>standard line gets the deboss-forward craft signal; premium/limited tier gets the saturated-cap signature</li>
+    </ul>
+    <p style="max-width:70ch;">but this is not the only good answer. v5 vibe 02 (vertical ombré) directly visualizes the brand's animated-hydration-fill concept, and would make the brand narrative legible in a way no other lane can. v5 vibe 01 (clear-frosted-formula-visible) is the cheapest production option and most aligned with "ingredient-forward" voice. and v4 vibe 01 (bader-discipline) is the safest fallback if either of the above turns out to have execution problems.</p>
+    <p style="max-width:70ch;">i'd happily render any hybrid. say the word.</p>
+  </section>
+
+  <div class="note">
+    <strong>process note:</strong> these mockups are direction renders generated by gemini 2.5 flash image. typography is approximate — the model cannot set satoshi cleanly at small sizes and some letterforms are blurred. the design <em>intent</em> reads correctly: proportions, hierarchy, color, finish, anchor positions. for live dieline work, type will be set in satoshi (outlined, per UA's artwork requirement).
+  </div>
+
+  <footer class="doc">
+    <p>iloveyouth · packaging vibes v5 · 2026-05-02 · informed by <a href="audit-2026-05-01.html">standards audit</a> · companion to <a href="mockups-v4-vibes.html">v4 (restrained directions)</a></p>
+    <p>← <a href="../index.html">back to ily public previews</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
