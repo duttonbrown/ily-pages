@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ily — packaging vibes v4 · five directions</title>
+
+  <link rel="icon" type="image/svg+xml" href="../brand/logos/favicons/favicon.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="../brand/logos/favicons/favicon-white.svg" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" sizes="32x32" href="../brand/logos/favicons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../brand/logos/favicons/favicon-16.png">
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../brand/tokens.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Satoshi', system-ui, sans-serif;
+      font-weight: 300;
+      color: #2A2220;
+      background: #F0F3FA;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 5rem) clamp(1.25rem, 4vw, 2.5rem);
+    }
+
+    header.doc {
+      margin-bottom: 4rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid #E5E7EE;
+    }
+
+    header.doc .wordmark {
+      display: block;
+      width: auto;
+      height: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .eyebrow {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: lowercase;
+      color: #6B5C54;
+      margin: 0 0 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      margin: 0 0 1.5rem;
+    }
+
+    .lede {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: #4A3F3A;
+      max-width: 65ch;
+      margin: 0 0 1.5rem;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 0.4rem 1.5rem;
+      font-size: 0.85rem;
+      color: #6B5C54;
+      max-width: 70ch;
+    }
+    .meta dt { font-weight: 500; letter-spacing: 0.05em; }
+    .meta dd { margin: 0; }
+
+    a { color: #2A2220; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+
+    nav.toc {
+      margin: 3rem 0;
+      padding: 1.75rem 2rem;
+      background: #FFFFFF;
+      border: 1px solid #E5E7EE;
+      border-radius: 2px;
+    }
+    nav.toc h2 {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: lowercase;
+      color: #6B5C54;
+      margin: 0 0 1rem;
+    }
+    nav.toc ol {
+      margin: 0;
+      padding-left: 1.25rem;
+      font-size: 0.95rem;
+    }
+    nav.toc li { margin: 0.4rem 0; }
+
+    section.vibe {
+      margin-top: 5rem;
+      padding-top: 3rem;
+      border-top: 1px solid #E5E7EE;
+      scroll-margin-top: 2rem;
+    }
+    section.vibe:first-of-type { border-top: none; padding-top: 0; }
+
+    h2.section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: lowercase;
+      color: #6B5C54;
+      margin: 0 0 0.5rem;
+    }
+
+    h2.section-label + h3 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 300;
+      letter-spacing: -0.015em;
+      margin: 0 0 1rem;
+      line-height: 1.15;
+    }
+
+    .vibe-summary {
+      max-width: 70ch;
+      margin: 0 0 1.5rem;
+      font-size: 0.98rem;
+    }
+
+    .vibe-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 0 0 2rem;
+    }
+    .vibe-tags .tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      background: #FFFFFF;
+      border: 1px solid #E5E7EE;
+      color: #4A3F3A;
+    }
+    .vibe-tags .tag.anchor { background: #ADE8F9; border-color: #ADE8F9; }
+
+    .principle-card {
+      margin: 0 0 2rem;
+      padding: 1.25rem 1.5rem;
+      background: #FFFFFF;
+      border: 1px solid #E5E7EE;
+      border-radius: 2px;
+      font-size: 0.88rem;
+    }
+    .principle-card h5 {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: lowercase;
+      color: #6B5C54;
+      margin: 0 0 0.6rem;
+    }
+    .principle-card ul { margin: 0; padding-left: 1.25rem; }
+    .principle-card li { margin: 0.25rem 0; }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 900px) {
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .grid-4 { grid-template-columns: 1fr; }
+    }
+
+    .grid-4 figure {
+      margin: 0;
+      background: #FFFFFF;
+      border: 1px solid #E5E7EE;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .grid-4 img { display: block; width: 100%; height: auto; }
+    .grid-4 figcaption {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: #6B5C54;
+      padding: 0.6rem 0.8rem;
+      border-top: 1px solid #E5E7EE;
+      background: #F0F3FA;
+      text-transform: lowercase;
+    }
+
+    .pull {
+      margin: 4rem 0;
+      padding: 2rem 2.25rem;
+      background: #ADE8F9;
+      border-radius: 2px;
+      font-size: 1.05rem;
+      max-width: 70ch;
+    }
+    .pull strong { font-weight: 500; }
+
+    .note {
+      margin: 3rem 0;
+      padding: 1.5rem 2rem;
+      background: #FFFFFF;
+      border: 1px dashed #6B5C54;
+      border-radius: 2px;
+      font-size: 0.9rem;
+      color: #4A3F3A;
+    }
+
+    footer.doc {
+      margin-top: 6rem;
+      padding-top: 2rem;
+      border-top: 1px solid #E5E7EE;
+      font-size: 0.85rem;
+      color: #6B5C54;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="doc">
+    <picture>
+      <source media="(prefers-color-scheme: dark)"
+              srcset="../brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-white-rect-400.svg">
+      <img class="wordmark"
+           src="../brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-dark-rect-400.svg"
+           alt="iloveyouth.">
+    </picture>
+    <p class="eyebrow">packaging vibes · v4 · 2026-05-02</p>
+    <h1>five directions, audit-informed.</h1>
+    <p class="lede">five distinct visual lanes for the ily packaging system, each one applying the standards from the <a href="audit-2026-05-01.html">2026-05-01 audit</a> with a different bet on system architecture. each vibe is rendered across the four lead SKUs (serum · cleanser · toner · retinol night cream) on the same packaging-blue body color and Shadow Grey constants, so the only thing varying between vibes is the <em>brand expression strategy</em> — wordmark placement, deboss strategy, ink saturation, foil anchor.</p>
+    <dl class="meta">
+      <dt>shared baseline</dt><dd>deeper packaging-blue body (#5FA9C8, PMS 305 C territory) · ingredient-led front type · Shadow Grey collars/caps/dust covers · period anchor in front bottom-right · ~70% negative space</dd>
+      <dt>what varies</dt><dd>wordmark presence and placement · brandmark deboss extent · ink color strategy · foil presence</dd>
+      <dt>previous rounds</dt><dd>v1 (initial), v2 (audit-informed first pass — wordmark removed entirely, in hindsight an over-correction), v3 (archive of v2)</dd>
+    </dl>
+  </header>
+
+  <nav class="toc">
+    <h2>five vibes.</h2>
+    <ol>
+      <li><a href="#vibe-01">01 · bader-discipline</a> — wordmark recovered as a tiny corner anchor</li>
+      <li><a href="#vibe-02">02 · tatcha-anchored</a> — wordmark anchored at the base with a hairline rule</li>
+      <li><a href="#vibe-03">03 · deboss-forward</a> — large blind <code>ily.</code> deboss embedded in the body, no printed wordmark</li>
+      <li><a href="#vibe-04">04 · tone-on-tone</a> — silkscreen ink in same hue family as body, sophisticated quiet read</li>
+      <li><a href="#vibe-05">05 · foil-anchor</a> — single soft champagne-silver foil wordmark, single-foil discipline</li>
+    </ol>
+  </nav>
+
+  <div class="pull">
+    <strong>important addition since v2:</strong> the v2 set removed the <code>iloveyouth.</code> wordmark from every front face — a misread of audit rule 4. the rule says front type = ingredient, not that the wordmark can't appear at all. prestige convention (bader, tatcha, drunk elephant, le labo) is wordmark <em>present but anchored small</em>, ingredient as hero. every v4 vibe restores the wordmark in some form — except vibe 03, which substitutes a blind deboss for the printed wordmark.
+  </div>
+
+  <!-- ============ VIBE 01 ============ -->
+  <section class="vibe" id="vibe-01">
+    <h2 class="section-label">vibe 01.</h2>
+    <h3>bader-discipline.</h3>
+    <p class="vibe-summary">the most restrained lane. wordmark recovered as a tiny lowercase corner anchor in matching ink, ingredient is the unmistakable hero. closest comparable: augustinus bader. the safest prestige play and the closest match to the audit's category target zone.</p>
+    <div class="vibe-tags">
+      <span class="tag anchor">comparable: bader</span>
+      <span class="tag">restraint: max</span>
+      <span class="tag">expression: low</span>
+      <span class="tag">risk: low</span>
+    </div>
+    <div class="principle-card">
+      <h5>what it does</h5>
+      <ul>
+        <li><strong>wordmark:</strong> small lowercase <code>iloveyouth.</code> anchored bottom-left of the front face, ~30% the size of the ingredient hero</li>
+        <li><strong>brandmark:</strong> <code>ily.</code> deboss on caps and dropper bulb (universal, per system.md rule 3)</li>
+        <li><strong>ink strategy:</strong> Shadow Grey on light bodies, Ghost White on dark bodies — full contrast for shelf legibility</li>
+        <li><strong>period anchor:</strong> bottom-right of front face, ~1.5mm</li>
+      </ul>
+    </div>
+    <div class="grid-4">
+      <figure><img src="mockups/v4/01-bader-discipline/serum.png" alt="bader-discipline serum"><figcaption>serum · 30ml dropper</figcaption></figure>
+      <figure><img src="mockups/v4/01-bader-discipline/cleanser.png" alt="bader-discipline cleanser"><figcaption>cleanser · 150ml tube</figcaption></figure>
+      <figure><img src="mockups/v4/01-bader-discipline/toner.png" alt="bader-discipline toner"><figcaption>toner · 150ml pump</figcaption></figure>
+      <figure><img src="mockups/v4/01-bader-discipline/moisturizer.png" alt="bader-discipline retinol jar"><figcaption>retinol · 50g jar</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ============ VIBE 02 ============ -->
+  <section class="vibe" id="vibe-02">
+    <h2 class="section-label">vibe 02.</h2>
+    <h3>tatcha-anchored.</h3>
+    <p class="vibe-summary">wordmark sits at the base with a hairline rule above it — a deliberate "signature line" treatment that prestige uses to give the brand a structural moment without making it the hero. ingredient hero in upper third, eyebrow at top, anchored wordmark at base. closest comparable: tatcha's "the dewy skin cream."</p>
+    <div class="vibe-tags">
+      <span class="tag anchor">comparable: tatcha</span>
+      <span class="tag">restraint: high</span>
+      <span class="tag">expression: low-mid</span>
+      <span class="tag">risk: low</span>
+    </div>
+    <div class="principle-card">
+      <h5>what it does</h5>
+      <ul>
+        <li><strong>wordmark:</strong> centered at the base of the front face, beneath a thin horizontal hairline rule that spans ~60% of face width</li>
+        <li><strong>brandmark:</strong> same as vibe 01 — universal cap/collar deboss</li>
+        <li><strong>ink strategy:</strong> Shadow Grey or Ghost White (full contrast)</li>
+        <li><strong>distinguishing element:</strong> the hairline rule. it's a structural device that codes "this is a real brand mark, not just a logo" — but it's the lane's biggest risk too. if the rule reads decorative rather than structural, it crosses into amateur tell #22 (the "decorating" addition)</li>
+      </ul>
+    </div>
+    <div class="grid-4">
+      <figure><img src="mockups/v4/02-tatcha-anchored/serum.png" alt="tatcha-anchored serum"><figcaption>serum · 30ml dropper</figcaption></figure>
+      <figure><img src="mockups/v4/02-tatcha-anchored/cleanser.png" alt="tatcha-anchored cleanser"><figcaption>cleanser · 150ml tube</figcaption></figure>
+      <figure><img src="mockups/v4/02-tatcha-anchored/toner.png" alt="tatcha-anchored toner"><figcaption>toner · 150ml pump</figcaption></figure>
+      <figure><img src="mockups/v4/02-tatcha-anchored/moisturizer.png" alt="tatcha-anchored retinol jar"><figcaption>retinol · 50g jar</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ============ VIBE 03 ============ -->
+  <section class="vibe" id="vibe-03">
+    <h2 class="section-label">vibe 03.</h2>
+    <h3>deboss-forward.</h3>
+    <p class="vibe-summary">the lane that leans hardest into the brandmark cutout — your favorite element. a large precision-debossed <code>ily.</code> in the lower third of the bottle body itself, uninked, only readable in raking light. no printed wordmark on the body — the deboss IS the brand mark. closest comparable: le labo's hand-stamped restraint applied to prestige glass craft.</p>
+    <div class="vibe-tags">
+      <span class="tag anchor">comparable: le labo</span>
+      <span class="tag">restraint: high</span>
+      <span class="tag">expression: high (tactile)</span>
+      <span class="tag">risk: photography survival</span>
+    </div>
+    <div class="principle-card">
+      <h5>what it does</h5>
+      <ul>
+        <li><strong>wordmark:</strong> NONE printed. the blind <code>ily.</code> deboss embedded in the body substitutes for the printed wordmark</li>
+        <li><strong>brandmark:</strong> amplified — large body deboss (~25% of face width) PLUS the standard cap deboss. multiple coordinated brand-cohesion moments</li>
+        <li><strong>ink strategy:</strong> minimal silkscreen — only ingredient + product type</li>
+        <li><strong>risk:</strong> uninked deboss is a touch signature, not a sight signature. survives in-person and beautifully under raking light, but flat-lay catalog photography won't always show it. requires deliberate raking-light brief for product photography (audit §1 photography survival)</li>
+        <li><strong>tooling:</strong> per-vessel-shape blow-mold or injection-mold deboss tooling — adds ~$2,500/diameter one-time. higher upfront cost, but the deboss is free per unit forever after</li>
+      </ul>
+    </div>
+    <div class="grid-4">
+      <figure><img src="mockups/v4/03-deboss-forward/serum.png" alt="deboss-forward serum"><figcaption>serum · 30ml dropper</figcaption></figure>
+      <figure><img src="mockups/v4/03-deboss-forward/cleanser.png" alt="deboss-forward cleanser"><figcaption>cleanser · 150ml tube</figcaption></figure>
+      <figure><img src="mockups/v4/03-deboss-forward/toner.png" alt="deboss-forward toner"><figcaption>toner · 150ml pump</figcaption></figure>
+      <figure><img src="mockups/v4/03-deboss-forward/moisturizer.png" alt="deboss-forward retinol jar"><figcaption>retinol · 50g jar</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ============ VIBE 04 ============ -->
+  <section class="vibe" id="vibe-04">
+    <h2 class="section-label">vibe 04.</h2>
+    <h3>tone-on-tone.</h3>
+    <p class="vibe-summary">silkscreen ink shifts from Shadow Grey to a deeper sibling in the same hue family as the body — deeper-blue ink on packaging-blue body, warm-grey on Ghost White, lightened warm-near-black on Shadow Grey. type is present but quiet, all sitting in the same chromatic family. ghosted reading at distance, full reading up close. closest comparable: sulwhasoo's amber-on-amber editorial sophistication.</p>
+    <div class="vibe-tags">
+      <span class="tag anchor">comparable: sulwhasoo</span>
+      <span class="tag">restraint: very high</span>
+      <span class="tag">expression: chromatic-quiet</span>
+      <span class="tag">risk: high (legibility &amp; photography)</span>
+    </div>
+    <div class="principle-card">
+      <h5>what it does</h5>
+      <ul>
+        <li><strong>wordmark:</strong> recovered as a tiny corner anchor (like vibe 01) but in matching tone-on-tone ink</li>
+        <li><strong>brandmark:</strong> universal cap deboss</li>
+        <li><strong>ink strategy by SKU:</strong>
+          <ul>
+            <li>packaging-blue body → deeper-blue ink (<code>~#2C5773</code>)</li>
+            <li>Ghost White body → soft warm-grey ink (<code>~#A89B92</code>)</li>
+            <li>Shadow Grey body → lightened warm-near-black ink (<code>~#5C4F4A</code>)</li>
+          </ul>
+          all hue-matched to the body, all 2 L*-stops shifted for readability</li>
+        <li><strong>risk:</strong> tone-on-tone fails the 3ft shelf-distance test more easily than full-contrast. only viable if the brand commits to the editorial-sophistication read and accepts that browsers must step closer to read the ingredient. in retail under fluorescent light, this is the hardest of the five lanes to execute. matches saturation between body and ink (audit amateur-tell #9 — pastel body + saturated ink reads cheap), so the discipline is correct, but the legibility ceiling is lower</li>
+      </ul>
+    </div>
+    <div class="grid-4">
+      <figure><img src="mockups/v4/04-tone-on-tone/serum.png" alt="tone-on-tone serum"><figcaption>serum · 30ml dropper</figcaption></figure>
+      <figure><img src="mockups/v4/04-tone-on-tone/cleanser.png" alt="tone-on-tone cleanser"><figcaption>cleanser · 150ml tube</figcaption></figure>
+      <figure><img src="mockups/v4/04-tone-on-tone/toner.png" alt="tone-on-tone toner"><figcaption>toner · 150ml pump</figcaption></figure>
+      <figure><img src="mockups/v4/04-tone-on-tone/moisturizer.png" alt="tone-on-tone retinol jar"><figcaption>retinol · 50g jar</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ============ VIBE 05 ============ -->
+  <section class="vibe" id="vibe-05">
+    <h2 class="section-label">vibe 05.</h2>
+    <h3>foil-anchor.</h3>
+    <p class="vibe-summary">a single soft matte champagne-silver foil-stamped <code>iloveyouth.</code> wordmark anchored at the bottom-left of every front face. the only metallic element on the bottle. one mark, one element — single-foil discipline. closest comparable: augustinus bader's silver foil dot, applied as the wordmark anchor.</p>
+    <div class="vibe-tags">
+      <span class="tag anchor">comparable: bader (silver-foil)</span>
+      <span class="tag">restraint: high</span>
+      <span class="tag">expression: signature-mark</span>
+      <span class="tag">cost: +$0.08–0.15/unit foil stamping</span>
+    </div>
+    <div class="principle-card">
+      <h5>what it does</h5>
+      <ul>
+        <li><strong>wordmark:</strong> small foil-stamped <code>iloveyouth.</code> bottom-left of front face. matte champagne-silver, NOT shiny gold or mirror chrome</li>
+        <li><strong>brandmark:</strong> universal cap deboss</li>
+        <li><strong>ink strategy:</strong> Shadow Grey or Ghost White silkscreen for ingredient + product type — only the wordmark is foiled. one mark of one element discipline</li>
+        <li><strong>tier signal:</strong> the foil reads as a "signature mark" in a way matte ink never can. lifts every SKU into the bader-territory tier</li>
+        <li><strong>risk:</strong> foil is the prestige-but-watch-it finish (audit §1 finish semiotics). works when restrained to one small mark; slips into old-luxury (estée lauder, lancôme) the moment a second foil element appears. discipline is mandatory</li>
+        <li><strong>cost note:</strong> foil stamping is a quoted-on-request decoration at UA — not in the standard 260422 quote. budget +$0.08–0.15/unit for hot-foil stamping at 10K volume</li>
+      </ul>
+    </div>
+    <div class="grid-4">
+      <figure><img src="mockups/v4/05-foil-anchor/serum.png" alt="foil-anchor serum"><figcaption>serum · 30ml dropper</figcaption></figure>
+      <figure><img src="mockups/v4/05-foil-anchor/cleanser.png" alt="foil-anchor cleanser"><figcaption>cleanser · 150ml tube</figcaption></figure>
+      <figure><img src="mockups/v4/05-foil-anchor/toner.png" alt="foil-anchor toner"><figcaption>toner · 150ml pump</figcaption></figure>
+      <figure><img src="mockups/v4/05-foil-anchor/moisturizer.png" alt="foil-anchor retinol jar"><figcaption>retinol · 50g jar</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="vibe" id="recommendation">
+    <h2 class="section-label">my read.</h2>
+    <h3>where i'd go and why.</h3>
+    <p class="vibe-summary">my 85%-confident pick is <strong>vibe 03 (deboss-forward)</strong> for the standard line and <strong>vibe 05 (foil-anchor)</strong> for the actives/limited tier. reasoning:</p>
+    <ul style="max-width: 70ch;">
+      <li><strong>deboss-forward as the standard system</strong> — the embedded deboss is a touch-signature that nobody else in the prestige category is doing at this scale. it's a real ownable signature, not a borrowed convention. it costs more upfront in tooling but $0 per unit forever — the math works at 10K+. and per the audit §1 shelf-blocking principle, a single physical-craft constant ("body deboss") is the cohesion lever that does the family-recognition work.</li>
+      <li><strong>foil-anchor as the actives/limited tier</strong> — gives the line a tier-coding device. standard SKUs read as deboss-forward; the actives and limited drops get the foiled wordmark anchor. this is exactly how bader uses their silver foil — to code "this one is special."</li>
+      <li><strong>vibe 01 (bader-discipline) is the safe choice</strong> — fastest to production, lowest risk, best fallback if either of the above turns out to have execution problems. zero-risk option.</li>
+      <li><strong>vibe 02 (tatcha-anchored)</strong> — the hairline rule is the risk. if it reads decorative, it kills the prestige read. would need tight typographic execution to land.</li>
+      <li><strong>vibe 04 (tone-on-tone)</strong> — the most editorial and the highest-risk. legibility ceiling is real. would need a deliberate brand commitment to the "browser must step closer" experience.</li>
+    </ul>
+    <p>holding the door open for a follow-up round where we A/B vibe 01 vs. vibe 03 head-to-head, or layer vibe 03 + vibe 05 into a single hybrid system.</p>
+  </section>
+
+  <div class="note">
+    <strong>process note:</strong> these mockups are direction renders generated by gemini 2.5 flash image. typography is approximate — the model can't set satoshi cleanly at small sizes, and some letterforms are blurred or invented. the design <em>intent</em> reads correctly: proportions, hierarchy, color, finish, anchor positions, deboss/foil treatments. for live dieline work, type will be set in satoshi (outlined per UA's artwork requirement) at the exact 14–22pt-indexed-to-face-width scale defined in the audit.
+  </div>
+
+  <footer class="doc">
+    <p>iloveyouth · packaging vibes v4 · 2026-05-02 · informed by <a href="audit-2026-05-01.html">standards audit · 2026-05-01</a> · <a href="mockups-v2.html">previous round (v2)</a></p>
+    <p>← <a href="../index.html">back to ily public previews</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
