@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ily — packaging mockups v2 · audit-informed</title>
+
+  <link rel="icon" type="image/svg+xml" href="../brand/logos/favicons/favicon.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="../brand/logos/favicons/favicon-white.svg" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" sizes="32x32" href="../brand/logos/favicons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../brand/logos/favicons/favicon-16.png">
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../brand/tokens.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Satoshi', system-ui, sans-serif;
+      font-weight: 300;
+      color: #2A2220;
+      background: #F0F3FA;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 5rem) clamp(1.25rem, 4vw, 2.5rem);
+    }
+
+    header.doc {
+      margin-bottom: 4rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid #E5E7EE;
+    }
+
+    header.doc .wordmark {
+      display: block;
+      width: auto;
+      height: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .eyebrow {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: lowercase;
+      color: #6B5C54;
+      margin: 0 0 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      margin: 0 0 1.5rem;
+    }
+
+    .lede {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: #4A3F3A;
+      max-width: 65ch;
+      margin: 0 0 1.5rem;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 0.4rem 1.5rem;
+      font-size: 0.85rem;
+      color: #6B5C54;
+      max-width: 65ch;
+    }
+    .meta dt { font-weight: 500; letter-spacing: 0.05em; }
+    .meta dd { margin: 0; }
+
+    a { color: #2A2220; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+
+    section { margin-top: 5rem; }
+
+    h2.section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: lowercase;
+      color: #6B5C54;
+      margin: 0 0 0.75rem;
+    }
+
+    h2.section-label + h3 {
+      font-size: clamp(1.4rem, 2.8vw, 2rem);
+      font-weight: 300;
+      letter-spacing: -0.015em;
+      margin: 0 0 1.5rem;
+    }
+
+    .sku {
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid #E5E7EE;
+    }
+
+    .sku:first-child { border-top: none; padding-top: 0; }
+
+    .sku-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    @media (max-width: 760px) {
+      .sku-grid { grid-template-columns: 1fr; }
+    }
+
+    .sku-image {
+      background: #FFFFFF;
+      border: 1px solid #E5E7EE;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .sku-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .sku h4 {
+      font-size: 1.5rem;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.5rem;
+    }
+
+    .sku .label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      color: #6B5C54;
+      margin: 0 0 1.25rem;
+    }
+
+    .sku p { margin: 0 0 1rem; font-size: 0.95rem; }
+
+    .applied {
+      margin: 1.25rem 0 0;
+      padding: 1.25rem 1.5rem;
+      background: #FFFFFF;
+      border: 1px solid #E5E7EE;
+      border-radius: 2px;
+      font-size: 0.85rem;
+    }
+
+    .applied h5 {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: lowercase;
+      color: #6B5C54;
+      margin: 0 0 0.6rem;
+    }
+
+    .applied ul {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    .applied li { margin: 0.25rem 0; }
+
+    .changes {
+      margin-top: 0.75rem;
+      padding: 1rem 1.25rem;
+      background: #ADE8F9;
+      border-radius: 2px;
+      font-size: 0.85rem;
+      color: #2A2220;
+    }
+
+    .changes strong { font-weight: 500; }
+
+    .note {
+      margin: 3rem 0;
+      padding: 1.5rem 2rem;
+      background: #FFFFFF;
+      border: 1px dashed #6B5C54;
+      border-radius: 2px;
+      font-size: 0.9rem;
+      color: #4A3F3A;
+    }
+
+    footer.doc {
+      margin-top: 6rem;
+      padding-top: 2rem;
+      border-top: 1px solid #E5E7EE;
+      font-size: 0.85rem;
+      color: #6B5C54;
+    }
+
+    .compare {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .compare figure {
+      margin: 0;
+      background: #FFFFFF;
+      border: 1px solid #E5E7EE;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .compare img { display: block; width: 100%; height: auto; }
+
+    .compare figcaption {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: #6B5C54;
+      padding: 0.5rem 0.75rem;
+      border-top: 1px solid #E5E7EE;
+      background: #F0F3FA;
+    }
+
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="doc">
+    <picture>
+      <source media="(prefers-color-scheme: dark)"
+              srcset="../brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-white-rect-400.svg">
+      <img class="wordmark"
+           src="../brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-dark-rect-400.svg"
+           alt="iloveyouth.">
+    </picture>
+    <p class="eyebrow">packaging mockups · v2 · 2026-05-02</p>
+    <h1>five SKUs, audit-informed.</h1>
+    <p class="lede">a second pass on the lead packaging mockups, designed against the recommendations in the <a href="audit-2026-05-01.html">2026-05-01 standards audit</a>. every SKU now applies the resolved positions from §3 (deeper packaging-only frosted blue, ingredient-led hero, period anchor, restrained type sizing) and the prestige-tier conventions from §1.</p>
+    <dl class="meta">
+      <dt>method</dt><dd>gemini 2.5 flash image, briefed on each principle from the audit</dd>
+      <dt>v1 set</dt><dd>preserved untouched in <code>mockups/v1/</code> — the before</dd>
+      <dt>v2 set</dt><dd>this page · saved to <code>mockups/v2/</code> — the after</dd>
+      <dt>note</dt><dd>typography rendered by the image model is approximate. these read direction; production silkscreen artwork will set type properly outlined in satoshi.</dd>
+    </dl>
+  </header>
+
+  <!-- ============ SERUM ============ -->
+  <section class="sku">
+    <h2 class="section-label">01 · hero serum</h2>
+    <h3>30ml frosted dropper · hydration tier.</h3>
+
+    <div class="sku-grid">
+      <div class="sku-image">
+        <img src="mockups/v2/ily-serum-frosted-blue-dropper.png" alt="ily v2 hero serum, 30ml frosted-blue dropper">
+      </div>
+      <div>
+        <p>the SKU the audit specifically called out — exercises every cohesion rule. tested against the v1 mockup with the changes from §3.2 (deeper packaging-only frosted blue), §3.1 (restrained 16pt-equivalent ingredient hero), and §3.4 (period anchor sized as a true 1.5mm period in the bottom-right).</p>
+
+        <div class="applied">
+          <h5>principles applied</h5>
+          <ul>
+            <li><strong>front type = ingredient, not brand.</strong> rule 4 — the v1 had <code>iloveyouth.</code> at hero size; v2 leads with <code>niacinamide.</code></li>
+            <li><strong>deeper packaging-only frosted blue</strong> at <code>~#6FB8DC</code> (§3.2). reads as a confident muted-saturated tone instead of a pale pastel.</li>
+            <li><strong>shadow grey collar</strong> across the dropper line — the system's strongest cohesion lever.</li>
+            <li><strong><code>ily.</code> emboss on dropper bulb</strong> (rule 3). uninked, raking-light dependent.</li>
+            <li><strong>period anchor</strong> in the bottom-right of the front face (rule 5).</li>
+            <li><strong>~70% negative space</strong> on the front face (§1 negative space rule).</li>
+          </ul>
+        </div>
+
+        <div class="changes">
+          <strong>vs. v1:</strong> removed <code>iloveyouth.</code> wordmark from front, replaced "hero serum / 30ml" stacked centered with proper hierarchy (ingredient hero → tracked product type → corner-anchored volume), shifted body color from <code>#ADE8F9</code> to packaging-blue <code>~#6FB8DC</code>.
+        </div>
+
+        <div class="compare">
+          <figure>
+            <img src="mockups/v1/ily-serum-frosted-blue-glass.png" alt="v1">
+            <figcaption>v1 · before</figcaption>
+          </figure>
+          <figure>
+            <img src="mockups/v2/ily-serum-frosted-blue-dropper.png" alt="v2">
+            <figcaption>v2 · after</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLEANSER ============ -->
+  <section class="sku">
+    <h2 class="section-label">02 · gentle cleanser</h2>
+    <h3>150ml matte squeeze tube · hydration tier.</h3>
+
+    <div class="sku-grid">
+      <div class="sku-image">
+        <img src="mockups/v2/ily-cleanser-frosted-blue-tube.png" alt="ily v2 cleanser tube">
+      </div>
+      <div>
+        <p>same packaging-blue body as the serum, executed on the matte PE squeeze tube format. the $0.05 matt tube finish is the brand's single highest price-to-perception lever (uapkg-capabilities §3.3) — held.</p>
+
+        <div class="applied">
+          <h5>principles applied</h5>
+          <ul>
+            <li><strong>ingredient-led front</strong> — <code>glycerin.</code> as hero, <code>gentle cleanser</code> at ~30% scale below (rule 4).</li>
+            <li><strong>matte tube finish</strong> — kept (audit §1 finish semiotics). gloss reads cheap on this format.</li>
+            <li><strong>shadow grey screw cap</strong> with the tiny <code>ily.</code> deboss on the flat bottom (rule 3, dropper-collar logic extended to caps).</li>
+            <li><strong>period anchor</strong> bottom-right.</li>
+            <li><strong>defined wrap point</strong> for the front-to-side seam — carries through the dieline review (audit §5 caveat).</li>
+          </ul>
+        </div>
+
+        <div class="changes">
+          <strong>vs. v1:</strong> removed <code>iloveyouth.</code> wordmark, replaced with <code>glycerin.</code> ingredient hero. corrected oversized brand vs. tiny product-type imbalance.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TONER ============ -->
+  <section class="sku">
+    <h2 class="section-label">03 · balancing toner</h2>
+    <h3>150ml ghost white pump bottle · cleansers &amp; gentle daytime tier.</h3>
+
+    <div class="sku-grid">
+      <div class="sku-image">
+        <img src="mockups/v2/ily-toner-ghost-white-bottle.png" alt="ily v2 toner pump bottle">
+      </div>
+      <div>
+        <p>the cohesion star here is the matte shadow grey pump dust cover — the cheapest highest-leverage cross-line element in the system (audit §1 shelf-blocking principle, §5 per-format ✅). every pump SKU on the line wears the same dust cover; the catalog photography ties together by that single constant.</p>
+
+        <div class="applied">
+          <h5>principles applied</h5>
+          <ul>
+            <li><strong>ingredient-led front</strong> — <code>rosewater.</code> as hero, <code>balancing toner</code> subordinate.</li>
+            <li><strong>shadow grey pump dust cover</strong> — the system constant. unmistakable in catalog photography.</li>
+            <li><strong>matte ghost white</strong> body finish (slightly warm-tinted off-white, distinctly not pure white per brand-identity locked rule).</li>
+            <li><strong>period anchor</strong> bottom-right.</li>
+            <li><strong>~70% empty front face.</strong></li>
+          </ul>
+        </div>
+
+        <div class="changes">
+          <strong>vs. v1:</strong> removed <code>iloveyouth.</code> wordmark and the centered <code>balancing toner / 150ml</code> stack. moved volume to a tiny corner anchor. ingredient now leads.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MOISTURIZER ============ -->
+  <section class="sku">
+    <h2 class="section-label">04 · retinol night cream</h2>
+    <h3>50g shadow grey jar · actives &amp; night tier.</h3>
+
+    <div class="sku-grid">
+      <div class="sku-image">
+        <img src="mockups/v2/ily-moisturizer-shadow-grey-jar.png" alt="ily v2 moisturizer shadow grey jar">
+      </div>
+      <div>
+        <p>the actives tier is where the audit specifically allowed for an "active" eyebrow — the one place a tracked-out small caps tier-coding label earns its place (§5, per-format airless ✅; extended here to the actives jar). type ink is ghost white on the dark body for contrast.</p>
+
+        <div class="applied">
+          <h5>principles applied</h5>
+          <ul>
+            <li><strong>shadow grey body</strong> for the actives/night tier (rule 1 function code).</li>
+            <li><strong>tracked-out 'active' eyebrow</strong> at ~6pt — the canonical 5-tier hierarchy's tier 1 (§1 information hierarchy).</li>
+            <li><strong>ingredient hero</strong> — <code>retinol.</code> in light weight ghost white silkscreen.</li>
+            <li><strong>matched matte lid</strong> with engraved <code>ily.</code> mark (rule 3).</li>
+            <li><strong>period anchor</strong> bottom-right.</li>
+            <li><strong>aesthetic anchor:</strong> augustinus bader's "the cream" — the closest comparable on the category map.</li>
+          </ul>
+        </div>
+
+        <div class="changes">
+          <strong>vs. v1:</strong> v1 was a daily-moisturizer-coded shadow grey jar with the wordmark front-and-center. v2 reframes it as the actives/night tier, applying the eyebrow + ingredient + product type hierarchy, and removing the wordmark entirely.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REGIMEN ============ -->
+  <section class="sku">
+    <h2 class="section-label">05 · the regimen</h2>
+    <h3>4-piece almond silk gift set · limited / gifting tier.</h3>
+
+    <div class="sku-grid">
+      <div class="sku-image">
+        <img src="mockups/v2/ily-regimen-almond-silk-flatlay.png" alt="ily v2 almond silk regimen flatlay">
+      </div>
+      <div>
+        <p>almond silk is the brand's reserved warmth color — restricted by rule to limited drops, gifting, and sets. the audit (§5 per-format set ✅) flagged this as exactly the discipline that keeps almond silk from flooding the line. the 10:1 frosted-blue-to-almond-silk ratio from brand-identity is preserved by making this the rare warmth moment.</p>
+
+        <div class="applied">
+          <h5>principles applied</h5>
+          <ul>
+            <li><strong>almond silk surface only</strong> — never on the standard-tier line. the warmth grace note.</li>
+            <li><strong>same restraint, same hierarchy</strong> across all four format formats — the typographic grid carries siblings at very different canvas sizes (§1 cross-format cohesion lever 1).</li>
+            <li><strong>shadow grey constants preserved</strong> — dust cover on the pump, collar on the dropper, cap on the tube. matched almond silk lid on the jar (the gift-set jar exception).</li>
+            <li><strong>family signature</strong> — every cap carries the engraved <code>ily.</code> mark.</li>
+          </ul>
+        </div>
+
+        <div class="changes">
+          <strong>vs. v1:</strong> v1 was a multi-color flatlay mixing finishes. v2 is a single-color set — the discipline that earns the warmth color its place.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="note">
+    <strong>process note:</strong> these mockups are direction renders. the image model approximates typography but cannot set satoshi cleanly at small sizes. the design intent — proportions, hierarchy, color, finish, anchor positions — reads correctly in each frame, and these are the reference images for the production silkscreen artwork. for live dieline work, type will be set in satoshi (outlined, per uapkg's artwork requirement) at the exact 14–22pt-indexed-to-face-width scale defined in the audit.
+  </div>
+
+  <footer class="doc">
+    <p>iloveyouth · packaging mockups v2 · 2026-05-02 · informed by <a href="audit-2026-05-01.html">standards audit · 2026-05-01</a></p>
+    <p>← <a href="../index.html">back to ily public previews</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
