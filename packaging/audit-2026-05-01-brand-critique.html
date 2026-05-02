@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ily — brand & readability critique · 2026-05-02</title>
+
+  <link rel="icon" type="image/svg+xml" href="../brand/logos/favicons/favicon.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="../brand/logos/favicons/favicon-white.svg" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" sizes="32x32" href="../brand/logos/favicons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../brand/logos/favicons/favicon-16.png">
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../brand/tokens.css">
+
+  <style>
+    /* This page applies the fixes recommended below — it is its own example. */
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Satoshi', system-ui, sans-serif;
+      font-weight: 300;
+      color: var(--ily-text, #2A2220);
+      background: var(--ily-surface, #F0F3FA);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.65;
+    }
+
+    .page {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 5rem) clamp(1.25rem, 4vw, 2.5rem);
+    }
+
+    header.doc {
+      margin-bottom: 4rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--ily-border);
+    }
+
+    header.doc .wordmark {
+      display: block;
+      width: auto;
+      height: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .eyebrow {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: lowercase;
+      color: var(--ily-text-muted);
+      margin: 0 0 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      margin: 0 0 1.5rem;
+    }
+
+    .lede {
+      font-size: 1.125rem;
+      font-weight: 300;
+      color: var(--ily-grey-700);
+      max-width: 60ch;
+      margin: 0 0 2rem;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 0.4rem 1.5rem;
+      font-size: 0.875rem;
+      color: var(--ily-text-muted);
+      font-weight: 400;
+    }
+    .meta dt { font-weight: 500; letter-spacing: 0.05em; }
+    .meta dd { margin: 0; font-weight: 400; }
+
+    section { margin-top: 4rem; scroll-margin-top: 2rem; }
+
+    h2.section {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: lowercase;
+      color: var(--ily-text-muted);
+      margin: 0 0 0.75rem;
+    }
+
+    h2.section + h3 {
+      font-size: clamp(1.5rem, 3.2vw, 2.25rem);
+      font-weight: 300;
+      letter-spacing: -0.015em;
+      line-height: 1.15;
+      margin: 0 0 2rem;
+    }
+
+    h4 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: -0.005em;
+      line-height: 1.3;
+      margin: 2.5rem 0 0.75rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+
+    h5 {
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.4;
+      margin: 1.75rem 0 0.5rem;
+    }
+
+    p { margin: 0 0 1rem; }
+    ul, ol { margin: 0 0 1rem; padding-left: 1.5rem; }
+    li { margin: 0.35rem 0; }
+    strong { font-weight: 500; }
+
+    a { color: var(--ily-text); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+    a:hover { color: var(--ily-accent-hover); }
+
+    /* Inline code & pre — surface-mid per the brand rule */
+    code {
+      font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+      font-size: 0.85em;
+      background: var(--ily-surface-mid);
+      border: 1px solid var(--ily-border);
+      padding: 0.05em 0.35em;
+      border-radius: 2px;
+    }
+
+    pre {
+      font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      background: var(--ily-surface-mid);
+      border: 1px solid var(--ily-border);
+      border-radius: 2px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      overflow-x: auto;
+    }
+    pre code {
+      background: transparent;
+      border: 0;
+      padding: 0;
+      font-size: inherit;
+    }
+
+    blockquote {
+      margin: 1.5rem 0;
+      padding: 1.25rem 1.5rem;
+      background: var(--ily-surface-mid);
+      border-left: 2px solid var(--ily-text);
+      font-style: normal;
+    }
+
+    .pull {
+      margin: 2.5rem 0;
+      padding: 2rem 2.25rem;
+      background: var(--ily-frosted-blue, #ADE8F9);
+      border-radius: 2px;
+      font-size: 1.125rem;
+      font-weight: 300;
+      color: var(--ily-text);
+    }
+    .pull strong { font-weight: 500; }
+
+    /* Tables */
+    .table-wrap {
+      margin: 1.5rem 0;
+      overflow-x: auto;
+      border: 1px solid var(--ily-border);
+      border-radius: 2px;
+      background: var(--ily-surface-mid);
+    }
+
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--ily-border);
+      font-weight: 400;
+    }
+
+    th {
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      font-size: 0.875rem;
+      color: var(--ily-text-muted);
+      background: var(--ily-surface);
+    }
+
+    tr:last-child td { border-bottom: none; }
+    td.num { font-variant-numeric: tabular-nums; }
+
+    /* Severity pills */
+    .pill {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+    .pill.crit  { background: #F5C9C5; color: #7A1F18; }
+    .pill.mod   { background: #F7E5C2; color: #6E4D14; }
+    .pill.nit   { background: #D6EFD8; color: #1F5E2C; }
+    .pill.pass  { background: #D6EFD8; color: #1F5E2C; }
+    .pill.fail  { background: #F5C9C5; color: #7A1F18; }
+    .pill.aa-only { background: #F7E5C2; color: #6E4D14; }
+
+    /* Before/after side-by-side */
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.25rem 0 2.5rem;
+    }
+    .compare figure {
+      margin: 0;
+      background: var(--ily-surface-mid);
+      border: 1px solid var(--ily-border);
+      border-radius: 2px;
+      padding: 0.75rem;
+    }
+    .compare figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--ily-border);
+      border-radius: 2px;
+      background: var(--ily-surface);
+    }
+    .compare figcaption {
+      margin-top: 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--ily-text-muted);
+    }
+
+    /* Subject card at top */
+    .subject {
+      margin: 2.5rem 0 0;
+      padding: 1.75rem 2rem;
+      background: var(--ily-surface-mid);
+      border: 1px solid var(--ily-border);
+      border-radius: 2px;
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 0.4rem 1.5rem;
+      font-size: 0.875rem;
+      color: var(--ily-text-muted);
+    }
+    .subject dt { font-weight: 500; letter-spacing: 0.05em; }
+    .subject dd { margin: 0; font-weight: 400; }
+    .subject a { color: var(--ily-text); }
+
+    .verdict-block {
+      margin: 2.5rem 0;
+      padding: 1.5rem 1.75rem;
+      background: var(--ily-frosted-blue);
+      border-radius: 2px;
+    }
+    .verdict-block p { margin: 0 0 0.75rem; }
+    .verdict-block p:last-child { margin: 0; }
+
+    .self-note {
+      margin: 1rem 0 2rem;
+      padding: 0.85rem 1.1rem;
+      background: var(--ily-support-soft);
+      border-radius: 2px;
+      font-size: 0.875rem;
+      color: var(--ily-text);
+    }
+
+    /* Footer */
+    footer.doc {
+      margin-top: 6rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--ily-border);
+      font-size: 0.875rem;
+      color: var(--ily-text-muted);
+      font-weight: 400;
+    }
+    footer.doc a { color: var(--ily-text-muted); }
+
+    @media (max-width: 700px) {
+      .compare { grid-template-columns: 1fr; }
+      .meta, .subject { grid-template-columns: 1fr; gap: 0.1rem 0; }
+      .meta dt, .subject dt { margin-top: 0.6rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="doc">
+    <picture>
+      <source media="(prefers-color-scheme: dark)"
+              srcset="../brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-white-rect-400.svg">
+      <img class="wordmark"
+           src="../brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-dark-rect-400.svg"
+           alt="iloveyouth.">
+    </picture>
+    <p class="eyebrow">brand &amp; readability critique · 2026-05-02</p>
+    <h1>tuning, not redesigning.</h1>
+    <p class="lede">a typographic and brand-rule audit of the 2026-05-01 packaging-standards page. three small dials worth turning. the look thomas likes survives all three changes.</p>
+
+    <dl class="subject">
+      <dt>subject</dt><dd><a href="./audit-2026-05-01.html">audit-2026-05-01.html</a></dd>
+      <dt>live url</dt><dd><a href="https://duttonbrown.github.io/ily-pages/packaging/audit-2026-05-01.html">duttonbrown.github.io/ily-pages/packaging/audit-2026-05-01.html</a></dd>
+      <dt>measured against</dt><dd><code>ily-brand/tokens.css</code> · <code>brand-identity.md</code> · <code>brand-voice.md</code></dd>
+      <dt>method</dt><dd>WCAG 2.1 contrast computation · token-drift diff against <code>tokens.css</code> · live render comparison via Playwright at 1440×900</dd>
+    </dl>
+
+    <div class="self-note"><strong>note.</strong> this page applies the fixes recommended below — it's its own working example. the pure-white violations are gone; eyebrow tracking is dialed to 0.14em; small scan-text is at weight 400. the audit page itself is unchanged pending thomas's call.</div>
+  </header>
+
+  <!-- VERDICT -->
+  <section id="verdict">
+    <h2 class="section">verdict.</h2>
+    <h3>broadly on-brand. two real perception issues, one rule violation.</h3>
+
+    <p>the page is broadly on-brand and reads as iloveyouth at a glance. satoshi 300/400/500 only, lowercase voice, ingredient-led typography in the SVG mockups, ghost white surface, frosted blue accent. the structural discipline is real.</p>
+
+    <p><strong>two real issues are dragging the page below its potential</strong>, and both are exactly what thomas suspected:</p>
+
+    <ol>
+      <li><strong>the smallest text is genuinely too light</strong> — but it's a <em>weight</em> problem, not a contrast problem. WCAG ratios pass; what hurts is <code>figcaption</code>, <code>.meta dd</code>, and <code>td</code> all inheriting the body's satoshi 300 at sub-14px. bumping those three roles to 400 fixes it without losing any of the airy feel.</li>
+      <li><strong>the eyebrow tracking is past the comfortable threshold</strong> — <code>0.18em</code> on tracked tiny type sits beyond the <code>--ily-tracking-wider</code> token (<code>0.1em</code>) and beyond the canonical <code>0.16em</code> used on the brand logo-preview surface. the letters disconnect into individual silhouettes rather than reading as a label.</li>
+    </ol>
+
+    <p>there's also one <strong>brand-rule violation</strong> the page should fix regardless: pure white <code>#FFFFFF</code> on <code>&lt;code&gt;</code>, <code>&lt;blockquote&gt;</code>, <code>.table-wrap</code>, <code>.figure-frame</code>, <code>.swatch</code>, and <code>nav.toc</code>. <code>tokens.css</code> lines 14–21 and the color-rules memory both say pure white is permitted only for the inverse logo mark and for print media that can't reproduce ghost white. there's already a token for this case: <code>--ily-surface-mid: #E4E8F1</code>.</p>
+
+    <div class="verdict-block">
+      <p><strong>net.</strong> the design instincts are right. three small dials need to turn:</p>
+      <ol>
+        <li><code>0.18em</code> tracking → <code>0.14em</code> on eyebrows &amp; section markers</li>
+        <li>weight <code>300</code> → <code>400</code> on <code>figcaption</code>, <code>.meta dd</code>, <code>td</code></li>
+        <li><code>#FFFFFF</code> → <code>var(--ily-surface-mid)</code> on cards, code, blockquote, table wraps</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- STRENGTHS -->
+  <section id="strengths">
+    <h2 class="section">section 01.</h2>
+    <h3>strengths — don't change these.</h3>
+
+    <ul>
+      <li><strong>single typeface, locked weights.</strong> satoshi 300/400/500 only — matches the brand's intentional exclusion of 700/900. hierarchy comes from weight + size + tracking, not from a second family.</li>
+      <li><strong>light (300) dominates display type.</strong> <code>h1</code>, <code>h3</code>, <code>.lede</code>, <code>.pull</code> all 300. this is the airy/premium feel <code>tokens.css</code> calls for, executed correctly.</li>
+      <li><strong>lowercase everywhere, including labels.</strong> no accidental title case, no uppercase eyebrow text — the <code>text-transform: lowercase</code> on <code>.eyebrow</code>, <code>h2.section</code>, <code>nav.toc h2</code> is exactly right per <code>brand-voice.md</code>.</li>
+      <li><strong>period-as-signature is honored.</strong> "contents.", "section 01.", "prioritized action list." — periods on display labels follow the brand-voice signature rule.</li>
+      <li><strong>color discipline is mostly intact.</strong> body uses <code>var(--ily-text)</code>, surface uses <code>var(--ily-surface)</code>, the pull-quote uses <code>var(--ily-frosted-blue)</code> correctly with shadow grey text (11.64:1 contrast — AAA).</li>
+      <li><strong>negative space.</strong> generous margins (<code>5rem</code> between sections, <code>2rem 0</code> blockquotes) keep the page in prestige-tier proportions, mirroring the audit's own thesis about negative space as a price signal.</li>
+      <li><strong>tracked-uppercase semantics are right even when tracking is wrong.</strong> eyebrows, section markers, axis labels in the SVG diagrams all use tracked tiny type as the hierarchy signal — that's the brand's intended substitute for capitalization.</li>
+    </ul>
+
+    <p>this is a real expression of the system, not a mock-up dressed in brand colors. most of what's below is tuning.</p>
+  </section>
+
+  <!-- CONTRAST GROUND TRUTH -->
+  <section id="contrast">
+    <h2 class="section">section 02.</h2>
+    <h3>measured contrast — ground truth for "is the small text too light?"</h3>
+
+    <p>WCAG 2.1 ratios, computed:</p>
+
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>pair</th><th>ratio</th><th>AA-norm</th><th>AAA-norm</th><th>used at</th></tr></thead>
+      <tbody>
+        <tr><td><code>#2A2220</code> on <code>#F0F3FA</code> (body)</td><td class="num"><strong>14.02:1</strong></td><td><span class="pill pass">pass</span></td><td><span class="pill pass">pass</span></td><td>h1, h3, h4, h5, body p, links</td></tr>
+        <tr><td><code>#4A3F3A</code> on <code>#F0F3FA</code> (lede)</td><td class="num"><strong>9.16:1</strong></td><td><span class="pill pass">pass</span></td><td><span class="pill pass">pass</span></td><td><code>.lede</code></td></tr>
+        <tr><td><code>#6B5C54</code> on <code>#F0F3FA</code> (muted)</td><td class="num"><strong>5.76:1</strong></td><td><span class="pill pass">pass</span></td><td><span class="pill aa-only">AA only</span></td><td>eyebrow, h2.section, .meta dd, figcaption, th, .swatch .hex, footer, toc h2</td></tr>
+        <tr><td><code>#6B5C54</code> on <code>#FFFFFF</code></td><td class="num"><strong>6.39:1</strong></td><td><span class="pill pass">pass</span></td><td><span class="pill aa-only">AA only</span></td><td>(where pure-white violation occurs)</td></tr>
+        <tr><td><code>#1F5E2C</code> on <code>#D6EFD8</code> (pill green)</td><td class="num"><strong>6.38:1</strong></td><td><span class="pill pass">pass</span></td><td><span class="pill aa-only">AA only</span></td><td><code>.pill.green</code></td></tr>
+        <tr><td><code>#6E4D14</code> on <code>#F7E5C2</code> (pill amber)</td><td class="num"><strong>6.20:1</strong></td><td><span class="pill pass">pass</span></td><td><span class="pill aa-only">AA only</span></td><td><code>.pill.amber</code></td></tr>
+        <tr><td><code>#7A1F18</code> on <code>#F5C9C5</code> (pill red)</td><td class="num"><strong>6.90:1</strong></td><td><span class="pill pass">pass</span></td><td><span class="pill aa-only">AA only</span></td><td><code>.pill.red</code></td></tr>
+        <tr><td><code>#E5E7EE</code> on <code>#F0F3FA</code> (border)</td><td class="num"><strong>1.11:1</strong></td><td><span class="pill fail">n/a</span></td><td><span class="pill fail">n/a</span></td><td>every literal border (decorative, not text)</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p><strong>reading the table.</strong> every text role passes WCAG AA. nothing is a contrast failure. the "too light" perception is <em>not</em> a contrast issue — it's a font-weight issue. satoshi 300 at 11–14px on a 5.76:1 ratio looks faint because the strokes are physically thin, not because they're low-contrast. bumping <code>figcaption</code>, <code>.meta dd</code>, and <code>td</code> to weight 400 keeps the muted color but tightens the strokes — the same fix designers reach for on prestige editorial layouts.</p>
+
+    <p>the only meaningful AAA gap (5.76:1 vs the 7.0 AAA-normal target) is muted text on ghost white. that's a brand-system issue, not a page-level issue — and the brand has explicitly accepted this trade in the <code>tokens.css</code> docstring (warm muted greys are tested, the page is using them correctly).</p>
+  </section>
+
+  <!-- FINDINGS -->
+  <section id="findings">
+    <h2 class="section">section 03.</h2>
+    <h3>findings — severity-ranked.</h3>
+
+    <h4><span class="pill crit">critical</span> pure white surfaces violate the locked color rule</h4>
+    <p><strong>where:</strong> <code>audit-2026-05-01.html</code> lines 89, 168, 177, 200, 250, 269 — every <code>background: #FFFFFF</code>:</p>
+    <ul>
+      <li><code>nav.toc</code> line 89</li>
+      <li><code>code</code> line 168</li>
+      <li><code>blockquote</code> line 177</li>
+      <li><code>.table-wrap</code> line 200</li>
+      <li><code>.figure-frame</code> line 250</li>
+      <li><code>.swatch</code> line 269</li>
+    </ul>
+    <p><strong>why it matters:</strong> <code>tokens.css</code> lines 14–21 and <code>brand-identity.md</code> color → usage rules → rule 4 both lock pure white to two cases only: the inverse logo mark and print media that can't reproduce ghost white. every digital surface, card, container must use ghost white or a deeper surface tone. this is documented as a non-negotiable brand standard.</p>
+    <p><strong>fix:</strong> replace every <code>background: #FFFFFF</code> with <code>background: var(--ily-surface-mid)</code> (<code>#E4E8F1</code>). the token already exists (<code>tokens.css</code> line 43) precisely for cases where a card needs to read as distinct from the ghost white page background. visual hierarchy survives — see the after-screenshots in §4.</p>
+
+    <h4><span class="pill crit">critical</span> eyebrow tracking is outside the documented scale</h4>
+    <p><strong>where:</strong> lines 53, 97, 121 — <code>letter-spacing: 0.18em</code> on <code>.eyebrow</code>, <code>nav.toc h2</code>, <code>h2.section</code>.</p>
+    <p><strong>why it matters:</strong> the brand's tracking scale tops at <code>--ily-tracking-wider: 0.1em</code> (<code>tokens.css</code> line 133). the canonical brand surface — <code>logo-preview</code> — uses 0.16em on tracked tiny type. the audit page is at 0.18em, ~12% wider than the canonical reference and 80% wider than the documented token max. at 11.2px (<code>0.7rem</code>), 0.18em pushes individual letterforms past the gap where the eye reads them as a word.</p>
+    <p><strong>fix:</strong> set <code>letter-spacing: 0.14em</code> on these three rules. that's between the documented <code>--ily-tracking-wider</code> (<code>0.1em</code>) and the logo-preview convention (<code>0.16em</code>) — comfortable for tracked tiny type, still clearly tracked. optionally: introduce <code>--ily-tracking-widest: 0.14em</code> to <code>tokens.css</code> so this becomes a token reference instead of a literal.</p>
+
+    <h4><span class="pill mod">moderate</span> figcaption is the lightest text on the page</h4>
+    <p><strong>where:</strong> lines 241–247 — <code>figcaption { font-size: 0.85rem; font-weight: 300; color: #6B5C54 }</code>.</p>
+    <p><strong>why it matters:</strong> this is the only role that explicitly sets <code>font-weight: 300</code> at sub-14px in muted gray. body inherits 300 from line 23, but body sits at base size where 300 is fine. at 13.6px, satoshi 300 strokes get visually thin enough that the caption competes with the figure for attention — the eye keeps drifting away from the caption to the more solid surrounding type. <strong>this is the single biggest contributor to the "small text feels too light" sensation.</strong></p>
+    <p><strong>fix:</strong> <code>font-weight: 400</code> on <code>figcaption</code>. color stays muted (<code>#6B5C54</code>) so the caption still reads as secondary; the 400 weight just gives it the structural presence to hold its own beneath the diagram.</p>
+
+    <h4><span class="pill mod">moderate</span> <code>.meta dd</code> and <code>td</code> inherit body 300 at sub-base sizes</h4>
+    <p><strong>where:</strong> lines 75–81 (<code>.meta</code> 0.85rem, dd inherits 300) and lines 209–214 (<code>td</code> no weight set, inherits 300; line 206 sets table to 0.9rem).</p>
+    <p><strong>why it matters:</strong> same root cause as figcaption. dense secondary content at 13.6–14.4px in satoshi 300 — the meta block and table body are where the eye does most of its scanning work, and they're the lightest scan-content on the page. the dt is already explicitly <code>font-weight: 500</code> (line 83) which creates a usable contrast against dd, but the contrast is exaggerated when dd is 300 instead of 400.</p>
+    <p><strong>fix:</strong> <code>.meta dd { font-weight: 400 }</code> and <code>td { font-weight: 400 }</code>. don't touch body's 300 — keep that for paragraph display.</p>
+
+    <h4><span class="pill mod">moderate</span> type sizes are off-scale</h4>
+    <p><strong>where:</strong> most of the inline styles. sizes used: <code>0.7rem</code>, <code>0.75rem</code>, <code>0.8rem</code>, <code>0.85rem</code>, <code>0.9rem</code>, <code>0.95rem</code>, <code>1rem</code>, <code>1.05rem</code>, <code>1.15rem</code>, <code>1.25rem</code>, <code>1.5rem</code> (in clamp), <code>2.25rem</code> (in clamp), <code>3.25rem</code> (in clamp).</p>
+    <p><strong>the brand scale (<code>tokens.css</code> lines 100–110):</strong> <code>0.75 / 0.875 / 1 / 1.125 / 1.25 / 1.5 / 1.875 / 2.25 / 3 / 3.75 / 4.5</code>.</p>
+    <p><strong>why it matters:</strong> most of the page's sizes are between scale steps (0.7 instead of 0.75, 0.85 instead of 0.875, 0.95 instead of 1, 1.05 instead of 1.125, 1.15 instead of 1.125 or 1.25). individually these are 6–14% off; collectively they pull the vertical rhythm slightly out of sync. not visible on its own; visible when you stack multiple text elements that should resolve to the same baseline grid and don't quite.</p>
+    <p><strong>fix:</strong> conform to the scale. suggested mapping:</p>
+    <ul>
+      <li><code>0.7rem</code> → <code>var(--ily-text-xs)</code> (<code>0.75rem</code>) — eyebrows, section markers, toc h2</li>
+      <li><code>0.8rem</code>, <code>0.85rem</code>, <code>0.9rem</code> → <code>var(--ily-text-sm)</code> (<code>0.875rem</code>) — th, td, figcaption, meta, footer, swatch hex</li>
+      <li><code>0.95rem</code> → <code>var(--ily-text-base)</code> (<code>1rem</code>) — toc ol</li>
+      <li><code>1.05rem</code>, <code>1.15rem</code> → <code>var(--ily-text-lg)</code> (<code>1.125rem</code>) — pull, lede</li>
+      <li><code>1.25rem</code> → <code>var(--ily-text-xl)</code> (<code>1.25rem</code>) — h4 (already on-scale)</li>
+    </ul>
+    <p>this is a tidy-up. save it for a token-rationalization pass, not the urgent fix.</p>
+
+    <h4><span class="pill mod">moderate</span> <code>.lede</code> color is off the warm-grey ramp</h4>
+    <p><strong>where:</strong> line 70 — <code>color: #4A3F3A</code> on <code>.lede</code>.</p>
+    <p><strong>why it matters:</strong> the brand has a documented warm-grey ramp (<code>tokens.css</code> lines 68–76) running through <code>#52453F</code> (grey-700) and <code>#3D332F</code> (grey-800). <code>#4A3F3A</code> is between the two — close to neither. contrast is fine (9.16:1), but the value should snap to the ramp.</p>
+    <p><strong>fix:</strong> either <code>color: var(--ily-grey-700)</code> (<code>#52453F</code>, slightly lighter — better for the airy lede feel) or <code>color: var(--ily-grey-800)</code> (<code>#3D332F</code>). recommend <code>--ily-grey-700</code> to keep the lede visually distinct from body shadow grey.</p>
+
+    <h4><span class="pill nit">nit</span> every border literal could use the token</h4>
+    <p><strong>where:</strong> every <code>border: 1px solid #E5E7EE</code> — lines 40, 90, 169, 198, 213, 237, 251, 270, 314.</p>
+    <p><strong>why it matters:</strong> <code>--ily-border</code> is exactly <code>#E5E7EE</code> (<code>tokens.css</code> line 59). the page knows the token exists (it imports <code>tokens.css</code>) but uses literals instead. drift, not a violation — but every literal makes future palette tweaks an N-place edit.</p>
+    <p><strong>fix:</strong> search-and-replace <code>#E5E7EE</code> → <code>var(--ily-border)</code>.</p>
+
+    <h4><span class="pill nit">nit</span> pill colors aren't tokenized yet</h4>
+    <p><strong>where:</strong> lines 296–298 — six literal hexes for green/amber/red status pills.</p>
+    <p><strong>why it matters:</strong> status colors don't yet exist in <code>tokens.css</code>. they probably should, and this audit page is a reasonable place to discover the need. not a brand violation; just an opportunity.</p>
+    <p><strong>fix:</strong> when you next touch <code>tokens.css</code>, add <code>--ily-status-{green,amber,red}-{bg,fg}</code> semantic tokens and rewrite the pill rules to reference them. defer until a second use case appears.</p>
+
+    <h4><span class="pill nit">nit</span> letter-spacing literals exist outside the scale</h4>
+    <p><strong>where:</strong> <code>0.04em</code>, <code>0.01em</code>, <code>-0.005em</code>, <code>-0.015em</code>.</p>
+    <p><strong>why it matters:</strong> page-level fine-tunes. none are brand violations, but <code>--ily-tracking-tight: -0.02em</code> and <code>--ily-tracking-wide: 0.05em</code> already cover most cases. the fine values (0.01em on figcaption, -0.005em on h4) are below perceivable thresholds at their respective sizes — they could probably go to 0 with no visible effect.</p>
+    <p><strong>fix:</strong> defer. not worth touching individually.</p>
+  </section>
+
+  <!-- DIRECT ANSWERS -->
+  <section id="direct-answers">
+    <h2 class="section">section 04.</h2>
+    <h3>direct answers to the two specific worries.</h3>
+
+    <h4>1. is the smallest text too light?</h4>
+    <p><strong>yes, but not where you think.</strong> the contrast ratios pass — every small-text role is at WCAG AA or better. what's making it <em>feel</em> light is <strong><code>font-weight: 300</code> inheriting onto sub-14px text</strong>, specifically on <code>figcaption</code> (where it's set explicitly), and on <code>.meta dd</code> / <code>td</code> (where it inherits from <code>body</code>). satoshi 300 at 11–14px has thin enough strokes that even at 5.76:1 contrast it reads as faint.</p>
+    <p><strong>the fix is narrow and surgical:</strong></p>
+<pre><code>figcaption  { font-weight: 400; }   /* was 300 explicit */
+.meta dd    { font-weight: 400; }   /* was 300 inherited */
+td          { font-weight: 400; }   /* was 300 inherited */</code></pre>
+    <p>that's it. <strong>do not touch <code>body</code>'s 300, do not touch <code>.lede</code>, do not touch the pull-quote.</strong> the display weight discipline is the brand's voice — leave it. only the small-and-muted text needs the bump.</p>
+    <p>see the before/after comparisons in §5 — the difference is real but doesn't change the page's character.</p>
+
+    <h4>2. is the tracked-uppercase spacing too abrupt?</h4>
+    <p><strong>yes.</strong> <code>0.18em</code> on tracked tiny type is past the readable threshold for short labels. the brand scale maxes at <code>--ily-tracking-wider: 0.1em</code>, and the canonical surface (logo-preview) uses 0.16em.</p>
+    <p><strong>the fix:</strong> drop to <code>0.14em</code> — between the token and the canonical reference, comfortable for tracked tiny type, still unmistakably tracked.</p>
+<pre><code>.eyebrow,
+h2.section,
+nav.toc h2 {
+  letter-spacing: 0.14em;   /* was 0.18em */
+}</code></pre>
+    <p>if 0.14em–0.16em becomes a recurring need across ily-pages, <strong>add it to <code>tokens.css</code></strong> as <code>--ily-tracking-widest: 0.14em</code> so it's a token rather than a literal.</p>
+  </section>
+
+  <!-- BEFORE/AFTER -->
+  <section id="comparisons">
+    <h2 class="section">section 05.</h2>
+    <h3>render comparisons — current vs. proposed.</h3>
+
+    <p>all screenshots captured at 1440×900 viewport against the live page. left = current production; right = same page with proposed scoped fixes injected via JS, no file changes (verified live on the rendered page).</p>
+
+    <h4>header &amp; meta block</h4>
+    <p>the eyebrow ("packaging audit · 2026-05-01") is the most visible change. before: each character drifts into its own silhouette. after: it reads as a coherent label. the <code>.meta dd</code> values (right column under "auditor brief", "shelf target") are subtly more present at weight 400 — easier to scan without reading.</p>
+    <div class="compare">
+      <figure><img src="./audit-critique/before-01-header.png" alt="header before fix"><figcaption>before · 0.18em tracking · weight 300 inherited</figcaption></figure>
+      <figure><img src="./audit-critique/after-01-header.png" alt="header after fix"><figcaption>after · 0.14em tracking · weight 400 on dd</figcaption></figure>
+    </div>
+
+    <h4>table of contents</h4>
+    <p>before: pure white card sits brighter than the page background. the "contents." eyebrow is over-tracked. after: surface-mid card holds the same hierarchy without violating the white rule; eyebrow tracking lands in the comfortable range.</p>
+    <div class="compare">
+      <figure><img src="./audit-critique/before-02-toc.png" alt="TOC before fix"><figcaption>before · pure white card · 0.18em tracking</figcaption></figure>
+      <figure><img src="./audit-critique/after-02-toc.png" alt="TOC after fix"><figcaption>after · surface-mid card · 0.14em tracking</figcaption></figure>
+    </div>
+
+    <h4>figure with caption</h4>
+    <p>the figcaption goes from 300 to 400. before: visibly fainter than the surrounding body, caption recedes too far. after: caption holds its position as secondary text without disappearing. the white figure-frame card also picks up the surface-mid background.</p>
+    <div class="compare">
+      <figure><img src="./audit-critique/before-03-figcaption.png" alt="figure before fix"><figcaption>before · figcaption weight 300 · white frame</figcaption></figure>
+      <figure><img src="./audit-critique/after-03-figcaption.png" alt="figure after fix"><figcaption>after · figcaption weight 400 · surface-mid frame</figcaption></figure>
+    </div>
+
+    <h4>verdict table</h4>
+    <p>biggest visible difference is the <code>td</code> weight bump (300 → 400) — the rule names ("vessel color = function code", "one label spec across every vessel") read solid instead of thin. the notes column tightens up. the pure-white wrap becomes surface-mid; the inline <code>&lt;code&gt;</code> tag picks up the same.</p>
+    <div class="compare">
+      <figure><img src="./audit-critique/before-04-table.png" alt="table before fix"><figcaption>before · td weight 300 · white wrap</figcaption></figure>
+      <figure><img src="./audit-critique/after-04-table.png" alt="table after fix"><figcaption>after · td weight 400 · surface-mid wrap</figcaption></figure>
+    </div>
+
+    <h4>blockquote with inline code</h4>
+    <p>pure-white blockquote → surface-mid blockquote. the inline <code>&lt;code&gt;ily.&lt;/code&gt;</code> chip picks up the same surface tone. hierarchy preserved; brand rule honored.</p>
+    <div class="compare">
+      <figure><img src="./audit-critique/before-05-blockquote-code.png" alt="blockquote before fix"><figcaption>before · pure white blockquote &amp; code</figcaption></figure>
+      <figure><img src="./audit-critique/after-05-blockquote-code.png" alt="blockquote after fix"><figcaption>after · surface-mid blockquote &amp; code</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- THE PATCH -->
+  <section id="patch">
+    <h2 class="section">section 06.</h2>
+    <h3>the proposed fix as a CSS patch.</h3>
+
+    <p>if you want to apply all three changes to the actual file, the patch is small. insert at the bottom of the inline <code>&lt;style&gt;</code> block (or fold into the existing rules):</p>
+
+<pre><code>/* ---- proposed fixes 2026-05-02 ---- */
+
+/* tracking — pull tracked tiny type back into the comfortable range */
+.eyebrow,
+h2.section,
+nav.toc h2 {
+  letter-spacing: 0.14em;
+}
+
+/* weight — solidify the smallest scan-content without touching display 300 */
+figcaption,
+.meta dd,
+td {
+  font-weight: 400;
+}
+
+/* surfaces — replace pure white with surface-mid token */
+nav.toc,
+code,
+blockquote,
+.table-wrap,
+.figure-frame,
+.swatch {
+  background: var(--ily-surface-mid, #E4E8F1);
+}
+
+/* borders — token instead of literal */
+header.doc,
+nav.toc,
+.table-wrap,
+.figure-frame,
+.swatch,
+.swatch .chip,
+code,
+figure img,
+footer.doc {
+  border-color: var(--ily-border, #E5E7EE);
+}
+
+/* lede — snap to the warm-grey ramp */
+.lede { color: var(--ily-grey-700, #52453F); }</code></pre>
+
+    <p>optionally add to <code>tokens.css</code> if <code>0.14em</code> becomes a recurring tracked-tiny-type value across ily-pages:</p>
+
+<pre><code>--ily-tracking-widest: 0.14em;   /* tracked tiny type — eyebrows, section markers */</code></pre>
+
+    <p>out of scope for this critique: the type-scale conformance pass (mapping <code>0.7rem</code> → <code>var(--ily-text-xs)</code> etc.) and pill-color tokenization. those are tidy-ups; do them on the next styling pass.</p>
+  </section>
+
+  <!-- WHAT WAS NOT CHANGED -->
+  <section id="not-changed">
+    <h2 class="section">section 07.</h2>
+    <h3>what was <em>not</em> changed.</h3>
+
+    <p>things this critique looked at and intentionally left alone:</p>
+    <ul>
+      <li>the <code>h1</code>, <code>h2</code>, <code>h3</code> sizing and <code>clamp()</code> formulas — tier-correct</li>
+      <li>body weight 300 — central to the brand voice; only the sub-14px inheritances were a problem</li>
+      <li>the pull-quote (<code>.pull</code>) — fine on frosted blue at AAA contrast</li>
+      <li>the lede weight (300) — appropriate for 18.4px display lede</li>
+      <li>color values (shadow grey, frosted blue, ghost white, muted greys) — all on-brand</li>
+      <li>spacing rhythm — clean</li>
+      <li>the inline SVG diagrams — separate audit; their internal type follows the same conventions and would warrant the same treatment if it were CSS-controlled, but the SVGs are baked</li>
+      <li>voice and copy — lowercase, period-as-signature, ingredient-led; on-brand throughout</li>
+    </ul>
+  </section>
+
+  <footer class="doc">
+    <p>iloveyouth · brand &amp; readability critique · 2026-05-02 · subject: <a href="./audit-2026-05-01.html">audit-2026-05-01.html</a></p>
+    <p>← <a href="../index.html">back to ily public previews</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
