@@ -43,9 +43,18 @@
   --ily-surface-mid:   #E4E8F1;            /* slightly deeper surface */
 
   --ily-text:          var(--ily-shadow-grey);
-  --ily-text-muted:    #6B5C54;            /* warm mid-gray — secondary copy */
-  --ily-text-light:    #A89B92;            /* warm light gray — tertiary/meta */
+  --ily-text-muted:    #6B5C54;            /* warm mid-gray — secondary copy on light */
+  --ily-text-light:    #A89B92;            /* warm light gray — tertiary/meta on light */
   --ily-text-inverse:  var(--ily-ghost-white);
+
+  /* Inverse muted / light — for secondary + tertiary text on Shadow Grey surfaces.
+     Warm greys (not cool blue-greys). Tested on #2A2220:
+       muted-inverse (#A89B92) → 6.3:1 contrast  → AA body, AAA large
+       light-inverse (#C8BDB5) → 8.8:1 contrast  → AAA body
+     Never use text colors darker than #A89B92 on Shadow Grey — they fall
+     below AA and become illegible. This is a brand standard, not a preference. */
+  --ily-text-muted-inverse: var(--ily-grey-400);  /* #A89B92 */
+  --ily-text-light-inverse: var(--ily-grey-300);  /* #C8BDB5 */
 
   --ily-border:        #E5E7EE;            /* cool light border */
   --ily-border-strong: #C8CCD6;
@@ -117,11 +126,16 @@
   --ily-leading-normal:  1.5;
   --ily-leading-relaxed: 1.65;
 
-  /* Letter Spacing */
-  --ily-tracking-tight:  -0.02em;
-  --ily-tracking-normal: 0;
-  --ily-tracking-wide:   0.05em;
-  --ily-tracking-wider:  0.1em;
+  /* Letter Spacing
+     widest is reserved for tracked tiny-type labels (eyebrows, section
+     markers) at sub-14px. 0.18em+ pulls letterforms past the gap where
+     the eye reads them as a coherent label. 0.14em is the comfortable
+     ceiling for tracked-out tiny lowercase. */
+  --ily-tracking-tight:   -0.02em;
+  --ily-tracking-normal:  0;
+  --ily-tracking-wide:    0.05em;
+  --ily-tracking-wider:   0.1em;
+  --ily-tracking-widest:  0.14em;
 
   /* -------------------------------------------------------------------
      SPACING

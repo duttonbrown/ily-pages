@@ -411,7 +411,7 @@
     <h3>findings — severity-ranked.</h3>
 
     <h4><span class="pill crit">critical</span> pure white surfaces violate the locked color rule</h4>
-    <p><strong>where:</strong> <code>audit-2026-05-01.html</code> lines 89, 168, 177, 200, 250, 269 — every <code>background: #FFFFFF</code>:</p>
+    <p><strong>where:</strong> <code>audit-2026-05-01.html</code> lines 89, 168, 177, 200, 250, 269 — every <code>background: var(--ily-surface-mid, #E4E8F1)</code>:</p>
     <ul>
       <li><code>nav.toc</code> line 89</li>
       <li><code>code</code> line 168</li>
@@ -421,10 +421,10 @@
       <li><code>.swatch</code> line 269</li>
     </ul>
     <p><strong>why it matters:</strong> <code>tokens.css</code> lines 14–21 and <code>brand-identity.md</code> color → usage rules → rule 4 both lock pure white to two cases only: the inverse logo mark and print media that can't reproduce ghost white. every digital surface, card, container must use ghost white or a deeper surface tone. this is documented as a non-negotiable brand standard.</p>
-    <p><strong>fix:</strong> replace every <code>background: #FFFFFF</code> with <code>background: var(--ily-surface-mid)</code> (<code>#E4E8F1</code>). the token already exists (<code>tokens.css</code> line 43) precisely for cases where a card needs to read as distinct from the ghost white page background. visual hierarchy survives — see the after-screenshots in §4.</p>
+    <p><strong>fix:</strong> replace every <code>background: var(--ily-surface-mid, #E4E8F1)</code> with <code>background: var(--ily-surface-mid)</code> (<code>#E4E8F1</code>). the token already exists (<code>tokens.css</code> line 43) precisely for cases where a card needs to read as distinct from the ghost white page background. visual hierarchy survives — see the after-screenshots in §4.</p>
 
     <h4><span class="pill crit">critical</span> eyebrow tracking is outside the documented scale</h4>
-    <p><strong>where:</strong> lines 53, 97, 121 — <code>letter-spacing: 0.18em</code> on <code>.eyebrow</code>, <code>nav.toc h2</code>, <code>h2.section</code>.</p>
+    <p><strong>where:</strong> lines 53, 97, 121 — <code>letter-spacing: 0.14em</code> on <code>.eyebrow</code>, <code>nav.toc h2</code>, <code>h2.section</code>.</p>
     <p><strong>why it matters:</strong> the brand's tracking scale tops at <code>--ily-tracking-wider: 0.1em</code> (<code>tokens.css</code> line 133). the canonical brand surface — <code>logo-preview</code> — uses 0.16em on tracked tiny type. the audit page is at 0.18em, ~12% wider than the canonical reference and 80% wider than the documented token max. at 11.2px (<code>0.7rem</code>), 0.18em pushes individual letterforms past the gap where the eye reads them as a word.</p>
     <p><strong>fix:</strong> set <code>letter-spacing: 0.14em</code> on these three rules. that's between the documented <code>--ily-tracking-wider</code> (<code>0.1em</code>) and the logo-preview convention (<code>0.16em</code>) — comfortable for tracked tiny type, still clearly tracked. optionally: introduce <code>--ily-tracking-widest: 0.14em</code> to <code>tokens.css</code> so this becomes a token reference instead of a literal.</p>
 

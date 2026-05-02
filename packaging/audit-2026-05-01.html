@@ -50,7 +50,7 @@
     .eyebrow {
       font-size: 0.7rem;
       font-weight: 500;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.14em;
       text-transform: lowercase;
       color: #6B5C54;
       margin: 0 0 1rem;
@@ -81,12 +81,12 @@
     }
 
     .meta dt { font-weight: 500; letter-spacing: 0.05em; }
-    .meta dd { margin: 0; }
+    .meta dd { margin: 0; font-weight: 400; }
 
     nav.toc {
       margin: 3rem 0;
       padding: 1.75rem 2rem;
-      background: #FFFFFF;
+      background: var(--ily-surface-mid, #E4E8F1);
       border: 1px solid #E5E7EE;
       border-radius: 2px;
     }
@@ -94,7 +94,7 @@
     nav.toc h2 {
       font-size: 0.7rem;
       font-weight: 500;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.14em;
       text-transform: lowercase;
       color: #6B5C54;
       margin: 0 0 1rem;
@@ -118,7 +118,7 @@
     h2.section {
       font-size: 0.7rem;
       font-weight: 500;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.14em;
       text-transform: lowercase;
       color: #6B5C54;
       margin: 0 0 0.75rem;
@@ -165,7 +165,7 @@
     code {
       font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
       font-size: 0.85em;
-      background: #FFFFFF;
+      background: var(--ily-surface-mid, #E4E8F1);
       border: 1px solid #E5E7EE;
       padding: 0.05em 0.35em;
       border-radius: 2px;
@@ -174,7 +174,7 @@
     blockquote {
       margin: 1.5rem 0;
       padding: 1.25rem 1.5rem;
-      background: #FFFFFF;
+      background: var(--ily-surface-mid, #E4E8F1);
       border-left: 2px solid #2A2220;
       font-style: normal;
     }
@@ -197,7 +197,7 @@
       overflow-x: auto;
       border: 1px solid #E5E7EE;
       border-radius: 2px;
-      background: #FFFFFF;
+      background: var(--ily-surface-mid, #E4E8F1);
     }
 
     table {
@@ -211,6 +211,7 @@
       text-align: left;
       vertical-align: top;
       border-bottom: 1px solid #E5E7EE;
+      font-weight: 400;
     }
 
     th {
@@ -242,12 +243,12 @@
       margin-top: 0.85rem;
       font-size: 0.85rem;
       color: #6B5C54;
-      font-weight: 300;
+      font-weight: 400;
       letter-spacing: 0.01em;
     }
 
     .figure-frame {
-      background: #FFFFFF;
+      background: var(--ily-surface-mid, #E4E8F1);
       border: 1px solid #E5E7EE;
       border-radius: 2px;
       padding: 1.5rem;
@@ -266,7 +267,7 @@
       flex-direction: column;
       gap: 0.5rem;
       padding: 1rem;
-      background: #FFFFFF;
+      background: var(--ily-surface-mid, #E4E8F1);
       border: 1px solid #E5E7EE;
       border-radius: 2px;
       font-size: 0.8rem;
@@ -611,7 +612,7 @@
     <h3>the category map — where ily sits, and what's adjacent.</h3>
 
     <figure>
-      <div class="figure-frame" style="background:#FFFFFF;">
+      <div class="figure-frame" style="background:var(--ily-surface-mid, #E4E8F1);">
         <svg viewBox="0 0 800 600" role="img" aria-label="category positioning map">
           <!-- axes -->
           <line x1="400" y1="40" x2="400" y2="560" stroke="#2A2220" stroke-width="1"/>
