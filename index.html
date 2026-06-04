@@ -60,7 +60,7 @@
 
     header p {
       font-size: var(--ily-text-base);
-      font-weight: var(--ily-font-light);
+      font-weight: var(--ily-font-regular);   /* 400 — body text, not display */
       color: var(--ily-text-muted);
       max-width: 60ch;
       margin: 0;
@@ -101,7 +101,7 @@
 
     a.card h3 {
       font-size: var(--ily-text-lg);
-      font-weight: var(--ily-font-light);
+      font-weight: var(--ily-font-medium);    /* 500 — card label, reads as UI not display */
       letter-spacing: var(--ily-tracking-tight);
       line-height: var(--ily-leading-snug);
       margin: 0 0 var(--ily-space-2);
@@ -110,7 +110,7 @@
 
     a.card p {
       font-size: var(--ily-text-sm);
-      font-weight: var(--ily-font-light);
+      font-weight: var(--ily-font-regular);   /* 400 — small functional text, never 300 */
       line-height: var(--ily-leading-relaxed);
       color: var(--ily-text-muted);
       margin: 0;
@@ -121,7 +121,7 @@
       padding-top: var(--ily-space-8);
       border-top: 1px solid var(--ily-border);
       font-size: var(--ily-text-xs);
-      font-weight: var(--ily-font-light);
+      font-weight: var(--ily-font-regular);   /* 400 — tiny text must not be 300 */
       color: var(--ily-text-muted);
     }
 
@@ -152,6 +152,16 @@
         <a class="card" href="brand/index.html">
           <h3>logo preview.</h3>
           <p>the canonical wordmark and brandmark across surfaces, with size ladder, parked colored-period direction, and brand-in-use mockups.</p>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <p class="section-label">reviews</p>
+      <div class="grid">
+        <a class="card" href="hydration-review.html">
+          <h3>hydration lineup review.</h3>
+          <p>dermatologist-grade read on the four launch products — what wins, why, and where peptides fit — scored against a weighted rubric and built on the full ingredient lists pulled from Pravada.</p>
         </a>
       </div>
     </section>
