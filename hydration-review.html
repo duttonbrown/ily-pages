@@ -119,6 +119,20 @@
     }
     .pick { color: var(--ily-text); }
     .runner { color: var(--ily-text-muted); }
+    /* product links inside the table — subtle, no underline until hover */
+    tbody a {
+      color: inherit;
+      border-bottom: 1px dotted var(--ily-border-strong);
+      transition: color var(--ily-transition-fast), border-color var(--ily-transition-fast);
+    }
+    tbody a:hover { color: var(--ily-accent-hover); border-bottom-style: solid; border-bottom-color: var(--ily-accent); }
+    tbody a[target]::after {
+      content: "↗";
+      font-size: 0.7em;
+      vertical-align: super;
+      margin-left: 2px;
+      color: var(--ily-text-light);
+    }
     .score {
       display: inline-block;
       font-weight: var(--ily-font-medium);
@@ -215,31 +229,33 @@
           <tbody>
             <tr>
               <td class="step-label">Cleanser</td>
-              <td class="pick">HA &amp; Glycerin Hydrating Cleanser <span class="score">— 8.4</span></td>
-              <td class="runner">Gentle Oat Milk Cleanser <span class="score">— 7.6</span></td>
-              <td class="runner">Peptide+ Hydro Gel Cleanser <span class="score">— 6.9</span></td>
+              <td class="pick"><a href="https://www.pravadaprivatelabel.com/products/hyaluronic-hydrating-gel-cleanser" target="_blank" rel="noopener">HA &amp; Glycerin Hydrating Cleanser</a> <span class="score">— 8.4</span></td>
+              <td class="runner"><a href="https://www.pravadaprivatelabel.com/products/gentle-oat-milk-cleanser" target="_blank" rel="noopener">Gentle Oat Milk Cleanser</a> <span class="score">— 7.6</span></td>
+              <td class="runner"><a href="https://www.pravadaprivatelabel.com/collections/cleansers" target="_blank" rel="noopener">Peptide+ Hydro Gel Cleanser</a> <span class="score">— 6.9</span></td>
             </tr>
             <tr>
               <td class="step-label">Essence / Toner</td>
-              <td class="pick">BioHydrate Essence w/ Collagen &amp; HA <span class="score">— 8.4</span></td>
-              <td class="runner">Green Tea Calming Toner <span class="score">— 7.5</span></td>
-              <td class="runner">Barrier Defense Desert Toner <span class="score">— 7.0</span></td>
+              <td class="pick"><a href="https://www.pravadaprivatelabel.com/products/biohydrate-essence-with-collagen-hyaluronic-acid" target="_blank" rel="noopener">BioHydrate Essence w/ Collagen &amp; HA</a> <span class="score">— 8.4</span></td>
+              <td class="runner"><a href="https://www.pravadaprivatelabel.com/products/botanical-japanese-green-tea-facial-toner" target="_blank" rel="noopener">Green Tea Calming Toner</a> <span class="score">— 7.5</span></td>
+              <td class="runner"><a href="https://www.pravadaprivatelabel.com/products/barrier-defense-desert-toner" target="_blank" rel="noopener">Barrier Defense Desert Toner</a> <span class="score">— 7.0</span></td>
             </tr>
             <tr>
               <td class="step-label">Serum (hero)</td>
-              <td class="pick">Multi-Molecular HA Serum <span class="score">— 6.8 / ~8.6 customized</span></td>
-              <td class="runner">Tri-Active Clarifying Serum <span class="score">— 7.1</span></td>
-              <td class="runner">Stem-A HA Serum <span class="score">— 6.8</span></td>
+              <td class="pick"><a href="https://www.pravadaprivatelabel.com/products/multi-molecular-hyaluronic-acid-serum" target="_blank" rel="noopener">Multi-Molecular HA Serum</a> <span class="score">— 6.8 / ~8.6 customized</span></td>
+              <td class="runner"><a href="https://www.pravadaprivatelabel.com/products/tri-active-clarifying-serum" target="_blank" rel="noopener">Tri-Active Clarifying Serum</a> <span class="score">— 7.1</span></td>
+              <td class="runner"><a href="https://www.pravadaprivatelabel.com/products/stem-a-hyaluronic-acid-serum-samples" target="_blank" rel="noopener">Stem-A HA Serum</a> <span class="score">— 6.8</span></td>
             </tr>
             <tr>
               <td class="step-label">Moisturizer</td>
-              <td class="pick">Barrier Renewal Ceramide Cream <span class="score">— 8.9</span></td>
-              <td class="runner">Biome Balance Lightweight Moisturizer <span class="score">— 8.2</span></td>
-              <td class="runner">Niacinamide &amp; HA Water Cream <span class="score">— 7.6</span></td>
+              <td class="pick"><a href="https://www.pravadaprivatelabel.com/products/deep-renewal-cream-with-ceramides-collagen-samples" target="_blank" rel="noopener">Barrier Renewal Ceramide Cream</a> <span class="score">— 8.9</span></td>
+              <td class="runner"><a href="https://www.pravadaprivatelabel.com/products/biome-balance-lightweight-moisturizer" target="_blank" rel="noopener">Biome Balance Lightweight Moisturizer</a> <span class="score">— 8.2</span></td>
+              <td class="runner"><a href="https://www.pravadaprivatelabel.com/products/niacinamide-ha-water-cream" target="_blank" rel="noopener">Niacinamide &amp; HA Water Cream</a> <span class="score">— 7.6</span></td>
             </tr>
           </tbody>
         </table>
       </div>
+
+      <p style="font-size: var(--ily-text-xs); color: var(--ily-text-light); margin-top: calc(-1 * var(--ily-space-2));">Product names link to Pravada Private Label product pages (↗ opens in a new tab). The Peptide+ Hydro Gel Cleanser links to the cleansers collection while its direct page is confirmed.</p>
 
       <h3>Conclusions</h3>
       <ul>
