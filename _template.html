@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+  ILOVEYOUTH PAGE TEMPLATE — copy this file to start any new ily-pages page.
+
+  WHY THIS EXISTS: every page links the shared brand layer so style changes
+  (colors, body weight, link behavior) propagate from ONE place to ALL pages.
+  This only works if you follow the rules below. See ily-pages/CLAUDE.md.
+
+  THE RULES (do not break these or pages drift out of sync):
+    1. Keep the three <link>s below, in this order: tokens -> base -> components.
+       - tokens.css      = colors, fonts, spacing (CSS variables)
+       - base.css        = body/headings/links/tables defaults (legibility)
+       - components.css  = reusable classes (.ily-link, etc.)
+    2. In your page <style>, put ONLY page-specific LAYOUT.
+       NEVER redefine body{}, h1-h6{}, a{}, or colors that base/tokens own —
+       a page-local rule overrides the shared file and breaks propagation.
+    3. ALWAYS use var(--ily-*) for brand values. Never hardcode hex (#2A2220)
+       or raw font-weights (300/400) — literals can't track token changes.
+    4. Body text is weight 400 (inherited from base). Light (300) is for
+       large display headings only — and base already sets that on h1-h3.
+
+  PATHS: this template assumes the page sits at the ily-pages ROOT (href="brand/..").
+  If you put the page in a subfolder (e.g. packaging/), change every "brand/"
+  to "../brand/". One level deeper = "../../brand/", etc.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iloveyouth — PAGE TITLE HERE</title>
+
+  <link rel="icon" type="image/svg+xml" href="brand/logos/favicons/favicon.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="brand/logos/favicons/favicon-white.svg" media="(prefers-color-scheme: dark)">
+  <link rel="apple-touch-icon" sizes="180x180" href="brand/logos/favicons/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+
+  <!-- Shared brand layer — keep this order. Do not redefine what these own. -->
+  <link rel="stylesheet" href="brand/tokens.css">
+  <link rel="stylesheet" href="brand/base.css">
+  <link rel="stylesheet" href="brand/components.css">
+
+  <style>
+    /* PAGE LAYOUT ONLY. No body{}, no h1-h6{}, no a{}, no brand colors here.
+       Use var(--ily-*) for any value. Example layout: */
+    .page {
+      max-width: var(--ily-max-width-lg);
+      margin: 0 auto;
+      padding: var(--ily-space-16) var(--ily-space-6) var(--ily-space-24);
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <p class="eyebrow">statement # · topic</p>
+    <h1>Page Title Here</h1>
+    <p class="lede">One-sentence summary of the page.</p>
+
+    <!-- Your content. Use .ily-link on inline anchors for correct link styling. -->
+
+  </main>
+</body>
+</html>
