@@ -21,12 +21,14 @@
 
     body {
       font-family: var(--ily-font-primary);
-      font-weight: var(--ily-font-light);
+      font-weight: var(--ily-font-regular);   /* 400 — body/UI. Light (300) is for display headlines only. */
       color: var(--ily-text);
       background: var(--ily-surface);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       line-height: var(--ily-leading-relaxed);
+      /* No -webkit-font-smoothing:antialiased — it thins strokes and, combined
+         with light weight, makes body text read hazy (esp. on non-Retina /
+         fractional-DPI displays). Let the OS render at full intended weight. */
+      text-rendering: optimizeLegibility;
     }
 
     .page {
