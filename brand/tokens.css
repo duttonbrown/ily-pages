@@ -43,8 +43,12 @@
   --ily-surface-mid:   #E4E8F1;            /* slightly deeper surface */
 
   --ily-text:          var(--ily-shadow-grey);
-  --ily-text-muted:    #6B5C54;            /* warm mid-gray — secondary copy on light */
-  --ily-text-light:    #A89B92;            /* warm light gray — tertiary/meta on light */
+  --ily-text-muted:    #6B5C54;            /* warm mid-gray — secondary copy on light (5.8:1 on Ghost White, AA) */
+  --ily-text-light:    #7A6B62;            /* warm light gray — tertiary/meta on light (4.6:1 on Ghost White, AA).
+                                              NOTE: this is a LIGHT-SURFACE token. Do NOT use it on Shadow Grey or any
+                                              dark surface — it fails contrast there. For tertiary text on dark, use
+                                              --ily-text-light-inverse. The old value (#A89B92) was only 2.4:1 here
+                                              and is preserved as --ily-text-muted-inverse for dark surfaces. */
   --ily-text-inverse:  var(--ily-ghost-white);
 
   /* Inverse muted / light — for secondary + tertiary text on Shadow Grey surfaces.

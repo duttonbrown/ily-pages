@@ -84,8 +84,11 @@
     }
     p { margin: 0 0 var(--ily-space-5); }
     strong { font-weight: var(--ily-font-medium); }
-    a { color: var(--ily-accent-hover); text-decoration: none; border-bottom: 1px solid var(--ily-border-strong); }
-    a:hover { color: var(--ily-text); }
+    /* Links: text stays Shadow Grey for full contrast; the accent lives only in
+       the underline (never as text — brand rule: Frosted Blue is not a text color).
+       Hover deepens the underline to the accent rather than recoloring the text. */
+    a { color: var(--ily-text); text-decoration: none; border-bottom: 1px solid var(--ily-border-strong); transition: border-color var(--ily-transition-fast); }
+    a:hover { color: var(--ily-text); border-bottom-width: 2px; border-bottom-color: var(--ily-accent-hover); }
 
     /* ---- Depth chart table ---- */
     .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
@@ -126,7 +129,8 @@
       border-bottom: 1px dotted var(--ily-border-strong);
       transition: color var(--ily-transition-fast), border-color var(--ily-transition-fast);
     }
-    tbody a:hover { color: var(--ily-accent-hover); border-bottom-style: solid; border-bottom-color: var(--ily-accent); }
+    /* Hover keeps text dark (readable); the dotted underline goes solid + accent. */
+    tbody a:hover { color: var(--ily-text); border-bottom-style: solid; border-bottom-color: var(--ily-accent-hover); }
     tbody a[target]::after {
       content: "↗";
       font-size: 0.7em;
@@ -160,8 +164,8 @@
     }
     .fit.best { color: #1c6b3e; font-weight: var(--ily-font-medium); }
     .fit.future { color: #7a4636; }
-    .fit.caution { color: #8a6d1f; }
-    .fit.skip { color: var(--ily-text-light); }
+    .fit.caution { color: #785e18; }                 /* 5.2:1 on peach — AA */
+    .fit.skip { color: var(--ily-text-muted); }       /* 5.4:1 on peach — AA (text-light is for Ghost White only) */
 
     /* rubric table reads tighter than the depth chart */
     table.rubric td:nth-child(2) { white-space: nowrap; }
