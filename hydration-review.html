@@ -94,8 +94,9 @@
       border-collapse: collapse;
       margin: var(--ily-space-6) 0;
       font-size: var(--ily-text-sm);
-      min-width: 640px;
+      min-width: 860px;
     }
+    table.rubric { min-width: 520px; }
     thead th {
       text-align: left;
       font-weight: var(--ily-font-medium);
@@ -140,6 +141,30 @@
     }
     .col-1 { background: var(--ily-accent-soft); border-radius: 8px; }
     .col-1 td { border-bottom-color: #c5e9f6; }
+
+    /* peptide option column — visually set apart (a different kind of column: options, not ranks) */
+    th.peptide-col {
+      color: #7a4636;
+      border-bottom-color: var(--ily-support);
+    }
+    td.peptide-col {
+      background: var(--ily-support-soft);
+      color: var(--ily-text-muted);
+    }
+    td.peptide-col a { color: var(--ily-text); }
+    .fit {
+      display: block;
+      margin-top: var(--ily-space-2);
+      font-size: var(--ily-text-xs);
+      letter-spacing: var(--ily-tracking-wide);
+    }
+    .fit.best { color: #1c6b3e; font-weight: var(--ily-font-medium); }
+    .fit.future { color: #7a4636; }
+    .fit.caution { color: #8a6d1f; }
+    .fit.skip { color: var(--ily-text-light); }
+
+    /* rubric table reads tighter than the depth chart */
+    table.rubric td:nth-child(2) { white-space: nowrap; }
 
     /* ---- Callout cards ---- */
     .card {
@@ -212,10 +237,32 @@
       </div>
     </header>
 
+    <!-- ================= SCORING RUBRIC ================= -->
+    <section>
+      <h2>How the scores work</h2>
+      <p>Every product is scored 0–10 on six weighted criteria, then combined into the single weighted total shown in the table. The weighting reflects what matters for a hydration launch at Sephora-tier positioning — efficacy and on-statement fit lead; cost is a tie-breaker, not a driver.</p>
+      <div class="table-wrap">
+        <table class="rubric">
+          <thead>
+            <tr><th>Criterion</th><th>Weight</th><th>What it measures</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="step-label">Hydration efficacy</td><td><span class="score">25%</span></td><td>Real mechanism — meaningful actives, action at multiple skin depths, reduced moisture loss.</td></tr>
+            <tr><td class="step-label">On-statement fit</td><td><span class="score">20%</span></td><td>Reinforces "hydration." Drift toward firming / brightening / anti-aging costs points.</td></tr>
+            <tr><td class="step-label">Marketability</td><td><span class="score">20%</span></td><td>Texture, format, and claim appeal to the Sephora-literate buyer; discovery &amp; gifting pull.</td></tr>
+            <tr><td class="step-label">Formulation &amp; Clean</td><td><span class="score">20%</span></td><td>Ingredient integrity, sane preservative system, correct pH, passes Sephora Clean.</td></tr>
+            <tr><td class="step-label">Line coherence</td><td><span class="score">10%</span></td><td>Fits the through-lines — the hyaluronic-acid spine and the ferment family shared across the regimen.</td></tr>
+            <tr><td class="step-label">Cost / MOQ / ops</td><td><span class="score">5%</span></td><td>50-piece MOQ fit, sample availability, customization options.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size: var(--ily-text-xs); color: var(--ily-text-light);">Scores are built on the full ingredient lists pulled from Pravada (not marketing copy). Where a percentage or pH is undisclosed, the relevant axis is inferred from ingredient order and flagged in the underlying review.</p>
+    </section>
+
     <!-- ================= DEPTH CHART ================= -->
     <section>
       <h2>The four products — with runners-up</h2>
-      <p>Each step shows the recommended pick (#1) and the two next-best Pravada options, with a weighted score out of 10. The bench isn't for re-picking — it's there for negotiation leverage and post-trial swaps.</p>
+      <p>Each step shows the recommended pick (#1), the two next-best hydration options, and — in the final column — the peptide-based product that could serve that step if peptides enter the launch. The bench isn't for re-picking; it's there for negotiation leverage, post-trial swaps, and the peptide conversation.</p>
       <div class="table-wrap">
         <table>
           <thead>
@@ -224,6 +271,7 @@
               <th>#1 — Recommended pick</th>
               <th>#2</th>
               <th>#3</th>
+              <th class="peptide-col">Peptide option</th>
             </tr>
           </thead>
           <tbody>
@@ -232,30 +280,34 @@
               <td class="pick"><a href="https://www.pravadaprivatelabel.com/products/hyaluronic-hydrating-gel-cleanser" target="_blank" rel="noopener">HA &amp; Glycerin Hydrating Cleanser</a> <span class="score">— 8.4</span></td>
               <td class="runner"><a href="https://www.pravadaprivatelabel.com/products/gentle-oat-milk-cleanser" target="_blank" rel="noopener">Gentle Oat Milk Cleanser</a> <span class="score">— 7.6</span></td>
               <td class="runner"><a href="https://www.pravadaprivatelabel.com/collections/cleansers" target="_blank" rel="noopener">Peptide+ Hydro Gel Cleanser</a> <span class="score">— 6.9</span></td>
+              <td class="peptide-col"><a href="https://www.pravadaprivatelabel.com/collections/cleansers" target="_blank" rel="noopener">Peptide+ Hydro Gel Cleanser</a><span class="fit skip">peptides wash off — skip</span></td>
             </tr>
             <tr>
               <td class="step-label">Essence / Toner</td>
               <td class="pick"><a href="https://www.pravadaprivatelabel.com/products/biohydrate-essence-with-collagen-hyaluronic-acid" target="_blank" rel="noopener">BioHydrate Essence w/ Collagen &amp; HA</a> <span class="score">— 8.4</span></td>
               <td class="runner"><a href="https://www.pravadaprivatelabel.com/products/botanical-japanese-green-tea-facial-toner" target="_blank" rel="noopener">Green Tea Calming Toner</a> <span class="score">— 7.5</span></td>
               <td class="runner"><a href="https://www.pravadaprivatelabel.com/products/barrier-defense-desert-toner" target="_blank" rel="noopener">Barrier Defense Desert Toner</a> <span class="score">— 7.0</span></td>
+              <td class="peptide-col"><a href="https://www.pravadaprivatelabel.com/products/peptide-plump-essence-toner" target="_blank" rel="noopener">Peptide Plump Essence Toner</a><span class="fit caution">has witch hazel — weak fit</span></td>
             </tr>
             <tr>
               <td class="step-label">Serum (hero)</td>
               <td class="pick"><a href="https://www.pravadaprivatelabel.com/products/multi-molecular-hyaluronic-acid-serum" target="_blank" rel="noopener">Multi-Molecular HA Serum</a> <span class="score">— 6.8 / ~8.6 customized</span></td>
               <td class="runner"><a href="https://www.pravadaprivatelabel.com/products/tri-active-clarifying-serum" target="_blank" rel="noopener">Tri-Active Clarifying Serum</a> <span class="score">— 7.1</span></td>
               <td class="runner"><a href="https://www.pravadaprivatelabel.com/products/stem-a-hyaluronic-acid-serum-samples" target="_blank" rel="noopener">Stem-A HA Serum</a> <span class="score">— 6.8</span></td>
+              <td class="peptide-col"><a href="https://www.pravadaprivatelabel.com/products/peptide-complex-serum" target="_blank" rel="noopener">Peptide+ Firming Serum</a><span class="fit best">recommended — hydration-led, repositioned</span></td>
             </tr>
             <tr>
               <td class="step-label">Moisturizer</td>
               <td class="pick"><a href="https://www.pravadaprivatelabel.com/products/deep-renewal-cream-with-ceramides-collagen-samples" target="_blank" rel="noopener">Barrier Renewal Ceramide Cream</a> <span class="score">— 8.9</span></td>
               <td class="runner"><a href="https://www.pravadaprivatelabel.com/products/biome-balance-lightweight-moisturizer" target="_blank" rel="noopener">Biome Balance Lightweight Moisturizer</a> <span class="score">— 8.2</span></td>
               <td class="runner"><a href="https://www.pravadaprivatelabel.com/products/niacinamide-ha-water-cream" target="_blank" rel="noopener">Niacinamide &amp; HA Water Cream</a> <span class="score">— 7.6</span></td>
+              <td class="peptide-col"><a href="https://www.pravadaprivatelabel.com/products/multi-peptide-moisturizer-samples" target="_blank" rel="noopener">Multi-Peptide Smoothing Moisturizer</a><span class="fit future">strong, but Statement #2 (peptide-led)</span></td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <p style="font-size: var(--ily-text-xs); color: var(--ily-text-light); margin-top: calc(-1 * var(--ily-space-2));">Product names link to Pravada Private Label product pages (↗ opens in a new tab). The Peptide+ Hydro Gel Cleanser links to the cleansers collection while its direct page is confirmed.</p>
+      <p style="font-size: var(--ily-text-xs); color: var(--ily-text-light); margin-top: calc(-1 * var(--ily-space-2));">Product names link to Pravada Private Label product pages (↗ opens in a new tab). The <span style="color: var(--ily-text-muted);">Peptide option</span> column (peach) shows the peptide-based product that could serve each step — not a ranked pick, but a candidate for the peptide conversation. Only the serum's peptide option is a recommended launch addition; the others are weak fits or belong to a future Statement&nbsp;#2. The Peptide+ Hydro Gel Cleanser links to the cleansers collection while its direct page is confirmed.</p>
 
       <h3>Conclusions</h3>
       <ul>
