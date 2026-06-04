@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>iloveyouth — packaging cost & finish assessment.</title>
 
-  <link rel="icon" type="image/svg+xml" href="../brand/logos/favicons/favicon.svg" media="(prefers-color-scheme: light)">
-  <link rel="icon" type="image/svg+xml" href="../brand/logos/favicons/favicon-white.svg" media="(prefers-color-scheme: dark)">
+  <!-- Always-light surface: ship the dark favicon only, no OS-dark swap. -->
+  <link rel="icon" type="image/svg+xml" href="../brand/logos/favicons/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../brand/logos/favicons/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../brand/logos/favicons/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../brand/logos/favicons/apple-touch-icon.png">
@@ -322,13 +322,10 @@
   <div class="page">
 
     <header>
-      <picture>
-        <source media="(prefers-color-scheme: dark)"
-                srcset="../brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-white-rect-400.svg">
-        <img class="wordmark"
-             src="../brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-dark-rect-400.svg"
-             alt="iloveyouth.">
-      </picture>
+      <!-- Always-light surface: dark ink chosen explicitly, no <picture> auto-swap. -->
+      <img class="wordmark ily-logo ily-logo--on-light"
+           src="../brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-dark-rect-400.svg"
+           alt="iloveyouth.">
       <h1>packaging cost &amp; finish assessment.</h1>
       <p class="lede">a finish-and-cost analysis for the four lead skus iloveyouth plans to take into production — cleanser, toner, serum, moisturizer. priced at 10k units per sku from ua packaging quote 260422, with finish recommendations following the ily packaging system rules.</p>
       <div class="meta">

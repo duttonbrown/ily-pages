@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ily — packaging vibes v5 · expressive directions</title>
 
-  <link rel="icon" type="image/svg+xml" href="../brand/logos/favicons/favicon.svg" media="(prefers-color-scheme: light)">
-  <link rel="icon" type="image/svg+xml" href="../brand/logos/favicons/favicon-white.svg" media="(prefers-color-scheme: dark)">
+  <!-- Always-light surface: ship the dark favicon only, no OS-dark swap. -->
+  <link rel="icon" type="image/svg+xml" href="../brand/logos/favicons/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../brand/logos/favicons/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../brand/logos/favicons/favicon-16.png">
 
@@ -99,13 +99,10 @@
 <div class="page">
 
   <header class="doc">
-    <picture>
-      <source media="(prefers-color-scheme: dark)"
-              srcset="../brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-white-rect-400.svg">
-      <img class="wordmark"
-           src="../brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-dark-rect-400.svg"
-           alt="iloveyouth.">
-    </picture>
+    <!-- Always-light surface: dark ink chosen explicitly, no <picture> auto-swap. -->
+    <img class="wordmark ily-logo ily-logo--on-light"
+         src="../brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-dark-rect-400.svg"
+         alt="iloveyouth.">
     <p class="eyebrow">packaging vibes · v5 · 2026-05-02</p>
     <h1>five expressive directions.</h1>
     <p class="lede">five lanes that lean into <em>visual interest, color play, and chromatic expression</em> while still respecting the audit's non-negotiables (ingredient-led type, period anchor, Shadow Grey constants, <code>ily.</code> cap deboss, prestige proportions). this round embraces the more-color, more-texture, more-presence half of the founder conversation — the lane Zach was advocating for. v4 was the restrained-prestige answer; v5 is the expressive-prestige answer.</p>

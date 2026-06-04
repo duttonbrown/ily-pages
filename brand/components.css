@@ -2,8 +2,9 @@
    ILOVEYOUTH — Component Classes
    Reusable UI components built on tokens.css.
 
-   STATUS: In progress. LINKS is defined; buttons/cards/inputs/typography/
-   layout are still TBD. Populate remaining sections as patterns are locked.
+   STATUS: In progress. LINKS and LOGO ON BACKGROUND are defined;
+   buttons/cards/inputs/typography/layout are still TBD. Populate remaining
+   sections as patterns are locked.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -59,6 +60,59 @@
   color: var(--ily-text-inverse);
   border-bottom-color: var(--ily-accent);
 }
+
+/* --------------------------------------------------------------------------
+   LOGO ON BACKGROUND
+   The logo (wordmark/brandmark) has TWO inks: dark (Shadow Grey) for light
+   surfaces, white (#FFFFFF) for dark surfaces. Putting the wrong ink on a
+   surface makes the mark vanish (white-on-light = a faint ghost; dark-on-dark
+   = invisible). This is a HARD brand rule — see brand-identity.md → Logo →
+   "Logo color & background" and "Usage rules".
+
+   TWO WAYS TO PICK THE INK — and you must pick the right one:
+
+   1. AUTO-SWAP (`<picture>` + prefers-color-scheme) — ONLY for surfaces that
+      actually follow the OS theme (true dark-mode web-app chrome). The browser
+      serves the white mark when the OS is dark, the dark mark otherwise.
+      DO NOT use this on a surface whose color is fixed regardless of OS — it
+      will serve the white mark on a permanently-light page and the logo
+      disappears. (This was the ily-pages bug: Ghost White is ALWAYS the
+      surface, but the auto-swap served the white logo in OS-dark mode.)
+
+   2. EXPLICIT INK — choose the variant by the ACTUAL surface behind the mark.
+      This is the correct choice whenever the surface color is deliberate and
+      fixed (which is every ily-pages page, and every brand-colored section).
+      Use these helper classes so the choice is named, not re-decided per page:
+
+        .ily-logo--on-light  → use the DARK wordmark/brandmark file
+                               (…-dark-… .svg) on Ghost White / Frosted Blue /
+                               Almond Silk / any light surface.
+        .ily-logo--on-dark   → use the WHITE wordmark/brandmark file
+                               (…-white-… .svg) on Shadow Grey / any dark
+                               surface.
+
+   The class does not swap the file for you (the file is chosen in markup);
+   it documents intent, sizes the mark, and guards against the wrong pairing
+   via the data-attribute lint hook below. Pair the class with the matching
+   file:
+
+     <img class="ily-logo ily-logo--on-light"
+          src="…/ily-wordmark-dark-rect-400.svg" alt="iloveyouth.">
+
+   RULE OF THUMB: if the surface color is fixed (you chose it), choose the ink
+   too — use --on-light / --on-dark with the matching file, NOT <picture>.
+   Reserve <picture> auto-swap for genuinely OS-theme-following chrome.
+   -------------------------------------------------------------------------- */
+.ily-logo {
+  display: block;
+  width: auto;
+  height: clamp(2.25rem, 4vw, 3rem);   /* default chrome size; override per context */
+}
+/* Intent markers. They don't recolor an SVG (the file carries its own ink) —
+   they declare which surface the mark is cleared for, so a reviewer (or a lint
+   script grepping for class+filename mismatch) can catch a wrong pairing. */
+.ily-logo--on-light { /* expects a …-dark-… file on a light surface */ }
+.ily-logo--on-dark  { /* expects a …-white-… file on a dark surface  */ }
 
 /* --------------------------------------------------------------------------
    TYPOGRAPHY HELPERS — TBD

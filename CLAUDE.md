@@ -54,6 +54,40 @@ give the canonical pattern: **dark text, Frosted Blue accent in the underline
 only** — never accent-colored text (it fails contrast). Never write
 `a:hover { color: var(--ily-accent-hover) }`.
 
+## Logo on a background
+
+The wordmark/brandmark ships in **two inks**: a **dark** (Shadow Grey) file for
+light surfaces and a **white** (#FFFFFF) file for dark surfaces. Put the wrong
+ink on a surface and the mark disappears — a white mark on a light surface reads
+as a faint ghost; a dark mark on a dark surface is invisible.
+
+**ily-pages is ALWAYS Ghost White.** The page surface never follows the OS theme.
+So:
+
+- **Use the DARK wordmark, chosen explicitly:**
+  ```html
+  <img class="ily-logo ily-logo--on-light"
+       src="brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-dark-rect-400.svg"
+       alt="iloveyouth.">
+  ```
+- **Favicon: ship the dark `favicon.svg` only** — no `prefers-color-scheme: dark`
+  `<link>`.
+- **NEVER use `<picture>` + `prefers-color-scheme` to swap the logo here.** That
+  pattern serves the *white* mark when the visitor's OS is in dark mode — but the
+  page stays Ghost White, so the logo vanishes. **This was a real bug** (June 2026):
+  the homepage wordmark went faint/ghosted for anyone browsing in OS dark mode.
+  Auto-swap is only correct for chrome that *actually* changes color with the OS,
+  which ily-pages never does.
+
+**The rule, generalized:** if the surface color is fixed (you chose it — which is
+every ily-pages page, and every brand-colored section), choose the ink to match
+the surface. Reserve `<picture>` auto-swap for genuinely OS-theme-following chrome.
+On a deliberately **dark** section, use the white file with `ily-logo--on-dark`.
+The helper classes (`.ily-logo`, `.ily-logo--on-light`, `.ily-logo--on-dark`) live
+in `components.css` and document the intended surface so a wrong file/surface
+pairing is catchable in review. This mirrors `ily-brand/brand-identity.md` → Logo
+→ "Logo color & background".
+
 ## Syncing the brand layer from ily-brand
 
 When `ily-brand` updates any shared file, mirror it here in the same session:
@@ -78,3 +112,10 @@ README.md and the private `ily-brand/brand-identity.md`.
 `directions/v1–v5` and `brand/weight-preview/` are self-contained design
 explorations that predate the shared layer — they inline everything and are not
 wired. Leave them unless explicitly asked to migrate them.
+
+> **Known bug, deferred:** `directions/v2*.html` use the white wordmark as the
+> `<picture>` *default* (`src="assets/ily-wordmark-white.svg"`), so the mark is
+> faint/invisible on their light surface in *both* themes — a worse version of
+> the logo-on-background bug fixed elsewhere. They use a separate `assets/` logo
+> path, not the shared `brand/` layer, so they were left untouched per the scope
+> rule above. Fix them if/when these explorations are revived or migrated.

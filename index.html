@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>iloveyouth — public previews</title>
 
-  <!-- Favicons — SVG auto-swaps with OS theme; PNG fallbacks have Ghost White baked in -->
-  <link rel="icon" type="image/svg+xml" href="brand/logos/favicons/favicon.svg" media="(prefers-color-scheme: light)">
-  <link rel="icon" type="image/svg+xml" href="brand/logos/favicons/favicon-white.svg" media="(prefers-color-scheme: dark)">
+  <!-- Favicons — ily-pages surface is ALWAYS Ghost White (it never follows the OS),
+       so the favicon must NOT swap on prefers-color-scheme: dark — that served the
+       white mark onto a light tab. Ship the dark/Ghost-White favicon only. -->
+  <link rel="icon" type="image/svg+xml" href="brand/logos/favicons/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="brand/logos/favicons/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="brand/logos/favicons/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="brand/logos/favicons/apple-touch-icon.png">
@@ -135,13 +136,12 @@
   <div class="page">
 
     <header>
-      <picture>
-        <source media="(prefers-color-scheme: dark)"
-                srcset="brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-white-rect-400.svg">
-        <img class="wordmark"
-             src="brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-dark-rect-400.svg"
-             alt="iloveyouth.">
-      </picture>
+      <!-- Surface is always Ghost White (light), so the ink is chosen explicitly:
+           the DARK wordmark. No <picture> auto-swap — it would serve the white
+           mark in OS-dark mode and the logo would vanish on the light surface. -->
+      <img class="wordmark ily-logo ily-logo--on-light"
+           src="brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-dark-rect-400.svg"
+           alt="iloveyouth.">
       <h1>public previews.</h1>
       <p>brand assets, design directions, and site concepts for iloveyouth — shareable links for collaborators and partners.</p>
     </header>

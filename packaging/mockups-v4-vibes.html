@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ily — packaging vibes v4 · five directions</title>
 
-  <link rel="icon" type="image/svg+xml" href="../brand/logos/favicons/favicon.svg" media="(prefers-color-scheme: light)">
-  <link rel="icon" type="image/svg+xml" href="../brand/logos/favicons/favicon-white.svg" media="(prefers-color-scheme: dark)">
+  <!-- Always-light surface: ship the dark favicon only, no OS-dark swap. -->
+  <link rel="icon" type="image/svg+xml" href="../brand/logos/favicons/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../brand/logos/favicons/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../brand/logos/favicons/favicon-16.png">
 
@@ -241,13 +241,10 @@
 <div class="page">
 
   <header class="doc">
-    <picture>
-      <source media="(prefers-color-scheme: dark)"
-              srcset="../brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-white-rect-400.svg">
-      <img class="wordmark"
-           src="../brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-dark-rect-400.svg"
-           alt="iloveyouth.">
-    </picture>
+    <!-- Always-light surface: dark ink chosen explicitly, no <picture> auto-swap. -->
+    <img class="wordmark ily-logo ily-logo--on-light"
+         src="../brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-dark-rect-400.svg"
+         alt="iloveyouth.">
     <p class="eyebrow">packaging vibes · v4 · 2026-05-02</p>
     <h1>five directions, audit-informed.</h1>
     <p class="lede">five distinct visual lanes for the ily packaging system, each one applying the standards from the <a href="audit-2026-05-01.html">2026-05-01 audit</a> with a different bet on system architecture. each vibe is rendered across the four lead SKUs (serum · cleanser · toner · retinol night cream) on the same packaging-blue body color and Shadow Grey constants, so the only thing varying between vibes is the <em>brand expression strategy</em> — wordmark placement, deboss strategy, ink saturation, foil anchor.</p>

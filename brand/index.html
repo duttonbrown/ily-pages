@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>iloveyouth — Logo Preview</title>
 
-  <!-- Favicons — SVG auto-swaps with OS theme; PNG fallbacks have Ghost White baked in -->
-  <link rel="icon" type="image/svg+xml" href="logos/favicons/favicon.svg" media="(prefers-color-scheme: light)">
-  <link rel="icon" type="image/svg+xml" href="logos/favicons/favicon-white.svg" media="(prefers-color-scheme: dark)">
+  <!-- Favicons — page surface is always Ghost White (light); ship the dark favicon
+       only. PNG fallback has Ghost White baked in. (The body of this page DOES place
+       white marks on dark tiles deliberately — that's correct; only the tab icon is
+       always-light context.) -->
+  <link rel="icon" type="image/svg+xml" href="logos/favicons/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="logos/favicons/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="logos/favicons/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="logos/favicons/apple-touch-icon.png">

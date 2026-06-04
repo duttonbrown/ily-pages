@@ -18,6 +18,11 @@
        or raw font-weights (300/400) — literals can't track token changes.
     4. Body text is weight 400 (inherited from base). Light (300) is for
        large display headings only — and base already sets that on h1-h3.
+    5. LOGO INK: this surface is always Ghost White (light). Use the DARK
+       wordmark file with class "ily-logo ily-logo--on-light". Do NOT use a
+       <picture> + prefers-color-scheme swap here — auto-swap is only for
+       chrome that truly follows the OS theme, which ily-pages never does.
+       (See CLAUDE.md → "Logo on a background".)
 
   PATHS: this template assumes the page sits at the ily-pages ROOT (href="brand/..").
   If you put the page in a subfolder (e.g. packaging/), change every "brand/"
@@ -29,8 +34,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>iloveyouth — PAGE TITLE HERE</title>
 
-  <link rel="icon" type="image/svg+xml" href="brand/logos/favicons/favicon.svg" media="(prefers-color-scheme: light)">
-  <link rel="icon" type="image/svg+xml" href="brand/logos/favicons/favicon-white.svg" media="(prefers-color-scheme: dark)">
+  <!-- Favicon: ily-pages surface is ALWAYS Ghost White (it never follows the OS).
+       Ship the dark favicon only — NO prefers-color-scheme: dark swap, or the white
+       mark lands on a light browser tab. (See CLAUDE.md → "Logo on a background".) -->
+  <link rel="icon" type="image/svg+xml" href="brand/logos/favicons/favicon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="brand/logos/favicons/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
@@ -53,6 +60,10 @@
 </head>
 <body>
   <main class="page">
+    <!-- Wordmark: DARK ink on the always-light surface. No <picture> auto-swap. -->
+    <img class="ily-logo ily-logo--on-light"
+         src="brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-dark-rect-400.svg"
+         alt="iloveyouth.">
     <p class="eyebrow">statement # · topic</p>
     <h1>Page Title Here</h1>
     <p class="lede">One-sentence summary of the page.</p>
