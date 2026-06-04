@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../brand/tokens.css">
+  <link rel="stylesheet" href="../brand/base.css">
   <link rel="stylesheet" href="../brand/components.css">
 
   <style>
@@ -23,12 +24,11 @@
 
     body {
       font-family: 'Satoshi', system-ui, sans-serif;
-      font-weight: 300;
+      font-weight: 400;                        /* body/UI — Light (300) is for display headlines only */
       color: var(--ily-text, #2A2220);
       background: var(--ily-surface, #F0F3FA);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       line-height: 1.65;
+      text-rendering: optimizeLegibility;      /* no antialiased — it thins strokes and reads hazy */
     }
 
     .page {

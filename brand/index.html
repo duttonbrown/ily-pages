@@ -15,6 +15,7 @@
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="base.css">
   <link rel="stylesheet" href="components.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; }
@@ -23,11 +24,10 @@
       margin: 0;
       padding: 0;
       font-family: var(--ily-font-primary);
-      font-weight: var(--ily-font-regular);
+      font-weight: var(--ily-font-regular);   /* 400 — body/UI */
       color: var(--ily-text);
       background: var(--ily-surface);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;      /* no antialiased — it thins strokes and reads hazy */
     }
 
     .page {

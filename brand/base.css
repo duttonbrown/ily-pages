@@ -1,0 +1,93 @@
+/* ==========================================================================
+   ILOVEYOUTH — Base Stylesheet
+   Document-level defaults built on tokens.css. Link order on every page:
+     1. tokens.css      (variables)
+     2. base.css        (element defaults — THIS FILE)
+     3. components.css  (.ily-link and other component classes)
+     4. page <style>    (page-specific layout only)
+
+   PURPOSE: own the legible defaults ONCE so pages don't hand-roll a body{}
+   block and reintroduce bugs. A page that links tokens + base + components
+   and does NOT redefine body weight/smoothing is legible by default.
+
+   THE LEGIBILITY RULES THIS FILE ENFORCES (do not undo per-page):
+     - Body/UI text is weight 400 (Regular). Light (300) is for DISPLAY
+       HEADLINES ONLY (large type, 30px+). Body at 300 reads hazy, especially
+       on non-Retina / fractional-DPI (e.g. Windows 125%) displays. See
+       brand-identity.md → Typography, and tokens.css weight comments.
+     - No -webkit-font-smoothing:antialiased on body. It thins strokes; with
+       light/regular weight that compounds into a hazy, must-focus feel. Let
+       the OS render at full intended weight (smoothing: auto).
+   ========================================================================== */
+
+/* -------------------------------------------------------------------
+   RESET / BOX MODEL
+   ------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+/* -------------------------------------------------------------------
+   BODY — legible defaults
+   ------------------------------------------------------------------- */
+body {
+  font-family: var(--ily-font-primary);
+  font-weight: var(--ily-font-regular);   /* 400 — body/UI. NEVER 300 here. */
+  color: var(--ily-text);
+  background: var(--ily-surface);
+  line-height: var(--ily-leading-relaxed);
+  /* Intentionally NO -webkit-font-smoothing:antialiased — see header. */
+  text-rendering: optimizeLegibility;
+}
+
+/* -------------------------------------------------------------------
+   HEADINGS — Light (300) is correct here: large display type.
+   Pages may override sizes; the weight default is the brand voice.
+   ------------------------------------------------------------------- */
+h1, h2, h3 {
+  font-weight: var(--ily-font-light);     /* 300 — airy display */
+  letter-spacing: var(--ily-tracking-tight);
+  line-height: var(--ily-leading-tight);
+  margin: 0 0 var(--ily-space-5);
+  color: var(--ily-text);
+}
+/* Small headings (h4–h6) act as UI labels, not display type → Medium. */
+h4, h5, h6 {
+  font-weight: var(--ily-font-medium);    /* 500 */
+  line-height: var(--ily-leading-snug);
+  margin: 0 0 var(--ily-space-3);
+  color: var(--ily-text);
+}
+
+/* -------------------------------------------------------------------
+   TEXT ELEMENTS
+   ------------------------------------------------------------------- */
+p { margin: 0 0 var(--ily-space-5); }
+strong, b { font-weight: var(--ily-font-medium); }   /* 500 — emphasis without 700 */
+
+ul, ol { margin: 0 0 var(--ily-space-5); padding-left: var(--ily-space-5); }
+li { margin-bottom: var(--ily-space-3); }
+
+small { font-size: var(--ily-text-sm); }
+
+/* Small functional/scan text (table cells, captions, meta) reads at 400 even
+   when it's visually secondary — never let it inherit a 300 from anywhere. */
+table, th, td, figcaption, caption, .meta, dd {
+  font-weight: var(--ily-font-regular);   /* 400 */
+}
+
+/* -------------------------------------------------------------------
+   LINKS — base anchor inherits the canonical pattern (see components.css
+   for the .ily-link utility and the full rationale): dark text, accent in
+   the underline only, never accent-as-text.
+   ------------------------------------------------------------------- */
+a {
+  color: var(--ily-text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ily-border-strong);
+  transition: border-color var(--ily-transition-fast);
+}
+a:hover {
+  color: var(--ily-text);                 /* stays dark — readable */
+  border-bottom-width: 2px;
+  border-bottom-color: var(--ily-accent-hover);   /* accent only in the underline */
+}
