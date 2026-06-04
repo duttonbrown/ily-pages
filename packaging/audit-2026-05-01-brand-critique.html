@@ -127,8 +127,12 @@
     li { margin: 0.35rem 0; }
     strong { font-weight: 500; }
 
-    a { color: var(--ily-text); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
-    a:hover { color: var(--ily-accent-hover); }
+    /* Link text stays Shadow Grey for full contrast; the accent lives only in
+       the underline (Frosted Blue is never a text color — brand rule). Hover
+       thickens the underline to the accent rather than recoloring the text,
+       which would drop it to ~1.5:1 and disappear. */
+    a { color: var(--ily-text); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; transition: text-decoration-color var(--ily-transition-fast); }
+    a:hover { color: var(--ily-text); text-decoration-color: var(--ily-accent-hover); text-decoration-thickness: 2px; }
 
     /* Inline code & pre — surface-mid per the brand rule */
     code {
