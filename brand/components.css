@@ -1,0 +1,71 @@
+/* ==========================================================================
+   ILOVEYOUTH — Component Classes
+   Reusable UI components built on tokens.css.
+
+   STATUS: In progress. LINKS is defined; buttons/cards/inputs/typography/
+   layout are still TBD. Populate remaining sections as patterns are locked.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   BUTTONS — TBD
+   Primary, secondary, ghost. Define after brand colors are locked.
+   -------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------
+   CARDS — TBD
+   Product cards, content cards.
+   -------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------
+   INPUTS & FORMS — TBD
+   Text inputs, selects, checkboxes, email capture.
+   -------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------
+   LINKS
+   Canonical inline-link pattern. Text stays Shadow Grey for full contrast;
+   the Frosted Blue accent lives ONLY in the underline, never as the text
+   color. This is a hard brand rule — Frosted Blue is a light pastel and
+   fails contrast as text on any surface (brand-identity.md → Accessibility).
+   On hover the underline deepens/thickens to the accent; the text never
+   recolors to the pastel (that produces a ~1.5:1 near-invisible link).
+
+   Apply .ily-link to inline anchors, or base your page's bare `a` rule on
+   this. Do NOT write `a:hover { color: var(--ily-accent-hover) }` — that is
+   the exact anti-pattern this class exists to replace.
+   -------------------------------------------------------------------------- */
+.ily-link,
+.ily-link:visited {
+  color: var(--ily-text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ily-border-strong);
+  transition: border-color var(--ily-transition-fast);
+}
+.ily-link:hover {
+  color: var(--ily-text);                 /* stays dark — readable */
+  border-bottom-width: 2px;
+  border-bottom-color: var(--ily-accent-hover);   /* accent only in the underline */
+}
+
+/* On dark surfaces (Shadow Grey), the text must flip to a light foreground.
+   Compose with this modifier; never let .ily-link's default dark text land
+   on a dark panel (it would be invisible). */
+.ily-link.is-inverse,
+.ily-link.is-inverse:visited {
+  color: var(--ily-text-inverse);
+  border-bottom-color: rgba(240, 243, 250, 0.4);
+}
+.ily-link.is-inverse:hover {
+  color: var(--ily-text-inverse);
+  border-bottom-color: var(--ily-accent);
+}
+
+/* --------------------------------------------------------------------------
+   TYPOGRAPHY HELPERS — TBD
+   Heading utilities, body variants, muted text.
+   -------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------
+   LAYOUT HELPERS — TBD
+   Container, stack, grid.
+   -------------------------------------------------------------------------- */
