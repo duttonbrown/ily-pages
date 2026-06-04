@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iloveyouth — Hydration Lineup Review</title>
+
+  <link rel="icon" type="image/svg+xml" href="brand/logos/favicons/favicon.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="brand/logos/favicons/favicon-white.svg" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" sizes="32x32" href="brand/logos/favicons/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="brand/logos/favicons/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="brand/tokens.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--ily-font-primary);
+      font-weight: var(--ily-font-light);
+      color: var(--ily-text);
+      background: var(--ily-surface);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: var(--ily-leading-relaxed);
+    }
+
+    .page {
+      max-width: var(--ily-max-width-lg);
+      margin: 0 auto;
+      padding: var(--ily-space-16) var(--ily-space-6) var(--ily-space-24);
+    }
+
+    /* ---- Header ---- */
+    header { margin-bottom: var(--ily-space-12); }
+    .eyebrow {
+      font-size: var(--ily-text-xs);
+      font-weight: var(--ily-font-medium);
+      letter-spacing: var(--ily-tracking-widest);
+      text-transform: lowercase;
+      color: var(--ily-text-muted);
+      margin: 0 0 var(--ily-space-4);
+    }
+    h1 {
+      font-size: var(--ily-text-5xl);
+      font-weight: var(--ily-font-light);
+      letter-spacing: var(--ily-tracking-tight);
+      line-height: var(--ily-leading-tight);
+      margin: 0 0 var(--ily-space-5);
+    }
+    .lede {
+      font-size: var(--ily-text-lg);
+      color: var(--ily-text-muted);
+      max-width: 60ch;
+      margin: 0;
+    }
+    .meta {
+      margin-top: var(--ily-space-6);
+      font-size: var(--ily-text-sm);
+      color: var(--ily-text-light);
+      display: flex;
+      gap: var(--ily-space-5);
+      flex-wrap: wrap;
+    }
+
+    /* ---- Sections ---- */
+    section { margin-top: var(--ily-space-16); }
+    h2 {
+      font-size: var(--ily-text-3xl);
+      font-weight: var(--ily-font-light);
+      letter-spacing: var(--ily-tracking-tight);
+      line-height: var(--ily-leading-snug);
+      margin: 0 0 var(--ily-space-6);
+      padding-bottom: var(--ily-space-4);
+      border-bottom: 1px solid var(--ily-border);
+    }
+    h3 {
+      font-size: var(--ily-text-xl);
+      font-weight: var(--ily-font-medium);
+      margin: var(--ily-space-10) 0 var(--ily-space-3);
+    }
+    p { margin: 0 0 var(--ily-space-5); }
+    strong { font-weight: var(--ily-font-medium); }
+    a { color: var(--ily-accent-hover); text-decoration: none; border-bottom: 1px solid var(--ily-border-strong); }
+    a:hover { color: var(--ily-text); }
+
+    /* ---- Depth chart table ---- */
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: var(--ily-space-6) 0;
+      font-size: var(--ily-text-sm);
+      min-width: 640px;
+    }
+    thead th {
+      text-align: left;
+      font-weight: var(--ily-font-medium);
+      font-size: var(--ily-text-xs);
+      letter-spacing: var(--ily-tracking-wide);
+      text-transform: uppercase;
+      color: var(--ily-text-muted);
+      padding: 0 var(--ily-space-4) var(--ily-space-3);
+      border-bottom: 2px solid var(--ily-border-strong);
+    }
+    tbody td {
+      padding: var(--ily-space-4);
+      border-bottom: 1px solid var(--ily-border);
+      vertical-align: top;
+    }
+    tbody tr:last-child td { border-bottom: none; }
+    .step-label {
+      font-weight: var(--ily-font-medium);
+      color: var(--ily-text);
+      white-space: nowrap;
+    }
+    .pick { color: var(--ily-text); }
+    .runner { color: var(--ily-text-muted); }
+    .score {
+      display: inline-block;
+      font-weight: var(--ily-font-medium);
+      font-variant-numeric: tabular-nums;
+    }
+    .col-1 { background: var(--ily-accent-soft); border-radius: 8px; }
+    .col-1 td { border-bottom-color: #c5e9f6; }
+
+    /* ---- Callout cards ---- */
+    .card {
+      background: #fff;
+      border: 1px solid var(--ily-border);
+      border-radius: 14px;
+      padding: var(--ily-space-6) var(--ily-space-6);
+      box-shadow: var(--ily-shadow-sm);
+      margin: var(--ily-space-5) 0;
+    }
+    .card.accent { border-left: 3px solid var(--ily-accent); }
+    .card.support { border-left: 3px solid var(--ily-support); }
+    .card h3 { margin-top: 0; }
+    .card p:last-child { margin-bottom: 0; }
+
+    .pill {
+      display: inline-block;
+      font-size: var(--ily-text-xs);
+      font-weight: var(--ily-font-medium);
+      letter-spacing: var(--ily-tracking-wide);
+      padding: 3px 10px;
+      border-radius: var(--ily-radius-full);
+      background: var(--ily-accent-soft);
+      color: #1c5a6e;
+      margin-bottom: var(--ily-space-3);
+    }
+    .pill.support { background: var(--ily-support-soft); color: #7a4636; }
+    .pill.muted { background: var(--ily-grey-200); color: var(--ily-text-muted); }
+
+    ul { margin: 0 0 var(--ily-space-5); padding-left: var(--ily-space-5); }
+    li { margin-bottom: var(--ily-space-3); }
+
+    .takeaway {
+      background: var(--ily-shadow-grey);
+      color: var(--ily-text-inverse);
+      border-radius: 16px;
+      padding: var(--ily-space-8);
+      margin-top: var(--ily-space-12);
+    }
+    .takeaway h2 { color: var(--ily-text-inverse); border-bottom-color: rgba(255,255,255,0.15); }
+    .takeaway p { color: var(--ily-text-light-inverse); }
+    .takeaway strong { color: var(--ily-accent); font-weight: var(--ily-font-medium); }
+
+    footer {
+      margin-top: var(--ily-space-20);
+      padding-top: var(--ily-space-8);
+      border-top: 1px solid var(--ily-border);
+      font-size: var(--ily-text-sm);
+      color: var(--ily-text-light);
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: var(--ily-text-4xl); }
+      .page { padding: var(--ily-space-10) var(--ily-space-5) var(--ily-space-16); }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <p class="eyebrow">statement #1 · hydration</p>
+      <h1>Hydration Lineup Review</h1>
+      <p class="lede">A dermatologist-grade read on the four launch products — what wins, why, and where peptides fit — built on the real, full ingredient lists pulled directly from Pravada.</p>
+      <div class="meta">
+        <span>Internal review</span>
+        <span>·</span>
+        <span>June 2026</span>
+        <span>·</span>
+        <span>For review with Zach</span>
+      </div>
+    </header>
+
+    <!-- ================= DEPTH CHART ================= -->
+    <section>
+      <h2>The four products — with runners-up</h2>
+      <p>Each step shows the recommended pick (#1) and the two next-best Pravada options, with a weighted score out of 10. The bench isn't for re-picking — it's there for negotiation leverage and post-trial swaps.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>#1 — Recommended pick</th>
+              <th>#2</th>
+              <th>#3</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="step-label">Cleanser</td>
+              <td class="pick">HA &amp; Glycerin Hydrating Cleanser <span class="score">— 8.4</span></td>
+              <td class="runner">Gentle Oat Milk Cleanser <span class="score">— 7.6</span></td>
+              <td class="runner">Peptide+ Hydro Gel Cleanser <span class="score">— 6.9</span></td>
+            </tr>
+            <tr>
+              <td class="step-label">Essence / Toner</td>
+              <td class="pick">BioHydrate Essence w/ Collagen &amp; HA <span class="score">— 8.4</span></td>
+              <td class="runner">Green Tea Calming Toner <span class="score">— 7.5</span></td>
+              <td class="runner">Barrier Defense Desert Toner <span class="score">— 7.0</span></td>
+            </tr>
+            <tr>
+              <td class="step-label">Serum (hero)</td>
+              <td class="pick">Multi-Molecular HA Serum <span class="score">— 6.8 / ~8.6 customized</span></td>
+              <td class="runner">Tri-Active Clarifying Serum <span class="score">— 7.1</span></td>
+              <td class="runner">Stem-A HA Serum <span class="score">— 6.8</span></td>
+            </tr>
+            <tr>
+              <td class="step-label">Moisturizer</td>
+              <td class="pick">Barrier Renewal Ceramide Cream <span class="score">— 8.9</span></td>
+              <td class="runner">Biome Balance Lightweight Moisturizer <span class="score">— 8.2</span></td>
+              <td class="runner">Niacinamide &amp; HA Water Cream <span class="score">— 7.6</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Conclusions</h3>
+      <ul>
+        <li><strong>Three of four picks are clean locks</strong> — cleanser, essence, ceramide cream.</li>
+        <li><strong>The serum is the one conditional lock.</strong> It scores 6.8 as-written because lavender water and witch hazel water sit above all the hyaluronic acid. With those two removed (a Pravada customization), it jumps to ~8.6.</li>
+        <li><strong>The runners-up only out-score the serum because they dodge that flaw</strong> — but both are off-statement (Tri-Active is clarifying, Stem-A is anti-aging). So they're not real swaps. Fix the hero; don't replace it.</li>
+        <li><strong>All four pass Sephora Clean.</strong></li>
+      </ul>
+    </section>
+
+    <!-- ================= HYDRATION WINNER ================= -->
+    <section>
+      <h2>Which wins on hydration</h2>
+      <p>The serum wins raw hydration <em>delivery</em>. The cream wins as the best hydration <em>product</em>. That distinction is the whole story of the line.</p>
+
+      <div class="card accent">
+        <span class="pill">Delivery winner</span>
+        <h3>Multi-Molecular HA Serum</h3>
+        <p>Puts water into the skin at every depth: five molecular weights of hyaluronic acid, plus Tremella (snow mushroom, binds ~500× its weight in water) and polyglutamic acid filming on top. Nothing else in the line moves more water into more layers. If hydration means <em>adding</em> moisture, the serum wins — and it's the product a creator can demo on camera and a customer can feel in seconds. <strong>Wins the first purchase.</strong></p>
+      </div>
+
+      <div class="card accent">
+        <span class="pill">Best overall — top score, 8.9</span>
+        <h3>Barrier Renewal Ceramide Cream</h3>
+        <p>Does the one thing the serum can't: it <em>holds</em> the water in. Three ceramides plus cholesterol and phytosphingosine rebuild the skin's lipid barrier and cut moisture loss. Every humectant upstream is fighting evaporation — this is the only product that closes the door. It's also the repeat-purchase product: the one customers finish and rebuy. <strong>Wins the customer.</strong></p>
+      </div>
+
+      <p>The cleanser and essence are genuinely hydrating too (8.4 each), but they're <em>supporting</em> hydration — a cleanser that doesn't strip, a water-layer that preps the skin. Neither is a reason someone buys the line. <strong>The serum and the cream are a pair</strong> — humectant delivery plus barrier seal — and that pairing is exactly why the regimen is a system, not four humectant products stacked.</p>
+    </section>
+
+    <!-- ================= PEPTIDES ================= -->
+    <section>
+      <h2>Where peptides fit</h2>
+      <p>Ranked by how readily each product could carry a peptide story <em>without</em> breaking the hydration statement — based on the real ingredient lists.</p>
+
+      <div class="card support">
+        <span class="pill support">Readiest fit</span>
+        <h3>Peptide+ Firming Serum — repositioned</h3>
+        <p>Its ingredient list is <em>already</em> hydration-led — glycerin is #2, sodium hyaluronate is #4, the full amino-acid complex follows — with a five-peptide stack layered after, and <strong>no witch hazel, alcohol, or fragrance</strong>. Mechanically it's a hydration serum that happens to carry peptides. Drop the word "Firming," call it a peptide-plump / hydra-peptide serum, and it's a daily, on-label peptide product that doesn't fight the statement. <strong>This is the one to sample.</strong></p>
+      </div>
+
+      <div class="card">
+        <span class="pill muted">Supporting only</span>
+        <h3>Barrier Renewal Ceramide Cream</h3>
+        <p>Already in the line — but it carries <strong>collagen amino acids, not signal peptides</strong>. It can't honestly take a "peptide" headline, though it supports an adjacent barrier + amino-acid repair story. Useful as supporting language, not as the peptide hero.</p>
+      </div>
+
+      <div class="card">
+        <span class="pill muted">Future statement #2</span>
+        <h3>Multi-Peptide Smoothing Moisturizer</h3>
+        <p>The strongest peptide-<em>led</em> product — full peptide stack on a real hydration base, so it would hydrate well. But it's unmistakably peptide-led by name and design: it belongs to a future Youth statement, not this hydration launch. Sample it only to feel a true peptide-led texture for planning.</p>
+      </div>
+
+      <p style="color: var(--ily-text-muted); font-size: var(--ily-text-sm);">Where peptides do <strong>not</strong> fit readily: the Peptide+ Hydro Gel Cleanser (peptides wash off in a rinse-off — mechanically pointless), and forcing them into the cleanser, essence, or hero serum (none carry signal peptides; reformulating for no reason).</p>
+    </section>
+
+    <!-- ================= TAKEAWAY ================= -->
+    <div class="takeaway">
+      <h2>Bottom line</h2>
+      <p>On hydration, the <strong>serum and the ceramide cream are the two that win</strong> — delivery plus retention, a deliberate pair. On peptides, the <strong>Peptide+ Firming Serum slots in most readily and honestly</strong>: it's already a hydration serum with peptides, so it answers the "peptides somewhere" question without diluting the statement. The <strong>Multi-Peptide Moisturizer</strong> is the strongest true peptide product, but it's a future Statement #2 anchor — not a launch fit.</p>
+    </div>
+
+    <footer>
+      <p>iloveyouth · Statement #1 (Hydration) formulation review · internal preview. Scores are weighted across hydration efficacy, on-statement fit, marketability, formulation &amp; Sephora Clean, line coherence, and cost/MOQ. Built on full ingredient lists pulled from Pravada Private Label, June 2026.</p>
+    </footer>
+  </main>
+</body>
+</html>
