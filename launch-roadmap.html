@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<!--
+  statement 01 launch roadmap — operational master for Zach.
+  Built from: ily-design (formulations, packaging, naming), ily-brand, ily-marketing,
+  ily-dev theme state, UA quote 2026-04-22, Pravada program docs, market research 2026-07.
+  Follows ily-pages template rules: shared brand layer, layout-only inline CSS, dark wordmark.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>iloveyouth — statement 01 launch roadmap</title>
+
+  <link rel="icon" type="image/svg+xml" href="brand/logos/favicons/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="brand/logos/favicons/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+
+  <!-- Shared brand layer — keep this order. Do not redefine what these own. -->
+  <link rel="stylesheet" href="brand/tokens.css">
+  <link rel="stylesheet" href="brand/base.css">
+  <link rel="stylesheet" href="brand/components.css">
+
+  <style>
+    /* PAGE LAYOUT ONLY — brand values come from tokens. */
+    .page { max-width: var(--ily-max-width-lg); margin: 0 auto; padding: var(--ily-space-12) var(--ily-space-6) var(--ily-space-24); }
+    .stamp { font-size: var(--ily-text-sm); color: var(--ily-text-muted); margin-top: var(--ily-space-2); }
+    .toc { background: var(--ily-surface-mid); border: 1px solid var(--ily-border); border-radius: var(--ily-radius); padding: var(--ily-space-6) var(--ily-space-8); margin: var(--ily-space-10) 0 var(--ily-space-16); }
+    .toc ol { margin: var(--ily-space-2) 0 0; padding-left: var(--ily-space-6); columns: 2; column-gap: var(--ily-space-10); }
+    .toc li { margin-bottom: var(--ily-space-1); break-inside: avoid; }
+    .sec { margin-top: var(--ily-space-20); }
+    .sec > h2 { border-bottom: 1px solid var(--ily-border-strong); padding-bottom: var(--ily-space-3); }
+    .callout { border-left: 3px solid var(--ily-border-strong); background: var(--ily-surface-mid); border-radius: var(--ily-radius); padding: var(--ily-space-4) var(--ily-space-6); margin: var(--ily-space-6) 0; }
+    .callout.blue { border-left-color: var(--ily-frosted-blue); background: var(--ily-accent-soft); }
+    .callout.warm { border-left-color: var(--ily-almond-silk); background: var(--ily-support-soft); }
+    .callout p:last-child { margin-bottom: 0; }
+    .chip { display: inline-block; font-size: var(--ily-text-xs); font-weight: var(--ily-font-medium); letter-spacing: var(--ily-tracking-wide); border: 1px solid var(--ily-border-strong); border-radius: var(--ily-radius-full); padding: 0 var(--ily-space-3); white-space: nowrap; }
+    .chip.z { background: var(--ily-accent-soft); }
+    .chip.t { background: var(--ily-support-soft); }
+    .chip.zt { background: var(--ily-surface-mid); }
+    .table-scroll { overflow-x: auto; margin: var(--ily-space-6) 0; }
+    .table-scroll table { min-width: 640px; }
+    .num { text-align: right; white-space: nowrap; }
+    .fine { font-size: var(--ily-text-sm); color: var(--ily-text-muted); }
+    .kv { display: grid; grid-template-columns: minmax(160px, 220px) 1fr; gap: var(--ily-space-2) var(--ily-space-6); margin: var(--ily-space-4) 0; }
+    .kv dt { font-weight: var(--ily-font-medium); }
+    .kv dd { margin: 0; }
+    .sku { border: 1px solid var(--ily-border); border-radius: var(--ily-radius); padding: var(--ily-space-6) var(--ily-space-8); margin: var(--ily-space-6) 0; }
+    .sku h4 { margin-top: 0; }
+    .poem { font-size: var(--ily-text-2xl); font-weight: var(--ily-font-light); line-height: var(--ily-leading-snug); margin: var(--ily-space-8) 0; }
+    .backtotop { display: block; margin-top: var(--ily-space-10); font-size: var(--ily-text-sm); }
+    @media (max-width: 640px) { .toc ol { columns: 1; } .kv { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main class="page" id="top">
+    <img class="ily-logo ily-logo--on-light"
+         src="brand/logos/wordmark/Satoshi%20Regular%20-%20400/ily-wordmark-dark-rect-400.svg"
+         alt="iloveyouth.">
+    <p class="eyebrow">statement 01 · launch operations</p>
+    <h1>the launch roadmap.</h1>
+    <p class="lede">Everything between here and the first order: formulation, naming, packaging, legal, website, marketing, money, and the calendar — with owners and gates. Zach runs this document.</p>
+    <p class="stamp">compiled 2026-07-03 · plan of record: <strong>launch fri jan 15, 2027</strong> (stretch: dec 4, 2026 — decided jul 14) · volume: 10,000 components/SKU from UA · first fill ~2,500 units/SKU (10,000+ total) · status flags are as-of jul 3</p>
+
+    <nav class="toc">
+      <strong>contents</strong>
+      <ol>
+        <li><a class="ily-link" href="#tldr">the ten calls</a></li>
+        <li><a class="ily-link" href="#date">launch date &amp; critical path</a></li>
+        <li><a class="ily-link" href="#money">the money</a></li>
+        <li><a class="ily-link" href="#formulation">formulation</a></li>
+        <li><a class="ily-link" href="#naming">naming</a></li>
+        <li><a class="ily-link" href="#packaging">packaging</a></li>
+        <li><a class="ily-link" href="#legal">legal &amp; compliance</a></li>
+        <li><a class="ily-link" href="#website">website</a></li>
+        <li><a class="ily-link" href="#marketing">marketing</a></li>
+        <li><a class="ily-link" href="#timeline">the timeline</a></li>
+        <li><a class="ily-link" href="#expectations">realistic expectations</a></li>
+        <li><a class="ily-link" href="#risks">risk register</a></li>
+        <li><a class="ily-link" href="#owners">who does what</a></li>
+        <li><a class="ily-link" href="#questions">open questions</a></li>
+      </ol>
+    </nav>
+
+    <!-- ============================================================ -->
+    <section class="sec" id="tldr">
+      <h2>1 · the ten calls.</h2>
+      <p>Decisions already made (or forced by facts). Everything else in this document hangs off these.</p>
+      <ol>
+        <li><strong>Four SKUs, hydration, one drop</strong> — statement 01: cleanser · essence · serum (hero) · moisturizer. Confirmed lineup in §4.</li>
+        <li><strong>Packaging = UA Packaging (Jiangmen, China), 10,000 components per SKU.</strong> The 10K tier is the rational buy: it prices at roughly half the 5K tier, so the second 5,000 units cost only ~$8–9K more across the line. Quote is expired — refresh first.</li>
+        <li><strong>First fill ≈ 2,500 units per SKU (10,000+ total) at Pravada</strong>, customizations quoted as full custom runs. The Pravada email (updated Jul 3) asks pricing at 1,000 / 2,500 / 5,000 — final fill size is set when those numbers land.</li>
+        <li><strong>Components ≠ filled goods.</strong> Bottles don't expire; filled product does (typically 24–36 months unopened — confirm per SKU). Surplus components (~7,500/SKU) are stored and become refill runs. Never fill more than the demand forecast supports.</li>
+        <li><strong>Plan-of-record launch: Friday, January 15, 2027</strong> — peak dry-skin season, no heroics, ~3 weeks of true slack. Stretch: Dec 4, 2026, decided Jul 14 when Pravada's lead times land. Slip is accepted; a broken launch is not. Full logic in §2.</li>
+        <li><strong>Two go/no-go legal gates before any big money moves:</strong> attorney trademark clearance (house mark + all 7 product names, opinion due Jul 24) and Pravada's written yes on filling customer-supplied components (due Jul 14).</li>
+        <li><strong>Names: the statement-name system</strong> (idiom + period + functional descriptor). Recommended set: <em>come clean. / ice breaker. / deep end. / smooth talker.</em> — Thomas approves, attorney clears, then they lock. §5.</li>
+        <li><strong>Positioning: the brand that shows its receipts.</strong> Every number sourced. All mock reviews, invented panels ("96% · n=120"), and placeholder ratings get deleted before launch — an honesty brand cannot ship fiction. §8–§9.</li>
+        <li><strong>Paid ads never lead.</strong> Organic founder content + waitlist ("the brief") + review panel + seeding are the engine; paid is branded-search defense only. §9.</li>
+        <li><strong>Year-one revenue expectation stays $50–100K</strong> even though inventory is sized bigger. The inventory is a deliberate multi-year capital bet — it must not eat the marketing budget or the cash floor. §3 and §11.</li>
+      </ol>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="sec" id="date">
+      <h2>2 · launch date &amp; critical path.</h2>
+      <p>The date is set by one chain: <strong>trademark opinion → final art → UA PO → UA production (30–45 days, starts only after artwork + 3D sample sign-off) → freight from Jiangmen → Pravada fill (custom-run length TBD Jul 14) → freight to Minneapolis → QC → launch.</strong> Everything else (site, marketing, photography) fits inside that chain's shadow.</p>
+
+      <div class="table-scroll"><table>
+        <caption>launch scenarios</caption>
+        <thead><tr><th>scenario</th><th>requires</th><th>components at pravada</th><th>fill done</th><th>launch</th></tr></thead>
+        <tbody>
+          <tr><td><strong>stretch — dec 4, 2026</strong></td><td>Pravada lead time ≤8 wks at our volume, art final by Jul 31, UA PO Jul 31, air-freight the fill quantity</td><td>~Oct 6</td><td>~Nov 21</td><td>Fri Dec 4 (early access Dec 2–3)</td></tr>
+          <tr><td><strong>plan of record — jan 15, 2027</strong></td><td>UA PO by ~Aug 7, ocean freight OK, Pravada fill Nov–mid-Dec</td><td>~Nov 10</td><td>~Dec 19</td><td><strong>Fri Jan 15, 2027</strong> (early access Jan 13–14)</td></tr>
+          <tr><td><strong>fallback — mar 2027</strong></td><td>only if Pravada reclassifies the serum/moisturizer as true full-custom (their published range: 6–12 months)</td><td>—</td><td>—</td><td>re-plan on Jul 14 facts; consider launching 2–3 stock SKUs Jan 15 + hero as a spring drop</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="callout blue">
+        <p><strong>Date rules (pre-decided so nothing stalls):</strong> ① The Dec-4-vs-Jan-15 fork is decided <strong>Jul 14</strong>, on Pravada's written lead times — not on optimism. ② Never launch Nov 23–30 (Black Friday week) or Dec 15–31 (dead zone). ③ If one SKU breaks late, launch the other three on the date and drop the missing one later — "we saved the deep end for last" reads as intentional. ④ Jan 15 is not a consolation date: it's peak hydration season, and it buys the content runway (60–90 days) the launch math actually needs.</p>
+      </div>
+
+      <div class="table-scroll"><table>
+        <caption>hard gates — the dates that move money or block everything downstream</caption>
+        <thead><tr><th>date</th><th>gate</th><th>owner</th><th>if missed</th></tr></thead>
+        <tbody>
+          <tr><td><strong>jul 4–7</strong></td><td>Send updated Pravada email (volume callout: ~2,500/SKU, custom-run framing, tiers 1,000/2,500/5,000, deposit schedule, supplied-components fill, stability/PET timeline) + place sample reorder + request UA re-quote from Torres Chen + send attorney brief</td><td><span class="chip zt">Z+T</span></td><td>every week of silence slips the whole chain a week</td></tr>
+          <tr><td><strong>jul 14</strong></td><td>Pravada answers in writing: custom-run feasibility/cost/lead time at 2,500, supplied-component fill terms, dossiers, per-SKU shelf life. Escalate by phone if silent. <strong>→ decide Dec 4 vs Jan 15</strong></td><td><span class="chip z">Z</span></td><td>invoke serum fallback; hold Jan 15</td></tr>
+          <tr><td><strong>jul 18</strong></td><td>Zach's texture verdicts (both creams + oat milk cleanser when it arrives) → final SKU lock</td><td><span class="chip z">Z</span></td><td>moisturizer ships as multi-peptide with squalane swap or as-is; cleanser falls back to HA &amp; Glycerin</td></tr>
+          <tr><td><strong>jul 24</strong></td><td>Trademark opinion returned (house mark + 7 names) + names locked. <strong>No label art spend, no UA deposit, no Pravada deposit before this.</strong></td><td><span class="chip t">T</span></td><td>pivot name is pre-decided ("ily."); art slips 1 wk per week</td></tr>
+          <tr><td><strong>aug 7 (stretch: jul 31)</strong></td><td>UA PO + ~50% deposit, final outlined art files (.ai, fonts outlined) attached; 3D sample + filling/printing tests scheduled</td><td><span class="chip zt">Z+T</span></td><td>launch slides week-for-week</td></tr>
+          <tr><td><strong>~aug 14</strong></td><td>Pravada PO + deposit per their schedule (custom bulk compounds while components are in transit)</td><td><span class="chip t">T</span></td><td>fill slot lost; Jan 15 at risk</td></tr>
+          <tr><td><strong>oct 2–9</strong></td><td>UA production complete → freight booked (ocean base case; air-split only if Dec 4)</td><td><span class="chip z">Z</span></td><td>fill start slips with it</td></tr>
+          <tr><td><strong>dec 19</strong></td><td>Filled goods complete at Pravada → freight FL→MN over the holidays</td><td><span class="chip z">Z</span></td><td>Jan 15 buffer (3 wks) starts burning</td></tr>
+          <tr><td><strong>jan 8, 2027</strong></td><td>Feature freeze: site, flows, test orders done; seeding shipped</td><td><span class="chip zt">Z+T</span></td><td>launch with what's frozen — no last-week features</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="sec" id="money">
+      <h2>3 · the money.</h2>
+      <p>All figures USD. Three kinds of numbers, labeled honestly: <strong>quoted</strong> (on the UA quote dated 2026-04-22 — expired, pre-sampling, needs refresh), <strong>estimate</strong> (our math, replace when real quotes land), <strong>placeholder</strong> (site pricing, not final).</p>
+
+      <h3>3.1 capital required (estimate)</h3>
+      <div class="table-scroll"><table>
+        <thead><tr><th>line</th><th class="num">low</th><th class="num">high</th><th>basis</th></tr></thead>
+        <tbody>
+          <tr><td>UA components, 10,000/SKU × 4, decorated</td><td class="num">$44,000</td><td class="num">$52,000</td><td>quoted unit prices ×40K + screen/coat decoration (§6.2)</td></tr>
+          <tr><td>unicartons ×40,000</td><td class="num">$7,000</td><td class="num">$14,000</td><td>estimate — not on the quote; get quoted</td></tr>
+          <tr><td>cap emboss tooling (ily.)</td><td class="num">$500</td><td class="num">$1,500</td><td>estimate — quoted on request, per cap diameter</td></tr>
+          <tr><td>freight ex-Jiangmen (ocean base case) + insurance</td><td class="num">$4,000</td><td class="num">$8,000</td><td>estimate — ~15–25 CBM; air-split for Dec 4 adds $8–15K</td></tr>
+          <tr><td>duties / customs / broker</td><td class="num">$7,000</td><td class="num">$18,000</td><td>estimate 10–30% of component value — volatile; broker quote required in July</td></tr>
+          <tr><td><strong>packaging, landed</strong></td><td class="num"><strong>$62,500</strong></td><td class="num"><strong>$93,500</strong></td><td></td></tr>
+          <tr><td>Pravada custom-run fill, ~2,500/SKU (10,000 units)</td><td class="num">$40,000</td><td class="num">$70,000</td><td>estimate $4–7/unit — real tiers requested at 1,000/2,500/5,000</td></tr>
+          <tr><td>legal: trademark clearance + ITU filings + LLC</td><td class="num">$2,500</td><td class="num">$5,500</td><td>benchmark</td></tr>
+          <tr><td>compliance: safety substantiation ×4 + label review</td><td class="num">$1,000</td><td class="num">$3,000</td><td>benchmark — less if Pravada dossiers cover most</td></tr>
+          <tr><td>product liability insurance (yr 1)</td><td class="num">$400</td><td class="num">$1,500</td><td>benchmark</td></tr>
+          <tr><td>photography (labeled units, PDP set + lifestyle)</td><td class="num">$1,000</td><td class="num">$3,000</td><td>benchmark</td></tr>
+          <tr><td>creator seeding: 300–500 units + shipping + mailers</td><td class="num">$4,000</td><td class="num">$10,000</td><td>benchmark, scaled up for the bigger fill</td></tr>
+          <tr><td>tools 6 mo (Shopify, Klaviyo, reviews app, misc)</td><td class="num">$1,200</td><td class="num">$2,500</td><td>benchmark</td></tr>
+          <tr><td>contingency ~10%</td><td class="num">$11,000</td><td class="num">$19,000</td><td></td></tr>
+          <tr><td><strong>total capital before first revenue</strong></td><td class="num"><strong>≈ $124,000</strong></td><td class="num"><strong>≈ $208,000</strong></td><td>midpoint ≈ <strong>$165K</strong></td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>3.2 cash-out calendar (estimate, jan 15 plan)</h3>
+      <div class="table-scroll"><table>
+        <thead><tr><th>when</th><th class="num">cash out</th><th>what</th></tr></thead>
+        <tbody>
+          <tr><td>jul</td><td class="num">$4–8K</td><td>attorney + LLC + samples + insurance start + broker</td></tr>
+          <tr><td>early aug</td><td class="num">$26–34K</td><td>UA deposit (~50% of components+decoration)</td></tr>
+          <tr><td>mid aug</td><td class="num">$20–35K</td><td>Pravada deposit per their schedule (ask in email — 50% assumed)</td></tr>
+          <tr><td>late sep – oct</td><td class="num">$37–60K</td><td>UA balance before shipment + freight + duties</td></tr>
+          <tr><td>nov – dec</td><td class="num">$25–45K</td><td>Pravada balance + photography + seeding + tools</td></tr>
+          <tr><td colspan="3" class="fine">Payment terms per UA site FAQ: 100% T/T in advance under $5K; otherwise 50% deposit / 50% before shipment; bank fees &gt;$50 per wire billed to us. Pravada terms: requested in the Jul email. <strong>Before wiring anything: verify UA's banking details by phone with Torres Chen</strong> — the quote shows two entity names (UA Packaging (Hongkong) Co., Ltd. vs Jiangmen UA Packaging Co., Ltd.), two emails (saless@ vs hello@uapkg.com), and two phone numbers. Classic invoice-fraud surface; one 10-minute call closes it.</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>3.3 unit economics (placeholder retail, estimated landed cogs)</h3>
+      <div class="table-scroll"><table>
+        <thead><tr><th>sku</th><th class="num">retail*</th><th class="num">component (10K)</th><th class="num">fill est.</th><th class="num">landed cogs est.</th><th class="num">gross margin</th></tr></thead>
+        <tbody>
+          <tr><td>cleanser (100ml tube)</td><td class="num">$32</td><td class="num">$0.53</td><td class="num">$3.50–5.00</td><td class="num">$4.8–6.6</td><td class="num">79–85%</td></tr>
+          <tr><td>essence (150ml)</td><td class="num">$34</td><td class="num">$1.35</td><td class="num">$3.50–5.50</td><td class="num">$5.8–8.0</td><td class="num">76–83%</td></tr>
+          <tr><td>serum, hero (30ml dropper)</td><td class="num">$48</td><td class="num">$1.18</td><td class="num">$4.50–7.00</td><td class="num">$6.6–9.2</td><td class="num">81–86%</td></tr>
+          <tr><td>moisturizer (30ml airless)</td><td class="num">$42</td><td class="num">$1.72</td><td class="num">$4.50–6.50</td><td class="num">$7.2–9.3</td><td class="num">78–83%</td></tr>
+          <tr><td>the routine (bundle)</td><td class="num">$136</td><td colspan="3" class="num">≈ $24–33 landed set</td><td class="num">76–82%</td></tr>
+        </tbody>
+      </table></div>
+      <p class="fine">*Placeholder prices from the live prototype ($156 sum, $136 bundle = $20 off). June pricing memo argued $42–68/SKU. <strong>No prices publish anywhere until Pravada's real unit costs land.</strong> Landed COGS adds unicarton + freight + duty allocation (~$0.6–1.1/unit). Per order, subtract ~$8–12 more for pick/pack/ship/payment fees before contribution.</p>
+
+      <h3>3.4 break-even and the elephant</h3>
+      <div class="callout warm">
+        <p><strong>The elephant, named:</strong> filling 10,000 units against a realistic launch window of 100–500 orders and a realistic first year of $50–100K means most filled inventory sits 18+ months. Filled skincare typically carries 24–36 months unopened shelf life — <strong>get the per-SKU number from Pravada's stability docs before the fill size is final.</strong> At the midpoint (~$165K deployed, ~$48 average contribution per order) break-even is roughly <strong>2,900–3,400 orders ≈ $200–235K revenue — a mid/late-2027 event at base trajectory, not a 2026 one.</strong></p>
+        <p>This is survivable if it's deliberate: the components (no expiry) are a cheap multi-year position; the <em>fill</em> is the perishable bet. The protective moves, in order of power: ① size the first fill to what Pravada's tier pricing makes sensible (1,000–2,500/SKU) and keep the rest as components; ② confirm shelf life per SKU in writing; ③ ring-fence a cash floor (≥$15–20K) for marketing and operations — a warehouse of product with no audience budget is how launches die quietly; ④ re-forecast fill #2 from real sell-through at day 60, not from hope.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="sec" id="formulation">
+      <h2>4 · formulation.</h2>
+      <p>All four launch formulas are Pravada bases (Fort Myers, FL; FDA-registered, GMP/ISO 22716). Derm-review scores are from the June audit (10-point scale). Supplier formula names never appear retail-facing.</p>
+
+      <div class="sku">
+        <h4>cleanser — gentle oat milk cream cleanser <span class="chip z">Z verdict jul 18</span></h4>
+        <dl class="kv">
+          <dt>base</dt><dd>Pravada Gentle Oat Milk Cleanser (7.6) — cocoyl-glutamate amino-acid base, oat/shea/squalane; fixes the eye-sting of the old gel pick</dd>
+          <dt>status</dt><dd><strong>never sampled</strong> — in the Jul 4 sample reorder; trial on arrival, verdict by Jul 18</dd>
+          <dt>changes</dt><dd>none requested — ships as stock</dd>
+          <dt>fallback</dt><dd>HA &amp; Glycerin Cleanser (8.4, already reviewed) — pre-committed, zero-day switch; note it kills the "milk run." name option</dd>
+        </dl>
+      </div>
+      <div class="sku">
+        <h4>essence — hydrating collagen + ha essence <span class="chip zt">near-locked</span></h4>
+        <dl class="kv">
+          <dt>base</dt><dd>Pravada BioHydrate Essence w/ Collagen &amp; HA (8.4) — sampled, in hand (order #10922)</dd>
+          <dt>changes</dt><dd>none — stock. Open data: collagen sourcing (marine vs other) → blocks any vegan claim until answered</dd>
+          <dt>watch</dt><dd>formula is byte-identical to a Pravada brightening toner — differentiation lives entirely in our naming/copy layer</dd>
+        </dl>
+      </div>
+      <div class="sku">
+        <h4>serum (hero) — multi-weight hyaluronic acid serum <span class="chip t">gated jul 14</span></h4>
+        <dl class="kv">
+          <dt>base</dt><dd>Pravada Multi-Molecular HA Serum — 4–5 HA weights + polyglutamic acid + tremella. 6.8 as-is → ~8.6 once cleaned</dd>
+          <dt>the ask</dt><dd><strong>remove lavender water + witch hazel water</strong> (they sit above the HA in the INCI). Now quoted as a custom production run at ~2,500 units — cost + lead time due Jul 14</dd>
+          <dt>why it matters</dt><dd>a "hydration hero" led by witch hazel gets dragged in one GRWM video; the removal is also the launch's best receipts story (§9)</dd>
+          <dt>fallback (pre-committed)</dt><dd>if custom is slow/expensive: launch 3 SKUs on the date, drop the serum as a solo statement later ("we saved the deep end for last") — never ship it dirty as the hero</dd>
+        </dl>
+      </div>
+      <div class="sku">
+        <h4>moisturizer — smoothing peptide cream <span class="chip zt">gated jul 14 + jul 18</span></h4>
+        <dl class="kv">
+          <dt>base</dt><dd>Pravada Multi-Peptide Smoothing Moisturizer — 5-peptide stack; sampled (order #10922)</dd>
+          <dt>the ask</dt><dd><strong>swap isopropyl myristate → squalane</strong> (removes the comedogenic ~3–5 risk, keeps the slip) — custom-run cost/lead time due Jul 14</dd>
+          <dt>texture gate</dt><dd>Zach's feel test vs the Barrier Renewal Ceramide Cream (8.9, in hand), chasing a light, silky, COSRX-like finish; verdict Jul 18</dd>
+          <dt>fallbacks</dt><dd>① ship multi-peptide as-is with honest copy ("too thick" is a copy problem); ② Barrier Renewal Ceramide Cream as-is (8.9 — the strongest formula on the bench, currently reserved as "safekeeping." for statement 02)</dd>
+        </dl>
+      </div>
+
+      <h3>4.1 zach's sample protocol (this week)</h3>
+      <ul>
+        <li><strong>Creams head-to-head:</strong> multi-peptide vs ceramide — weight, grease, layering over serum, finish (dewy/matte/tacky). The #1 open question in the line.</li>
+        <li><strong>Layering run:</strong> essence → serum → moisturizer; note pilling, tack, absorb time (these become real, sourceable claims — time them with a stopwatch, on camera; that footage is launch content).</li>
+        <li><strong>On arrival (reorder):</strong> oat milk cleanser feel + rinse; Biome Balance texture benchmark (it's the "light/silky" reference, 8.2 — and the future statement-1.5 base candidate).</li>
+        <li>Note anything that reads "premium" vs "cheap" — feel is what separates us from a relabel.</li>
+      </ul>
+
+      <h3>4.2 data pravada still owes (chase with the jul 14 answers)</h3>
+      <ul>
+        <li>pH + key active percentages per SKU (HA forms, peptides) — gates on-label claims and the receipts UI; no HA-weight counts in copy until documented</li>
+        <li>collagen sourcing (marine?) + vegan/cruelty-free status per SKU — blocks vegan claims until answered</li>
+        <li>stability / PET / safety dossiers per SKU + what transfers to our MoCRA file — and <strong>custom-run stability timeline</strong> (does the serum change restart the stability clock?)</li>
+        <li>unopened shelf life + PAO per SKU — sizes the fill (§3.4)</li>
+        <li>written terms for filling customer-supplied components (§6.4)</li>
+      </ul>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="sec" id="naming">
+      <h2>5 · naming.</h2>
+      <p>Every product name is a two-layer lockup: a <strong>statement name</strong> (a real idiom, lowercase, ending in a period — the display layer) over a <strong>functional descriptor</strong> (plain language that says what it does — satisfies the brand-voice naming rule). The statement name never appears without its descriptor on pack fronts, PDP H1s, or first mention.</p>
+
+      <div class="table-scroll"><table>
+        <caption>recommended set (thomas confirmed the register; final pick pending clearance)</caption>
+        <thead><tr><th>step</th><th>statement name</th><th>descriptor</th><th>strongest alternates</th></tr></thead>
+        <tbody>
+          <tr><td>cleanser</td><td><strong>come clean.</strong></td><td>gentle oat milk cream cleanser</td><td>milk run. (dies if cleanser falls back) · day off. · good riddance. · soft open.</td></tr>
+          <tr><td>essence</td><td><strong>ice breaker.</strong></td><td>hydrating collagen + ha essence</td><td>second nature. · quick study.</td></tr>
+          <tr><td>serum</td><td><strong>deep end.</strong></td><td>multi-weight hyaluronic acid serum</td><td>still waters. · tall drink. · high tide. · watershed.</td></tr>
+          <tr><td>moisturizer</td><td><strong>smooth talker.</strong> <span class="chip t">confirmed</span></td><td>smoothing peptide cream</td><td>closing statement. · seal of approval. · soft spoken.</td></tr>
+        </tbody>
+      </table></div>
+
+      <p>In routine order the set reads as one arc — <em>get honest, open up, go deep, finish smooth</em> — which is the routine poem for the insert card, the site's routine section, and the pinned social post:</p>
+      <p class="poem">come clean.<br>ice breaker.<br>deep end.<br>smooth talker.</p>
+
+      <p><strong>Reserved for statement 02 (screen now, use later):</strong> pep talk. (hydrating peptide toner) · firm believer. (firming peptide serum) · safekeeping. (ceramide barrier cream). The arc is self-assurance — statement 02 ≈ resilience.</p>
+
+      <h3>5.1 rules + gates</h3>
+      <ul>
+        <li>All 7 statement names go to the attorney <strong>in the same engagement</strong> as the house-mark clearance (§7.1) — opinion due Jul 24. Idioms are crowded in Class 3; expect at least one substitution.</li>
+        <li>Set-assembly: one name per slot; never two names sharing a key word in one drop (talk/deep/water); "keep your word." is reserved for replenishment copy, never a product name.</li>
+        <li>Typography: statement name Satoshi Light 300, descriptor 400; lowercase always; period always; never explain the signature in copy.</li>
+        <li>Descriptors are generic on purpose — no clearance needed, fully on-voice fallback: if Thomas prefers strictly descriptive naming, the descriptors ARE the names and nothing else changes.</li>
+        <li>On lock (Jul 24): write <code>ily_name:</code> into the four formula files, create formula files for the two swapped-in SKUs (oat milk cleanser, multi-peptide moisturizer), then art starts same-day.</li>
+      </ul>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="sec" id="packaging">
+      <h2>6 · packaging.</h2>
+      <p>Supplier: <strong>UA Packaging</strong> — quote addressed to Zach Dutton / I LOVE YOUTH (zach@duttonbrown.com), contact Torres Chen, saless@uapkg.com, +86 (0750) 3669927. Terms: <strong>FOB Jiangmen, China</strong>; prices exclude decoration; quote dated 2026-04-22, 60-day validity → <strong>expired ~Jun 21 — refresh before anything else.</strong> Production 30–45 days, and the clock starts only after artwork approval + 3D sample sign-off + required filling/printing tests.</p>
+
+      <h3>6.1 component map (candidates — thomas confirms final item numbers)</h3>
+      <div class="table-scroll"><table>
+        <thead><tr><th>sku</th><th>candidate component</th><th>ua item</th><th class="num">unit @10K*</th><th>evidence</th></tr></thead>
+        <tbody>
+          <tr><td>serum (hero)</td><td>30ml glass dropper</td><td>PL184-LI-30-94</td><td class="num">$0.77 + deco ≈ $1.18</td><td>named "first SKU to dieline" in system.md; sampled dropper photo matches</td></tr>
+          <tr><td>essence</td><td>150ml PETG bottle</td><td>PL042-71350-150ml</td><td class="num">$0.90 + deco ≈ $1.35</td><td><strong>physically sampled</strong> (labeled UA sample photo)</td></tr>
+          <tr><td>cleanser</td><td>100ml PE tube, flip cap</td><td>Round-Dia40</td><td class="num">$0.35 + deco ≈ $0.53</td><td><strong>physically sampled</strong> (labeled UA sample photo)</td></tr>
+          <tr><td>moisturizer</td><td>30ml airless pump</td><td>PL008-2180-30</td><td class="num">$1.125 + deco ≈ $1.72</td><td>sampled airless photo matches; 50g jar (PL348-GS-110-50, $1.12) is the cheaper alternate</td></tr>
+        </tbody>
+      </table></div>
+      <p class="fine">*Quoted vessel price + screen print 2 passes + spray coats per the quote's decoration columns. The quote's own caveat: "exact cost can be double checked after sampling." Full 31-item quote lives in the private repo (packaging/quote-UApkg-ily-260422.pdf).</p>
+
+      <h3>6.2 why the 10K tier</h3>
+      <p>The quote prices 10K at roughly half the 5K unit price (e.g. hero dropper $1.51 → $0.77; essence bottle $1.75 → $0.90), several candidate items are 10K-MOQ-only, and orders under 10K add a $500 setup fee. Net: the second 5,000 units of each component cost ~$8–9K across the whole line — cheap optionality for refill runs and statement re-drops. <strong>Buy 10K components/SKU; fill 2,500 (§3.4).</strong></p>
+
+      <h3>6.3 decoration + art (this is what gates the PO)</h3>
+      <ul>
+        <li><strong>Decoration = UA screen print + spray coat</strong> (system rule: 1-color front + 1-color back; no stickered labels; matt tube finish $0.05/unit; cap emboss "ily." requires one-time tooling — get the number). Screen print means <strong>the art is fixed in China at production time</strong> — names, INCI, and every regulatory line must be final before the PO.</li>
+        <li><strong>Recommended exception to the no-labels rule (decide by jul 24):</strong> screen-print the front/brand layer only, and have Pravada apply a printed <em>back label</em> carrying INCI + regulatory copy. Cost is trivial; it converts a "reprint 10,000 bottles in China" compliance error into a "reprint labels in Florida" one, and lets formula tweaks or claim edits happen without scrapping components. If rejected, triple-check §7.3 before art ships.</li>
+        <li><strong>Art file specs (UA):</strong> .ai (Illustrator CS-era compatibility) / .cdr / .fh, <strong>all fonts outlined</strong> — no live type in the file.</li>
+        <li><strong>Unicartons are a complete gap:</strong> not on the quote — no sizes, MOQ, decoration, or lead time. Get them into the re-quote on day one; they ride the same production window or become the schedule's surprise villain.</li>
+        <li><strong>Verify sequence before mass production (UA requires it):</strong> artwork approval → 3D sample → filling test + printing test on actual product. Budget 1–2 weeks; it's inside the critical path.</li>
+      </ul>
+
+      <h3>6.4 fill logistics (pravada × ua)</h3>
+      <ul>
+        <li><strong>Gate: Pravada's written yes to filling customer-supplied components</strong> — terms, component-approval requirements, delivered-by dates relative to the fill slot, compatibility testing, whether they unicarton. Asked in the Jul email; answer due Jul 14. Fallback if no: revert to Pravada stock components + labels for v1 (the pre-committed "date beats the bottle" move — now with the caveat that the UA buy would become reorder skin, so get the Pravada answer <em>before</em> the UA deposit).</li>
+        <li>Once the component spec locks: run the specific bottle list past Pravada (neck finishes, closures, airless mechanism, tube sealing) — the quote carries no neck-finish specs (only "20Neck" on one item). One email with the UA spec sheets attached.</li>
+        <li><strong>Split shipment:</strong> base case ocean for everything (Jan 15 timeline absorbs it). If Dec 4 is chosen: air the fill quantity (~10K sets), ocean the surplus. UA bills partial shipments/LCL extra — trivial vs the schedule value.</li>
+        <li><strong>Storage:</strong> ~30,000 surplus component sets (~15–20 CBM) need a home: Pravada warehousing (ask), a Minneapolis unit, or 3PL. Decide before the ocean shipment lands (~Nov).</li>
+      </ul>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="sec" id="legal">
+      <h2>7 · legal &amp; compliance.</h2>
+
+      <h3>7.1 trademark (go/no-go, opinion due jul 24)</h3>
+      <ul>
+        <li>One engagement, two sections (brief already written in the private repo): <strong>Section A</strong> — house mark ILOVEYOUTH (+ tagline "Youth starts with you.", + short mark ily.) in Class 3. Known conflicts to assess: Shaklee's standalone YOUTH registration (actively sold as a hydration regimen — the primary concern) and L'Oréal's Youth To The People family. <strong>Section B</strong> — all 7 statement names (idioms = crowded field; expect substitutions; alternates exist per slot).</li>
+        <li>Budget $1.5–3K, 1–2 week turnaround. <strong>No label art spend, no UA deposit, no Pravada deposit until the opinion is back.</strong> At this capital scale the clearance is even more non-negotiable than before.</li>
+        <li>Pre-decided pivot if Section A fails: rename to <strong>ily.</strong> — keeps the period signature, the mark, most assets. No deliberation; re-screen and go.</li>
+        <li>File ITU applications for whatever clears (attorney recommends scope) — at ~$165K deployed, the marks are worth protecting before launch publicity starts.</li>
+      </ul>
+
+      <h3>7.2 entity + insurance</h3>
+      <ul>
+        <li><strong>Form the LLC now</strong> (or confirm the existing entity): it's the PO counterparty, the insurance named insured, the trademark applicant, and the "Distributed by" line on 40,000 printed packages. Blank on the attorney brief today — fill it in before engagement.</li>
+        <li>Product liability insurance before any unit leaves the door (seeding counts): ~$400–1,500/yr, same-day-to-2-weeks. Add the fulfillment location once storage is decided.</li>
+      </ul>
+
+      <h3>7.3 mocra + label compliance (bake into v1 art — screen print makes errors expensive)</h3>
+      <ul>
+        <li><strong>MoCRA:</strong> small-business exemption applies (no facility registration / product listing required at our size) — but these still apply: safety substantiation file per SKU (Pravada dossiers + gap-fill), adverse-event contact on the label, and serious-adverse-event reporting duties once selling.</li>
+        <li><strong>Every printed pack must carry:</strong> identity statement · net contents (dual units) · INCI ingredient list, descending order · "Distributed by [LLC], Minneapolis, MN" + street address · adverse-event contact (domain satisfies the electronic option) · PAO/shelf-life mark. Attorney or consultant reviews final art before the UA PO — a $500 review vs a 10,000-unit reprint.</li>
+        <li><strong>Claims rules:</strong> only real, sourced numbers (§9); no drug claims (nothing "treats/repairs/heals" medically); longevity/skin-health vocabulary only — never anti-aging or youth-restoration; visuals adult-coded; never market to under-18s; no vegan claims until collagen sourcing is answered.</li>
+      </ul>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="sec" id="website">
+      <h2>8 · website.</h2>
+      <p>Store: iloveyouth.myshopify.com on Dawn 15.4.1 · canonical domain <strong>iloveyouth.co</strong> (the .com is a Milan model agency until ~Jan 2028 — beat their ghost in branded search with proper Organization schema + GBP-style consistency). Current readiness: <strong>~15–20%.</strong> v5 was ratified Jul 3 and the landing section is ported — but not yet live.</p>
+
+      <h3>8.1 what exists today</h3>
+      <ul>
+        <li><code>sections/direction-v5.liquid</code> (1,026 lines): the v5 landing monolith with editor blocks — claim-dot constellation, lineup cards, product picker, newsletter form, three.js brand moment with static fallback.</li>
+        <li>Homepage still points at direction-v1 — the v5 swap happens in the theme editor (never hand-edit index.json).</li>
+        <li>PDP + PLP: stock Dawn. The rich v5 PDP/PLP exist only as HTML prototypes — porting them is the bulk of the build.</li>
+        <li>Newsletter capture is native Shopify; no Klaviyo anywhere yet. Zero products connected.</li>
+      </ul>
+
+      <h3>8.2 build list (sep sprint, in order)</h3>
+      <ol>
+        <li>Swap homepage v1 → v5 in the editor; connect placeholder products so price/ATC go live in test.</li>
+        <li>Port v5 PDP as a proper section: title format "deep end. — multi-weight hyaluronic acid serum"; the receipts block (every claim expandable to its source — the v4 citation UI); the "what we changed." block per SKU (serum: the removal story; cream: the squalane swap).</li>
+        <li>Port v5 PLP as the statement 01 page: manifesto + shop; nav is "statements"; bundle = <strong>"the full statement."</strong>; waitlist countdown pre-launch.</li>
+        <li>Klaviyo: swap native capture → "the brief" list; flows: welcome, abandoned cart, post-purchase (upgrade serum buyers to the routine; tease statement 02), back-in-stock.</li>
+        <li>Reviews app wired to the professional-panel program (§9) — <strong>delete every mock rating/review in the prototype (4.9 · 1,284 etc.). Never ship invented reviews.</strong></li>
+        <li>Subscriptions: 60-day cadence, copy "keep your word." — the retention layer the year-one math leans on.</li>
+        <li>Commerce plumbing: shipping rates, taxes, payment methods, refund path, analytics (GA4 + Meta pixel even if unused for ads), Organization + Product schema.</li>
+        <li>End-to-end test orders + refunds on a staff account; feature freeze Jan 8 (Dec 1 if stretch).</li>
+      </ol>
+
+      <h3>8.3 content gates (do not ship until true)</h3>
+      <ul>
+        <li>"fragrance-free" claim only after the lavender-removal is confirmed in the final INCI.</li>
+        <li>No HA-weight counts or active percentages until Pravada documents them.</li>
+        <li>Every constellation claim-dot maps to a sourced receipt before launch.</li>
+        <li>Retire the obsolete Electric Blue docs in the theme + marketing repos (superseded brand system) and propagate iloveyouth.co everywhere.</li>
+      </ul>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="sec" id="marketing">
+      <h2>9 · marketing.</h2>
+      <p>One system, three layers: <strong>receipts</strong> (trust), <strong>statement drops</strong> (acquisition), <strong>the routine</strong> (economics). Thesis: earn trust with receipts, launch in statements, sell the routine.</p>
+
+      <h3>9.1 receipts — the credibility engine</h3>
+      <ul>
+        <li>The launch's best stories already happened in the formulation work: <em>we removed witch hazel and lavender from our own hero before selling it; we swapped the clogging emollient for squalane.</em> The edits are the receipts — no competitor can tell this story about our formulas.</li>
+        <li>Formats: "read the label with us" founder videos · the refuse list (one refused ingredient per post) · ingredient SEO pages (multi-molecular hyaluronic acid, oat milk cleanser sensitive skin, non-comedogenic peptide moisturizer, essence vs toner) · the parked "named." template as the recurring ingredient-hero format.</li>
+        <li>Rules: every number sourced, source directly beneath the claim; smaller true numbers beat bigger fake ones; knowledgeable friend, never the callout account; never name competitors.</li>
+      </ul>
+
+      <h3>9.2 statement drops — the launch architecture</h3>
+      <ul>
+        <li>Sell numbered statements, not a catalog: "statement 01: hydration." Labels carry <code>statement 01 — hydration.</code> as a system line; the routine poem rides a business-card-grade insert.</li>
+        <li><strong>The waitlist is the campaign.</strong> Everything funnels to one list, "the brief." Target 2,000+ emails by launch (5,000 is the stretch). VIP early access 24–48h before public.</li>
+        <li>Cadence: founder-led TikTok/IG <strong>4–6×/week starting mid-July</strong> — the 60–90-day organic runway is why Jan 15 converts better than a rushed December. Name reveals one per week in period-stack style during the countdown month; drop-day post is just the poem.</li>
+        <li>Professional credibility: the review panel (Zach + 2–3 estheticians/derm-adjacent pros) trials finished goods in December; quoted with permission at launch. This replaces every placeholder review.</li>
+        <li>Seeding: 300–500 units to nano/micro creators, shipped the week stock lands in Minneapolis ($4–10K all-in). Gift, don't pay — at this size paid sponsorship math doesn't work.</li>
+      </ul>
+
+      <h3>9.3 the routine — retention + economics</h3>
+      <ul>
+        <li>Hero offer: the 4-SKU routine bundle ("the full statement.", $136 placeholder vs $156 separates). Serum is the single-SKU entry door; flows upgrade serum buyers to the routine.</li>
+        <li>Subscribe &amp; save on 60-day cadence; replenishment copy "keep your word." Repeat rate, subscription take-rate, and review velocity are the proof pack an eventual Sephora conversation needs — DTC data IS the retail pitch.</li>
+        <li>Statement 02 is pre-seeded by statement 01: the smooth-talker PDP, inserts, and post-purchase emails tease "peptides, deeper" and open the next waitlist.</li>
+      </ul>
+
+      <h3>9.4 paid (deliberately small)</h3>
+      <ul>
+        <li>Paid never leads: pre-scale skincare CPAs run $35–70 against 2.0–2.8% conversion — a losing engine at our AOV. Reserve paid for branded-search defense (own "iloveyouth" against the Milan agency's ghost) and, post-launch, retargeting warm traffic only. Google search first; PMax only after angles are proven.</li>
+      </ul>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="sec" id="timeline">
+      <h2>10 · the timeline.</h2>
+      <p>Day-level through July (the month that decides everything), then weekly to launch. Owners: <span class="chip z">Z</span> Zach · <span class="chip t">T</span> Thomas (money, approvals, accounts) · <span class="chip zt">Z+T</span> both. Base = Jan 15 plan; ⚡ marks what changes under the Dec 4 stretch.</p>
+
+      <h3>july — unblock everything</h3>
+      <div class="table-scroll"><table>
+        <thead><tr><th>date</th><th>action</th><th>owner</th></tr></thead>
+        <tbody>
+          <tr><td><strong>fri jul 4</strong></td><td>Send the updated Pravada email (volume callout ~2,500/SKU · custom-run framing · tiers 1,000/2,500/5,000 · deposit schedule · supplied-component fill · stability/PET timeline · dossiers · shelf life). Place the sample reorder (oat milk cleanser, Biome Balance, extra MM-HA — 3–4 day processing). Email Torres Chen: refresh the expired quote at 10K/SKU, add unicartons, neck-finish specs, ocean + air-split freight options, emboss tooling cost, 3D-sample timeline — and confirm billing entity + banking by phone.</td><td><span class="chip zt">Z+T</span></td></tr>
+          <tr><td>mon jul 7</td><td>Engage the trademark attorney (brief is written; fill in the LLC line first). Start LLC formation/confirmation. Ping 2–3 customs brokers for a duty estimate on the component import.</td><td><span class="chip t">T</span></td></tr>
+          <tr><td>wed jul 9</td><td>UA refreshed quote due back; chase if silent. Zach starts the cream head-to-head + layering protocol (§4.1) with what's in hand.</td><td><span class="chip z">Z</span></td></tr>
+          <tr><td>thu–mon jul 10–14</td><td>Sample reorder arrives; cleanser + Biome Balance trials begin. Insurance quotes requested (bind once the LLC exists).</td><td><span class="chip z">Z</span></td></tr>
+          <tr><td><strong>mon jul 14</strong></td><td><strong>Pravada answer deadline</strong> — phone escalation if silent. With answers in hand: ⚡ <strong>decide Dec 4 vs Jan 15</strong>, decide serum path (clean run vs 3-SKU launch), moisturizer swap, fill size (1,000/2,500/5,000 by tier pricing), and confirm supplied-component fill terms.</td><td><span class="chip zt">Z+T</span></td></tr>
+          <tr><td>tue jul 15</td><td>Send Pravada the UA component spec sheets → bottle-type sign-off (necks, closures, airless, tubes, unicartoning). Book the fill slot window.</td><td><span class="chip z">Z</span></td></tr>
+          <tr><td><strong>fri jul 18</strong></td><td><strong>Zach's texture verdicts due</strong>: moisturizer call (multi-peptide vs ceramide vs as-is) + cleanser confirmation → final SKU lock.</td><td><span class="chip z">Z</span></td></tr>
+          <tr><td>mon jul 21</td><td>Naming session (one sitting): pick one statement name per slot from §5 pending clearance; close remaining aesthetic forks (packaging label treatment v4-vs-v5 mockups, radius scale) as dated decisions. Design freeze after this session.</td><td><span class="chip zt">Z+T</span></td></tr>
+          <tr><td><strong>thu jul 24</strong></td><td><strong>Trademark opinion due → names locked.</strong> Write ily_name into formula files. Label/screen art production starts same day (compliance copy checklist §7.3 in the first draft, not the last). Decide the hybrid back-label question (§6.3).</td><td><span class="chip t">T</span></td></tr>
+          <tr><td>jul 25–31</td><td>Art build: front screen art per component + back copy (INCI final from Pravada custom confirmation, net contents, distributed-by, adverse-event contact, PAO). Fonts outlined, .ai. Compliance review booked. ⚡ Dec 4 stretch: UA PO + deposit by Jul 31.</td><td><span class="chip z">Z</span></td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>august — money moves, production starts</h3>
+      <div class="table-scroll"><table>
+        <thead><tr><th>week</th><th>what happens</th><th>owner</th></tr></thead>
+        <tbody>
+          <tr><td>aug 3–7</td><td>Compliance sign-off on final art. <strong>UA PO + ~50% deposit (~$26–34K) by Fri Aug 7</strong> with outlined art attached. Request 3D sample + schedule filling/printing tests.</td><td><span class="chip zt">Z+T</span></td></tr>
+          <tr><td>aug 10–14</td><td><strong>Pravada PO + deposit</strong> per their schedule (~$20–35K): custom serum run + squalane cream + stock essence/cleanser bulk, ~2,500/SKU, fill slot ~Nov 10. Bulk compounds while components are on the water.</td><td><span class="chip t">T</span></td></tr>
+          <tr><td>aug 10–21</td><td>UA 3D sample approval + filling test + printing test (samples of actual product to UA if required). Production clock (30–45d) starts on sign-off.</td><td><span class="chip z">Z</span></td></tr>
+          <tr><td>aug 17–31</td><td>Content engine live (4–6×/wk founder posts; the removal story is episode one). "the brief" waitlist page live on iloveyouth.co. Review panel recruited (Zach + 2–3). Storage decision for surplus components.</td><td><span class="chip zt">Z+T</span></td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>september — build month</h3>
+      <div class="table-scroll"><table>
+        <thead><tr><th>week</th><th>what happens</th><th>owner</th></tr></thead>
+        <tbody>
+          <tr><td>sep 1–30</td><td>UA production runs (done ~Oct 2). Storefront sprint per §8.2 (homepage swap → PDP → PLP → Klaviyo → reviews → subscriptions → plumbing). Safety-substantiation files assembled from Pravada dossiers; insurance bound; ingredient SEO pages drafted.</td><td><span class="chip z">Z</span></td></tr>
+          <tr><td>late sep</td><td>UA balance + freight + duties (~$37–60K). Book ocean freight (⚡ or air-split for Dec 4). Photography planned; shot list from the v5 prototypes (texture shots, drop macro, 4–8 images/SKU + one video each).</td><td><span class="chip zt">Z+T</span></td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>october–november — components land, fill runs</h3>
+      <div class="table-scroll"><table>
+        <thead><tr><th>week</th><th>what happens</th><th>owner</th></tr></thead>
+        <tbody>
+          <tr><td>oct 2–9</td><td>Production complete; freight sails. Pre-production decorated samples (from the 3D/test lots) go to photography — real packaging shots without waiting for the container.</td><td><span class="chip z">Z</span></td></tr>
+          <tr><td>oct 12–31</td><td>Photography with decorated samples. PDPs assembled with real art + sourced claims. Waitlist push month 1 (goal: 1,000 emails by Nov 1). Name-reveal countdown content begins.</td><td><span class="chip zt">Z+T</span></td></tr>
+          <tr><td>~nov 10</td><td>Components clear customs + arrive at Pravada. Surplus to storage. <strong>Fill begins</strong> (10,000 units ≈ 5–6 wks).</td><td><span class="chip z">Z</span></td></tr>
+          <tr><td>nov 10–dec 12</td><td>Site content freeze-ready; flows tested with seed list; panel briefed; press/creator kit built (300–500 units earmarked). Waitlist push month 2 (goal: 2,000+).</td><td><span class="chip zt">Z+T</span></td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>december–january — receive, seed, launch</h3>
+      <div class="table-scroll"><table>
+        <thead><tr><th>date</th><th>what happens</th><th>owner</th></tr></thead>
+        <tbody>
+          <tr><td>~dec 19</td><td>Fill complete → freight FL→MN over the holiday week (rate-shop early; holiday freight is ugly). Pravada balance paid.</td><td><span class="chip zt">Z+T</span></td></tr>
+          <tr><td>dec 29–jan 2</td><td>Receive + QC in Minneapolis (count, torque, print QC vs approved 3D sample, unicarton check). Review-panel units + seeding boxes packed.</td><td><span class="chip z">Z</span></td></tr>
+          <tr><td>jan 4–8</td><td>Seeding ships (300–500 units). Panel quotes collected → reviews live. <strong>Feature freeze Fri Jan 8.</strong> End-to-end test orders incl. refund path.</td><td><span class="chip zt">Z+T</span></td></tr>
+          <tr><td>jan 11–14</td><td>Launch emails staged. VIP early access to "the brief" <strong>Jan 13–14</strong> (24–48h, real inventory counts shown).</td><td><span class="chip t">T</span></td></tr>
+          <tr><td><strong>fri jan 15, 2027</strong></td><td><strong>Public launch.</strong> Drop-day post = the poem. Branded-search capture on. Founder in the replies all weekend.</td><td><span class="chip zt">Z+T</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="sec" id="expectations">
+      <h2>11 · realistic expectations.</h2>
+      <ul>
+        <li><strong>Waitlist math:</strong> waitlists convert at under 5%. 2,000–5,000 emails → <strong>100–500 launch-window orders TOTAL</strong> (not per SKU). That's a good launch for a bootstrapped brand with no prior audience.</li>
+        <li><strong>Launch-window revenue:</strong> 100–500 orders at ~$60–90 AOV ≈ <strong>$7–40K</strong>. The inventory does not sell out in January — it isn't supposed to.</li>
+        <li><strong>Year one:</strong> Beauty-Independent benchmarks for a solo bootstrapped founder: <strong>$50K is a good year, $100K is fantastic.</strong> That expectation does NOT change because the inventory got bigger — the inventory is a multi-year position (§3.4), and the plan must survive on year-one revenue without touching the cash floor.</li>
+        <li><strong>What compounds:</strong> repeat rate on the 60-day cycle, subscription take-rate, review velocity, and email list growth. Those four numbers are the business (and the future Sephora pitch). Vanity spikes are not.</li>
+        <li><strong>Success checkpoints:</strong> day 30 — 150+ orders cumulative, 3.5%+ site CVR from the warm list, first organic UGC. Day 90 — 400+ orders, 15%+ repeat/subscription attach on early cohorts, one content format reliably producing. Day 365 — $50–100K revenue, 2,500+ list, fill #2 sized from data. If day-90 numbers are far under, the fix is audience and offer — not more inventory.</li>
+        <li><strong>The pattern to guard against</strong> (named with love): exploration-as-procrastination. Five site directions, ~40 packaging renders, and a 14-day-unsent email preceded this roadmap. The system is now decided. From here, every open question has an owner and a date — re-opening settled decisions costs launch weeks.</li>
+      </ul>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="sec" id="risks">
+      <h2>12 · risk register.</h2>
+      <div class="table-scroll"><table>
+        <thead><tr><th>#</th><th>risk</th><th>odds</th><th>impact</th><th>mitigation</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Capital concentration: ~$124–208K deployed against $50–100K expected year-one revenue</td><td>certain (it's the plan)</td><td>company-level</td><td>fill-to-tier not to hope; shelf life in writing; cash floor ≥$15–20K ring-fenced for marketing/ops; fill #2 from day-60 data</td></tr>
+          <tr><td>2</td><td>Pravada declines customer-supplied components, or terms are bad</td><td>medium</td><td>plan-breaking</td><td>answer due Jul 14 <em>before</em> the UA deposit; fallback = Pravada stock components v1, UA becomes reorder skin</td></tr>
+          <tr><td>3</td><td>Serum custom run reclassified as full custom (6–12 mo)</td><td>medium</td><td>hero SKU</td><td>pre-committed: launch 3 SKUs on date + serum as a later solo drop; never ship it dirty</td></tr>
+          <tr><td>4</td><td>Trademark blocked (Shaklee YOUTH / idiom collisions)</td><td>medium</td><td>identity + art</td><td>clearance before any spend; pivot "ily." pre-decided; alternates per name slot</td></tr>
+          <tr><td>5</td><td>Screen-printed regulatory error → 10K-unit reprint</td><td>low-medium</td><td>$10–20K + weeks</td><td>hybrid back-label (§6.3); compliance review of art; print QC against approved 3D sample</td></tr>
+          <tr><td>6</td><td>Wire fraud / wrong entity (two UA names, emails, phones on file)</td><td>low</td><td>$25K+</td><td>verify banking by phone with Torres Chen before every wire; consistent entity on PO, invoice, packing list</td></tr>
+          <tr><td>7</td><td>3D sample / filling-print tests drag; production clock starts late</td><td>medium</td><td>weeks</td><td>schedule tests at PO time; decorated test units double as photography props</td></tr>
+          <tr><td>8</td><td>Customs/duty surprise on China-origin packaging</td><td>medium</td><td>$5–15K</td><td>broker engaged in July with HS codes from UA; duty line already budgeted at 10–30%</td></tr>
+          <tr><td>9</td><td>Launch to a cold audience (content runway skipped)</td><td>high if content doesn't start mid-july</td><td>revenue, not date</td><td>4–6 posts/wk from Jul 14; the Jan date exists to buy this runway — use it</td></tr>
+          <tr><td>10</td><td>Founder decision latency resurfaces at a gate</td><td>the known pattern</td><td>week-for-week slip</td><td>Zach owns the calendar + escalation; every gate has a pre-decided fallback so "no decision" defaults to the fallback, not to drift</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="sec" id="owners">
+      <h2>13 · who does what.</h2>
+      <div class="table-scroll"><table>
+        <thead><tr><th><span class="chip z">zach — runs the launch</span></th><th><span class="chip t">thomas — money, approvals, face</span></th></tr></thead>
+        <tbody><tr>
+          <td>
+            <ul>
+              <li>UA relationship end-to-end (he's the customer of record on the quote): re-quote, PO, 3D sample, tests, freight, customs broker</li>
+              <li>Pravada coordination: chase answers, component sign-off, fill slot, QC</li>
+              <li>Sample protocol + texture verdicts (Jul 18)</li>
+              <li>Label/screen art production + compliance checklist</li>
+              <li>Storefront build (§8.2) + flows + test orders</li>
+              <li>Photography, seeding logistics, receiving + QC in Minneapolis</li>
+              <li>Review panel recruitment + quote collection</li>
+              <li>The calendar itself: gates, escalations, fallback triggers</li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li>All wires + deposits (UA, Pravada, attorney, insurance) — after phone-verifying banking</li>
+              <li>Attorney engagement; LLC; insurance binding</li>
+              <li>Final approvals: names (Jul 21–24), art, prices, launch date fork (Jul 14)</li>
+              <li>Pravada account holder — sends the email, signs the PO</li>
+              <li>Founder-led content (the face + the voice, 4–6×/wk)</li>
+              <li>Shopify/domain/Klaviyo account ownership</li>
+              <li>Guards the cash floor + the positioning (receipts, no discounts)</li>
+            </ul>
+          </td>
+        </tr></tbody>
+      </table></div>
+      <p class="fine">Operating agreement: decisions at gates default to the pre-committed fallback if not made by the gate date. Weekly 30-min sync (suggest Mondays); everything else async.</p>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="sec" id="questions">
+      <h2>14 · open questions (owner · due).</h2>
+      <ol>
+        <li>Pravada: custom-run cost + lead time at 1,000/2,500/5,000; deposit schedule; supplied-component fill terms; per-SKU shelf life; dossiers; pH/actives; collagen sourcing — <span class="chip t">T sends</span> · answers <strong>jul 14</strong></li>
+        <li>UA: refreshed quote (10K/SKU) incl. unicartons, neck-finish specs, emboss tooling, freight options, 3D-sample timeline; correct billing entity + verified banking — <span class="chip z">Z</span> · <strong>jul 9</strong></li>
+        <li>Final component item numbers per SKU (candidates in §6.1) + moisturizer format call (airless vs 50g jar) — <span class="chip t">T</span> · <strong>jul 9</strong></li>
+        <li>Trademark opinion, house mark + 7 names — <span class="chip t">T engages jul 7</span> · opinion <strong>jul 24</strong></li>
+        <li>LLC: exact legal name + state (blocks attorney brief, insurance, PO, distributed-by line) — <span class="chip t">T</span> · <strong>jul 7</strong></li>
+        <li>Fill size final (1,000/2,500/5,000 per tier math + shelf life) — <span class="chip zt">Z+T</span> · <strong>jul 14</strong></li>
+        <li>Launch date fork: Dec 4 stretch vs Jan 15 plan — <span class="chip zt">Z+T</span> · <strong>jul 14</strong></li>
+        <li>Hybrid back-label exception (screen front + Pravada regulatory back label) — <span class="chip zt">Z+T</span> · <strong>jul 24</strong></li>
+        <li>Zach texture verdicts: moisturizer path + cleanser confirm — <span class="chip z">Z</span> · <strong>jul 18</strong></li>
+        <li>Names: approve recommended set or swap alternates (pre-clearance pick) — <span class="chip t">T</span> · <strong>jul 21</strong></li>
+        <li>Surplus-component storage (Pravada warehouse? MN? 3PL?) — <span class="chip z">Z</span> · <strong>aug 31</strong></li>
+        <li>Receipt sourcing standard: Pravada docs vs third-party literature (must be consistent site-wide) — <span class="chip t">T</span> · <strong>aug 15</strong></li>
+        <li>Review platform choice + panel-quote permissions — <span class="chip z">Z</span> · <strong>sep 15</strong></li>
+        <li>Pricing final (after Pravada unit costs; placeholders $32/$34/$48/$42 · $136 bundle) — <span class="chip t">T</span> · <strong>aug 31</strong></li>
+      </ol>
+      <a class="ily-link backtotop" href="#top">back to top ↑</a>
+      <p class="fine" style="margin-top: var(--ily-space-10);">Sources: ily-design (formulations, TASKS, naming+marketing system, packaging quote + capabilities, launch roadmap), ily-brand (identity, voice, tokens), ily-marketing (statement-1 strategy), ily-dev (theme state), Pravada program docs, UA quote 2026-04-22, and July 2026 market/compliance research. Working docs live in the private repos — this page is the operational summary. Compiled with Claude · 2026-07-03.</p>
+    </section>
+  </main>
+</body>
+</html>
