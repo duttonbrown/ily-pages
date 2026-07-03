@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>hydration serum · iloveyouth.</title>
-  <meta name="description" content="hydration serum. 5% niacinamide, ceramides, hyaluronic acid. lightweight, fast-absorbing, no compromises." />
+  <title>multi-molecular ha serum · iloveyouth.</title>
+  <meta name="description" content="multi-molecular ha serum. hyaluronic acid at multiple weights — surface hold, deeper draw. lightweight, fast-absorbing, no compromises." />
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
   <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" />
   <link rel="stylesheet" href="v1.css" />
@@ -199,6 +199,7 @@
   </style>
 </head>
 <body class="on-light">
+<a class="skip-link" href="#hero">skip to content</a>
 
 <!-- ===== header ===== -->
 <header class="nav nav--on-dark" id="ily-nav">
@@ -265,35 +266,36 @@
   <div class="mmenu__foot">
     <a href="#">account</a>
     <a href="#">contact</a>
-    <span>youth starts with you<span class="dot">.</span></span>
+    <span>Youth starts with you<span class="dot">.</span></span>
   </div>
 </aside>
 
 <!-- ===== pdp hero ===== -->
-<section class="pdp-hero on-dark" id="hero">
+<section class="pdp-hero on-dark" id="hero" tabindex="-1">
   <div class="mesh-bg" aria-hidden="true"></div>
   <div class="mesh-bg__blob-3" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
 
   <div class="container">
     <div class="pdp-hero__grid">
-      <div class="pdp-stage" role="img" aria-label="hydration serum on a soft frosted-blue and almond-silk gradient">
-        <span class="pdp-stage__ghost-name">niacinamide<span class="dot" style="color:rgba(42,34,32,0.1);">.</span></span>
+      <div class="pdp-stage" role="img" aria-label="multi-molecular ha serum on a soft frosted-blue and almond-silk gradient">
+        <span class="pdp-stage__ghost-name">hyaluronic<span class="dot" style="color:rgba(42,34,32,0.1);">.</span></span>
         <div class="pdp-stage__bottle" aria-hidden="true">
-          <span class="pdp-stage__bottle-label">hydration serum</span>
+          <span class="pdp-stage__bottle-label">ha serum</span>
           <span class="pdp-stage__bottle-vol">30 ml · 1.0 fl oz</span>
         </div>
       </div>
 
       <div class="pdp-info">
         <p class="pdp-info__crumb">
-          <a href="v5-products.html">all six</a>
+          <a href="v5-products.html">all four</a>
           <span aria-hidden="true">/</span>
-          <span>01 · the serum</span>
+          <span>03 · the serum</span>
         </p>
         <span class="statement statement--inverse">the hero</span>
-        <h1 class="pdp-info__name">hydration serum<span class="dot">.</span></h1>
-        <p class="pdp-info__sub">5% niacinamide<span class="dot">.</span> ceramides<span class="dot">.</span> hyaluronic acid<span class="dot">.</span> brightens, hydrates, strengthens the barrier — without the residue<span class="dot">.</span></p>
+        <!-- naming candidate: "deep end." — no HA-weight counts in copy until Pravada documents them -->
+        <h1 class="pdp-info__name">multi-molecular ha serum<span class="dot">.</span></h1>
+        <p class="pdp-info__sub">hyaluronic acid at multiple weights<span class="dot">.</span> snow mushroom<span class="dot">.</span> polyglutamic acid<span class="dot">.</span> deep hydration, no residue<span class="dot">.</span></p>
         <div class="pdp-info__rating">
           <span class="stars">★★★★★</span>
           <span><b style="color: var(--ily-ghost-white); font-weight: var(--ily-font-medium);">4.9</b> · 1,284 reviews</span>
@@ -301,8 +303,9 @@
           <a href="#reviews" style="border-bottom: 1px solid currentColor; padding-bottom: 1px;">read them</a>
         </div>
         <ul class="pdp-info__claims">
-          <li>non-comedogenic</li>
+          <!-- TODO(gate): "fragrance-free" ships only once Pravada confirms lavender-water removal (answer due Jul 14) -->
           <li>fragrance-free</li>
+          <li>paraben-free</li>
           <li>vegan</li>
           <li>cruelty-free</li>
           <li>all skin types</li>
@@ -354,49 +357,50 @@
     <header style="display:flex; justify-content:space-between; align-items:end; gap: var(--ily-space-12); margin-bottom: var(--ily-space-12); flex-wrap:wrap;">
       <div>
         <span class="statement">the formula</span>
-        <h2 style="font-weight: var(--ily-font-light); font-size: clamp(2.4rem, 5.5vw, 4.5rem); line-height: 1.02; letter-spacing: var(--ily-tracking-tight); margin: var(--ily-space-3) 0 0; max-width: 22ch;">five ingredients<span class="dot">.</span> nothing else<span class="dot">.</span></h2>
+        <h2 style="font-weight: var(--ily-font-light); font-size: clamp(2.4rem, 5.5vw, 4.5rem); line-height: 1.02; letter-spacing: var(--ily-tracking-tight); margin: var(--ily-space-3) 0 0; max-width: 22ch;">the formula<span class="dot">.</span> named, nothing hidden<span class="dot">.</span></h2>
       </div>
       <a href="#full-ingredients" class="ghost-link">view full inci list</a>
     </header>
 
+    <!-- ingredient facts from supplier INCI documentation (ily-design/formulations/research/pravada-full-inci-2026-06-03.txt); no percentages until Pravada provides them -->
     <ol class="poem">
       <li class="poem__item">
         <span class="poem__index">01</span>
         <div class="poem__body">
-          <h3 class="poem__name">niacinamide<span class="dot">.</span></h3>
-          <p class="poem__why">5% — a multi-tasking form of vitamin b3<span class="dot">.</span> brightens uneven tone, strengthens the skin barrier, and minimizes the look of pores without irritation<span class="dot">.</span></p>
-          <span class="poem__role">hero accent · 5%</span>
+          <h3 class="poem__name">hyaluronic acid<span class="dot">.</span></h3>
+          <p class="poem__why">free hyaluronic acid, hydrolyzed ha, sodium hyaluronate, glycosaminoglycans — each named on the label, each a different size<span class="dot">.</span> the smaller ones sink in, the larger ones hold water at the surface<span class="dot">.</span></p>
+          <span class="poem__role">hero accent · multi-weight</span>
         </div>
       </li>
       <li class="poem__item">
         <span class="poem__index">02</span>
         <div class="poem__body">
-          <h3 class="poem__name">ceramides<span class="dot">.</span></h3>
-          <p class="poem__why">the same lipid molecules your skin already makes<span class="dot">.</span> they repair the barrier and lock moisture in where it belongs<span class="dot">.</span></p>
-          <span class="poem__role">hero accent · 1.2%</span>
+          <h3 class="poem__name">snow mushroom<span class="dot">.</span></h3>
+          <p class="poem__why">tremella polysaccharide<span class="dot">.</span> a plant humectant that holds water like hyaluronic acid, with a softer, breathable film<span class="dot">.</span></p>
+          <span class="poem__role">hero accent</span>
         </div>
       </li>
       <li class="poem__item">
         <span class="poem__index">03</span>
         <div class="poem__body">
-          <h3 class="poem__name">hyaluronic acid<span class="dot">.</span></h3>
-          <p class="poem__why">draws water deep into the skin<span class="dot">.</span> holds up to 1,000× its weight<span class="dot">.</span> not a gimmick — just chemistry<span class="dot">.</span></p>
-          <span class="poem__role">hero accent · multi-weight</span>
+          <h3 class="poem__name">polyglutamic acid<span class="dot">.</span></h3>
+          <p class="poem__why">a humectant film-former that slows water loss at the surface while the hyaluronic acid works below<span class="dot">.</span></p>
+          <span class="poem__role">hero accent</span>
         </div>
       </li>
       <li class="poem__item">
         <span class="poem__index">04</span>
         <div class="poem__body">
-          <h3 class="poem__name">panthenol<span class="dot dot--silk">.</span></h3>
-          <p class="poem__why">pro-vitamin b5<span class="dot dot--silk">.</span> calms reactive skin and supports the barrier with quiet daily hydration<span class="dot dot--silk">.</span></p>
+          <h3 class="poem__name">centella + green tea<span class="dot dot--silk">.</span></h3>
+          <p class="poem__why">botanical calm and antioxidant support while the humectants do the work<span class="dot dot--silk">.</span></p>
           <span class="poem__role poem__role--silk">support accent</span>
         </div>
       </li>
       <li class="poem__item">
         <span class="poem__index">05</span>
         <div class="poem__body">
-          <h3 class="poem__name">squalane<span class="dot dot--silk">.</span></h3>
-          <p class="poem__why">a plant-derived oil your skin recognizes as its own<span class="dot dot--silk">.</span> seals in moisture without weight or shine<span class="dot dot--silk">.</span></p>
+          <h3 class="poem__name">jojoba<span class="dot dot--silk">.</span></h3>
+          <p class="poem__why">the only oil in the bottle — light, and one skin reads as its own<span class="dot dot--silk">.</span> seals the water in without weight<span class="dot dot--silk">.</span></p>
           <span class="poem__role poem__role--silk">support accent</span>
         </div>
       </li>
@@ -404,7 +408,9 @@
 
     <details id="full-ingredients" style="margin-top: var(--ily-space-10); padding: var(--ily-space-6); border: 1px solid var(--ily-grey-200); border-radius: var(--ily-radius-frame);">
       <summary style="font-weight: var(--ily-font-medium); cursor: pointer; font-size: 0.92rem; letter-spacing: var(--ily-tracking-wide);">full inci ingredient list<span class="dot">.</span></summary>
-      <p style="margin: var(--ily-space-4) 0 0; font-size: 0.88rem; line-height: 1.65; color: var(--ily-grey-700);">aqua, niacinamide, glycerin, sodium hyaluronate, ceramide np, ceramide ap, ceramide eop, panthenol, squalane, allantoin, sodium pca, betaine, tocopherol, xanthan gum, sodium phytate, ethylhexylglycerin, phenoxyethanol<span class="dot">.</span></p>
+      <!-- TODO(gate): list reflects the requested revision (lavender water + witch hazel water removed); Pravada confirmation due Jul 14. Stock formula still contains both. -->
+      <p style="margin: var(--ily-space-4) 0 0; font-size: 0.88rem; line-height: 1.65; color: var(--ily-grey-700);">aqua (water), aloe barbadensis leaf juice, glycerin (plant-based), methylsulfonylmethane (msm), simmondsia chinensis (jojoba) seed oil, hyaluronic acid, chamomilla recutita (matricaria) flower extract, hydrolyzed hyaluronic acid, sodium hyaluronate, hydrolyzed glycosaminoglycans, tremella fuciformis polysaccharide, polyglutamic acid, equisetum arvense extract, centella asiatica extract, camellia sinensis leaf extract, sodium ascorbyl phosphate, carrageenan, acrylates/c10-30 alkyl acrylate crosspolymer, sodium hydroxide, hydroxyethylcellulose, citric acid, sodium benzoate, phenoxyethanol, ethylhexylglycerin, potassium sorbate, polysorbate 20<span class="dot">.</span></p>
+      <p style="margin: var(--ily-space-3) 0 0; font-size: 0.8rem; line-height: 1.6; color: var(--ily-grey-500);">shown per supplier documentation (june 2026), reflecting the requested formula revision — lavender water and witch hazel water out<span class="dot">.</span> we publish the final list the day it's confirmed<span class="dot">.</span></p>
     </details>
   </div>
 </section>
@@ -464,41 +470,41 @@
         <span class="statement">pairs with</span>
         <h2 style="font-weight: var(--ily-font-light); font-size: clamp(2.2rem, 4.6vw, 3.4rem); line-height: 1.05; letter-spacing: var(--ily-tracking-tight); margin: var(--ily-space-3) 0 0; max-width: 22ch;">three steps that make the serum work harder<span class="dot">.</span></h2>
       </div>
-      <a href="v5-products.html" class="ghost-link">see all six</a>
+      <a href="v5-products.html" class="ghost-link">see all four</a>
     </header>
 
     <div class="product-grid">
       <a href="v5-products.html" class="product-card">
         <div class="product-card__media product-visual product-visual--mist">
-          <span class="product-visual__label">02 · the cleanser</span>
+          <span class="product-visual__label">01 · the cleanser</span>
           <div class="product-visual__tube" aria-hidden="true"></div>
           <span class="product-card__add">add — $32</span>
         </div>
-        <span class="product-card__index">02</span>
-        <h3 class="product-card__name">gentle cleanser<span class="dot">.</span></h3>
-        <p class="product-card__hero">non-stripping<span class="dot">.</span> ceramide-rich<span class="dot">.</span> for every skin type<span class="dot">.</span></p>
+        <span class="product-card__index">01</span>
+        <h3 class="product-card__name">oat milk cleanser<span class="dot">.</span></h3>
+        <p class="product-card__hero">oat kernel oil<span class="dot">.</span> amino-acid cleansers<span class="dot">.</span> low foam, nothing stripped<span class="dot">.</span></p>
         <div class="product-card__row"><span class="product-card__price">$32</span><span class="product-card__rating">4.8 · 612</span></div>
       </a>
       <a href="v5-products.html" class="product-card">
         <div class="product-card__media product-visual product-visual--mixed">
-          <span class="product-visual__label">03 · the toner</span>
-          <div class="product-visual__jar" aria-hidden="true"></div>
+          <span class="product-visual__label">02 · the essence</span>
+          <div class="product-visual__bottle" aria-hidden="true"></div>
           <span class="product-card__add">add — $34</span>
         </div>
-        <span class="product-card__index">03</span>
-        <h3 class="product-card__name">hydrating toner<span class="dot">.</span></h3>
-        <p class="product-card__hero">hyaluronic acid<span class="dot">.</span> no drying alcohols<span class="dot">.</span></p>
+        <span class="product-card__index">02</span>
+        <h3 class="product-card__name">hydrating essence<span class="dot">.</span></h3>
+        <p class="product-card__hero">hyaluronic acid<span class="dot">.</span> amino-acid humectants<span class="dot">.</span></p>
         <div class="product-card__row"><span class="product-card__price">$34</span><span class="product-card__rating">4.8 · 489</span></div>
       </a>
       <a href="v5-products.html" class="product-card">
         <div class="product-card__media product-visual product-visual--silk">
-          <span class="product-visual__label">04 · the moisturizer</span>
-          <div class="product-visual__tube" aria-hidden="true"></div>
+          <span class="product-visual__label">04 · the cream</span>
+          <div class="product-visual__jar" aria-hidden="true"></div>
           <span class="product-card__add">add — $42</span>
         </div>
         <span class="product-card__index">04</span>
-        <h3 class="product-card__name">daily moisturizer<span class="dot dot--silk">.</span></h3>
-        <p class="product-card__hero">ceramides<span class="dot dot--silk">.</span> panthenol<span class="dot dot--silk">.</span> squalane<span class="dot dot--silk">.</span></p>
+        <h3 class="product-card__name">peptide smoothing cream<span class="dot dot--silk">.</span></h3>
+        <p class="product-card__hero">glycerin, ha, panthenol<span class="dot dot--silk">.</span> peptides as the bonus<span class="dot dot--silk">.</span></p>
         <div class="product-card__row"><span class="product-card__price">$42</span><span class="product-card__rating">4.9 · 728</span></div>
       </a>
     </div>
@@ -562,15 +568,15 @@
       </details>
       <details class="faq__item">
         <summary>does this work for oily, acne-prone skin?<span class="dot">.</span></summary>
-        <p class="faq__answer">yes<span class="dot">.</span> the formula is non-comedogenic and contains no acne-causing ingredients<span class="dot">.</span> niacinamide is one of the few actives proven to help acne-prone skin specifically — it calms inflammation and helps regulate sebum<span class="dot">.</span></p>
+        <p class="faq__answer">yes<span class="dot">.</span> it's a lightweight, watery serum — jojoba is the only oil in it, chosen because skin reads it as its own<span class="dot">.</span> nothing else in the formula sits heavy or clogs<span class="dot">.</span></p>
       </details>
       <details class="faq__item">
         <summary>how long until i see results?<span class="dot">.</span></summary>
-        <p class="faq__answer">most people feel the hydration boost the first time they use it<span class="dot">.</span> visible improvement in tone and texture takes 2–4 weeks of consistent use<span class="dot">.</span></p>
+        <p class="faq__answer">most people feel the hydration boost the first time they use it<span class="dot">.</span> give tone and texture a few weeks of consistency<span class="dot">.</span></p>
       </details>
       <details class="faq__item">
         <summary>is the bottle recyclable?<span class="dot">.</span></summary>
-        <p class="faq__answer">yes<span class="dot">.</span> the bottle is pcr glass (recycled in your curbside bin)<span class="dot">.</span> the dropper is plastic — pull it out before recycling and drop it at a #5 recycle point<span class="dot">.</span> we ship in 100% recycled paper, no plastic mailers<span class="dot">.</span></p>
+        <p class="faq__answer">packaging components are being finalized<span class="dot">.</span> when we lock them, we'll publish exactly what each piece is made of and how to recycle it<span class="dot">.</span> receipts there too<span class="dot">.</span></p>
       </details>
       <details class="faq__item">
         <summary>what happens if it doesn't work?<span class="dot">.</span></summary>
@@ -585,13 +591,13 @@
   <div class="container">
     <div class="metric__inner">
       <span class="statement statement--inverse">the routine</span>
-      <p class="metric__number" style="font-size: clamp(3.5rem, 12vw, 8rem);">$148<span class="dot">.</span></p>
-      <p class="metric__caption">the four-step routine<span class="dot">.</span> cleanser, toner, serum, moisturizer — $20 less than buying separately<span class="dot">.</span></p>
+      <p class="metric__number" style="font-size: clamp(3.5rem, 12vw, 8rem);">$136<span class="dot">.</span></p>
+      <p class="metric__caption">the four-step routine<span class="dot">.</span> cleanser, essence, serum, cream — $20 less than buying separately<span class="dot">.</span></p>
       <div style="margin-top: var(--ily-space-10); display:flex; gap: var(--ily-space-4); justify-content: center; flex-wrap: wrap;">
         <a href="v5-products.html" class="cta-pill">add the routine
           <svg class="cta-pill__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="v5-products.html" class="ghost-link ghost-link--inverse">see all six</a>
+        <a href="v5-products.html" class="ghost-link ghost-link--inverse">see all four</a>
       </div>
     </div>
   </div>
@@ -612,8 +618,8 @@
       <div class="footer__col">
         <h4>shop</h4>
         <ul>
-          <li><a href="#hero">hydration serum</a></li>
-          <li><a href="v5-products.html">all six</a></li>
+          <li><a href="#hero">the serum</a></li>
+          <li><a href="v5-products.html">all four</a></li>
           <li><a href="#refuse">what we refuse</a></li>
         </ul>
       </div>
@@ -649,7 +655,7 @@
 
 <!-- sticky add-to-cart -->
 <div class="sticky-buy" id="sticky-buy" aria-hidden="true">
-  <div class="sticky-buy__name">hydration serum<span class="dot">.</span></div>
+  <div class="sticky-buy__name">multi-molecular ha serum<span class="dot">.</span></div>
   <span class="sticky-buy__price">$48</span>
   <a href="#" class="cta-pill">add to cart</a>
 </div>

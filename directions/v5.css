@@ -692,3 +692,31 @@ body.menu-open { overflow: hidden; }
   .reviews-row { gap: var(--ily-space-4); }
   .footer__wordmark-bleed .wm { font-size: clamp(3rem, 26vw, 8rem); }
 }
+
+/* =============================================================================
+   SKIP LINK — keyboard-visible only
+   ============================================================================= */
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  padding: 0.9em 1.4em;
+  background: var(--ily-shadow-grey);
+  color: var(--ily-ghost-white);
+  font-weight: var(--ily-font-medium);
+  font-size: 0.9rem;
+  letter-spacing: var(--ily-tracking-wide);
+  border-radius: 0 0 8px 0;
+  transform: translateY(-110%);
+  transition: transform 160ms ease;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid var(--ily-frosted-blue);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .skip-link { transition: none; }
+}

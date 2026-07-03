@@ -4,13 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>the lineup · iloveyouth.</title>
-  <meta name="description" content="six products. one philosophy. ingredient-honest, hype-free, no fillers." />
+  <meta name="description" content="four products. one philosophy. ingredient-honest, hype-free, no fillers." />
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
   <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" />
   <link rel="stylesheet" href="v1.css" />
   <link rel="stylesheet" href="v5.css" />
 </head>
 <body class="on-light">
+<a class="skip-link" href="#main-content">skip to content</a>
 
 <!-- ===== header ===== -->
 <header class="nav nav--on-dark" id="ily-nav">
@@ -77,24 +78,25 @@
   <div class="mmenu__foot">
     <a href="#">account</a>
     <a href="#">contact</a>
-    <span>youth starts with you<span class="dot">.</span></span>
+    <span>Youth starts with you<span class="dot">.</span></span>
   </div>
 </aside>
 
-<!-- ===== hero — six products. one philosophy. (with constellation dots overlay) ===== -->
-<section class="hero-dark on-dark" style="min-height: 72svh; display:grid; align-items:end; padding-bottom: clamp(4rem, 10vh, 7rem);">
+<!-- ===== hero — four products. one philosophy. (with constellation dots overlay) ===== -->
+<section class="hero-dark on-dark" id="main-content" tabindex="-1" style="min-height: 72svh; display:grid; align-items:end; padding-bottom: clamp(4rem, 10vh, 7rem);">
   <div class="mesh-bg" aria-hidden="true"></div>
   <div class="mesh-bg__blob-3" aria-hidden="true"></div>
   <div class="mesh-bg__blob-4" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
 
   <!-- constellation dots over this hero too -->
+  <!-- TODO(pre-launch): every claim dot must map to a sourced receipt (formulation + policies pending; see DIRECTIONS.md). -->
   <div class="const" aria-label="constellation of verified claims">
-    <button class="const__dot" type="button"             style="--n:1;  --size:14px; --p:0.35; top:18%; left:10%; --dx:6px;   --dy:-8px;" data-claim="five hero ingredients" aria-label="five hero ingredients"></button>
+    <button class="const__dot" type="button"             style="--n:1;  --size:14px; --p:0.35; top:18%; left:10%; --dx:6px;   --dy:-8px;" data-claim="named. not blended." aria-label="named not blended"></button>
     <button class="const__dot" type="button"             style="--n:2;  --size:18px; --p:0.45; top:30%; left:24%; --dx:-8px;  --dy:4px;"  data-claim="one philosophy" aria-label="one philosophy"></button>
     <button class="const__dot const__dot--silk" type="button" style="--n:3;  --size:12px; --p:0.5;  top:14%; left:42%; --dx:4px;   --dy:6px;"  data-claim="cruelty-free" aria-label="cruelty free"></button>
-    <button class="const__dot" type="button"             style="--n:4;  --size:10px; --p:0.6;  top:38%; left:60%; --dx:-6px;  --dy:-4px;" data-claim="60-day returns" aria-label="sixty day returns"></button>
-    <button class="const__dot" type="button"             style="--n:5;  --size:16px; --p:0.4;  top:18%; left:74%; --dx:8px;   --dy:8px;"  data-claim="0% drying alcohol" aria-label="zero percent drying alcohol"></button>
+    <button class="const__dot" type="button"             style="--n:4;  --size:10px; --p:0.6;  top:38%; left:60%; --dx:-6px;  --dy:-4px;" data-claim="easy returns" aria-label="easy returns"></button>
+    <button class="const__dot" type="button"             style="--n:5;  --size:16px; --p:0.4;  top:18%; left:74%; --dx:8px;   --dy:8px;"  data-claim="no drying alcohol" aria-label="no drying alcohol"></button>
     <button class="const__dot" type="button"             style="--n:6;  --size:20px; --p:0.5;  top:34%; left:86%; --dx:-10px; --dy:-6px;" data-claim="no fillers" aria-label="no fillers"></button>
     <button class="const__dot const__dot--silk" type="button" style="--n:7;  --size:10px; --p:0.55; top:62%; left:40%; --dx:4px;   --dy:-6px;" data-claim="fragrance-free" aria-label="fragrance free"></button>
     <button class="const__dot" type="button"             style="--n:8;  --size:14px; --p:0.4;  top:74%; left:78%; --dx:-6px;  --dy:6px;"  data-claim="all skin types" aria-label="all skin types"></button>
@@ -102,7 +104,7 @@
 
   <div class="hero-dark__content" style="padding-top: clamp(8rem, 16vh, 11rem); position: relative; z-index: 3;">
     <span class="statement statement--inverse reveal reveal--d1">the lineup</span>
-    <h1 class="hero-title reveal reveal--d2" style="font-size: clamp(3.5rem, 11vw, 9rem); max-width: 14ch; margin-bottom: var(--ily-space-8);">six products<span class="dot-pop">.</span> one philosophy<span class="dot-pop dot-pop--d2">.</span></h1>
+    <h1 class="hero-title reveal reveal--d2" style="font-size: clamp(3.5rem, 11vw, 9rem); max-width: 14ch; margin-bottom: var(--ily-space-8);">four products<span class="dot-pop">.</span> one philosophy<span class="dot-pop dot-pop--d2">.</span></h1>
     <p class="hero-sub reveal reveal--d5" style="max-width: 56ch;">the formula in every product is the same: ingredient-honest, hype-free, no fillers<span class="dot">.</span> what changes is the format and the place it sits in your routine<span class="dot">.</span></p>
   </div>
 </section>
@@ -115,9 +117,9 @@
       <div class="filter-bar__group">
         <button class="filter-pill filter-pill--active">all</button>
         <button class="filter-pill">cleanse</button>
+        <button class="filter-pill">prep</button>
         <button class="filter-pill">treat</button>
         <button class="filter-pill">moisturize</button>
-        <button class="filter-pill">target</button>
       </div>
       <span class="filter-bar__label" style="margin-left: auto;">skin type</span>
       <div class="filter-bar__group">
@@ -130,119 +132,73 @@
   </div>
 </section>
 
-<!-- ===== product grid (6 SKUs, more colorful backgrounds) ===== -->
+<!-- ===== product grid — the four, routine order ===== -->
 <section class="section-light" style="padding-top: var(--ily-space-12);">
   <div class="container">
     <div class="product-grid">
 
-      <!-- 01 — hydration serum -->
-      <a href="v5-product.html" class="product-card">
-        <div class="product-card__media product-visual product-visual--blue">
-          <span class="product-visual__label">01 · the serum</span>
-          <span class="badge badge--solid product-card__badge">the hero</span>
-          <div class="product-visual__bottle" aria-hidden="true"></div>
-          <span class="product-card__add">add — $48</span>
-        </div>
-        <span class="product-card__index">01</span>
-        <h3 class="product-card__name">hydration serum<span class="dot">.</span></h3>
-        <p class="product-card__hero">5% niacinamide<span class="dot">.</span> ceramides<span class="dot">.</span> hyaluronic acid<span class="dot">.</span></p>
-        <div class="product-card__row">
-          <span class="product-card__price">$48</span>
-          <span class="product-card__rating">4.9 · 1,284 reviews</span>
-        </div>
-      </a>
-
-      <!-- 02 — gentle cleanser -->
+      <!-- 01 — oat milk cleanser · naming candidate: "milk run." (NAMING-AND-MARKETING-2026-07) -->
       <a href="v5-product.html" class="product-card">
         <div class="product-card__media product-visual product-visual--mist">
-          <span class="product-visual__label">02 · the cleanser</span>
+          <span class="product-visual__label">01 · the cleanser</span>
           <div class="product-visual__tube" aria-hidden="true"></div>
           <span class="product-card__add">add — $32</span>
         </div>
-        <span class="product-card__index">02</span>
-        <h3 class="product-card__name">gentle cleanser<span class="dot">.</span></h3>
-        <p class="product-card__hero">non-stripping<span class="dot">.</span> ceramide-rich<span class="dot">.</span> won't disrupt the barrier you just rebuilt<span class="dot">.</span></p>
+        <span class="product-card__index">01</span>
+        <h3 class="product-card__name">oat milk cleanser<span class="dot">.</span></h3>
+        <p class="product-card__hero">oat kernel oil<span class="dot">.</span> amino-acid cleansers<span class="dot">.</span> low foam, nothing stripped<span class="dot">.</span></p>
         <div class="product-card__row">
           <span class="product-card__price">$32</span>
           <span class="product-card__rating">4.8 · 612 reviews</span>
         </div>
       </a>
 
-      <!-- 03 — hydrating toner -->
+      <!-- 02 — hydrating essence · naming candidate: "second nature." ("biohydrate" is the supplier's mark — never retail-facing) -->
       <a href="v5-product.html" class="product-card">
         <div class="product-card__media product-visual product-visual--mixed">
-          <span class="product-visual__label">03 · the toner</span>
-          <div class="product-visual__jar" aria-hidden="true"></div>
+          <span class="product-visual__label">02 · the essence</span>
+          <div class="product-visual__bottle" aria-hidden="true"></div>
           <span class="product-card__add">add — $34</span>
         </div>
-        <span class="product-card__index">03</span>
-        <h3 class="product-card__name">hydrating toner<span class="dot">.</span></h3>
-        <p class="product-card__hero">hyaluronic acid<span class="dot">.</span> no drying alcohols<span class="dot">.</span> the toner that doesn't feel like one<span class="dot">.</span></p>
+        <span class="product-card__index">02</span>
+        <h3 class="product-card__name">hydrating essence<span class="dot">.</span></h3>
+        <p class="product-card__hero">hyaluronic acid<span class="dot">.</span> amino-acid humectants<span class="dot">.</span> the watery first layer your serum builds on<span class="dot">.</span></p>
         <div class="product-card__row">
           <span class="product-card__price">$34</span>
           <span class="product-card__rating">4.8 · 489 reviews</span>
         </div>
       </a>
 
-      <!-- 04 — daily moisturizer -->
+      <!-- 03 — multi-molecular ha serum · naming candidate: "deep end." (no HA-weight counts in copy until Pravada documents them) -->
+      <a href="v5-product.html" class="product-card">
+        <div class="product-card__media product-visual product-visual--blue">
+          <span class="product-visual__label">03 · the serum</span>
+          <span class="badge badge--solid product-card__badge">the hero</span>
+          <div class="product-visual__bottle" aria-hidden="true"></div>
+          <span class="product-card__add">add — $48</span>
+        </div>
+        <span class="product-card__index">03</span>
+        <h3 class="product-card__name">multi-molecular ha serum<span class="dot">.</span></h3>
+        <p class="product-card__hero">hyaluronic acid at multiple weights<span class="dot">.</span> surface hold, deeper draw<span class="dot">.</span></p>
+        <div class="product-card__row">
+          <span class="product-card__price">$48</span>
+          <span class="product-card__rating">4.9 · 1,284 reviews</span>
+        </div>
+      </a>
+
+      <!-- 04 — peptide smoothing cream · naming candidate: "smooth talker." (hydration-led copy; peptides are the bonus, never the hero) -->
       <a href="v5-product.html" class="product-card">
         <div class="product-card__media product-visual product-visual--silk">
-          <span class="product-visual__label">04 · the moisturizer</span>
-          <div class="product-visual__tube" aria-hidden="true"></div>
+          <span class="product-visual__label">04 · the cream</span>
+          <div class="product-visual__jar" aria-hidden="true"></div>
           <span class="product-card__add">add — $42</span>
         </div>
         <span class="product-card__index">04</span>
-        <h3 class="product-card__name">daily moisturizer<span class="dot dot--silk">.</span></h3>
-        <p class="product-card__hero">ceramides<span class="dot dot--silk">.</span> panthenol<span class="dot dot--silk">.</span> squalane<span class="dot dot--silk">.</span> soft, never heavy<span class="dot dot--silk">.</span></p>
+        <h3 class="product-card__name">peptide smoothing cream<span class="dot dot--silk">.</span></h3>
+        <p class="product-card__hero">glycerin, ha, and panthenol do the hydrating<span class="dot dot--silk">.</span> peptides are the bonus<span class="dot dot--silk">.</span> soft, never heavy<span class="dot dot--silk">.</span></p>
         <div class="product-card__row">
           <span class="product-card__price">$42</span>
           <span class="product-card__rating">4.9 · 728 reviews</span>
-        </div>
-      </a>
-
-      <!-- 05 — spot patches -->
-      <a href="v5-product.html" class="product-card">
-        <div class="product-card__media product-visual product-visual--bloom">
-          <span class="product-visual__label">05 · spot patches</span>
-          <span class="badge badge--solid product-card__badge">new</span>
-          <div class="product-visual__patches" aria-hidden="true">
-            <div class="product-visual__patch"></div>
-            <div class="product-visual__patch"></div>
-            <div class="product-visual__patch"></div>
-            <div class="product-visual__patch"></div>
-            <div class="product-visual__patch"></div>
-            <div class="product-visual__patch"></div>
-            <div class="product-visual__patch"></div>
-            <div class="product-visual__patch"></div>
-          </div>
-          <span class="product-card__add">add — $18</span>
-        </div>
-        <span class="product-card__index">05</span>
-        <h3 class="product-card__name">spot patches<span class="dot">.</span></h3>
-        <p class="product-card__hero">hydrocolloid<span class="dot">.</span> tea tree<span class="dot">.</span> 24 patches<span class="dot">.</span> the quietest fix you'll ever wear<span class="dot">.</span></p>
-        <div class="product-card__row">
-          <span class="product-card__price">$18</span>
-          <span class="product-card__rating">4.9 · 421 reviews</span>
-        </div>
-      </a>
-
-      <!-- 06 — eye patches -->
-      <a href="v5-product.html" class="product-card">
-        <div class="product-card__media product-visual product-visual--silk">
-          <span class="product-visual__label">06 · eye patches</span>
-          <span class="badge badge--silk product-card__badge">new</span>
-          <div class="product-visual__patches product-visual__patches--eyes" aria-hidden="true">
-            <div class="product-visual__patch"></div>
-            <div class="product-visual__patch"></div>
-          </div>
-          <span class="product-card__add">add — $24</span>
-        </div>
-        <span class="product-card__index">06</span>
-        <h3 class="product-card__name">eye patches<span class="dot dot--silk">.</span></h3>
-        <p class="product-card__hero">caffeine + hyaluronic acid<span class="dot dot--silk">.</span> 30 pairs<span class="dot dot--silk">.</span> for the mornings that didn't include sleep<span class="dot dot--silk">.</span></p>
-        <div class="product-card__row">
-          <span class="product-card__price">$24</span>
-          <span class="product-card__rating">4.9 · 318 reviews</span>
         </div>
       </a>
 
@@ -255,8 +211,8 @@
   <div class="container">
     <div class="metric__inner">
       <span class="statement statement--inverse">the routine</span>
-      <p class="metric__number">$148<span class="dot">.</span></p>
-      <p class="metric__caption">the four-step routine<span class="dot">.</span> cleanser, toner, serum, moisturizer<span class="dot">.</span> $20 less than buying separately, never less effective<span class="dot">.</span></p>
+      <p class="metric__number">$136<span class="dot">.</span></p>
+      <p class="metric__caption">the four-step routine<span class="dot">.</span> cleanser, essence, serum, cream<span class="dot">.</span> $20 less than buying separately, never less effective<span class="dot">.</span></p>
       <div style="margin-top: var(--ily-space-10); display:flex; gap: var(--ily-space-4); justify-content: center; flex-wrap: wrap;">
         <a href="v5-product.html" class="cta-pill">add the routine
           <svg class="cta-pill__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -329,8 +285,8 @@
       <div class="footer__col">
         <h4>shop</h4>
         <ul>
-          <li><a href="v5-product.html">hydration serum</a></li>
-          <li><a href="v5-products.html">all six</a></li>
+          <li><a href="v5-product.html">the serum</a></li>
+          <li><a href="v5-products.html">all four</a></li>
           <li><a href="#refuse">what we refuse</a></li>
         </ul>
       </div>
