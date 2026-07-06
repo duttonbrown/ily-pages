@@ -26,32 +26,23 @@
   <style>
     /* PAGE LAYOUT ONLY — brand values come from tokens. */
     .page { max-width: var(--ily-max-width-lg); margin: 0 auto; padding: var(--ily-space-12) var(--ily-space-6) var(--ily-space-24); }
-    .stamp { font-size: var(--ily-text-sm); color: var(--ily-text-muted); margin-top: var(--ily-space-2); }
+    .page > .ily-logo { margin-bottom: var(--ily-space-8); }
+    .stamp { margin-top: var(--ily-space-2); }   /* size/color from shared .stamp */
     .toc { background: var(--ily-surface-mid); border: 1px solid var(--ily-border); border-radius: var(--ily-radius); padding: var(--ily-space-6) var(--ily-space-8); margin: var(--ily-space-10) 0 var(--ily-space-16); }
     .toc ol { margin: var(--ily-space-2) 0 0; padding-left: var(--ily-space-6); columns: 2; column-gap: var(--ily-space-10); }
     .toc li { margin-bottom: var(--ily-space-1); break-inside: avoid; }
     .sec { margin-top: var(--ily-space-20); }
     .sec > h2 { border-bottom: 1px solid var(--ily-border-strong); padding-bottom: var(--ily-space-3); }
-    .callout { border-left: 3px solid var(--ily-border-strong); background: var(--ily-surface-mid); border-radius: var(--ily-radius); padding: var(--ily-space-4) var(--ily-space-6); margin: var(--ily-space-6) 0; }
-    .callout.blue { border-left-color: var(--ily-frosted-blue); background: var(--ily-accent-soft); }
-    .callout.warm { border-left-color: var(--ily-almond-silk); background: var(--ily-support-soft); }
-    .callout p:last-child { margin-bottom: 0; }
-    .chip { display: inline-block; font-size: var(--ily-text-xs); font-weight: var(--ily-font-medium); letter-spacing: var(--ily-tracking-wide); border: 1px solid var(--ily-border-strong); border-radius: var(--ily-radius-full); padding: 0 var(--ily-space-3); white-space: nowrap; }
+    /* callout + chip base come from the shared layer; only the owner tones are page-local */
     .chip.z { background: var(--ily-accent-soft); }
     .chip.t { background: var(--ily-support-soft); }
     .chip.zt { background: var(--ily-surface-mid); }
-    .table-scroll { overflow-x: auto; margin: var(--ily-space-6) 0; }
-    .table-scroll table { min-width: 640px; }
-    .num { text-align: right; white-space: nowrap; }
-    .fine { font-size: var(--ily-text-sm); color: var(--ily-text-muted); }
-    .kv { display: grid; grid-template-columns: minmax(160px, 220px) 1fr; gap: var(--ily-space-2) var(--ily-space-6); margin: var(--ily-space-4) 0; }
-    .kv dt { font-weight: var(--ily-font-medium); }
-    .kv dd { margin: 0; }
+    .table-scroll table { min-width: 640px; }   /* scroll container itself is shared */
     .sku { border: 1px solid var(--ily-border); border-radius: var(--ily-radius); padding: var(--ily-space-6) var(--ily-space-8); margin: var(--ily-space-6) 0; }
     .sku h4 { margin-top: 0; }
-    .poem { font-size: var(--ily-text-2xl); font-weight: var(--ily-font-light); line-height: var(--ily-leading-snug); margin: var(--ily-space-8) 0; }
+    .poem { font-size: var(--ily-text-3xl); font-weight: var(--ily-font-light); line-height: var(--ily-leading-snug); margin: var(--ily-space-8) 0; }   /* 30px — Light's legibility floor */
     .backtotop { display: block; margin-top: var(--ily-space-10); font-size: var(--ily-text-sm); }
-    @media (max-width: 640px) { .toc ol { columns: 1; } .kv { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .toc ol { columns: 1; } }
   </style>
 </head>
 <body>

@@ -38,6 +38,9 @@
   --ily-accent-soft:   #D9F2FC;            /* lighter tint for badges/backgrounds */
   --ily-support:       var(--ily-almond-silk);
   --ily-support-soft:  #FFE8DD;            /* lighter peach tint */
+  --ily-support-deep:  #F5B89E;            /* deeper silk — graphic ink (period dots,
+                                              strikes) from v5. SURFACES/GRAPHICS ONLY —
+                                              fails contrast as text on light surfaces. */
 
   --ily-surface:       var(--ily-ghost-white);
   --ily-surface-mid:   #E4E8F1;            /* slightly deeper surface */
@@ -100,6 +103,11 @@
      ------------------------------------------------------------------- */
   --ily-font-primary: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
+  /* Functional monospace for code/kbd/samp in internal documents. NOT a brand
+     voice — never use for display or marketing copy. Exists so <code> falls
+     back to a styled system mono instead of raw browser Courier. */
+  --ily-font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace;
+
   /* Scale */
   --ily-text-xs:   0.75rem;    /* 12px */
   --ily-text-sm:   0.875rem;   /* 14px */
@@ -159,12 +167,19 @@
   --ily-space-32: 8rem;     /* 128px */
 
   /* -------------------------------------------------------------------
-     BORDERS & RADII — TBD
-     Lock the radius philosophy once identity is set (soft/round for
-     skincare-friendly feel vs. minimal for premium feel).
+     BORDERS & RADII — locked 2026-07-03 from the ratified v5 direction
+     (defined in direction-v1.css :root, which v5 layers on). Philosophy:
+     soft / skincare-friendly — matches the round period dot of the
+     wordmark.
      ------------------------------------------------------------------- */
-  /* --ily-radius:      ; */
-  --ily-radius-full:    9999px;
+  --ily-radius-card:   6px;      /* cards, callouts, panels, code chips */
+  --ily-radius-input:  8px;      /* text inputs, selects */
+  --ily-radius-button: 10px;     /* buttons */
+  --ily-radius-frame:  14px;     /* media frames, large containers */
+  --ily-radius-stage:  24px;     /* hero / stage surfaces */
+  --ily-radius:        var(--ily-radius-card);   /* generic default */
+  --ily-radius-pill:   9999px;   /* pills/chips (v5 vocabulary) */
+  --ily-radius-full:   9999px;   /* alias — same as pill */
 
   /* -------------------------------------------------------------------
      SHADOWS
@@ -175,17 +190,25 @@
   --ily-shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.12);
 
   /* -------------------------------------------------------------------
-     TRANSITIONS
+     TRANSITIONS & MOTION
+     Eases promoted from the ratified v5 direction (direction-v1.css).
      ------------------------------------------------------------------- */
   --ily-transition-fast:   150ms ease;
   --ily-transition-normal: 250ms ease;
   --ily-transition-slow:   400ms ease;
+  --ily-ease:      cubic-bezier(0.22, 1, 0.36, 1);
+  --ily-ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* -------------------------------------------------------------------
      LAYOUT
+     --ily-gutter promoted from the ratified v5 direction. --ily-measure
+     caps prose line length (base.css applies it to p/li/dd) — full-bleed
+     text at 1024px runs ~120 characters/line and reads as sprawl.
      ------------------------------------------------------------------- */
   --ily-max-width:    1200px;
   --ily-max-width-sm: 640px;
   --ily-max-width-md: 768px;
   --ily-max-width-lg: 1024px;
+  --ily-gutter:       clamp(1.5rem, 4vw, 4rem);
+  --ily-measure:      70ch;
 }

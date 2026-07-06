@@ -2,9 +2,14 @@
    ILOVEYOUTH — Component Classes
    Reusable UI components built on tokens.css.
 
-   STATUS: In progress. LINKS and LOGO ON BACKGROUND are defined;
-   buttons/cards/inputs/typography/layout are still TBD. Populate remaining
-   sections as patterns are locked.
+   STATUS: In progress. LINKS, LOGO ON BACKGROUND, TYPOGRAPHY HELPERS,
+   CARDS, CALLOUTS, and CHIPS are defined; buttons/inputs/layout are still
+   TBD. Populate remaining sections as patterns are locked.
+
+   Naming: canonical class names carry the .ily- prefix. The unprefixed
+   aliases (.eyebrow, .lede, .fine, .meta, .callout, .chip, .card) exist
+   because the document pages already use them — both resolve to the same
+   rules. New markup should prefer the .ily- form.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -13,9 +18,94 @@
    -------------------------------------------------------------------------- */
 
 /* --------------------------------------------------------------------------
-   CARDS — TBD
-   Product cards, content cards.
+   CARDS — bordered content panel on the page surface. Cards NEVER use pure
+   white (#FFF is reserved for the inverse logo mark — brand rule): on the
+   Ghost White page they differentiate via border + shadow, or use
+   --ily-surface-mid for a filled panel.
    -------------------------------------------------------------------------- */
+.ily-card, .card {
+  background: var(--ily-surface);
+  border: 1px solid var(--ily-border);
+  border-radius: var(--ily-radius);
+  padding: var(--ily-space-6) var(--ily-space-8);
+  box-shadow: var(--ily-shadow-sm);
+}
+.ily-card--filled { background: var(--ily-surface-mid); box-shadow: none; }
+
+/* --------------------------------------------------------------------------
+   CALLOUTS — accented aside blocks for documents (promoted from
+   launch-roadmap). Neutral by default; --accent (Frosted Blue) for
+   decisions/rules, --support (Almond Silk) for warnings/warmth. The accent
+   lives in the border + tinted surface, never in the text color.
+   -------------------------------------------------------------------------- */
+.ily-callout, .callout {
+  border-left: 3px solid var(--ily-border-strong);
+  background: var(--ily-surface-mid);
+  border-radius: var(--ily-radius);
+  padding: var(--ily-space-4) var(--ily-space-6);
+  margin: var(--ily-space-6) 0;
+}
+.ily-callout > :last-child, .callout > :last-child { margin-bottom: 0; }
+.ily-callout--accent, .callout.blue {
+  border-left-color: var(--ily-accent);
+  background: var(--ily-accent-soft);
+}
+.ily-callout--support, .callout.warm {
+  border-left-color: var(--ily-support);
+  background: var(--ily-support-soft);
+}
+
+/* --------------------------------------------------------------------------
+   CHIPS — small pill badges (status, owner, category). Text stays Shadow
+   Grey on tinted surfaces; tone is carried by the background only.
+   -------------------------------------------------------------------------- */
+.ily-chip, .chip {
+  display: inline-block;
+  font-size: var(--ily-text-xs);
+  font-weight: var(--ily-font-medium);
+  letter-spacing: var(--ily-tracking-wide);
+  border: 1px solid var(--ily-border-strong);
+  border-radius: var(--ily-radius-pill);
+  padding: 0 var(--ily-space-3);
+  white-space: nowrap;
+  color: var(--ily-text);
+}
+.ily-chip--accent  { background: var(--ily-accent-soft); }
+.ily-chip--support { background: var(--ily-support-soft); }
+.ily-chip--neutral { background: var(--ily-surface-mid); }
+
+/* --------------------------------------------------------------------------
+   DATA HELPERS — promoted from launch-roadmap (the document pages' de-facto
+   patterns for dense operational content).
+   -------------------------------------------------------------------------- */
+/* Horizontal scroll container for wide tables. Give the inner table a
+   page-local min-width if its content needs one. */
+.ily-table-scroll, .table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: var(--ily-space-6) 0;
+}
+.ily-table-scroll > table, .table-scroll > table { margin: 0; }
+
+/* Numeric table cells: right-aligned, lining figures. */
+.ily-num, .num {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Key-value definition grid (dt label / dd value). */
+.ily-kv, .kv {
+  display: grid;
+  grid-template-columns: minmax(160px, 220px) 1fr;
+  gap: var(--ily-space-2) var(--ily-space-6);
+  margin: var(--ily-space-4) 0;
+}
+.ily-kv dt, .kv dt { font-weight: var(--ily-font-medium); }
+.ily-kv dd, .kv dd { margin: 0; }
+@media (max-width: 640px) {
+  .ily-kv, .kv { grid-template-columns: 1fr; }
+}
 
 /* --------------------------------------------------------------------------
    INPUTS & FORMS — TBD
@@ -115,9 +205,28 @@
 .ily-logo--on-dark  { /* expects a …-white-… file on a dark surface  */ }
 
 /* --------------------------------------------------------------------------
-   TYPOGRAPHY HELPERS — TBD
-   Heading utilities, body variants, muted text.
+   TYPOGRAPHY HELPERS — the document voice (promoted from hydration-review /
+   launch-roadmap 2026-07-03). Standard page header stack:
+     .eyebrow → h1 → .lede → .meta/.stamp
    -------------------------------------------------------------------------- */
+.ily-eyebrow, .eyebrow {
+  font-size: var(--ily-text-xs);
+  font-weight: var(--ily-font-medium);
+  letter-spacing: var(--ily-tracking-widest);
+  color: var(--ily-text-muted);
+  margin: 0 0 var(--ily-space-4);
+}
+.ily-lede, .lede {
+  font-size: var(--ily-text-lg);
+  color: var(--ily-text-muted);
+  max-width: 60ch;
+  margin: 0 0 var(--ily-space-5);
+}
+/* Small print + meta lines. Weight stays 400 (base guard) — never lighter. */
+.ily-fine, .fine, .ily-meta, .meta, .stamp {
+  font-size: var(--ily-text-sm);
+  color: var(--ily-text-muted);
+}
 
 /* --------------------------------------------------------------------------
    LAYOUT HELPERS — TBD
