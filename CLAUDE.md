@@ -1,5 +1,11 @@
 # ily-pages — Claude Instructions
 
+> **`ily-pages` — one domain in Thomas's `~/repos` workspace.**
+> **Owns:** iloveyouth public GitHub Pages previews — brand/logo previews, design directions, concept site.
+> Master cross-repo rules & area map: `~/repos/CLAUDE.md` (source: `systems/repos-CLAUDE.md`). Keep out-of-scope work in its home repo.
+> **Sync:** `syncpull` at session start · `syncpush` after edits (`dbpush`/`ilypush` brand-scoped, `dbs` status) — see `~/repos/SYNC-GUIDE.md`.
+> **Cowork:** Claude edits files (they sync to disk) but does **NOT** run git — the mount corrupts `.git/index`. Thomas runs the sync commands; read-only git inspection is fine.
+
 Public GitHub Pages previews for iloveyouth. Push to `main` → live at
 `https://duttonbrown.github.io/ily-pages/...` in ~60s (no build step).
 
