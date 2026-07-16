@@ -30,6 +30,6 @@ The whole site is published at GitHub Pages — share the root URL or any subfol
 
 ## Asset conventions
 
-Every page uses the auto-theming `<picture>` + `prefers-color-scheme` pattern for the wordmark and brandmark, and the matching `<link rel="icon" media="...">` pattern for the favicon. Light theme renders the dark ink, dark theme renders the white ink. Do not break this pattern in new pages.
+The ily-pages surface is **always Ghost White** — it never follows the OS theme. Every page therefore uses the **dark** wordmark/brandmark ink, chosen explicitly (`.ily-logo .ily-logo--on-light`), and ships the dark favicon only. **Never** use the `<picture>` + `prefers-color-scheme` auto-swap here — it serves the white mark to OS-dark visitors on a light page and the logo vanishes (real bug, June 2026). An earlier version of this section mandated the auto-swap pattern; corrected 2026-07-16.
 
-Full theming spec lives in the private `ily-brand/brand-identity.md` → "Responsive theming — auto-swap by user preference".
+Full logo-on-background rules: `CLAUDE.md` → "Logo on a background" and the private `ily-brand/brand-identity.md` → Logo.

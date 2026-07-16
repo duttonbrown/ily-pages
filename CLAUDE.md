@@ -17,9 +17,9 @@ that is the whole point. Do not defeat it (see "Locked rules" below).
 
 | Order | File | Owns | Source of truth |
 |---|---|---|---|
-| 1 | `brand/tokens.css` | Colors, fonts, spacing, sizes (CSS variables) | `ily-brand/tokens.css` |
-| 2 | `brand/base.css` | `body`, `h1`–`h6`, `p`, `a`, table/caption defaults (legibility) | `ily-brand/base.css` |
-| 3 | `brand/components.css` | Reusable classes: `.ily-link` (+ future buttons/cards) | `ily-brand/components.css` |
+| 1 | `brand/tokens.css` | Colors, fonts (incl. `--ily-font-mono`), spacing, sizes, radii (locked from v5 2026-07-03), measure, motion (CSS variables) | `ily-brand/tokens.css` |
+| 2 | `brand/base.css` | `body`, heading **type scale** (h1–h2 Light ≥30px, h3 Medium 20px, h4–h6 Medium), `p`/`li`/`dd` measure cap, `a`, full table styling (collapse, left-aligned th, padding, row rules, captions), `code`/`pre`, `hr` (legibility) | `ily-brand/base.css` |
+| 3 | `brand/components.css` | `.ily-link`, `.ily-logo`, document components: `.eyebrow`, `.lede`, `.fine`/`.meta`/`.stamp`, `.callout` (+`.blue`/`.warm`), `.chip`, `.card`, `.kv`, `.table-scroll`, `.num` | `ily-brand/components.css` |
 
 All three are **downstream mirrors** of the private `ily-brand` repo. Canonical
 edits happen in `ily-brand` first, then copy the file here, then push both.
@@ -44,9 +44,12 @@ edits happen in `ily-brand` first, then copy the file here, then push both.
 ## Legibility standard (why body is weight 400, not 300)
 
 - **Body / UI / table / caption text = weight 400** (`--ily-font-regular`).
-  `base.css` sets this. Light (300) is for **large display headings only**
-  (h1–h3, which base also sets). Body at 300 reads hazy / must-focus, badly so
-  on non-Retina and fractional-DPI displays (e.g. Windows at 125%).
+  `base.css` sets this. Light (300) is for **large display headings only** —
+  h1–h2, which base sizes at 30px+ so Light can never render below its
+  legibility floor. **h3 is Medium 500 at 20px** (too small for Light; changed
+  2026-07-16 — before that, unsized h3s rendered ~18.7px in Light). Body at
+  300 reads hazy / must-focus, badly so on non-Retina and fractional-DPI
+  displays (e.g. Windows at 125%).
 - **No `-webkit-font-smoothing: antialiased` on body.** It thins strokes and,
   with light/regular weight, compounds the haze. Let the OS render at full
   weight. `base.css` omits it deliberately — don't add it back.
@@ -109,9 +112,11 @@ Then commit + push both repos (independent `main` branches). The logo preview
 
 ## Asset / theming conventions
 
-Keep the auto-theming `<picture>` + `prefers-color-scheme` pattern for
-wordmark/brandmark and the `<link rel="icon" media="...">` favicon pattern. See
-README.md and the private `ily-brand/brand-identity.md`.
+Logo ink and favicon rules live in "Logo on a background" above — explicit
+dark ink, dark-only favicon, **never** `<picture>` + `prefers-color-scheme`
+auto-swap on this always-Ghost-White surface. (An earlier version of this
+section mandated the auto-swap pattern; that contradicted the June 2026
+logo-ghost fix and was corrected 2026-07-16.)
 
 ## Scope note
 

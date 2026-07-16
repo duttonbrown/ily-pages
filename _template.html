@@ -17,7 +17,8 @@
     3. ALWAYS use var(--ily-*) for brand values. Never hardcode hex (#2A2220)
        or raw font-weights (300/400) — literals can't track token changes.
     4. Body text is weight 400 (inherited from base). Light (300) is for
-       large display headings only — and base already sets that on h1-h3.
+       large display headings only — base sets it on h1-h2 (sized 30px+).
+       h3 is Medium 500 at 20px; tables/captions/code are styled by base too.
     5. LOGO INK: this surface is always Ghost White (light). Use the DARK
        wordmark file with class "ily-logo ily-logo--on-light". Do NOT use a
        <picture> + prefers-color-scheme swap here — auto-swap is only for
