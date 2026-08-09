@@ -33,3 +33,13 @@ The whole site is published at GitHub Pages — share the root URL or any subfol
 The ily-pages surface is **always Ghost White** — it never follows the OS theme. Every page therefore uses the **dark** wordmark/brandmark ink, chosen explicitly (`.ily-logo .ily-logo--on-light`), and ships the dark favicon only. **Never** use the `<picture>` + `prefers-color-scheme` auto-swap here — it serves the white mark to OS-dark visitors on a light page and the logo vanishes (real bug, June 2026). An earlier version of this section mandated the auto-swap pattern; corrected 2026-07-16.
 
 Full logo-on-background rules: `CLAUDE.md` → "Logo on a background" and the private `ily-brand/brand-identity.md` → Logo.
+
+## Known issues
+
+> **Known bug, deferred:** `directions/v2*.html` use the white wordmark as the
+> `<picture>` *default* (`src="assets/ily-wordmark-white.svg"`), so the mark is
+> faint/invisible on their light surface in *both* themes — a worse version of
+> the logo-on-background bug fixed elsewhere. They use a separate `assets/` logo
+> path, not the shared `brand/` layer, so they were left untouched per the
+> CLAUDE.md scope note. Fix them if/when these explorations are revived or
+> migrated.
