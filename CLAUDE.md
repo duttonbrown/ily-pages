@@ -51,3 +51,15 @@ cp ily-brand/{tokens,base,components}.css ily-pages/brand/
 Logo preview (`brand/index.html`) and logos sync separately — see [README.md](./README.md).
 
 Scope note: `directions/` (v1–v5) and `brand/weight-preview/` are self-contained explorations that predate the shared layer — leave them unless explicitly asked to migrate them. Known deferred bug in `directions/v2*.html`: README.md → "Known issues".
+
+## Show Your Work
+
+**Show Thomas whatever you make, in the same turn, without being asked.** A file path is not a deliverable — if he has to ask "how do I look at this?", it wasn't delivered.
+
+- Image / screenshot / chart / render → read it back so it renders inline
+- Video / audio / several files → build a small local `review.html` that plays them all, then `Start-Process` it
+- HTML page / dashboard / prototype → open it in the browser; publish an Artifact if it should be shareable
+- Report / analysis → lead with the findings in the response, don't just link the file
+- Data / query result → show the actual numbers, formatted
+
+Then open it yourself and confirm it renders. Full rule: `~/repos/CLAUDE.md` → Show Your Work Rule.
