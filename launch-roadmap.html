@@ -117,7 +117,7 @@
           <tr><td><strong>wed 26</strong></td><td><strong>Send the trademark brief to 2–3 Class-3 attorneys.</strong> Top of the critical path — a $1.5–3K item holding $46–69K in deposits. Decide first whether to bundle the seven names or clear ILOVEYOUTH alone. Zach: email Torres Chen for the UA re-quote and <strong>verify UA's banking by phone on the same call.</strong></td><td><span class="chip zt">Z+T</span></td></tr>
           <tr><td><strong>thu 27</strong></td><td><strong>Call Pravada if there is no reply</strong> — two days, as agreed. That escalation was pre-committed in July and never happened, which is most of why seven weeks were lost. Zach: confirm the aesthetic brief to UA in writing (frosted · gradient · white lids · embossed brand mark · white lettering).</td><td><span class="chip z">Z</span></td></tr>
           <tr><td><strong>thu–sat</strong></td><td><strong>Coming-soon page live on iloveyouth.co with email capture.</strong> Needs no gate to clear, and the content runway is the one thing a later date genuinely buys back.</td><td><span class="chip t">T</span></td></tr>
-          <tr><td><strong>fri 28</strong></td><td>Pin the weekly 30-min sync + the gate-status cadence. Move ILY correspondence to info@iloveyouth and tell both suppliers. Zach: <strong>delete the invented reviews</strong> from <code>direction-v5.liquid</code> and swap the homepage v1 → v5 in the theme editor.</td><td><span class="chip zt">Z+T</span></td></tr>
+          <tr><td><strong>fri 28</strong></td><td>Pin the weekly 30-min sync + the gate-status cadence. Move ILY correspondence to info@iloveyouth and tell both suppliers. Zach: swap the homepage v1 → v5 in the theme editor (never hand-edit index.json).</td><td><span class="chip zt">Z+T</span></td></tr>
         </tbody>
       </table></div>
 
@@ -456,7 +456,8 @@
 
       <div class="callout blue">
         <p><strong>This week, regardless of everything else: a coming-soon page with email capture goes live</strong> <span class="chip t">T · thu–sat</span>. It does not need to be the v5 build — it needs to look serious and collect addresses. Content and list-building are the one workstream no supplier, attorney or freight schedule can block, and the later launch date only pays for itself if the runway actually gets used. Seven weeks of it are already spent.</p>
-        <p><strong>Also this week</strong> <span class="chip z">Z · fri 28</span>: delete the invented reviews from <code>direction-v5.liquid</code> and swap the homepage v1 → v5. Everything else — PDP, PLP, Klaviyo flows, reviews app, subscriptions, commerce plumbing — is the build sprint and is <em>not</em> the constraint on the launch date.</p>
+        <p><strong>Also this week</strong> <span class="chip z">Z · fri 28</span>: swap the homepage v1 → v5. Everything else — PDP, PLP, Klaviyo flows, reviews app, subscriptions, commerce plumbing — is the build sprint and is <em>not</em> the constraint on the launch date.</p>
+        <p class="fine"><strong>Placeholder ratings stay for now</strong> (deferred by Thomas, 2026-08-24). They are not public today: the live homepage is still <code>direction-v1</code>, and Shopify's password page is a separate template, so nothing renders <code>4.9 · 1,284 · 489/612/728</code> — and the v5 swap does not change that while the store stays password-protected. <strong>The trigger is the password coming off:</strong> real review-panel quotes replace them by ~Mar 12, 2027, before anything is publicly reachable.</p>
       </div>
 
       <h3>8.1 what exists today</h3>
@@ -473,7 +474,7 @@
         <li>Port v5 PDP as a proper section: title format "deep end. — multi-weight hyaluronic acid serum"; the receipts block (every claim expandable to its source — the v4 citation UI); the "what we changed." block per SKU (serum: the removal story; cream: the squalane swap).</li>
         <li>Port v5 PLP as the statement 01 page: manifesto + shop; nav is "statements"; bundle = <strong>"the full statement."</strong>; waitlist countdown pre-launch.</li>
         <li>Klaviyo: swap native capture → "the brief" list; flows: welcome, abandoned cart, post-purchase (upgrade serum buyers to the routine; tease statement 02), back-in-stock.</li>
-        <li>Reviews app wired to the professional-panel program (§9) — <strong>delete every mock rating/review in the prototype (4.9 · 1,284 etc.). Never ship invented reviews.</strong></li>
+        <li>Reviews app wired to the professional-panel program (§9) — real panel quotes <strong>replace</strong> every placeholder rating in <code>direction-v5.liquid</code> (4.9 · 1,284 · 489/612/728). Deferred 2026-08-24 while the store is private; <strong>must be done before the password comes off.</strong> <span class="chip z">Z · mar 12, 2027</span></li>
         <li>Subscriptions: 60-day cadence, copy "keep your word." — the retention layer the year-one math leans on.</li>
         <li>Commerce plumbing: shipping rates, taxes, payment methods, refund path, analytics (GA4 + Meta pixel even if unused for ads), Organization + Product schema.</li>
         <li>End-to-end test orders + refunds on a staff account; feature freeze Jan 8 (Dec 1 if stretch).</li>
