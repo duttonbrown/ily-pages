@@ -106,14 +106,16 @@ table, th, td, figcaption, caption, .meta, dd {
 a {
   color: var(--ily-text);
   text-decoration: none;
-  border-bottom: 1px solid var(--ily-border-strong);
-  transition: border-color var(--ily-transition-fast);
+  border-bottom: 1px solid var(--ily-accent-ink);   /* 5.2:1 — the line is the affordance, so it must be seen.
+                                                       Frosted Blue (1.2:1) and border-strong (1.45:1) were invisible. */
+  transition: border-color var(--ily-transition-fast), border-width var(--ily-transition-fast);
 }
 a:hover {
   color: var(--ily-text);                 /* stays dark — readable */
   border-bottom-width: 2px;
-  border-bottom-color: var(--ily-accent-hover);   /* accent only in the underline */
+  border-bottom-color: var(--ily-accent-ink);
 }
+a:focus-visible { outline: 2px solid var(--ily-focus-ring); outline-offset: 2px; }
 
 /* -------------------------------------------------------------------
    TABLES — data tables look designed by default. Without these, a bare

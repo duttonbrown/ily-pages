@@ -33,8 +33,14 @@
      palette swaps remain centralized.
      ------------------------------------------------------------------- */
   --ily-primary:       var(--ily-shadow-grey);
-  --ily-accent:        var(--ily-frosted-blue);
-  --ily-accent-hover:  #7DD3F0;            /* darker cyan for hover */
+  --ily-accent:        var(--ily-frosted-blue);   /* a FILL: hero stage, product grounds, the dark-ground CTA.
+                                                     1.2:1 on Ghost White, so never a line or a light-ground CTA. */
+  --ily-accent-hover:  #7DD3F0;            /* darker cyan for hover FILLS only (1.5:1 on Ghost White) */
+  --ily-accent-ink:    #1B6F86;            /* the working blue on light grounds — a deep step of Frosted Blue's
+                                              hue: 5.2:1 on Ghost White, 5.7:1 with white text on it. Link
+                                              underlines, the active tab, focus rings, selected chips; an
+                                              optional light-ground CTA fill. Never on Shadow Grey (2.7:1).
+                                              Decided 2026-09-24 (outside review). */
   --ily-accent-soft:   #D9F2FC;            /* lighter tint for badges/backgrounds */
   --ily-support:       var(--ily-almond-silk);
   --ily-support-soft:  #FFE8DD;            /* lighter peach tint */
@@ -63,8 +69,13 @@
   --ily-text-muted-inverse: var(--ily-grey-400);  /* #A89B92 */
   --ily-text-light-inverse: var(--ily-grey-300);  /* #C8BDB5 */
 
-  --ily-border:        #E5E7EE;            /* cool light border */
-  --ily-border-strong: #C8CCD6;
+  --ily-border:        #E5E7EE;            /* cool light border (decorative) */
+  --ily-border-strong: #C8CCD6;            /* stronger decorative rule, chip outline. 1.45:1: not a control boundary */
+  --ily-input-border:  var(--ily-grey-500); /* form fields at rest: #8A7A71, 3.7:1 on Ghost White. A field's
+                                               border is all that marks it, so it clears the 3:1 floor.
+                                               Focus: 2px --ily-focus-ring outline. Decided 2026-09-24. */
+  --ily-focus-ring:    var(--ily-accent-ink); /* keyboard focus on light grounds, 2px solid + 2px offset.
+                                                 On Shadow Grey use --ily-ghost-white. Decided 2026-09-24. */
 
   /* -------------------------------------------------------------------
      NEUTRAL RAMP — Warm Grey
@@ -172,14 +183,21 @@
      soft / skincare-friendly — matches the round period dot of the
      wordmark.
      ------------------------------------------------------------------- */
-  --ily-radius-card:   6px;      /* cards, callouts, panels, code chips */
+  /* Round 2 (2026-09-24): four radii that nest (inner = outer − padding).
+     Cards 6→8, frames 14→16, buttons 10px → pill. */
+  --ily-radius-card:   8px;      /* cards, callouts, panels, code chips */
   --ily-radius-input:  8px;      /* text inputs, selects */
-  --ily-radius-button: 10px;     /* buttons */
-  --ily-radius-frame:  14px;     /* media frames, large containers */
+  --ily-radius-frame:  16px;     /* media frames, large containers */
   --ily-radius-stage:  24px;     /* hero / stage surfaces */
   --ily-radius:        var(--ily-radius-card);   /* generic default */
-  --ily-radius-pill:   9999px;   /* pills/chips (v5 vocabulary) */
+  --ily-radius-pill:   9999px;   /* buttons and chips */
   --ily-radius-full:   9999px;   /* alias — same as pill */
+  --ily-radius-button: var(--ily-radius-pill);   /* kept for old references; buttons are pills */
+
+  /* Buttons (round 2): 44px pill, 22px side padding. Primary on light
+     grounds is Shadow Grey; Frosted Blue fill only on dark grounds. */
+  --ily-button-height: 44px;
+  --ily-button-pad-x:  22px;
 
   /* -------------------------------------------------------------------
      SHADOWS

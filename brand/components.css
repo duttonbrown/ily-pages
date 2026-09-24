@@ -115,11 +115,12 @@
 /* --------------------------------------------------------------------------
    LINKS
    Canonical inline-link pattern. Text stays Shadow Grey for full contrast;
-   the Frosted Blue accent lives ONLY in the underline, never as the text
-   color. This is a hard brand rule — Frosted Blue is a light pastel and
-   fails contrast as text on any surface (brand-identity.md → Accessibility).
-   On hover the underline deepens/thickens to the accent; the text never
-   recolors to the pastel (that produces a ~1.5:1 near-invisible link).
+   the blue lives ONLY in the underline, never as the text color, and that
+   underline is --ily-accent-ink (#1B6F86, 5.2:1 on Ghost White). Frosted
+   Blue and its hover tint are 1.2:1 and 1.5:1 on Ghost White: as a line
+   they were invisible, which left links with no affordance at all
+   (decided 2026-09-24). On hover the underline thickens; the text never
+   recolors to a pastel.
 
    Apply .ily-link to inline anchors, or base your page's bare `a` rule on
    this. Do NOT write `a:hover { color: var(--ily-accent-hover) }` — that is
@@ -129,14 +130,15 @@
 .ily-link:visited {
   color: var(--ily-text);
   text-decoration: none;
-  border-bottom: 1px solid var(--ily-border-strong);
-  transition: border-color var(--ily-transition-fast);
+  border-bottom: 1px solid var(--ily-accent-ink);
+  transition: border-color var(--ily-transition-fast), border-width var(--ily-transition-fast);
 }
 .ily-link:hover {
   color: var(--ily-text);                 /* stays dark — readable */
   border-bottom-width: 2px;
-  border-bottom-color: var(--ily-accent-hover);   /* accent only in the underline */
+  border-bottom-color: var(--ily-accent-ink);
 }
+.ily-link:focus-visible { outline: 2px solid var(--ily-focus-ring); outline-offset: 2px; }
 
 /* On dark surfaces (Shadow Grey), the text must flip to a light foreground.
    Compose with this modifier; never let .ily-link's default dark text land
@@ -148,8 +150,9 @@
 }
 .ily-link.is-inverse:hover {
   color: var(--ily-text-inverse);
-  border-bottom-color: var(--ily-accent);
+  border-bottom-color: var(--ily-accent);   /* Frosted Blue is 11.6:1 on Shadow Grey; accent-ink is not (2.7:1) */
 }
+.ily-link.is-inverse:focus-visible { outline-color: var(--ily-ghost-white); }
 
 /* --------------------------------------------------------------------------
    LOGO ON BACKGROUND
